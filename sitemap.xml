@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://dofa.github.io/blog/2014/02/24/use-duoshuo/</loc>
+        <loc>
+            http://dofa.github.io/blog/2014/02/24/add-duoshuo-commemt-system-into-octopress/
+        </loc>
         <lastmod>2014-02-24T13:03:55+00:00</lastmod>
     </url>
     <url>

@@ -4,7 +4,7 @@
   <title><![CDATA[dofa blog]]></title>
   <link href="http://dofa.github.io/atom.xml" rel="self"/>
   <link href="http://dofa.github.io/"/>
-  <updated>2014-02-24T13:04:01+00:00</updated>
+  <updated>2014-02-24T13:06:13+00:00</updated>
   <id>http://dofa.github.io/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[为 Octopress 添加多说评论系统]]></title>
-    <link href="http://dofa.github.io/blog/2014/02/24/use-duoshuo/"/>
+    <link href="http://dofa.github.io/blog/2014/02/24/add-duoshuo-commemt-system-into-octopress/"/>
     <updated>2014-02-24T08:49:29+00:00</updated>
-    <id>http://dofa.github.io/blog/2014/02/24/use-duoshuo</id>
+    <id>http://dofa.github.io/blog/2014/02/24/add-duoshuo-commemt-system-into-octopress</id>
     <content type="html"><![CDATA[<p>disqus是国外的评论系统，速度实在太慢，使用duoshuo会比较好</p>
 
 <h2>修改配置</h2>
