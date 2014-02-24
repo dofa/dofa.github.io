@@ -4,7 +4,7 @@
   <title><![CDATA[dofa blog]]></title>
   <link href="http://dofa.github.io/atom.xml" rel="self"/>
   <link href="http://dofa.github.io/"/>
-  <updated>2014-02-24T12:58:57+00:00</updated>
+  <updated>2014-02-24T12:59:35+00:00</updated>
   <id>http://dofa.github.io/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -36,30 +36,9 @@
 
 <p>在 source/_layouts/post.html 中的 disqus代码下下方添加多说评论模块</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'>```
-</span><span class='line'>
-</span><span class='line'>## 增加duoshuo模板
-</span><span class='line'>
-</span><span class='line'>创建一个 source/_includes/post/duoshuo.html
-</span></code></pre></td></tr></table></div></figure>
+<h2>增加duoshuo模板</h2>
 
-
-<p>html</p>
-
-<!-- Duoshuo Comment BEGIN -->
-
-
-
-
-<!-- Duoshuo Comment END -->
-
-
-<p>&#8220;`</p>
+<p>创建一个 source/_includes/post/duoshuo.html</p>
 ]]></content>
   </entry>
   
