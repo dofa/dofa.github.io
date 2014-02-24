@@ -4,7 +4,7 @@
   <title><![CDATA[dofa blog]]></title>
   <link href="http://dofa.github.io/atom.xml" rel="self"/>
   <link href="http://dofa.github.io/"/>
-  <updated>2014-02-24T13:32:16+00:00</updated>
+  <updated>2014-02-24T14:08:48+00:00</updated>
   <id>http://dofa.github.io/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[在octopress中发生titlecase error]]></title>
+    <title type="html"><![CDATA[Octopress发生titlecase error]]></title>
     <link href="http://dofa.github.io/blog/2014/02/24/occurs-titlecase-error-in-octopress/"/>
     <updated>2014-02-24T13:25:52+00:00</updated>
     <id>http://dofa.github.io/blog/2014/02/24/occurs-titlecase-error-in-octopress</id>
