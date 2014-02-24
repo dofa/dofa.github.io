@@ -4,7 +4,7 @@
   <title><![CDATA[dofa blog]]></title>
   <link href="http://dofa.github.io/atom.xml" rel="self"/>
   <link href="http://dofa.github.io/"/>
-  <updated>2014-02-24T12:20:06+00:00</updated>
+  <updated>2014-02-24T12:43:39+00:00</updated>
   <id>http://dofa.github.io/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -14,13 +14,66 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Hello Octopress]]></title>
-    <link href="http://dofa.github.io/blog/2014/02/24/hello-octopress/"/>
+    <title type="html"><![CDATA[为 Octopress 添加多说评论系统]]></title>
+    <link href="http://dofa.github.io/blog/2014/02/24/use-duoshuo/"/>
     <updated>2014-02-24T08:49:29+00:00</updated>
-    <id>http://dofa.github.io/blog/2014/02/24/hello-octopress</id>
-    <content type="html"><![CDATA[<h2>my new blog use octopress</h2>
+    <id>http://dofa.github.io/blog/2014/02/24/use-duoshuo</id>
+    <content type="html"><![CDATA[<p>disqus是国外的评论系统，速度实在太慢，使用duoshuo会比较好</p>
 
-<h2>hello octopress</h2>
+<h2>修改配置</h2>
+
+<p>在_config.yml中注释掉有关disqus的配置，增加：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># duoshuo comments
+</span><span class='line'>duoshuo_comments: true
+</span><span class='line'>duoshuo_short_name: yourname</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>在 source/_layouts/post.html 中的 disqus代码下下方添加多说评论模块</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'></span></code></pre></td></tr></table></div></figure>
+
+
+<h2>创建一个 source/_includes/post/duoshuo.html</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;!-- Duoshuo Comment BEGIN --&gt;
+</span><span class='line'>&lt;div class="ds-thread" data-title=""&gt;&lt;/div&gt;
+</span><span class='line'>&lt;script type="text/javascript"&gt;
+</span><span class='line'>  var duoshuoQuery = {short_name:""};
+</span><span class='line'>  (function() {
+</span><span class='line'>    var ds = document.createElement('script');
+</span><span class='line'>    ds.type = 'text/javascript';ds.async = true;
+</span><span class='line'>    ds.src = 'http://static.duoshuo.com/embed.js';
+</span><span class='line'>    ds.charset = 'UTF-8';
+</span><span class='line'>    (document.getElementsByTagName('head')[0] 
+</span><span class='line'>    || document.getElementsByTagName('body')[0]).appendChild(ds);
+</span><span class='line'>  })();
+</span><span class='line'>&lt;/script&gt;
+</span><span class='line'>&lt;!-- Duoshuo Comment END --&gt;</span></code></pre></td></tr></table></div></figure>
+
 ]]></content>
   </entry>
   
