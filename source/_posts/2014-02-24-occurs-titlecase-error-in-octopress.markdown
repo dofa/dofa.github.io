@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "occurs titlecase error in octopress"
+title: "Octopress发生titlecase error"
 date: 2014-02-24 13:25:52 +0000
 comments: true
 categories: 
