@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: 前端 | dofa blog]]></title>
-  <link href="http://dofa.org/blog/categories/qian-duan/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Jekyll | dofa blog]]></title>
+  <link href="http://dofa.org/blog/categories/jekyll/atom.xml" rel="self"/>
   <link href="http://dofa.org/"/>
-  <updated>2014-02-25T08:55:13+00:00</updated>
+  <updated>2014-02-25T08:59:23+00:00</updated>
   <id>http://dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
