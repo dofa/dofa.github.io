@@ -4,7 +4,7 @@
   <title><![CDATA[dofa blog]]></title>
   <link href="http://dofa.org/atom.xml" rel="self"/>
   <link href="http://dofa.org/"/>
-  <updated>2014-02-25T08:49:25+00:00</updated>
+  <updated>2014-02-25T08:55:13+00:00</updated>
   <id>http://dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -346,6 +346,8 @@ git push origin master
 </pre></td><td class='code'><pre><code class='c'><span class='line'><span class="mh">0x0d030405</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<h2>Results</h2>
 
 <p>所以我这里结论：</p>
 

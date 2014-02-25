@@ -2,7 +2,7 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://dofa.org/blog/2013/08/05/big-endian-and-little-endian/</loc>
-        <lastmod>2014-02-25T08:48:58+00:00</lastmod>
+        <lastmod>2014-02-25T08:51:07+00:00</lastmod>
     </url>
     <url>
         <loc>http://dofa.org/blog/2013/09/10/With-Jekyll-build-Personal-Blog/</loc>
@@ -10,15 +10,15 @@
     </url>
     <url>
         <loc>http://dofa.org/blog/2013/10/17/Event-driven-pseudo-task-UOS/</loc>
-        <lastmod>2014-02-25T01:50:27+00:00</lastmod>
+        <lastmod>2014-02-25T08:52:06+00:00</lastmod>
     </url>
     <url>
         <loc>http://dofa.org/blog/2014/02/24/add-duoshuo-commemt-system-into-octopress/</loc>
-        <lastmod>2014-02-25T06:37:11+00:00</lastmod>
+        <lastmod>2014-02-25T08:55:01+00:00</lastmod>
     </url>
     <url>
         <loc>http://dofa.org/blog/2014/02/24/occurs-titlecase-error-in-octopress/</loc>
-        <lastmod>2014-02-25T06:36:20+00:00</lastmod>
+        <lastmod>2014-02-25T08:54:24+00:00</lastmod>
     </url>
     <url>
         <loc>http://dofa.org/robots.txt</loc>
@@ -26,10 +26,10 @@
     </url>
     <url>
         <loc>http://dofa.org/blog/archives/</loc>
-        <lastmod>2014-02-25T08:48:58+00:00</lastmod>
+        <lastmod>2014-02-25T08:55:01+00:00</lastmod>
     </url>
     <url>
         <loc>http://dofa.org/</loc>
-        <lastmod>2014-02-25T08:48:58+00:00</lastmod>
+        <lastmod>2014-02-25T08:55:01+00:00</lastmod>
     </url>
 </urlset>
