@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: octopress | dofa blog]]></title>
+  <link href="http://dofa.org/tags/octopress/atom.xml" rel="self"/>
+  <link href="http://dofa.org/"/>
+  <updated>2014-02-25T06:37:17+00:00</updated>
+  <id>http://dofa.org/</id>
+  <author>
+    <name><![CDATA[dofa]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress发生titlecase error]]></title>
+    <link href="http://dofa.org/blog/2014/02/24/occurs-titlecase-error-in-octopress/"/>
+    <updated>2014-02-24T13:25:52+00:00</updated>
+    <id>http://dofa.org/blog/2014/02/24/occurs-titlecase-error-in-octopress</id>
+    <content type="html"><![CDATA[<p>把_config.yml中的</p>
+
+<p><code>
+titlecase: true
+</code>
+修改为：</p>
+
+<p><code>
+titlecase: false  
+</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[为 Octopress 添加多说评论系统]]></title>
+    <link href="http://dofa.org/blog/2014/02/24/add-duoshuo-commemt-system-into-octopress/"/>
+    <updated>2014-02-24T08:49:29+00:00</updated>
+    <id>http://dofa.org/blog/2014/02/24/add-duoshuo-commemt-system-into-octopress</id>
+    <content type="html"><![CDATA[<p>disqus是国外的评论系统，速度实在太慢，使用duoshuo会比较好</p>
+
+<h2>修改配置</h2>
+
+<p>在_config.yml中注释掉有关disqus的配置，增加：</p>
+
+<p>```</p>
+
+<h1>duoshuo comments</h1>
+
+<p>duoshuo_comments: true
+duoshuo_short_name: yourname
+```</p>
+
+<h2>修改post模板</h2>
+
+<p>在 source/_layouts/post.html 中的 disqus代码下下方添加多说评论模块</p>
+
+<p>
+```html
+{% if site.duoshuo_short_name and site.duoshuo_comments == true and page.comments == true %}
+  <section></p>
+
+<pre><code>&lt;h1&gt;Comments&lt;/h1&gt;
+&lt;div id="comments" aria-live="polite"&gt;{% include post/duoshuo.html %}&lt;/div&gt;
+</code></pre>
+
+<p>  </section>
+{% endif %}
+```
+</p>
+
+<h2>增加duoshuo模板</h2>
+
+<p>创建一个 source/_includes/post/duoshuo.html</p>
+
+<p>
+```html</p>
+
+<!-- Duoshuo Comment BEGIN -->
+
+
+<div class="ds-thread" data-title="{% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}"></div>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"{{ site.duoshuo_short_name }}"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+<!-- Duoshuo Comment END -->
+
+
+<p>```
+</p>
+]]></content>
+  </entry>
+  
+</feed>
