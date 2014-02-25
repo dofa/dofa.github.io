@@ -3,7 +3,8 @@ layout: post
 title: "为 Octopress 添加多说评论系统"
 date: 2014-02-24 08:49:29 +0000
 comments: true
-categories: 
+tags: octopress
+categories: Octopress
 ---
 
 
