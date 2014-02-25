@@ -389,6 +389,162 @@ git push origin master
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/08/05/big-endian-and-little-endian/">big endian与little endian（大小端）</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-05T13:25:52+00:00" pubdate data-updated="true">Aug 5<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>在C编程中，经常遇到大小端（big endian与little endian）的问题，尤其涉及到位域的情况，很容易出错。我这里总结下C51和HTCC C18两种compiler对大小端的处理。</p>
+
+<h2>Check Endian code</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="kt">char</span> <span class="nf">checkEndian</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="k">union</span> <span class="n">check</span><span class="p">{</span>
+</span><span class='line'>      <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+</span><span class='line'>      <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">b</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>  <span class="k">union</span> <span class="n">check</span> <span class="n">ck</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">ck</span><span class="p">.</span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">ck</span><span class="p">.</span><span class="n">b</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="k">union</span> <span class="n">uE</span><span class="p">{</span>
+</span><span class='line'>      <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">num</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">struct</span><span class="p">{</span>
+</span><span class='line'>          <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">a1</span><span class="o">:</span><span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>          <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">b3</span><span class="o">:</span><span class="mi">3</span><span class="p">;</span>
+</span><span class='line'>          <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">c16</span><span class="p">;</span>
+</span><span class='line'>          <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">d3</span><span class="o">:</span><span class="mi">3</span><span class="p">;</span>
+</span><span class='line'>          <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">e1</span><span class="o">:</span><span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>      <span class="p">}</span><span class="n">sN</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">union</span> <span class="n">uE</span> <span class="n">a</span><span class="p">;</span>
+</span><span class='line'>  <span class="kt">char</span> <span class="n">ttt</span> <span class="o">=</span>    <span class="n">checkEndian</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">num</span> <span class="o">=</span> <span class="mh">0x12345678</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">sN</span><span class="p">.</span><span class="n">a1</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">sN</span><span class="p">.</span><span class="n">b3</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">sN</span><span class="p">.</span><span class="n">c16</span> <span class="o">=</span> <span class="mh">0x0304</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">sN</span><span class="p">.</span><span class="n">d3</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">sN</span><span class="p">.</span><span class="n">e1</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">num</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Executed results</h2>
+
+<p>a.num = ?</p>
+
+<p>对于big endian：</p>
+
+<p>以C51来分析，结构成员按照定义顺序从小地址到大地址存放到ram中，显然按照地址从小到大排放结果就为：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="mo">05</span> <span class="mo">03</span> <span class="mo">04</span> <span class="mi">0</span><span class="n">d</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>转换为大端显示为：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="mh">0x0503040d</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>对于little endian：</p>
+
+<p>结果为</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="mh">0x0d030405</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>所以我这里结论：</p>
+
+<ul>
+<li><p>位域没有大小端的区别，区别在于各编译器的实现。上面的例子便是没有区别的compiler，C51和HTCC C18；网络字节序位域有大小端区别，这个一定要注意</p></li>
+<li><p>两个及其以上字节有大小端区别</p></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -403,6 +559,7 @@ git push origin master
     <li class='category'><a href='/blog/categories/embedded/'>Embedded (1)</a></li>
 <li class='category'><a href='/blog/categories/web/'>web (2)</a></li>
 <li class='category'><a href='/blog/categories/前端/'>前端 (1)</a></li>
+<li class='category'><a href='/blog/categories/嵌入式技术/'>嵌入式技术 (1)</a></li>
 
   </ul>
 </section>
@@ -426,12 +583,17 @@ git push origin master
         <a href="/blog/2013/09/10/With-Jekyll-build-Personal-Blog/">用-Jekyll-搭建个人博客</a>
       </li>
     
+      <li class="post">
+        <a href="/blog/2013/08/05/big-endian-and-little-endian/">big endian与little endian（大小端）</a>
+      </li>
+    
   </ul>
 </section>
 <section>
   <h1>Tags</h1>
   <ul class="tag-cloud">
     <a style="font-size: 90%" href="/tags/embedded/">Embedded</a>
+<a style="font-size: 90%" href="/tags/embeded/">Embeded</a>
 <a style="font-size: 90%" href="/tags/git/">Git</a>
 <a style="font-size: 90%" href="/tags/jekyll/">Jekyll</a>
 <a style="font-size: 90%" href="/tags/markdown/">Markdown</a>
