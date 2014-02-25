@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: 前端 | dofa blog]]></title>
-  <link href="http://dofa.github.io/blog/categories/qian-duan/atom.xml" rel="self"/>
-  <link href="http://dofa.github.io/"/>
-  <updated>2014-02-25T01:51:21+00:00</updated>
-  <id>http://dofa.github.io/</id>
+  <link href="http://dofa.org/blog/categories/qian-duan/atom.xml" rel="self"/>
+  <link href="http://dofa.org/"/>
+  <updated>2014-02-25T03:58:28+00:00</updated>
+  <id>http://dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[用-Jekyll-搭建个人博客]]></title>
-    <link href="http://dofa.github.io/blog/2013/09/10/With-Jekyll-build-Personal-Blog/"/>
+    <link href="http://dofa.org/blog/2013/09/10/With-Jekyll-build-Personal-Blog/"/>
     <updated>2013-09-10T00:00:00+00:00</updated>
-    <id>http://dofa.github.io/blog/2013/09/10/With-Jekyll-build-Personal-Blog</id>
+    <id>http://dofa.org/blog/2013/09/10/With-Jekyll-build-Personal-Blog</id>
     <content type="html"><![CDATA[<h3>使用理由</h3>
 
 <ol>

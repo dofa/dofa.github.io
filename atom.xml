@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[dofa blog]]></title>
-  <link href="http://dofa.github.io/atom.xml" rel="self"/>
-  <link href="http://dofa.github.io/"/>
-  <updated>2014-02-25T01:51:21+00:00</updated>
-  <id>http://dofa.github.io/</id>
+  <link href="http://dofa.org/atom.xml" rel="self"/>
+  <link href="http://dofa.org/"/>
+  <updated>2014-02-25T03:58:28+00:00</updated>
+  <id>http://dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Octopress发生titlecase error]]></title>
-    <link href="http://dofa.github.io/blog/2014/02/24/occurs-titlecase-error-in-octopress/"/>
+    <link href="http://dofa.org/blog/2014/02/24/occurs-titlecase-error-in-octopress/"/>
     <updated>2014-02-24T13:25:52+00:00</updated>
-    <id>http://dofa.github.io/blog/2014/02/24/occurs-titlecase-error-in-octopress</id>
+    <id>http://dofa.org/blog/2014/02/24/occurs-titlecase-error-in-octopress</id>
     <content type="html"><![CDATA[<p>把_config.yml中的</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -34,9 +34,9 @@
   
   <entry>
     <title type="html"><![CDATA[为 Octopress 添加多说评论系统]]></title>
-    <link href="http://dofa.github.io/blog/2014/02/24/add-duoshuo-commemt-system-into-octopress/"/>
+    <link href="http://dofa.org/blog/2014/02/24/add-duoshuo-commemt-system-into-octopress/"/>
     <updated>2014-02-24T08:49:29+00:00</updated>
-    <id>http://dofa.github.io/blog/2014/02/24/add-duoshuo-commemt-system-into-octopress</id>
+    <id>http://dofa.org/blog/2014/02/24/add-duoshuo-commemt-system-into-octopress</id>
     <content type="html"><![CDATA[<p>disqus是国外的评论系统，速度实在太慢，使用duoshuo会比较好</p>
 
 <h2>修改配置</h2>
@@ -111,9 +111,9 @@
   
   <entry>
     <title type="html"><![CDATA[事件驱动的伪任务-UOS]]></title>
-    <link href="http://dofa.github.io/blog/2013/10/17/Event-driven-pseudo-task-UOS/"/>
+    <link href="http://dofa.org/blog/2013/10/17/Event-driven-pseudo-task-UOS/"/>
     <updated>2013-10-17T00:00:00+00:00</updated>
-    <id>http://dofa.github.io/blog/2013/10/17/Event-driven-pseudo-task-UOS</id>
+    <id>http://dofa.org/blog/2013/10/17/Event-driven-pseudo-task-UOS</id>
     <content type="html"><![CDATA[<h3>protothread</h3>
 
 <p>protothread是专为资源有限的系统设计的一种耗费资源特别少并且不使用堆栈的线程模型</p>
@@ -165,9 +165,9 @@
   
   <entry>
     <title type="html"><![CDATA[用-Jekyll-搭建个人博客]]></title>
-    <link href="http://dofa.github.io/blog/2013/09/10/With-Jekyll-build-Personal-Blog/"/>
+    <link href="http://dofa.org/blog/2013/09/10/With-Jekyll-build-Personal-Blog/"/>
     <updated>2013-09-10T00:00:00+00:00</updated>
-    <id>http://dofa.github.io/blog/2013/09/10/With-Jekyll-build-Personal-Blog</id>
+    <id>http://dofa.org/blog/2013/09/10/With-Jekyll-build-Personal-Blog</id>
     <content type="html"><![CDATA[<h3>使用理由</h3>
 
 <ol>

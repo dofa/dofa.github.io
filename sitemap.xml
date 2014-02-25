@@ -1,33 +1,31 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://dofa.github.io/blog/2013/09/10/With-Jekyll-build-Personal-Blog/</loc>
+        <loc>http://dofa.org/blog/2013/09/10/With-Jekyll-build-Personal-Blog/</loc>
         <lastmod>2014-02-25T01:50:27+00:00</lastmod>
     </url>
     <url>
-        <loc>http://dofa.github.io/blog/2013/10/17/Event-driven-pseudo-task-UOS/</loc>
+        <loc>http://dofa.org/blog/2013/10/17/Event-driven-pseudo-task-UOS/</loc>
         <lastmod>2014-02-25T01:50:27+00:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://dofa.github.io/blog/2014/02/24/add-duoshuo-commemt-system-into-octopress/
-        </loc>
+        <loc>http://dofa.org/blog/2014/02/24/add-duoshuo-commemt-system-into-octopress/</loc>
         <lastmod>2014-02-24T13:10:20+00:00</lastmod>
     </url>
     <url>
-        <loc>http://dofa.github.io/blog/2014/02/24/occurs-titlecase-error-in-octopress/</loc>
+        <loc>http://dofa.org/blog/2014/02/24/occurs-titlecase-error-in-octopress/</loc>
         <lastmod>2014-02-24T14:08:37+00:00</lastmod>
     </url>
     <url>
-        <loc>http://dofa.github.io/robots.txt</loc>
+        <loc>http://dofa.org/robots.txt</loc>
         <lastmod>2014-02-24T07:47:51+00:00</lastmod>
     </url>
     <url>
-        <loc>http://dofa.github.io/blog/archives/</loc>
+        <loc>http://dofa.org/blog/archives/</loc>
         <lastmod>2014-02-25T01:50:27+00:00</lastmod>
     </url>
     <url>
-        <loc>http://dofa.github.io/</loc>
+        <loc>http://dofa.org/</loc>
         <lastmod>2014-02-25T01:50:27+00:00</lastmod>
     </url>
 </urlset>
