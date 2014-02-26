@@ -3,11 +3,11 @@
 # ----------------------- #
 
 url: http://dofa.org
-title: dofa blog 
-subtitle: DOFA工作室
+title: Do Far 
+subtitle: There is a will, there is a way.
 author: dofa
 simple_search: http://google.com/search
-description:
+description: Technical reflections and records of thoughts
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
@@ -60,6 +60,8 @@ default_asides: [asides/category_list.html, asides/recent_posts.html, custom/asi
 # blog_index_asides:
 # post_asides:
 # page_asides:
+
+static_file_prefix: http://dofa.u.qiniudn.com
 
 # ----------------------- #
 #   3rd Party Settings    #
