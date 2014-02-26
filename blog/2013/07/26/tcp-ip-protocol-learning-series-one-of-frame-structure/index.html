@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>用-Jekyll-搭建个人博客 - dofa blog</title>
+  <title>TCP/IP 协议学习系列之一 — 帧结构（frame） - dofa blog</title>
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="Jekyll 是一个 Ruby 写的静态站点生成工具，使用 Jekyll 搭建博客框架；撰写文章使用 Markdown，省去排版，样式的烦恼；使用 git 版本管理博客内容，内容永不丢失，并支持免费部署在 Github 上。">
+  <meta name="description" content="TCP/IP协议封包 我觉得学习TCP/IP协议可以从它的封包开始，了解它在硬件上是怎么实现的是个不错的开端。 ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://dofa.org/blog/2013/09/10/With-Jekyll-build-Personal-Blog">
+  <link rel="canonical" href="http://dofa.org/blog/2013/07/26/tcp-ip-protocol-learning-series-one-of-frame-structure">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="dofa blog" type="application/atom+xml">
@@ -66,7 +66,7 @@
   
   <header>
     
-      <h1 class="entry-title">用-Jekyll-搭建个人博客</h1>
+      <h1 class="entry-title">TCP/IP 协议学习系列之一 — 帧结构（frame）</h1>
     
     
       <p class="meta">
@@ -82,70 +82,18 @@
   
 
 
-<time datetime="2013-09-10T00:00:00+00:00" pubdate data-updated="true"></time>
+<time datetime="2013-07-26T14:25:52+00:00" pubdate data-updated="true">Jul 26<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><h3>使用理由</h3>
+<div class="entry-content"><h2>TCP/IP协议封包</h2>
 
-<ol>
-<li> 使用 Markdown， 专心写博客，无样式排版烦恼</li>
-<li> 使用自己喜欢的本地编辑器，本地随时写博客，可以本地预览，方便自己使用</li>
-<li> 并使用 Git 管理博客，内容永不丢失</li>
-<li> 可以部署在 github 上，不用自己购买管理 VPS，甚至域名也可以不买，对学生来说很适合</li>
-<li> 没有第三方博客系统的广告，限制，随心而写</li>
-</ol>
+<p>我觉得学习TCP/IP协议可以从它的封包开始，了解它在硬件上是怎么实现的是个不错的开端。</p>
 
-
-<h3>如何搭建</h3>
-
-<ol>
-<li> 由于 Jekyll 是用 Ruby 写的，因此首先要搭建 Ruby 执行环境，同时安装 git 版本控制工具</li>
-<li> 在 Github 上创建一个仓库，仓库名为 <code>github 账户名.github.com</code> 或者 <code>github 账户名.github.io</code></li>
-<li><p> 克隆仓库到本地，并初始化仓库。然后发布博客，第一次发布后大约需要 <code>十分钟</code> 就可以通过 <code>yourname.github.com</code> 访问博客了</p>
-
-<pre><code>git clone https://github.com/yourname/yourname.github.com blog
-cd blog
-touch {README.md,index.html}        # 在 README.md 和 index.html 中加入内容
-git add .
-git commit -m "初始化提交"
-git push origin master
-</code></pre></li>
-<li><p> 安装 Jekyll 规则搭建个人博客框架，具体参考 <a href="http://jekyllrb.com/" title="Jekyll 官方文档">Jekyll官方文档</a></p></li>
-</ol>
-
-
-<h3>Markdown 语法简记</h3>
-
-<ul>
-<li><code>1--6 级标题</code> 在行首使用 1-6 个 # 号</li>
-<li><code>块引用</code> 在一段的第一行前面加上 > 表示一个区块引用， > 可以嵌套</li>
-<li><code>列表</code> 无序列表 使用 *、 + 或是 &ndash; 作为列表标记，有序列表 则使用 数字接着一个英文句点</li>
-<li><code>代码</code> 缩进 4 个空格 表示一个代码块， 使用 反引号（`）  标记一小段行内代码</li>
-<li><code>强调</code> 用一个 * 或 _ 包围转成 &lt;em> 标签，用两个 * 或 _ 包围转成 &lt;strong> 标签，</li>
-<li><code>分割线</code> 用三个以上的 *、 -、 _ 来建立一个分隔线，行内不能有其他东西</li>
-<li><p><code>超链接和图片链接</code> 图片链接和超链接基本相同，图片链接多一个 ！。都有两种样式：行内式 和 参考式</p>
-
-<pre><code>行内式：
-    [潮汐猎人的博客](http://bitbegin.github.io "潮汐猎人的博客")
-
-参考式：
-    [潮汐猎人的博客][bitbegin]
-    [bitbegin]: http://bitbegin.github.io "潮汐猎人的博客"        # 此行可以放在文章的任意位置
-</code></pre></li>
-<li><p><code>反斜杠和自动链接</code> 特殊字符可用 \ 转义； 把 网址 或 电子邮件信箱 用 &lt;> 包起来，会自动链接</p></li>
-<li><p><code>表格</code> 不是 Markdown 的标准语法</p>
-
-<pre><code>|     用户名     |     年龄    |
-| -------------  | ----------- |
-|     路人甲     |     21      |
-|     路人乙     |     21      |
-</code></pre></li>
-</ul>
-
+<p><img class="left" src="http://dofa.u.qiniudn.com/imgage/embeded/tcpip-package.bmp"></p>
 </div>
 
 
@@ -168,12 +116,12 @@ git push origin master
   
 
 
-<time datetime="2013-09-10T00:00:00+00:00" pubdate data-updated="true"></time>
+<time datetime="2013-07-26T14:25:52+00:00" pubdate data-updated="true">Jul 26<span>th</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/jekyll/'>Jekyll</a>
+    <a class='category' href='/blog/categories/embedded/'>Embedded</a>
   
 </span>
 
@@ -189,15 +137,32 @@ git push origin master
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/08/05/big-endian-and-little-endian/" title="Previous Post: big endian与little endian（大小端）">&laquo; big endian与little endian（大小端）</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/10/17/Event-driven-pseudo-task-UOS/" title="Next Post: 事件驱动的伪任务-UOS">事件驱动的伪任务-UOS &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2013/08/05/big-endian-and-little-endian/" title="Next Post: big endian与little endian（大小端）">big endian与little endian（大小端） &raquo;</a>
       
     </p>
   </footer>
 </article>
 
+
+  <section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread" data-title=""></div>
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"bitbegin"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<!-- Duoshuo Comment END -->
+</div>
+  </section>
 
 </div>
 
