@@ -1,6 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>http://dofa.org/blog/2013/03/26/vim-cheat-sheet/</loc>
+        <lastmod>2014-02-26T09:00:07+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://dofa.org/blog/2013/04/02/vim-mind-mapping/</loc>
+        <lastmod>2014-02-26T09:02:00+00:00</lastmod>
+    </url>
+    <url>
         <loc>http://dofa.org/blog/2013/06/01/sublime-text-guide-and-tips/</loc>
         <lastmod>2014-02-26T06:15:46+00:00</lastmod>
     </url>
@@ -55,14 +63,6 @@
         <lastmod>2014-02-25T08:54:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://dofa.org/blog/2014/02/26/vim-mind-mapping/</loc>
-        <lastmod>2014-02-26T08:45:03+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://dofa.org/blog/2014/02/26/vim-cheat-sheet/</loc>
-        <lastmod>2014-02-26T08:50:08+00:00</lastmod>
-    </url>
-    <url>
         <loc>http://dofa.org/robots.txt</loc>
         <lastmod>2014-02-24T07:47:51+00:00</lastmod>
     </url>
@@ -72,10 +72,10 @@
     </url>
     <url>
         <loc>http://dofa.org/blog/archives/</loc>
-        <lastmod>2014-02-26T08:50:08+00:00</lastmod>
+        <lastmod>2014-02-26T09:02:00+00:00</lastmod>
     </url>
     <url>
         <loc>http://dofa.org/</loc>
-        <lastmod>2014-02-26T08:50:08+00:00</lastmod>
+        <lastmod>2014-02-26T09:02:00+00:00</lastmod>
     </url>
 </urlset>

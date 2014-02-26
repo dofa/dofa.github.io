@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: vim | dofa blog]]></title>
   <link href="http://dofa.org/tags/vim/atom.xml" rel="self"/>
   <link href="http://dofa.org/"/>
-  <updated>2014-02-26T08:50:21+00:00</updated>
+  <updated>2014-02-26T09:02:09+00:00</updated>
   <id>http://dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -14,20 +14,20 @@
 
   
   <entry>
-    <title type="html"><![CDATA[vim cheat sheet]]></title>
-    <link href="http://dofa.org/blog/2014/02/26/vim-cheat-sheet/"/>
-    <updated>2014-02-26T16:48:52+00:00</updated>
-    <id>http://dofa.org/blog/2014/02/26/vim-cheat-sheet</id>
-    <content type="html"><![CDATA[<p><img src="http://dofa.u.qiniudn.com/image/vim/vim-cheat-sheet.png"></p>
+    <title type="html"><![CDATA[vim思维导图]]></title>
+    <link href="http://dofa.org/blog/2013/04/02/vim-mind-mapping/"/>
+    <updated>2013-04-02T16:42:52+00:00</updated>
+    <id>http://dofa.org/blog/2013/04/02/vim-mind-mapping</id>
+    <content type="html"><![CDATA[<p><img src="http://dofa.u.qiniudn.com/image/vim/vim-mind-mapping.png"></p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[vim思维导图]]></title>
-    <link href="http://dofa.org/blog/2014/02/26/vim-mind-mapping/"/>
-    <updated>2014-02-26T16:42:52+00:00</updated>
-    <id>http://dofa.org/blog/2014/02/26/vim-mind-mapping</id>
-    <content type="html"><![CDATA[<p><img src="http://dofa.u.qiniudn.com/image/vim/vim-mind-mapping.png"></p>
+    <title type="html"><![CDATA[vim cheat sheet]]></title>
+    <link href="http://dofa.org/blog/2013/03/26/vim-cheat-sheet/"/>
+    <updated>2013-03-26T16:48:52+00:00</updated>
+    <id>http://dofa.org/blog/2013/03/26/vim-cheat-sheet</id>
+    <content type="html"><![CDATA[<p><img src="http://dofa.u.qiniudn.com/image/vim/vim-cheat-sheet.png"></p>
 ]]></content>
   </entry>
   
