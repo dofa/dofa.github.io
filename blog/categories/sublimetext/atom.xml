@@ -4,7 +4,7 @@
   <title><![CDATA[Category: SublimeText | dofa blog]]></title>
   <link href="http://dofa.org/blog/categories/sublimetext/atom.xml" rel="self"/>
   <link href="http://dofa.org/"/>
-  <updated>2014-02-26T06:20:03+00:00</updated>
+  <updated>2014-02-26T06:35:18+00:00</updated>
   <id>http://dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -12,6 +12,85 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Sublime Text的snippet]]></title>
+    <link href="http://dofa.org/blog/2013/06/02/sublime-text-snippet/"/>
+    <updated>2013-06-02T14:25:52+00:00</updated>
+    <id>http://dofa.org/blog/2013/06/02/sublime-text-snippet</id>
+    <content type="html"><![CDATA[<h2>snippet强大的自动补全功能</h2>
+
+<p>以前理解代码自动补全以为就是函数或变量的自动补全，其实还可以是代码块的自动补全。接触过sublime text后才发现si的自动补全弱爆了，si也就阅读代码方便，写代码以后还要靠sublime text。话说sublime text的snippet就是自动补全，我也是今天才知道snippet。在简单的接触后，马上就可以实现自己的自动补全，不得不说st2真乃coding神器！</p>
+
+<h2>Example：for语句的补全</h2>
+
+<p>当匹配到<code>for</code>后，</p>
+
+<p><img src="http://dofa.u.qiniudn.com/imgage/embeded/snippet-for.jpg">
+输入<code>tab</code>，这时st2帮你输入以下代码：
+<img src="http://dofa.u.qiniudn.com/imgage/embeded/snippet-for-tab.jpg">
+当前光标会停留在<code>count</code>上，继续key字就会把<code>count</code>替换掉，接着按下<code>tab</code>会把<code>i</code>也替换掉。</p>
+
+<h2>自定义snipppet</h2>
+
+<p>通过<code>tools</code>&mdash;> <code>New snippet</code>，会出现：</p>
+
+<p>
+```xml
+<snippet></p>
+
+<pre><code>&lt;content&gt;&lt;![CDATA[
+</code></pre>
+
+<p>Hello, ${1:this} is a ${2:snippet}.
+]]&gt;</content></p>
+
+<pre><code>&lt;!-- Optional: Set a tabTrigger to define how to trigger the snippet --&gt;
+&lt;!-- &lt;tabTrigger&gt;hello&lt;/tabTrigger&gt; --&gt;
+&lt;!-- Optional: Set a scope to limit where the snippet will trigger --&gt;
+&lt;!-- &lt;scope&gt;source.python&lt;/scope&gt; --&gt;
+</code></pre>
+
+<p></snippet>
+```
+</p>
+
+<p>修改这行<code>&lt;!-- &lt;tabTrigger&gt;hello&lt;/tabTrigger&gt; --&gt;</code>为<code>&lt;tabTrigger&gt;hello&lt;/tabTrigger&gt;</code>就可以使用<code>hello+tab</code>调出<code>Hello, ${1:this} is a ${2:snippet}.</code>。光标首先会出现在<code>${1}</code>的位置上，<code>:this</code>表示<code>${1}</code>的默认值为<code>this</code>。</p>
+
+<p>这里再给一个doxygen格式snippet配置：</p>
+
+<p>
+```xml
+<snippet></p>
+
+<pre><code>&lt;content&gt;&lt;![CDATA[
+</code></pre>
+
+<p>/<em>!
+ * \file ${1:file.c}
+ * \brief this is a ${2:description} file
+ * \author bitbegin
+ * \date ${3:2013-6-3}
+ * \version V1.0.061
+ * \note this is a ${2:description} file
+ * \warning Only for bitbegin
+ * \details
+ * ${4:your details}
+ *
+ </em>/
+]]&gt;</content></p>
+
+<pre><code>&lt;!-- Optional: Set a tabTrigger to define how to trigger the snippet --&gt;
+&lt;tabTrigger&gt;doxy-file&lt;/tabTrigger&gt;
+&lt;!-- Optional: Set a scope to limit where the snippet will trigger --&gt;
+&lt;!-- &lt;scope&gt;source.python&lt;/scope&gt; --&gt;
+</code></pre>
+
+<p></snippet>
+```
+</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Sublime Text的一些快捷键]]></title>

@@ -5,16 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>为 Octopress 添加多说评论系统 - dofa blog</title>
+  <title>Sublime Text的snippet - dofa blog</title>
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="disqus是国外的评论系统，速度实在太慢，使用duoshuo会比较好 修改配置 在_config.yml中注释掉有关disqus的配置，增加： 1
-2
-3
-# duoshuo comments
-duoshuo_comments: true
-duoshuo_short_name: yourname &hellip;">
+  <meta name="description" content="snippet强大的自动补全功能 以前理解代码自动补全以为就是函数或变量的自动补全，其实还可以是代码块的自动补全。接触过sublime text后才发现si的自动补全弱爆了，si也就阅读代码方便，写代码以后还要靠sublime text。话说sublime text的snippet就是自动补全， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -23,7 +18,7 @@ duoshuo_short_name: yourname &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://dofa.org/blog/2014/02/24/add-duoshuo-commemt-system-into-octopress">
+  <link rel="canonical" href="http://dofa.org/blog/2013/06/02/sublime-text-snippet">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="dofa blog" type="application/atom+xml">
@@ -71,7 +66,7 @@ duoshuo_short_name: yourname &hellip;">
   
   <header>
     
-      <h1 class="entry-title">为 Octopress 添加多说评论系统</h1>
+      <h1 class="entry-title">Sublime Text的snippet</h1>
     
     
       <p class="meta">
@@ -87,30 +82,29 @@ duoshuo_short_name: yourname &hellip;">
   
 
 
-<time datetime="2014-02-24T08:49:29+00:00" pubdate data-updated="true">Feb 24<span>th</span>, 2014</time>
+<time datetime="2013-06-02T14:25:52+00:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>disqus是国外的评论系统，速度实在太慢，使用duoshuo会比较好</p>
+<div class="entry-content"><h2>snippet强大的自动补全功能</h2>
 
-<h2>修改配置</h2>
+<p>以前理解代码自动补全以为就是函数或变量的自动补全，其实还可以是代码块的自动补全。接触过sublime text后才发现si的自动补全弱爆了，si也就阅读代码方便，写代码以后还要靠sublime text。话说sublime text的snippet就是自动补全，我也是今天才知道snippet。在简单的接触后，马上就可以实现自己的自动补全，不得不说st2真乃coding神器！</p>
 
-<p>在_config.yml中注释掉有关disqus的配置，增加：</p>
+<h2>Example：for语句的补全</h2>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># duoshuo comments
-</span><span class='line'>duoshuo_comments: true
-</span><span class='line'>duoshuo_short_name: yourname</span></code></pre></td></tr></table></div></figure>
+<p>当匹配到<code>for</code>后，</p>
 
+<p><img src="http://dofa.u.qiniudn.com/imgage/embeded/snippet-for.jpg">
+输入<code>tab</code>，这时st2帮你输入以下代码：
+<img src="http://dofa.u.qiniudn.com/imgage/embeded/snippet-for-tab.jpg">
+当前光标会停留在<code>count</code>上，继续key字就会把<code>count</code>替换掉，接着按下<code>tab</code>会把<code>i</code>也替换掉。</p>
 
-<h2>修改post模板</h2>
+<h2>自定义snipppet</h2>
 
-<p>在 source/_layouts/post.html 中的 disqus代码下下方添加多说评论模块</p>
+<p>通过<code>tools</code>&mdash;> <code>New snippet</code>，会出现：</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -118,18 +112,24 @@ duoshuo_short_name: yourname &hellip;">
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'>{% if site.duoshuo_short_name and site.duoshuo_comments == true and page.comments == true %}
-</span><span class='line'>  <span class="nt">&lt;section&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;h1&gt;</span>Comments<span class="nt">&lt;/h1&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;comments&quot;</span> <span class="na">aria-live=</span><span class="s">&quot;polite&quot;</span><span class="nt">&gt;</span>{% include post/duoshuo.html %}<span class="nt">&lt;/div&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;/section&gt;</span>
-</span><span class='line'>{% endif %}
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;snippet&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;content&gt;</span><span class="cp">&lt;![CDATA[</span>
+</span><span class='line'><span class="cp">Hello, ${1:this} is a ${2:snippet}.</span>
+</span><span class='line'><span class="cp">]]&gt;</span><span class="nt">&lt;/content&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!-- Optional: Set a tabTrigger to define how to trigger the snippet --&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!-- &lt;tabTrigger&gt;hello&lt;/tabTrigger&gt; --&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!-- Optional: Set a scope to limit where the snippet will trigger --&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!-- &lt;scope&gt;source.python&lt;/scope&gt; --&gt;</span>
+</span><span class='line'><span class="nt">&lt;/snippet&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h2>增加duoshuo模板</h2>
+<p>修改这行<code>&lt;!-- &lt;tabTrigger&gt;hello&lt;/tabTrigger&gt; --&gt;</code>为<code>&lt;tabTrigger&gt;hello&lt;/tabTrigger&gt;</code>就可以使用<code>hello+tab</code>调出<code>Hello, ${1:this} is a ${2:snippet}.</code>。光标首先会出现在<code>${1}</code>的位置上，<code>:this</code>表示<code>${1}</code>的默认值为<code>this</code>。</p>
 
-<p>创建一个 source/_includes/post/duoshuo.html</p>
+<p>这里再给一个doxygen格式snippet配置：</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -145,20 +145,32 @@ duoshuo_short_name: yourname &hellip;">
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="c">&lt;!-- Duoshuo Comment BEGIN --&gt;</span>
-</span><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;ds-thread&quot;</span> <span class="na">data-title=</span><span class="s">&quot;{% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
-</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">duoshuoQuery</span> <span class="o">=</span> <span class="p">{</span><span class="nx">short_name</span><span class="o">:</span><span class="s2">&quot;{{ site.duoshuo_short_name }}&quot;</span><span class="p">};</span>
-</span><span class='line'>  <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">ds</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">ds</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s1">&#39;text/javascript&#39;</span><span class="p">;</span><span class="nx">ds</span><span class="p">.</span><span class="nx">async</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-</span><span class='line'>    <span class="nx">ds</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">&#39;http://static.duoshuo.com/embed.js&#39;</span><span class="p">;</span>
-</span><span class='line'>    <span class="nx">ds</span><span class="p">.</span><span class="nx">charset</span> <span class="o">=</span> <span class="s1">&#39;UTF-8&#39;</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-</span><span class='line'>    <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">ds</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">})();</span>
-</span><span class='line'><span class="nt">&lt;/script&gt;</span>
-</span><span class='line'><span class="c">&lt;!-- Duoshuo Comment END --&gt;</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;snippet&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;content&gt;</span><span class="cp">&lt;![CDATA[</span>
+</span><span class='line'><span class="cp">/*!</span>
+</span><span class='line'><span class="cp"> * \file ${1:file.c}</span>
+</span><span class='line'><span class="cp"> * \brief this is a ${2:description} file</span>
+</span><span class='line'><span class="cp"> * \author bitbegin</span>
+</span><span class='line'><span class="cp"> * \date ${3:2013-6-3}</span>
+</span><span class='line'><span class="cp"> * \version V1.0.061</span>
+</span><span class='line'><span class="cp"> * \note this is a ${2:description} file</span>
+</span><span class='line'><span class="cp"> * \warning Only for bitbegin</span>
+</span><span class='line'><span class="cp"> * \details</span>
+</span><span class='line'><span class="cp"> * ${4:your details}</span>
+</span><span class='line'><span class="cp"> *</span>
+</span><span class='line'><span class="cp"> */</span>
+</span><span class='line'><span class="cp">]]&gt;</span><span class="nt">&lt;/content&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!-- Optional: Set a tabTrigger to define how to trigger the snippet --&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;tabTrigger&gt;</span>doxy-file<span class="nt">&lt;/tabTrigger&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!-- Optional: Set a scope to limit where the snippet will trigger --&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!-- &lt;scope&gt;source.python&lt;/scope&gt; --&gt;</span>
+</span><span class='line'><span class="nt">&lt;/snippet&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -185,12 +197,12 @@ duoshuo_short_name: yourname &hellip;">
   
 
 
-<time datetime="2014-02-24T08:49:29+00:00" pubdate data-updated="true">Feb 24<span>th</span>, 2014</time>
+<time datetime="2013-06-02T14:25:52+00:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/octopress/'>Octopress</a>
+    <a class='category' href='/blog/categories/sublimetext/'>SublimeText</a>
   
 </span>
 
@@ -206,10 +218,10 @@ duoshuo_short_name: yourname &hellip;">
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/10/17/Event-driven-pseudo-task-UOS/" title="Previous Post: 事件驱动的伪任务-UOS">&laquo; 事件驱动的伪任务-UOS</a>
+        <a class="basic-alignment left" href="/blog/2013/06/01/some-short-keys-of-sublime-text/" title="Previous Post: Sublime Text的一些快捷键">&laquo; Sublime Text的一些快捷键</a>
       
       
-        <a class="basic-alignment right" href="/blog/2014/02/24/occurs-titlecase-error-in-octopress/" title="Next Post: Octopress发生titlecase error">Octopress发生titlecase error &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2013/07/26/tcp-ip-protocol-learning-series-one-of-frame-structure/" title="Next Post: TCP/IP 协议学习系列之一 — 帧结构（frame）">TCP/IP 协议学习系列之一 — 帧结构（frame） &raquo;</a>
       
     </p>
   </footer>
