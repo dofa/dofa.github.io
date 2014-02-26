@@ -4,7 +4,7 @@
   <title><![CDATA[dofa blog]]></title>
   <link href="http://dofa.org/atom.xml" rel="self"/>
   <link href="http://dofa.org/"/>
-  <updated>2014-02-26T03:47:19+00:00</updated>
+  <updated>2014-02-26T06:20:03+00:00</updated>
   <id>http://dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -495,6 +495,218 @@ MII接口主要包括4个部分：</p>
 <p>基本上就是在TCP/IP封包基础上增加了一个Ethernet Frame Header和Frame Tail(CRC)。</p>
 
 <p>这里的DA和SA指的是MAC，固定为6字节。类型/长度在不同的协议规格下有不同意义，Ethernet-II要求不小于0×8000的类型码，IEEE 802规格定义该字段为报文数据的长度。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Sublime Text的一些快捷键]]></title>
+    <link href="http://dofa.org/blog/2013/06/01/some-short-keys-of-sublime-text/"/>
+    <updated>2013-06-01T19:25:52+00:00</updated>
+    <id>http://dofa.org/blog/2013/06/01/some-short-keys-of-sublime-text</id>
+    <content type="html"><![CDATA[<h2>打开/前往</h2>
+
+<pre><code>Ctrl+P：搜索项目中的文件
+Ctrl+G：跳转到第几行
+Ctrl+R：前往 method
+Ctrl+;：前往字段
+Ctrl+Shift+P：打开命令面板
+Ctrl+N：新建窗口
+Ctrl+o：打开文件
+Ctrl+shift+s：另存为
+Ctrl+W：关闭当前打开文件
+Ctrl+Shift+W：关闭所有打开文件
+Ctrl+`：显示python命令行
+</code></pre>
+
+<h2>界面</h2>
+
+<pre><code>F11 全屏
+shift+F11：无干绕全屏
+ctrl+kb：开关侧边栏
+Alt+Shift+数字：分屏显示
+ctrl+I：显示底部面板
+</code></pre>
+
+<h2>编辑</h2>
+
+<pre><code>F6：拼写检查
+F9：行排序
+</code></pre>
+
+<p>选择类</p>
+
+<pre><code>ctrl+l：选择整行（继续按键则选择下行）
+ctrl+shift+l：将光标放至选中单行内容末尾或多行内容每行行尾
+ctrl+d：选中光标位置所在单词 （继续按键则选择下个相同的字符串）
+ctrl+m：光标移动至括号内开始或结束的位置
+ctrl+shift+m：选择括号内的内容（继续按键则选择父括号）
+Alt+F3：选择所有相同的词
+Shift+右键拖动：光标多不，用来更改或插入列内容
+Ctrl+鼠标左键：依次点击或选取，可需要编辑的多个位置
+ctrl+shfit+space：选择本范围
+ctrl+alt+上下箭头：多竖行同时编辑
+</code></pre>
+
+<p>代码折叠</p>
+
+<pre><code>ctrl+shift+[：按照缩进指示折叠光标所在标签对或折叠所选内容
+ctrl+shift+]：展开光标所在标签对内容或所选内容
+</code></pre>
+
+<p>行操作</p>
+
+<pre><code>ctrl+kk：从光标处删除至行尾
+ctrl+k+backspace：从光标处删除至行首
+ctrl+shift+k：删除整行
+ctrl+shift+backspace：删除整行
+ctrl+shift+up：光标所在行与上行互换
+ctrl+shift+down：光标所在行与下行互换
+ctrl+shift+d：复制光标所在整行，插入在该行之前
+ctrl+enter：在当前行后插入新行
+ctrl+shift+enter：在当前行前插入新行
+ctrl+[：减少当前行缩进
+ctrl+]：增加当前行缩进
+tab：增加当前行缩进
+shift+tab：减少当前行缩进
+</code></pre>
+
+<p>常用编辑</p>
+
+<pre><code>ctrl+u：软撤销
+ctrl+z：撤销
+ctrl+y：恢复撤销
+ctrl+backspace：删除一个单词
+ctrl+ku：改为大写
+ctrl+kl：改为小写
+ctrl+x：选定内容状态下为剪切内容，未选中为剪切光标当前所在行
+ctrl+t：光标所在位置左右字符或词互换
+Ctrl+Shift+V：粘贴并格式化
+Alt + Ctrl + ]：代码自动对齐
+</code></pre>
+
+<h2>拆分窗口/标签页</h2>
+
+<pre><code>alt+.：闭合当前标签
+Alt+Shift+数字：分屏显示
+ctrl+tab：切换选项卡
+ctrl+shift+tab：逆序切换选项卡
+Alt+数字：切换打开第N个文件
+</code></pre>
+
+<h2>标记</h2>
+
+<pre><code>Ctrl+F2：设置/删除标记
+</code></pre>
+
+<h2>查找/替换</h2>
+
+<pre><code>Ctrl+F：查找内容
+Ctrl+Shift+F：查找并替换
+Ctrl+H：替换
+F3：查找下一个
+shift+F3：查找前一个
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Sublime Text 学习笔记]]></title>
+    <link href="http://dofa.org/blog/2013/06/01/sublime-text-study-notes/"/>
+    <updated>2013-06-01T16:25:52+00:00</updated>
+    <id>http://dofa.org/blog/2013/06/01/sublime-text-study-notes</id>
+    <content type="html"><![CDATA[<ul>
+<li>如果你的配置错误，导致Sublime Text2不能打开了，想要把配置改回来，那么配置文件在C:\Users\用户名\AppData\Roaming\Sublime Text 2\Packages\User中</li>
+<li>安装Package control，按快捷键Ctrl+`，打开命令输入界面（一般在下方），输入下面的命令后回车即可，重启Sublime Text2</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">urllib2</span><span class="o">,</span><span class="nn">os</span><span class="p">;</span><span class="n">pf</span><span class="o">=</span><span class="s">&#39;Package Control.sublime-package&#39;</span><span class="p">;</span><span class="n">ipp</span><span class="o">=</span><span class="n">sublime</span><span class="o">.</span><span class="n">installed_packages_path</span><span class="p">();</span><span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">ipp</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">ipp</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span><span class="p">;</span><span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ipp</span><span class="p">,</span><span class="n">pf</span><span class="p">),</span><span class="s">&#39;wb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&#39;http://sublime.wbond.net/&#39;</span><span class="o">+</span><span class="n">pf</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">,</span><span class="s">&#39;%20&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>修改字体
+Preferences->File Setting-User，打开配置文件，看里面有没font_face配置项，有就直接改，没有就自己加上，可能的配置文件如下：</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="s">&quot;color_scheme&quot;</span><span class="p">:</span> <span class="s">&quot;Packages/Color Scheme - Default/Black-Pearl2.tmTheme&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&quot;font_face&quot;</span><span class="p">:</span> <span class="s">&quot;微软雅黑&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&quot;font_size&quot;</span><span class="p">:</span> <span class="mf">10.0</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>设置代理(GoAgent)
+打开<code>settings - user</code>，输入：</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="s">&quot;http_proxy&quot;</span><span class="p">:</span> <span class="s">&quot;http://127.0.0.1:8087&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s">&quot;https_proxy&quot;</span><span class="p">:</span> <span class="s">&quot;http://127.0.0.1:8087&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p>同时编辑多行 (Ctrl+Shift+L (Win) 或  Command+Shift+L (Mac))
+如要在选中的多行文本的最后面同时添加一个字符“a”，先选中要编辑的多行文字，然后按快捷键，此时每行的末尾都会有个输入光标在闪，再按End键将鼠标定位到行末，（再按Home键将鼠标定位到行首）输入字母a即可。如要退出多行编辑状态，按Esc键即可。</p></li>
+<li><p>一次性选择全部的相同文本 (Alt+F3 (Win) 或 Ctrl+Command+G (Mac))</p></li>
+<li><p>竖向多行选择 (Shift+鼠标右键 (Win) 或 Option+鼠标左键 (Mac))</p></li>
+<li><p>手动选择多处不同文本 (Ctrl+鼠标左键(Win) 或 Command+鼠标左键(Mac) )</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Sublime Text 入门及技巧]]></title>
+    <link href="http://dofa.org/blog/2013/06/01/sublime-text-guide-and-tips/"/>
+    <updated>2013-06-01T14:25:52+00:00</updated>
+    <id>http://dofa.org/blog/2013/06/01/sublime-text-guide-and-tips</id>
+    <content type="html"><![CDATA[<h2>快捷的命令面板</h2>
+
+<p>和 TextMate 类似，Sublime Text 2 也提供了很方便的命令调用方式：Command Palette（命令面板）。调用方法：直接在 <code>Tool</code> 菜单中选择 <code>Command Palette</code>，或是用快捷键：<code>Shift+Command+P</code>，输入命令名称（中的字母）就可以实时搜索到相应的命令、选项、snippet 和 syntex， 按下回车就可以直接执行，减少了查找的麻烦。</p>
+
+<h2>即时的文件切换</h2>
+
+<p>按下 <code>Command+P</code>(Mac) 或是 <code>Ctrl+P</code>(Windows)，输入想要切换到的文件的文件名，都不用按下回车键，目标文件就已经展现在眼前了，虽然 Vim 配合 PeepOpen 也可以实现同样的功能，但速度却远没有这么迅速。</p>
+
+<h2>随心所欲的跳转</h2>
+
+<p><code>Cmd+P</code> 之所以被叫做 Goto Anything 并不是虚名：</p>
+
+<ul>
+<li>用 <code>Command+P</code> 可以快速跳转到当前项目中的任意文件，可进行关键词匹配。</li>
+<li>用 <code>Command+P</code> 后 <code>@</code> (或是<code>Command+R</code>)可以快速列出/跳转到某个函数（很爽的是在 markdown 当中是匹配到标题，而且还是带缩进的！）。</li>
+<li>用 <code>Command+P</code> 后 <code>#</code> 可以在当前文件中进行搜索。</li>
+<li>用 <code>Command+P</code> 后 <code>:</code> (或是<code>Ctrl+G</code>)加上数字可以跳转到相应的行。</li>
+</ul>
+
+
+<p>而更酷的是你可以用 <code>Command+P</code> 加上一些关键词跳转到某个文件同时加上 <code>@</code> 来列出/跳转到目标文件中的某个函数，或是同时加上 <code>#</code> 来在目标文件中进行搜索，或是同时加上 <code>:</code> 和数字来跳转到目标文件中相应的行。</p>
+
+<h2>多重选择(Multi-Selection)</h2>
+
+<p>多重选择功能允许在页面中同时存在多个光标，让很多本来需要正则表达式、高级搜索和替换才能完成的任务也变得游刃有余了。
+激活多重选择的方法有两几种：</p>
+
+<ul>
+<li>按住 <code>Command</code> 或 <code>Alt</code>，然后在页面中希望中现光标的位置点击。</li>
+<li>选择数行文本，然后按下 <code>Shift+Command+L</code>。</li>
+<li>通过反复按下 <code>Control/Command+D</code> 即可将全文中与光标当前所在位置的词相同的词逐一加入选择，而直接按下 <code>Alt+F3</code>(Windows) 或是 <code>Ctrl+Command+G</code>(Mac) 即可一次性选择所有相同的词。</li>
+<li>按下鼠标中键来进行垂直方向的纵列选择，也可以进入多重编辑状态。</li>
+</ul>
+
 ]]></content>
   </entry>
   

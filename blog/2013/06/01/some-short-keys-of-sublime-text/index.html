@@ -5,11 +5,20 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>TCP/IP协议学习系列之三 — 链路层 - dofa blog</title>
+  <title>Sublime Text的一些快捷键 - dofa blog</title>
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="TCP/IP支持多种不同的链路层协议 这取决于网络所使用的硬件，如以太网、令牌环网、FDDI（光纤分布式数据接口）及RS-232串行线路等。 以太网是当今TCP/IP采用的主要的局域网技术 它采用一种称作CSMA/CD的媒体接入方法，其意思是带冲突检测的载波侦听多路接入（Carrier Sense &hellip;">
+  <meta name="description" content="打开/前往 Ctrl+P：搜索项目中的文件
+Ctrl+G：跳转到第几行
+Ctrl+R：前往 method
+Ctrl+;：前往字段
+Ctrl+Shift+P：打开命令面板
+Ctrl+N：新建窗口
+Ctrl+o：打开文件
+Ctrl+shift+s：另存为
+Ctrl+W：关闭当前打开文件
+Ctrl+ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +27,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://dofa.org/blog/2013/08/01/tcp-ip-protocol-learning-series-three-of-link-layer">
+  <link rel="canonical" href="http://dofa.org/blog/2013/06/01/some-short-keys-of-sublime-text">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="dofa blog" type="application/atom+xml">
@@ -66,7 +75,7 @@
   
   <header>
     
-      <h1 class="entry-title">TCP/IP协议学习系列之三 — 链路层</h1>
+      <h1 class="entry-title">Sublime Text的一些快捷键</h1>
     
     
       <p class="meta">
@@ -82,36 +91,116 @@
   
 
 
-<time datetime="2013-08-01T14:25:52+00:00" pubdate data-updated="true">Aug 1<span>st</span>, 2013</time>
+<time datetime="2013-06-01T19:25:52+00:00" pubdate data-updated="true">Jun 1<span>st</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><h3>TCP/IP支持多种不同的链路层协议</h3>
+<div class="entry-content"><h2>打开/前往</h2>
 
-<p>这取决于网络所使用的硬件，如以太网、令牌环网、FDDI（光纤分布式数据接口）及RS-232串行线路等。</p>
+<pre><code>Ctrl+P：搜索项目中的文件
+Ctrl+G：跳转到第几行
+Ctrl+R：前往 method
+Ctrl+;：前往字段
+Ctrl+Shift+P：打开命令面板
+Ctrl+N：新建窗口
+Ctrl+o：打开文件
+Ctrl+shift+s：另存为
+Ctrl+W：关闭当前打开文件
+Ctrl+Shift+W：关闭所有打开文件
+Ctrl+`：显示python命令行
+</code></pre>
 
-<h3>以太网是当今TCP/IP采用的主要的局域网技术</h3>
+<h2>界面</h2>
 
-<p>它采用一种称作CSMA/CD的媒体接入方法，其意思是带冲突检测的载波侦听多路接入（Carrier Sense, Multiple Access with Collision Detection）。它的速率为10 Mb/s，地址为48 bit。</p>
+<pre><code>F11 全屏
+shift+F11：无干绕全屏
+ctrl+kb：开关侧边栏
+Alt+Shift+数字：分屏显示
+ctrl+I：显示底部面板
+</code></pre>
 
-<h3>以太网IP数据报的封装</h3>
+<h2>编辑</h2>
 
-<p>以太网IP数据报的封装是在RFC 894[Hornig 1984]中定义的，但存在另外一个IEEE 802规格RFC 1042[Postel and Reynolds 1988]，只是大多数人采用RFC 894。RFC 894在有的地方称作Ethernet-II。</p>
+<pre><code>F6：拼写检查
+F9：行排序
+</code></pre>
 
-<h3>SLIP和PPP</h3>
+<p>选择类</p>
 
-<p>串行线路IP–SLIP和他的升级版PPP使用RS-232串口传数据，速度太慢，基本上大家都不用这种方式了，而改用宽带上网。这年头问别人如何上网，都是“你家多少兆？”。</p>
+<pre><code>ctrl+l：选择整行（继续按键则选择下行）
+ctrl+shift+l：将光标放至选中单行内容末尾或多行内容每行行尾
+ctrl+d：选中光标位置所在单词 （继续按键则选择下个相同的字符串）
+ctrl+m：光标移动至括号内开始或结束的位置
+ctrl+shift+m：选择括号内的内容（继续按键则选择父括号）
+Alt+F3：选择所有相同的词
+Shift+右键拖动：光标多不，用来更改或插入列内容
+Ctrl+鼠标左键：依次点击或选取，可需要编辑的多个位置
+ctrl+shfit+space：选择本范围
+ctrl+alt+上下箭头：多竖行同时编辑
+</code></pre>
 
-<h3>环回接口</h3>
+<p>代码折叠</p>
 
-<p>下面再来看一个大家都熟悉的ip：127.0.0.1。这个IP称作环回接口，它还有个英文名localhost。基本上，对这个ip的访问就是访问自己的主机。</p>
+<pre><code>ctrl+shift+[：按照缩进指示折叠光标所在标签对或折叠所选内容
+ctrl+shift+]：展开光标所在标签对内容或所选内容
+</code></pre>
 
-<h3>MTU</h3>
+<p>行操作</p>
 
-<p>以太网一次可以传送的最大传输单元（MTU）为1500B。</p>
+<pre><code>ctrl+kk：从光标处删除至行尾
+ctrl+k+backspace：从光标处删除至行首
+ctrl+shift+k：删除整行
+ctrl+shift+backspace：删除整行
+ctrl+shift+up：光标所在行与上行互换
+ctrl+shift+down：光标所在行与下行互换
+ctrl+shift+d：复制光标所在整行，插入在该行之前
+ctrl+enter：在当前行后插入新行
+ctrl+shift+enter：在当前行前插入新行
+ctrl+[：减少当前行缩进
+ctrl+]：增加当前行缩进
+tab：增加当前行缩进
+shift+tab：减少当前行缩进
+</code></pre>
+
+<p>常用编辑</p>
+
+<pre><code>ctrl+u：软撤销
+ctrl+z：撤销
+ctrl+y：恢复撤销
+ctrl+backspace：删除一个单词
+ctrl+ku：改为大写
+ctrl+kl：改为小写
+ctrl+x：选定内容状态下为剪切内容，未选中为剪切光标当前所在行
+ctrl+t：光标所在位置左右字符或词互换
+Ctrl+Shift+V：粘贴并格式化
+Alt + Ctrl + ]：代码自动对齐
+</code></pre>
+
+<h2>拆分窗口/标签页</h2>
+
+<pre><code>alt+.：闭合当前标签
+Alt+Shift+数字：分屏显示
+ctrl+tab：切换选项卡
+ctrl+shift+tab：逆序切换选项卡
+Alt+数字：切换打开第N个文件
+</code></pre>
+
+<h2>标记</h2>
+
+<pre><code>Ctrl+F2：设置/删除标记
+</code></pre>
+
+<h2>查找/替换</h2>
+
+<pre><code>Ctrl+F：查找内容
+Ctrl+Shift+F：查找并替换
+Ctrl+H：替换
+F3：查找下一个
+shift+F3：查找前一个
+</code></pre>
 </div>
 
 
@@ -134,12 +223,12 @@
   
 
 
-<time datetime="2013-08-01T14:25:52+00:00" pubdate data-updated="true">Aug 1<span>st</span>, 2013</time>
+<time datetime="2013-06-01T19:25:52+00:00" pubdate data-updated="true">Jun 1<span>st</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/embedded/'>Embedded</a>
+    <a class='category' href='/blog/categories/sublimetext/'>SublimeText</a>
   
 </span>
 
@@ -155,10 +244,10 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/07/27/tcp-ip-protocol-learning-series-two-ethernet-directors/" title="Previous Post: TCP/IP协议学习系列之二 — Ethernet控制器">&laquo; TCP/IP协议学习系列之二 — Ethernet控制器</a>
+        <a class="basic-alignment left" href="/blog/2013/06/01/sublime-text-study-notes/" title="Previous Post: Sublime Text 学习笔记">&laquo; Sublime Text 学习笔记</a>
       
       
-        <a class="basic-alignment right" href="/blog/2013/08/05/big-endian-and-little-endian/" title="Next Post: big endian与little endian（大小端）">big endian与little endian（大小端） &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2013/07/26/tcp-ip-protocol-learning-series-one-of-frame-structure/" title="Next Post: TCP/IP 协议学习系列之一 — 帧结构（frame）">TCP/IP 协议学习系列之一 — 帧结构（frame） &raquo;</a>
       
     </p>
   </footer>
