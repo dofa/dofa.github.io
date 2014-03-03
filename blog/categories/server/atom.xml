@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Server | Do Far]]></title>
+  <link href="http://dofa.org/blog/categories/server/atom.xml" rel="self"/>
+  <link href="http://dofa.org/"/>
+  <updated>2014-03-03T14:12:29+00:00</updated>
+  <id>http://dofa.org/</id>
+  <author>
+    <name><![CDATA[dofa]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[使用PHP-FPM安装php5 server]]></title>
+    <link href="http://dofa.org/blog/2014/03/03/install-php5-server-via-php-fpm/"/>
+    <updated>2014-03-03T13:51:40+00:00</updated>
+    <id>http://dofa.org/blog/2014/03/03/install-php5-server-via-php-fpm</id>
+    <content type="html"><![CDATA[<h2>安装环境</h2>
+
+<ul>
+<li><p>nginx</p></li>
+<li><p>mysql</p></li>
+</ul>
+
+
+<h2>使用<code>PHP-FPM</code>安装php5 server</h2>
+
+<pre><code>apt-get install php5-fpm
+</code></pre>
+
+<blockquote><p>PHP-FPM is a daemon process (with the init script /etc/init.d/php5-fpm) that runs a FastCGI server on the socket /var/run/php5-fpm.sock.</p></blockquote>
+
+<h2>配置nginx</h2>
+
+<p>```
+[&hellip;]
+worker_processes  4;
+[&hellip;]</p>
+
+<pre><code>keepalive_timeout   2;
+</code></pre>
+
+<p>[&hellip;]
+```</p>
+
+<h2>网站配置</h2>
+
+<pre><code>vim /etc/nginx/sites-available/yoursite
+</code></pre>
+
+<h2>php配置</h2>
+
+<pre><code>vim /etc/php5/fpm/php.ini
+</code></pre>
+
+<p>set cgi.fix_pathinfo=0:</p>
+
+<p><code>
+[...]
+; cgi.fix_pathinfo provides *real* PATH_INFO/PATH_TRANSLATED support for CGI.  PHP's
+; previous behaviour was to set PATH_TRANSLATED to SCRIPT_FILENAME, and to not grok
+; what PATH_INFO is.  For more information on PATH_INFO, see the cgi specs.  Setting
+; this to 1 will cause PHP CGI to fix its paths to conform to the spec.  A setting
+; of zero causes PHP to behave as before.  Default is 1.  You should fix your scripts
+; to use SCRIPT_FILENAME rather than PATH_TRANSLATED.
+; http://php.net/cgi.fix-pathinfo
+cgi.fix_pathinfo=0
+[...]
+</code></p>
+
+<h2>server reload</h2>
+
+<pre><code>/etc/init.d/nginx -s reload
+/etc/init.d/php5-fpm reload
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>
