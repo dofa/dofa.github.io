@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Server | Do Far]]></title>
   <link href="http://dofa.org/blog/categories/server/atom.xml" rel="self"/>
   <link href="http://dofa.org/"/>
-  <updated>2014-03-03T14:12:29+00:00</updated>
+  <updated>2014-03-03T14:15:05+00:00</updated>
   <id>http://dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -51,7 +51,7 @@ worker_processes  4;
 <pre><code>vim /etc/nginx/sites-available/yoursite
 </code></pre>
 
-<h2>php配置</h2>
+<h2>PHP配置</h2>
 
 <pre><code>vim /etc/php5/fpm/php.ini
 </code></pre>
@@ -71,7 +71,7 @@ cgi.fix_pathinfo=0
 [...]
 </code></p>
 
-<h2>server reload</h2>
+<h2>Server Reload</h2>
 
 <pre><code>/etc/init.d/nginx -s reload
 /etc/init.d/php5-fpm reload

@@ -4,7 +4,7 @@
   <title><![CDATA[Do Far]]></title>
   <link href="http://dofa.org/atom.xml" rel="self"/>
   <link href="http://dofa.org/"/>
-  <updated>2014-03-03T14:12:29+00:00</updated>
+  <updated>2014-03-03T14:15:05+00:00</updated>
   <id>http://dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -52,7 +52,7 @@
 <pre><code>vim /etc/nginx/sites-available/yoursite
 </code></pre>
 
-<h2>php配置</h2>
+<h2>PHP配置</h2>
 
 <pre><code>vim /etc/php5/fpm/php.ini
 </code></pre>
@@ -81,7 +81,7 @@
 </span><span class='line'>[...]</span></code></pre></td></tr></table></div></figure>
 
 
-<h2>server reload</h2>
+<h2>Server Reload</h2>
 
 <pre><code>/etc/init.d/nginx -s reload
 /etc/init.d/php5-fpm reload
