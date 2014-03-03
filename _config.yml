@@ -69,7 +69,7 @@ static_file_prefix: http://dofa.u.qiniudn.com
 
 # Github repositories
 github_user: dofa
-github_repo_count: 1
+github_repo_count: 10
 github_show_profile_link: true
 github_skip_forks: true
 
