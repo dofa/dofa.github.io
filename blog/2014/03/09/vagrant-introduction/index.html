@@ -5,13 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>about - Do Far</title>
+  <title>vagrant introduction - Do Far</title>
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="about Feb 26th, 2014 关于我 昵称： 潮汐猎人
-E名： arthur
-Gmail： &#x62;&#105;&#x74;&#98;&#x65;&#103;&#105;&#x6e;&#64;&#103;&#109;&#97;&#x69;&#108;&#46;&#x63;&# &hellip;">
+  <meta name="description" content="Vagrant简介 Vagrant is a tool for building complete development environments. With an easy-to-use workflow and focus on automation, Vagrant lowers &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +18,7 @@ Gmail： &#x62;&#105;&#x74;&#98;&#x65;&#103;&#105;&#x6e;&#64;&#103;&#109;&#97;&#
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://dofa.org/about">
+  <link rel="canonical" href="http://dofa.org/blog/2014/03/09/vagrant-introduction">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Do Far" type="application/atom+xml">
@@ -66,50 +64,15 @@ Gmail： &#x62;&#105;&#x74;&#98;&#x65;&#103;&#105;&#x6e;&#64;&#103;&#109;&#97;&#
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">about</h1>
-    <p class="meta">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-26T07:40:00+00:00" pubdate data-updated="true">Feb 26<span>th</span>, 2014</time></p>
-  </header>
-  
-  <h2>关于我</h2>
-
-<ul>
-<li>昵称： 潮汐猎人</li>
-<li>E名： arthur</li>
-<li>Gmail： <a href="&#x6d;&#97;&#x69;&#108;&#x74;&#111;&#58;&#98;&#105;&#116;&#98;&#101;&#x67;&#x69;&#110;&#x40;&#x67;&#109;&#97;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;">&#x62;&#105;&#x74;&#98;&#x65;&#103;&#105;&#x6e;&#64;&#103;&#109;&#97;&#x69;&#108;&#46;&#x63;&#x6f;&#109;</a></li>
-<li>QQ： 516199859</li>
-<li>爱好： Internet、Ebedded and etc</li>
-</ul>
-
-
-<h2>关于站点</h2>
-
-<ul>
-<li>站名： dofa的博客</li>
-<li>描述： There is a will, there is a way.</li>
-<li>偏重： 通信、网络、设计、开发</li>
-</ul>
-
-
-  
-    <footer>
+    
+      <h1 class="entry-title">vagrant introduction</h1>
+    
+    
       <p class="meta">
         
-        
 
 
 
@@ -121,20 +84,116 @@ Gmail： &#x62;&#105;&#x74;&#98;&#x65;&#103;&#105;&#x6e;&#64;&#103;&#109;&#97;&#
   
 
 
-<time datetime="2014-02-26T07:40:00+00:00" pubdate data-updated="true">Feb 26<span>th</span>, 2014</time>
+<time datetime="2014-03-09T06:21:16+00:00" pubdate data-updated="true">Mar 9<span>th</span>, 2014</time>
         
       </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>Vagrant简介</h2>
+
+<blockquote><p>Vagrant is a tool for building complete development environments. With an easy-to-use workflow and focus on automation, Vagrant lowers development environment setup time, increases development/production parity, and makes the &ldquo;works on my machine&rdquo; excuse a relic of the past.</p></blockquote>
+
+<h2>Vagrant安装</h2>
+
+<h4>virtualbox</h4>
+
+<p><a href="https://www.virtualbox.org">https://www.virtualbox.org</a></p>
+
+<h4>vagrant</h4>
+
+<p><a href="http://www.vagrantup.com">http://www.vagrantup.com</a></p>
+
+<h4>box</h4>
+
+<p><a href="http://www.vagrantbox.es">http://www.vagrantbox.es</a></p>
+
+<h2>Vagrant使用</h2>
+
+<h4>使用下载的box初始化</h4>
+
+<pre><code>vagrant box add precise32 http://files.vagrantup.com/precise32.box
+</code></pre>
+
+<h4>初始化开发环境</h4>
+
+<pre><code>cd ~/dev    #开发目录
+vagrant init precise32
+</code></pre>
+
+<h4>运行Vagrant box</h4>
+
+<pre><code>vagrant up
+</code></pre>
+
+<h4>远程连接到box</h4>
+
+<pre><code>vagrant ssh
+</code></pre>
+</div>
+
+
+  <footer>
+    <p class="meta">
       
-        <div class="sharing">
+  
+
+<span class="byline author vcard">Posted by <span class="fn">dofa</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-09T06:21:16+00:00" pubdate data-updated="true">Mar 9<span>th</span>, 2014</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
   
   
   
 </div>
 
+    
+    <p class="meta">
       
-    </footer>
-  
+        <a class="basic-alignment left" href="/blog/2014/03/03/install-php5-server-via-php-fpm/" title="Previous Post: 使用PHP-FPM安装php5 server">&laquo; 使用PHP-FPM安装php5 server</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+
+  <section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread" data-title=""></div>
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"bitbegin"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<!-- Duoshuo Comment END -->
+</div>
+  </section>
 
 </div>
 

@@ -9,16 +9,7 @@
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="打开/前往 Ctrl+P：搜索项目中的文件
-Ctrl+G：跳转到第几行
-Ctrl+R：前往 method
-Ctrl+;：前往字段
-Ctrl+Shift+P：打开命令面板
-Ctrl+N：新建窗口
-Ctrl+o：打开文件
-Ctrl+shift+s：另存为
-Ctrl+W：关闭当前打开文件
-Ctrl+ &hellip;">
+  <meta name="description" content="snippet强大的自动补全功能 以前理解代码自动补全以为就是函数或变量的自动补全，其实还可以是代码块的自动补全。接触过sublime text后才发现si的自动补全弱爆了，si也就阅读代码方便，写代码以后还要靠sublime text。话说sublime text的snippet就是自动补全， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -74,6 +65,127 @@ Ctrl+ &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/06/02/sublime-text-snippet/">Sublime Text的snippet</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-02T14:25:52+00:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>snippet强大的自动补全功能</h2>
+
+<p>以前理解代码自动补全以为就是函数或变量的自动补全，其实还可以是代码块的自动补全。接触过sublime text后才发现si的自动补全弱爆了，si也就阅读代码方便，写代码以后还要靠sublime text。话说sublime text的snippet就是自动补全，我也是今天才知道snippet。在简单的接触后，马上就可以实现自己的自动补全，不得不说st2真乃coding神器！</p>
+
+<h2>Example：for语句的补全</h2>
+
+<p>当匹配到<code>for</code>后，</p>
+
+<p><img src="http://dofa.u.qiniudn.com/imgage/embeded/snippet-for.jpg">
+输入<code>tab</code>，这时st2帮你输入以下代码：
+<img src="http://dofa.u.qiniudn.com/imgage/embeded/snippet-for-tab.jpg">
+当前光标会停留在<code>count</code>上，继续key字就会把<code>count</code>替换掉，接着按下<code>tab</code>会把<code>i</code>也替换掉。</p>
+
+<h2>自定义snipppet</h2>
+
+<p>通过<code>tools</code>&mdash;> <code>New snippet</code>，会出现：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;snippet&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;content&gt;</span><span class="cp">&lt;![CDATA[</span>
+</span><span class='line'><span class="cp">Hello, ${1:this} is a ${2:snippet}.</span>
+</span><span class='line'><span class="cp">]]&gt;</span><span class="nt">&lt;/content&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!-- Optional: Set a tabTrigger to define how to trigger the snippet --&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!-- &lt;tabTrigger&gt;hello&lt;/tabTrigger&gt; --&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!-- Optional: Set a scope to limit where the snippet will trigger --&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!-- &lt;scope&gt;source.python&lt;/scope&gt; --&gt;</span>
+</span><span class='line'><span class="nt">&lt;/snippet&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>修改这行<code>&lt;!-- &lt;tabTrigger&gt;hello&lt;/tabTrigger&gt; --&gt;</code>为<code>&lt;tabTrigger&gt;hello&lt;/tabTrigger&gt;</code>就可以使用<code>hello+tab</code>调出<code>Hello, ${1:this} is a ${2:snippet}.</code>。光标首先会出现在<code>${1}</code>的位置上，<code>:this</code>表示<code>${1}</code>的默认值为<code>this</code>。</p>
+
+<p>这里再给一个doxygen格式snippet配置：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;snippet&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;content&gt;</span><span class="cp">&lt;![CDATA[</span>
+</span><span class='line'><span class="cp">/*!</span>
+</span><span class='line'><span class="cp"> * \file ${1:file.c}</span>
+</span><span class='line'><span class="cp"> * \brief this is a ${2:description} file</span>
+</span><span class='line'><span class="cp"> * \author bitbegin</span>
+</span><span class='line'><span class="cp"> * \date ${3:2013-6-3}</span>
+</span><span class='line'><span class="cp"> * \version V1.0.061</span>
+</span><span class='line'><span class="cp"> * \note this is a ${2:description} file</span>
+</span><span class='line'><span class="cp"> * \warning Only for bitbegin</span>
+</span><span class='line'><span class="cp"> * \details</span>
+</span><span class='line'><span class="cp"> * ${4:your details}</span>
+</span><span class='line'><span class="cp"> *</span>
+</span><span class='line'><span class="cp"> */</span>
+</span><span class='line'><span class="cp">]]&gt;</span><span class="nt">&lt;/content&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!-- Optional: Set a tabTrigger to define how to trigger the snippet --&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;tabTrigger&gt;</span>doxy-file<span class="nt">&lt;/tabTrigger&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!-- Optional: Set a scope to limit where the snippet will trigger --&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!-- &lt;scope&gt;source.python&lt;/scope&gt; --&gt;</span>
+</span><span class='line'><span class="nt">&lt;/snippet&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -467,6 +579,10 @@ Preferences->File Setting-User，打开配置文件，看里面有没font_face�
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/03/09/vagrant-introduction/">vagrant introduction</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/03/03/install-php5-server-via-php-fpm/">使用PHP-FPM安装php5 server</a>
       </li>
     
@@ -480,10 +596,6 @@ Preferences->File Setting-User，打开配置文件，看里面有没font_face�
     
       <li class="post">
         <a href="/blog/2013/10/17/Event-driven-pseudo-task-UOS/">事件驱动的伪任务-UOS</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/09/10/With-Jekyll-build-Personal-Blog/">用-Jekyll-搭建个人博客</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[Do Far]]></title>
   <link href="http://dofa.org/atom.xml" rel="self"/>
   <link href="http://dofa.org/"/>
-  <updated>2014-03-03T14:15:05+00:00</updated>
+  <updated>2014-03-09T06:43:05+00:00</updated>
   <id>http://dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -12,6 +12,54 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[vagrant introduction]]></title>
+    <link href="http://dofa.org/blog/2014/03/09/vagrant-introduction/"/>
+    <updated>2014-03-09T06:21:16+00:00</updated>
+    <id>http://dofa.org/blog/2014/03/09/vagrant-introduction</id>
+    <content type="html"><![CDATA[<h2>Vagrant简介</h2>
+
+<blockquote><p>Vagrant is a tool for building complete development environments. With an easy-to-use workflow and focus on automation, Vagrant lowers development environment setup time, increases development/production parity, and makes the &ldquo;works on my machine&rdquo; excuse a relic of the past.</p></blockquote>
+
+<h2>Vagrant安装</h2>
+
+<h4>virtualbox</h4>
+
+<p><a href="https://www.virtualbox.org">https://www.virtualbox.org</a></p>
+
+<h4>vagrant</h4>
+
+<p><a href="http://www.vagrantup.com">http://www.vagrantup.com</a></p>
+
+<h4>box</h4>
+
+<p><a href="http://www.vagrantbox.es">http://www.vagrantbox.es</a></p>
+
+<h2>Vagrant使用</h2>
+
+<h4>使用下载的box初始化</h4>
+
+<pre><code>vagrant box add precise32 http://files.vagrantup.com/precise32.box
+</code></pre>
+
+<h4>初始化开发环境</h4>
+
+<pre><code>cd ~/dev    #开发目录
+vagrant init precise32
+</code></pre>
+
+<h4>运行Vagrant box</h4>
+
+<pre><code>vagrant up
+</code></pre>
+
+<h4>远程连接到box</h4>
+
+<pre><code>vagrant ssh
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[使用PHP-FPM安装php5 server]]></title>
