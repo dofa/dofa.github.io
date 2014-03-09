@@ -4,7 +4,7 @@
   <title><![CDATA[Do Far]]></title>
   <link href="http://dofa.org/atom.xml" rel="self"/>
   <link href="http://dofa.org/"/>
-  <updated>2014-03-09T06:43:05+00:00</updated>
+  <updated>2014-03-09T06:46:53+00:00</updated>
   <id>http://dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[vagrant introduction]]></title>
+    <title type="html"><![CDATA[vagrant使用简介]]></title>
     <link href="http://dofa.org/blog/2014/03/09/vagrant-introduction/"/>
     <updated>2014-03-09T06:21:16+00:00</updated>
     <id>http://dofa.org/blog/2014/03/09/vagrant-introduction</id>
