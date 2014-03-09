@@ -4,7 +4,7 @@
   <title><![CDATA[Do Far]]></title>
   <link href="http://dofa.org/atom.xml" rel="self"/>
   <link href="http://dofa.org/"/>
-  <updated>2014-03-09T08:38:59+00:00</updated>
+  <updated>2014-03-09T08:41:10+00:00</updated>
   <id>http://dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -42,9 +42,10 @@ deb-src http://mirrors.163.com/debian/ squeeze-proposed-updates main non-free co
 
 <h2>使用新的源更新debian</h2>
 
-<p>sudo apt-get update -y
+<pre><code>sudo apt-get update -y
 sudo apt-get upgrade -y
-sudo apt-get install sudo -y</p>
+sudo apt-get install sudo -y
+</code></pre>
 ]]></content>
   </entry>
   
