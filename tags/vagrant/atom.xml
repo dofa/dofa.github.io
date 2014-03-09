@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: vagrant, | Do Far]]></title>
   <link href="http://dofa.org/tags/vagrant/atom.xml" rel="self"/>
   <link href="http://dofa.org/"/>
-  <updated>2014-03-09T07:11:47+00:00</updated>
+  <updated>2014-03-09T08:29:02+00:00</updated>
   <id>http://dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -92,7 +92,7 @@ Vagrant.configure(&ldquo;2&rdquo;) do |config|</p>
 ```
 </p>
 
-<h4>配置网络（本文将提供2种版本的常用配置，其中版本1的配置经过实践验证）</h4>
+<h4>配置网络</h4>
 
 <ul>
 <li>端口转发：（假设虚拟机的80端口提供web服务，此处将通过访问物理机的8080端口转发到虚拟机的80端口，来实现web的访问）</li>
