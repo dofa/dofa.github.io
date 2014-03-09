@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Server | Do Far]]></title>
   <link href="http://dofa.org/blog/categories/server/atom.xml" rel="self"/>
   <link href="http://dofa.org/"/>
-  <updated>2014-03-09T08:29:02+00:00</updated>
+  <updated>2014-03-09T08:36:11+00:00</updated>
   <id>http://dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -15,15 +15,15 @@
   
   <entry>
     <title type="html"><![CDATA[Debian7 Wheezy 镜像源的配置]]></title>
-    <link href="http://dofa.org/blog/2014/03/09/update-debian-mirrors/"/>
+    <link href="http://dofa.org/blog/2014/03/09/update-debian-wheezy-mirrors/"/>
     <updated>2014-03-09T08:13:15+00:00</updated>
-    <id>http://dofa.org/blog/2014/03/09/update-debian-mirrors</id>
+    <id>http://dofa.org/blog/2014/03/09/update-debian-wheezy-mirrors</id>
     <content type="html"><![CDATA[<p>debian update或install package使用国内源会非常慢，一般我们使用163源。
 简单的说有两种方法修改源，我们直接使用第二种方法。</p>
 
 <hr />
 
-<h2>增加163源</h2>
+<h2>方法1：增加163源</h2>
 
 <p>以Squeeze为例, 编辑/etc/apt/sources.list文件, 在文件最前面添加以下条目(操作前请做好相应备份)</p>
 
@@ -33,12 +33,18 @@ deb-src http://mirrors.163.com/debian/ squeeze main non-free contrib
 deb-src http://mirrors.163.com/debian/ squeeze-proposed-updates main non-free contrib
 </code></pre>
 
-<h2>替换使用163的源</h2>
+<h2>方2：替换使用163的源</h2>
 
 <p>下载相应版本的sources.list, 覆盖/etc/apt/sources.list即可(操作前请做好相应备份)</p>
 
 <pre><code>http://mirrors.163.com/.help/debian.html
 </code></pre>
+
+<h2>upgrade debian</h2>
+
+<p>sudo apt-get update -y
+sudo apt-get upgrade -y
+sudo apt-get install sudo -y</p>
 ]]></content>
   </entry>
   
