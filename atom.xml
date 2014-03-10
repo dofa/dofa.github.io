@@ -4,7 +4,7 @@
   <title><![CDATA[Do Far]]></title>
   <link href="http://dofa.org/atom.xml" rel="self"/>
   <link href="http://dofa.org/"/>
-  <updated>2014-03-10T11:53:07+00:00</updated>
+  <updated>2014-03-10T12:15:05+00:00</updated>
   <id>http://dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[为octopress添加统计]]></title>
+    <title type="html"><![CDATA[为Octopress添加统计]]></title>
     <link href="http://dofa.org/blog/2014/03/10/add-statistics-for-octopress/"/>
     <updated>2014-03-10T11:24:42+00:00</updated>
     <id>http://dofa.org/blog/2014/03/10/add-statistics-for-octopress</id>
@@ -38,7 +38,7 @@
 
 <h4>验证CNZZ</h4>
 
-<p>选好自己喜欢的样式，获得代码，可添加到source/_includes/custom/footer.html中。即可查看每天你的博客的流量，进行相应的优化了。</p>
+<p>选好自己喜欢的样式，获得代码，可添加到<code>source/_includes/custom/footer.html</code>中。即可查看每天你的博客的流量，进行相应的优化了。</p>
 ]]></content>
   </entry>
   
