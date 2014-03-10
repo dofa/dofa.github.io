@@ -4,7 +4,7 @@
   <title><![CDATA[Do Far]]></title>
   <link href="http://dofa.org/atom.xml" rel="self"/>
   <link href="http://dofa.org/"/>
-  <updated>2014-03-10T11:40:44+00:00</updated>
+  <updated>2014-03-10T11:53:07+00:00</updated>
   <id>http://dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -28,7 +28,17 @@
 
 <p>对自己的网站进行验证，只需将网站提供的用于验证的代码添加到<code>source/_includes/head.html</code>的<code>&lt;head&gt;</code>标签之间，网站部署到网上后，过几分钟即可验证通过，其他 需要验证的也同样操作。</p>
 
+<blockquote><p>注意：如果head中有include google-analitics.html，这一步就不需要了</p></blockquote>
+
 <h2>使用CNZZ统计工具</h2>
+
+<h4>注册CNZZ账号</h4>
+
+<p>到<a href="http://zhanzhang.cnzz.com/" title="CNZZ">CNZZ</a>注册一个账号。注册后，添加并验证你的网站就可以添加统计代码了</p>
+
+<h4>验证CNZZ</h4>
+
+<p>选好自己喜欢的样式，获得代码，可添加到source/_includes/custom/footer.html中。即可查看每天你的博客的流量，进行相应的优化了。</p>
 ]]></content>
   </entry>
   
