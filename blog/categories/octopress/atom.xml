@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | Do Far]]></title>
   <link href="http://dofa.org/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://dofa.org/"/>
-  <updated>2014-03-09T12:19:09+00:00</updated>
+  <updated>2014-03-10T11:40:44+00:00</updated>
   <id>http://dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[为octopress添加统计]]></title>
+    <link href="http://dofa.org/blog/2014/03/10/add-statistics-for-octopress/"/>
+    <updated>2014-03-10T11:24:42+00:00</updated>
+    <id>http://dofa.org/blog/2014/03/10/add-statistics-for-octopress</id>
+    <content type="html"><![CDATA[<h2>使用Google Analytics统计工具</h2>
+
+<h4>注册Google Analytics账号</h4>
+
+<p>到<a href="http://www.google.com/analytics/" title="Google Analytics">Google Analytics</a>注册Analytics，获得一个google_analytics_tracking_id，添加到<code>_config</code>.yml中对应位置，并对网站进行验证即可</p>
+
+<h4>验证Google Analytics</h4>
+
+<p>对自己的网站进行验证，只需将网站提供的用于验证的代码添加到<code>source/_includes/head.html</code>的<code>&lt;head&gt;</code>标签之间，网站部署到网上后，过几分钟即可验证通过，其他 需要验证的也同样操作。</p>
+
+<h2>使用CNZZ统计工具</h2>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Octopress发生titlecase错误]]></title>
