@@ -9,10 +9,7 @@
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="硬件架构 前面讲了，处理TCP/IP封包的硬件主要使用Ethernet模块。
-大多数Ethernet模块分为这几个部分：PHY，MAC，MII/RMII管理，DMA和控制器。 PHY实现bit流到cat5的transfer
-MAC实现数据链路层的介质访问控制子层，并执行CSMA/CD功能
-MII/ &hellip;">
+  <meta name="description" content="TCP/IP支持多种不同的链路层协议 这取决于网络所使用的硬件，如以太网、令牌环网、FDDI（光纤分布式数据接口）及RS-232串行线路等。 以太网是当今TCP/IP采用的主要的局域网技术 它采用一种称作CSMA/CD的媒体接入方法，其意思是带冲突检测的载波侦听多路接入（Carrier Sense &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +77,64 @@ MII/ &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/08/01/tcp-ip-protocol-learning-series-three-of-link-layer/">TCP/IP协议学习系列之三 — 链路层</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-01T14:25:52+00:00" pubdate data-updated="true">Aug 1<span>st</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>TCP/IP支持多种不同的链路层协议</h3>
+
+<p>这取决于网络所使用的硬件，如以太网、令牌环网、FDDI（光纤分布式数据接口）及RS-232串行线路等。</p>
+
+<h3>以太网是当今TCP/IP采用的主要的局域网技术</h3>
+
+<p>它采用一种称作CSMA/CD的媒体接入方法，其意思是带冲突检测的载波侦听多路接入（Carrier Sense, Multiple Access with Collision Detection）。它的速率为10 Mb/s，地址为48 bit。</p>
+
+<h3>以太网IP数据报的封装</h3>
+
+<p>以太网IP数据报的封装是在RFC 894[Hornig 1984]中定义的，但存在另外一个IEEE 802规格RFC 1042[Postel and Reynolds 1988]，只是大多数人采用RFC 894。RFC 894在有的地方称作Ethernet-II。</p>
+
+<h3>SLIP和PPP</h3>
+
+<p>串行线路IP–SLIP和他的升级版PPP使用RS-232串口传数据，速度太慢，基本上大家都不用这种方式了，而改用宽带上网。这年头问别人如何上网，都是“你家多少兆？”。</p>
+
+<h3>环回接口</h3>
+
+<p>下面再来看一个大家都熟悉的ip：127.0.0.1。这个IP称作环回接口，它还有个英文名localhost。基本上，对这个ip的访问就是访问自己的主机。</p>
+
+<h3>MTU</h3>
+
+<p>以太网一次可以传送的最大传输单元（MTU）为1500B。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -869,7 +924,7 @@ Ctrl+W          切换窗口, h到左边窗口，j到下方窗口，k到上方�
 <li class='category'><a href='/blog/categories/jekyll/'>Jekyll (1)</a></li>
 <li class='category'><a href='/blog/categories/octopress/'>Octopress (3)</a></li>
 <li class='category'><a href='/blog/categories/server/'>Server (2)</a></li>
-<li class='category'><a href='/blog/categories/sublimetext/'>SublimeText (4)</a></li>
+<li class='category'><a href='/blog/categories/sublimetext/'>SublimeText (5)</a></li>
 <li class='category'><a href='/blog/categories/vm/'>VM (1)</a></li>
 <li class='category'><a href='/blog/categories/vim/'>Vim (3)</a></li>
 
@@ -878,6 +933,10 @@ Ctrl+W          切换窗口, h到左边窗口，j到下方窗口，k到上方�
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/03/19/use-sublimetableeditor/">SublimeTableEditor的使用</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/03/10/add-statistics-for-octopress/">为Octopress添加统计</a>
@@ -895,24 +954,20 @@ Ctrl+W          切换窗口, h到左边窗口，j到下方窗口，k到上方�
         <a href="/blog/2014/03/03/install-php5-server-via-php-fpm/">使用PHP-FPM安装php5 server</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/02/24/occurs-titlecase-error-in-octopress/">Octopress发生titlecase错误</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Tags</h1>
   <ul class="tag-cloud">
     <a style="font-size: 90%" href="/tags/jekyll/">Jekyll</a>
-<a style="font-size: 150%" href="/tags/octopress/">octopress</a>
+<a style="font-size: 142%" href="/tags/octopress/">octopress</a>
 <a style="font-size: 90%" href="/tags/octopress/">octopress,</a>
 <a style="font-size: 90%" href="/tags/php5/">php5</a>
 <a style="font-size: 90%" href="/tags/statistics/">statistics</a>
 <a style="font-size: 210%" href="/tags/sublime-text/">sublime-text</a>
-<a style="font-size: 185%" href="/tags/tcpip/">tcpip</a>
+<a style="font-size: 172%" href="/tags/tcpip/">tcpip</a>
 <a style="font-size: 90%" href="/tags/vagrant/">vagrant,</a>
-<a style="font-size: 185%" href="/tags/vim/">vim</a>
+<a style="font-size: 172%" href="/tags/vim/">vim</a>
 <a style="font-size: 90%" href="/tags/virtualbox/">virtualbox</a>
 
   </ul>

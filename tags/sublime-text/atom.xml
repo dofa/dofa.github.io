@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: sublime-text | Do Far]]></title>
   <link href="http://dofa.org/tags/sublime-text/atom.xml" rel="self"/>
   <link href="http://dofa.org/"/>
-  <updated>2014-03-10T13:33:35+00:00</updated>
+  <updated>2014-03-19T14:54:49+00:00</updated>
   <id>http://dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -12,6 +12,197 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[SublimeTableEditor的使用]]></title>
+    <link href="http://dofa.org/blog/2014/03/19/use-sublimetableeditor/"/>
+    <updated>2014-03-19T14:50:39+00:00</updated>
+    <id>http://dofa.org/blog/2014/03/19/use-sublimetableeditor</id>
+    <content type="html"><![CDATA[<h2>基本的使用方法</h2>
+
+<p>要使用该插件 ，需要用 <em>ctrl+shift+p</em> 打开 <em>Table Editor: Enable for current syntax</em> 来激活 插件。</p>
+
+<h4>创建表头</h4>
+
+<p>输入：</p>
+
+<pre><code>| Name | Phone |
+|
+</code></pre>
+
+<p>然后按下 <em>Tab</em>，插件帮你完成表头格式化：</p>
+
+<pre><code>| Name | Phone |
+|------|-------|
+|      |       |
+</code></pre>
+
+<p>更快的创建表头方法：</p>
+
+<pre><code>|Name|Phone
+</code></pre>
+
+<p>然后按下 <em>ctrl+k, enter</em>，你会得到：</p>
+
+<pre><code>| Name | Phone |
+|------|-------|
+|      |       |
+</code></pre>
+
+<p>如果按下 <em>ctrl+k, &ndash;</em>，你会得到：</p>
+
+<pre><code>| Name | Phone |
+|------|-------|
+</code></pre>
+
+<h4>新建行、在table中移动和输入文字后的对其</h4>
+
+<p><em>tab</em> 为向后移动，<em>shift+tab</em> 向后移动，并且可以完成对其和新建行</p>
+
+<h2>对列的操作</h2>
+
+<p><em>alt+shift+right</em>完成新建列，<em>alt+shift+left</em>删除列，<em>alt+right</em>和<em>alt+left</em>完成交换列。</p>
+
+<h4>新建列</h4>
+
+<pre><code>|    Name   |   Phone   |
+|-----------|-----------|
+| Anna      | 123456789 |
+| Alexander | 987654321 |
+|           | _         |
+</code></pre>
+
+<p>如果按下 <em>alt+shift+right</em>，你会得到：</p>
+
+<pre><code>|    Name   |   |   Phone   |
+|-----------|---|-----------|
+| Anna      |   | 123456789 |
+| Alexander |   | 987654321 |
+|           | _ |           |
+</code></pre>
+
+<h4>删除列</h4>
+
+<p>继续按下 <em>alt+shift+left</em>，你会得到：</p>
+
+<pre><code>|    Name   |   Phone   |
+|-----------|-----------|
+| Anna      | 123456789 |
+| Alexander | 987654321 |
+|           | _         |
+</code></pre>
+
+<h4>交换列</h4>
+
+<pre><code>|    Name   | Age |   Phone   |
+|-----------|-----|-----------|
+| Anna      |  32 | 123456789 |
+| Alexander |  28_| 987654321 |
+|           |     |           |
+</code></pre>
+
+<p>继续按下 <em>alt+left</em>，你会得到：</p>
+
+<pre><code>|    Name   | Age |   Phone   |
+|-----------|-----|-----------|
+| Anna      | 32  | 123456789 |
+| Alexander | 28_ | 987654321 |
+|           |     |           |
+</code></pre>
+
+<p>继续按下 <em>alt+right</em>，你会得到：</p>
+
+<pre><code>|    Name   | Age |   Phone   |
+|-----------|-----|-----------|
+| Anna      | 32  | 123456789 |
+| Alexander | 28_ | 987654321 |
+|           |     |           |
+</code></pre>
+
+<h2>对行的操作</h2>
+
+<h4>插入新行</h4>
+
+<pre><code>|    Name   |   Phone   | Age |
+|-----------|-----------|-----|
+| Anna      | 123456789 | 32_ |
+| Alexander | 987654321 | 28  |
+|           |           |     |
+</code></pre>
+
+<p>如果按下 <em>alt+shift+down</em>，你会得到：</p>
+
+<pre><code>|    Name   |   Phone   | Age |
+|-----------|-----------|-----|
+|           |           |     |
+| Anna      | 123456789 | 32_ |
+| Alexander | 987654321 | 28  |
+|           |           |     |
+</code></pre>
+
+<h4>删除行</h4>
+
+<p>移动到要删除的行，</p>
+
+<pre><code>|    Name   |   Phone   | Age |
+|-----------|-----------|-----|
+|           |           | _   |
+| Anna      | 123456789 | 32  |
+| Alexander | 987654321 | 28  |
+|           |           |     |
+</code></pre>
+
+<p>按下 <em>alt+shift+up</em>，你会得到：</p>
+
+<pre><code>|    Name   |   Phone   | Age |
+|-----------|-----------|-----|
+| Anna      | 123456789 |  32 |
+| Alexander | 987654321 |  28 |
+|           |           |     |
+</code></pre>
+
+<h4>插入分割线</h4>
+
+<pre><code>|    Name   |   Phone   | Age |             Position             |
+|-----------|-----------|-----|----------------------------------|
+| Anna      | 123456789 |  32 | Senior Software Engineer_        |
+| Alexander | 987654321 |  28 | Senior Software Testing Engineer |
+|           |           |     |                                  |
+</code></pre>
+
+<p>按下 <em>ctrl+k,&ndash;</em>，得到：</p>
+
+<pre><code>|    Name   |   Phone   | Age |             Position             |
+|-----------|-----------|-----|----------------------------------|
+| Anna      | 123456789 |  32 | Senior Software Engineer_        |
+|-----------|-----------|-----|----------------------------------|
+| Alexander | 987654321 |  28 | Senior Software Testing Engineer |
+|           |           |     |                                  |
+</code></pre>
+
+<h4>单元中内容分行</h4>
+
+<pre><code>|    Name   |   Phone   | Age |              Position             |
+|-----------|-----------|-----|-----------------------------------|
+| Anna      | 123456789 |  32 | Senior Software Engineer          |
+| Alexander | 987654321 |  28 | Senior Software _Testing Engineer |
+|           |           |     |                                   |
+</code></pre>
+
+<p>按下 <em>alt+enter</em>，得到：</p>
+
+<pre><code>|    Name   |   Phone   | Age |         Position         |
+|-----------|-----------|-----|--------------------------|
+| Anna      | 123456789 |  32 | Senior Software Engineer |
+| Alexander | 987654321 |  28 | Senior Software          |
+|           |           |     | Testing Engineer         |
+</code></pre>
+
+<h4>单元中内容合并</h4>
+
+<p>命令为：<em>ctrl+j</em></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Sublime Text的snippet]]></title>

@@ -9,7 +9,8 @@
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="使用Google Analytics统计工具 注册Google Analytics账号 到Google Analytics注册Analytics，获得一个google_analytics_tracking_id，添加到_config.yml中对应位置，并对网站进行验证即可 验证Google &hellip;">
+  <meta name="description" content="基本的使用方法 要使用该插件 ，需要用 ctrl+shift+p 打开 Table Editor: Enable for current syntax 来激活 插件。 创建表头 输入： | Name | Phone |
+| 然后按下 Tab，插件帮你完成表头格式化： | Name | Phone &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +78,224 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/03/19/use-sublimetableeditor/">SublimeTableEditor的使用</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-19T14:50:39+00:00" pubdate data-updated="true">Mar 19<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>基本的使用方法</h2>
+
+<p>要使用该插件 ，需要用 <em>ctrl+shift+p</em> 打开 <em>Table Editor: Enable for current syntax</em> 来激活 插件。</p>
+
+<h4>创建表头</h4>
+
+<p>输入：</p>
+
+<pre><code>| Name | Phone |
+|
+</code></pre>
+
+<p>然后按下 <em>Tab</em>，插件帮你完成表头格式化：</p>
+
+<pre><code>| Name | Phone |
+|------|-------|
+|      |       |
+</code></pre>
+
+<p>更快的创建表头方法：</p>
+
+<pre><code>|Name|Phone
+</code></pre>
+
+<p>然后按下 <em>ctrl+k, enter</em>，你会得到：</p>
+
+<pre><code>| Name | Phone |
+|------|-------|
+|      |       |
+</code></pre>
+
+<p>如果按下 <em>ctrl+k, &ndash;</em>，你会得到：</p>
+
+<pre><code>| Name | Phone |
+|------|-------|
+</code></pre>
+
+<h4>新建行、在table中移动和输入文字后的对其</h4>
+
+<p><em>tab</em> 为向后移动，<em>shift+tab</em> 向后移动，并且可以完成对其和新建行</p>
+
+<h2>对列的操作</h2>
+
+<p><em>alt+shift+right</em>完成新建列，<em>alt+shift+left</em>删除列，<em>alt+right</em>和<em>alt+left</em>完成交换列。</p>
+
+<h4>新建列</h4>
+
+<pre><code>|    Name   |   Phone   |
+|-----------|-----------|
+| Anna      | 123456789 |
+| Alexander | 987654321 |
+|           | _         |
+</code></pre>
+
+<p>如果按下 <em>alt+shift+right</em>，你会得到：</p>
+
+<pre><code>|    Name   |   |   Phone   |
+|-----------|---|-----------|
+| Anna      |   | 123456789 |
+| Alexander |   | 987654321 |
+|           | _ |           |
+</code></pre>
+
+<h4>删除列</h4>
+
+<p>继续按下 <em>alt+shift+left</em>，你会得到：</p>
+
+<pre><code>|    Name   |   Phone   |
+|-----------|-----------|
+| Anna      | 123456789 |
+| Alexander | 987654321 |
+|           | _         |
+</code></pre>
+
+<h4>交换列</h4>
+
+<pre><code>|    Name   | Age |   Phone   |
+|-----------|-----|-----------|
+| Anna      |  32 | 123456789 |
+| Alexander |  28_| 987654321 |
+|           |     |           |
+</code></pre>
+
+<p>继续按下 <em>alt+left</em>，你会得到：</p>
+
+<pre><code>|    Name   | Age |   Phone   |
+|-----------|-----|-----------|
+| Anna      | 32  | 123456789 |
+| Alexander | 28_ | 987654321 |
+|           |     |           |
+</code></pre>
+
+<p>继续按下 <em>alt+right</em>，你会得到：</p>
+
+<pre><code>|    Name   | Age |   Phone   |
+|-----------|-----|-----------|
+| Anna      | 32  | 123456789 |
+| Alexander | 28_ | 987654321 |
+|           |     |           |
+</code></pre>
+
+<h2>对行的操作</h2>
+
+<h4>插入新行</h4>
+
+<pre><code>|    Name   |   Phone   | Age |
+|-----------|-----------|-----|
+| Anna      | 123456789 | 32_ |
+| Alexander | 987654321 | 28  |
+|           |           |     |
+</code></pre>
+
+<p>如果按下 <em>alt+shift+down</em>，你会得到：</p>
+
+<pre><code>|    Name   |   Phone   | Age |
+|-----------|-----------|-----|
+|           |           |     |
+| Anna      | 123456789 | 32_ |
+| Alexander | 987654321 | 28  |
+|           |           |     |
+</code></pre>
+
+<h4>删除行</h4>
+
+<p>移动到要删除的行，</p>
+
+<pre><code>|    Name   |   Phone   | Age |
+|-----------|-----------|-----|
+|           |           | _   |
+| Anna      | 123456789 | 32  |
+| Alexander | 987654321 | 28  |
+|           |           |     |
+</code></pre>
+
+<p>按下 <em>alt+shift+up</em>，你会得到：</p>
+
+<pre><code>|    Name   |   Phone   | Age |
+|-----------|-----------|-----|
+| Anna      | 123456789 |  32 |
+| Alexander | 987654321 |  28 |
+|           |           |     |
+</code></pre>
+
+<h4>插入分割线</h4>
+
+<pre><code>|    Name   |   Phone   | Age |             Position             |
+|-----------|-----------|-----|----------------------------------|
+| Anna      | 123456789 |  32 | Senior Software Engineer_        |
+| Alexander | 987654321 |  28 | Senior Software Testing Engineer |
+|           |           |     |                                  |
+</code></pre>
+
+<p>按下 <em>ctrl+k,&ndash;</em>，得到：</p>
+
+<pre><code>|    Name   |   Phone   | Age |             Position             |
+|-----------|-----------|-----|----------------------------------|
+| Anna      | 123456789 |  32 | Senior Software Engineer_        |
+|-----------|-----------|-----|----------------------------------|
+| Alexander | 987654321 |  28 | Senior Software Testing Engineer |
+|           |           |     |                                  |
+</code></pre>
+
+<h4>单元中内容分行</h4>
+
+<pre><code>|    Name   |   Phone   | Age |              Position             |
+|-----------|-----------|-----|-----------------------------------|
+| Anna      | 123456789 |  32 | Senior Software Engineer          |
+| Alexander | 987654321 |  28 | Senior Software _Testing Engineer |
+|           |           |     |                                   |
+</code></pre>
+
+<p>按下 <em>alt+enter</em>，得到：</p>
+
+<pre><code>|    Name   |   Phone   | Age |         Position         |
+|-----------|-----------|-----|--------------------------|
+| Anna      | 123456789 |  32 | Senior Software Engineer |
+| Alexander | 987654321 |  28 | Senior Software          |
+|           |           |     | Testing Engineer         |
+</code></pre>
+
+<h4>单元中内容合并</h4>
+
+<p>命令为：<em>ctrl+j</em></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -961,64 +1180,6 @@ git push origin master
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/08/01/tcp-ip-protocol-learning-series-three-of-link-layer/">TCP/IP协议学习系列之三 — 链路层</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-01T14:25:52+00:00" pubdate data-updated="true">Aug 1<span>st</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>TCP/IP支持多种不同的链路层协议</h3>
-
-<p>这取决于网络所使用的硬件，如以太网、令牌环网、FDDI（光纤分布式数据接口）及RS-232串行线路等。</p>
-
-<h3>以太网是当今TCP/IP采用的主要的局域网技术</h3>
-
-<p>它采用一种称作CSMA/CD的媒体接入方法，其意思是带冲突检测的载波侦听多路接入（Carrier Sense, Multiple Access with Collision Detection）。它的速率为10 Mb/s，地址为48 bit。</p>
-
-<h3>以太网IP数据报的封装</h3>
-
-<p>以太网IP数据报的封装是在RFC 894[Hornig 1984]中定义的，但存在另外一个IEEE 802规格RFC 1042[Postel and Reynolds 1988]，只是大多数人采用RFC 894。RFC 894在有的地方称作Ethernet-II。</p>
-
-<h3>SLIP和PPP</h3>
-
-<p>串行线路IP–SLIP和他的升级版PPP使用RS-232串口传数据，速度太慢，基本上大家都不用这种方式了，而改用宽带上网。这年头问别人如何上网，都是“你家多少兆？”。</p>
-
-<h3>环回接口</h3>
-
-<p>下面再来看一个大家都熟悉的ip：127.0.0.1。这个IP称作环回接口，它还有个英文名localhost。基本上，对这个ip的访问就是访问自己的主机。</p>
-
-<h3>MTU</h3>
-
-<p>以太网一次可以传送的最大传输单元（MTU）为1500B。</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1036,7 +1197,7 @@ git push origin master
 <li class='category'><a href='/blog/categories/jekyll/'>Jekyll (1)</a></li>
 <li class='category'><a href='/blog/categories/octopress/'>Octopress (3)</a></li>
 <li class='category'><a href='/blog/categories/server/'>Server (2)</a></li>
-<li class='category'><a href='/blog/categories/sublimetext/'>SublimeText (4)</a></li>
+<li class='category'><a href='/blog/categories/sublimetext/'>SublimeText (5)</a></li>
 <li class='category'><a href='/blog/categories/vm/'>VM (1)</a></li>
 <li class='category'><a href='/blog/categories/vim/'>Vim (3)</a></li>
 
@@ -1045,6 +1206,10 @@ git push origin master
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/03/19/use-sublimetableeditor/">SublimeTableEditor的使用</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/03/10/add-statistics-for-octopress/">为Octopress添加统计</a>
@@ -1062,24 +1227,20 @@ git push origin master
         <a href="/blog/2014/03/03/install-php5-server-via-php-fpm/">使用PHP-FPM安装php5 server</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/02/24/occurs-titlecase-error-in-octopress/">Octopress发生titlecase错误</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Tags</h1>
   <ul class="tag-cloud">
     <a style="font-size: 90%" href="/tags/jekyll/">Jekyll</a>
-<a style="font-size: 150%" href="/tags/octopress/">octopress</a>
+<a style="font-size: 142%" href="/tags/octopress/">octopress</a>
 <a style="font-size: 90%" href="/tags/octopress/">octopress,</a>
 <a style="font-size: 90%" href="/tags/php5/">php5</a>
 <a style="font-size: 90%" href="/tags/statistics/">statistics</a>
 <a style="font-size: 210%" href="/tags/sublime-text/">sublime-text</a>
-<a style="font-size: 185%" href="/tags/tcpip/">tcpip</a>
+<a style="font-size: 172%" href="/tags/tcpip/">tcpip</a>
 <a style="font-size: 90%" href="/tags/vagrant/">vagrant,</a>
-<a style="font-size: 185%" href="/tags/vim/">vim</a>
+<a style="font-size: 172%" href="/tags/vim/">vim</a>
 <a style="font-size: 90%" href="/tags/virtualbox/">virtualbox</a>
 
   </ul>
