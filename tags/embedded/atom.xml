@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Tag: Embedded | Do Far]]></title>
-  <link href="http://dofa.org/tags/embedded/atom.xml" rel="self"/>
-  <link href="http://dofa.org/"/>
-  <updated>2014-03-23T13:50:03+00:00</updated>
-  <id>http://dofa.org/</id>
+  <link href="http://blog.dofa.org/tags/embedded/atom.xml" rel="self"/>
+  <link href="http://blog.dofa.org/"/>
+  <updated>2014-03-23T13:52:05+00:00</updated>
+  <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[事件驱动的伪任务-UOS]]></title>
-    <link href="http://dofa.org/blog/2013/10/17/Event-driven-pseudo-task-UOS/"/>
+    <link href="http://blog.dofa.org/blog/2013/10/17/Event-driven-pseudo-task-UOS/"/>
     <updated>2013-10-17T00:00:00+00:00</updated>
-    <id>http://dofa.org/blog/2013/10/17/Event-driven-pseudo-task-UOS</id>
+    <id>http://blog.dofa.org/blog/2013/10/17/Event-driven-pseudo-task-UOS</id>
     <content type="html"><![CDATA[<h3>protothread</h3>
 
 <p>protothread是专为资源有限的系统设计的一种耗费资源特别少并且不使用堆栈的线程模型</p>

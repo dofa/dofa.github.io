@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://dofa.org/sitemap.xml 
+Sitemap: http://blog.dofa.org/sitemap.xml 

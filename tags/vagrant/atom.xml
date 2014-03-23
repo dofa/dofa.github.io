@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Tag: vagrant, | Do Far]]></title>
-  <link href="http://dofa.org/tags/vagrant/atom.xml" rel="self"/>
-  <link href="http://dofa.org/"/>
-  <updated>2014-03-23T13:50:03+00:00</updated>
-  <id>http://dofa.org/</id>
+  <link href="http://blog.dofa.org/tags/vagrant/atom.xml" rel="self"/>
+  <link href="http://blog.dofa.org/"/>
+  <updated>2014-03-23T13:52:05+00:00</updated>
+  <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Vagrant使用简介]]></title>
-    <link href="http://dofa.org/blog/2014/03/09/vagrant-introduction/"/>
+    <link href="http://blog.dofa.org/blog/2014/03/09/vagrant-introduction/"/>
     <updated>2014-03-09T06:21:16+00:00</updated>
-    <id>http://dofa.org/blog/2014/03/09/vagrant-introduction</id>
+    <id>http://blog.dofa.org/blog/2014/03/09/vagrant-introduction</id>
     <content type="html"><![CDATA[<h2>Vagrant简介</h2>
 
 <blockquote><p>Vagrant is a tool for building complete development environments. With an easy-to-use workflow and focus on automation, Vagrant lowers development environment setup time, increases development/production parity, and makes the &ldquo;works on my machine&rdquo; excuse a relic of the past.</p></blockquote>

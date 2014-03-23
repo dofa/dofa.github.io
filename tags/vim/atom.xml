@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Tag: vim | Do Far]]></title>
-  <link href="http://dofa.org/tags/vim/atom.xml" rel="self"/>
-  <link href="http://dofa.org/"/>
-  <updated>2014-03-23T13:50:03+00:00</updated>
-  <id>http://dofa.org/</id>
+  <link href="http://blog.dofa.org/tags/vim/atom.xml" rel="self"/>
+  <link href="http://blog.dofa.org/"/>
+  <updated>2014-03-23T13:52:05+00:00</updated>
+  <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[常用的Vim命令]]></title>
-    <link href="http://dofa.org/blog/2013/04/10/commonly-used-vim-commands/"/>
+    <link href="http://blog.dofa.org/blog/2013/04/10/commonly-used-vim-commands/"/>
     <updated>2013-04-10T13:09:55+00:00</updated>
-    <id>http://dofa.org/blog/2013/04/10/commonly-used-vim-commands</id>
+    <id>http://blog.dofa.org/blog/2013/04/10/commonly-used-vim-commands</id>
     <content type="html"><![CDATA[<h2>光标移动(Cursor Movement)</h2>
 
 <pre><code>命令          作用（解释）
@@ -111,18 +111,18 @@ Ctrl+W          切换窗口, h到左边窗口，j到下方窗口，k到上方�
   
   <entry>
     <title type="html"><![CDATA[vim思维导图]]></title>
-    <link href="http://dofa.org/blog/2013/04/02/vim-mind-mapping/"/>
+    <link href="http://blog.dofa.org/blog/2013/04/02/vim-mind-mapping/"/>
     <updated>2013-04-02T16:42:52+00:00</updated>
-    <id>http://dofa.org/blog/2013/04/02/vim-mind-mapping</id>
+    <id>http://blog.dofa.org/blog/2013/04/02/vim-mind-mapping</id>
     <content type="html"><![CDATA[<p><img src="http://dofa.u.qiniudn.com/image/vim/vim-mind-mapping.png"></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[vim cheat sheet]]></title>
-    <link href="http://dofa.org/blog/2013/03/26/vim-cheat-sheet/"/>
+    <link href="http://blog.dofa.org/blog/2013/03/26/vim-cheat-sheet/"/>
     <updated>2013-03-26T16:48:52+00:00</updated>
-    <id>http://dofa.org/blog/2013/03/26/vim-cheat-sheet</id>
+    <id>http://blog.dofa.org/blog/2013/03/26/vim-cheat-sheet</id>
     <content type="html"><![CDATA[<p><img src="http://dofa.u.qiniudn.com/image/vim/vim-cheat-sheet.png"></p>
 ]]></content>
   </entry>

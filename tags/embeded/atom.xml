@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Tag: Embeded | Do Far]]></title>
-  <link href="http://dofa.org/tags/embeded/atom.xml" rel="self"/>
-  <link href="http://dofa.org/"/>
-  <updated>2014-03-23T13:50:03+00:00</updated>
-  <id>http://dofa.org/</id>
+  <link href="http://blog.dofa.org/tags/embeded/atom.xml" rel="self"/>
+  <link href="http://blog.dofa.org/"/>
+  <updated>2014-03-23T13:52:05+00:00</updated>
+  <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[big endian与little endian（大小端）]]></title>
-    <link href="http://dofa.org/blog/2013/08/05/big-endian-and-little-endian/"/>
+    <link href="http://blog.dofa.org/blog/2013/08/05/big-endian-and-little-endian/"/>
     <updated>2013-08-05T13:25:52+00:00</updated>
-    <id>http://dofa.org/blog/2013/08/05/big-endian-and-little-endian</id>
+    <id>http://blog.dofa.org/blog/2013/08/05/big-endian-and-little-endian</id>
     <content type="html"><![CDATA[<p>在C编程中，经常遇到大小端（big endian与little endian）的问题，尤其涉及到位域的情况，很容易出错。我这里总结下C51和HTCC C18两种compiler对大小端的处理。</p>
 
 <h2>Check Endian code</h2>

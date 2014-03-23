@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Do Far]]></title>
-  <link href="http://dofa.org/atom.xml" rel="self"/>
-  <link href="http://dofa.org/"/>
-  <updated>2014-03-23T13:50:03+00:00</updated>
-  <id>http://dofa.org/</id>
+  <link href="http://blog.dofa.org/atom.xml" rel="self"/>
+  <link href="http://blog.dofa.org/"/>
+  <updated>2014-03-23T13:52:05+00:00</updated>
+  <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Jekyll中的变量和模板]]></title>
-    <link href="http://dofa.org/blog/2014/03/23/variable-and-template-in-jekyll/"/>
+    <link href="http://blog.dofa.org/blog/2014/03/23/variable-and-template-in-jekyll/"/>
     <updated>2014-03-23T21:10:39+00:00</updated>
-    <id>http://dofa.org/blog/2014/03/23/variable-and-template-in-jekyll</id>
+    <id>http://blog.dofa.org/blog/2014/03/23/variable-and-template-in-jekyll</id>
     <content type="html"><![CDATA[<h2>Jekyll目录及一些说明</h2>
 
 <p>Jekyll的基本结构：</p>
@@ -118,9 +118,9 @@
   
   <entry>
     <title type="html"><![CDATA[SublimeTableEditor的使用]]></title>
-    <link href="http://dofa.org/blog/2014/03/19/use-sublimetableeditor/"/>
+    <link href="http://blog.dofa.org/blog/2014/03/19/use-sublimetableeditor/"/>
     <updated>2014-03-19T14:50:39+00:00</updated>
-    <id>http://dofa.org/blog/2014/03/19/use-sublimetableeditor</id>
+    <id>http://blog.dofa.org/blog/2014/03/19/use-sublimetableeditor</id>
     <content type="html"><![CDATA[<h2>基本的使用方法</h2>
 
 <p>要使用该插件 ，需要用 <em>ctrl+shift+p</em> 打开 <em>Table Editor: Enable for current syntax</em> 来激活 插件。</p>
@@ -309,9 +309,9 @@
   
   <entry>
     <title type="html"><![CDATA[为Octopress添加统计]]></title>
-    <link href="http://dofa.org/blog/2014/03/10/add-statistics-for-octopress/"/>
+    <link href="http://blog.dofa.org/blog/2014/03/10/add-statistics-for-octopress/"/>
     <updated>2014-03-10T11:24:42+00:00</updated>
-    <id>http://dofa.org/blog/2014/03/10/add-statistics-for-octopress</id>
+    <id>http://blog.dofa.org/blog/2014/03/10/add-statistics-for-octopress</id>
     <content type="html"><![CDATA[<h2>使用Google Analytics统计工具</h2>
 
 <h4>注册Google Analytics账号</h4>
@@ -339,9 +339,9 @@
   
   <entry>
     <title type="html"><![CDATA[Debian7 Wheezy 镜像源的配置]]></title>
-    <link href="http://dofa.org/blog/2014/03/09/update-debian-wheezy-mirrors/"/>
+    <link href="http://blog.dofa.org/blog/2014/03/09/update-debian-wheezy-mirrors/"/>
     <updated>2014-03-09T08:13:15+00:00</updated>
-    <id>http://dofa.org/blog/2014/03/09/update-debian-wheezy-mirrors</id>
+    <id>http://blog.dofa.org/blog/2014/03/09/update-debian-wheezy-mirrors</id>
     <content type="html"><![CDATA[<p>debian update或install package使用国内源会非常慢，一般我们使用163源。
 简单的说有两种方法修改源，我们直接使用第二种方法。</p>
 
@@ -384,9 +384,9 @@ sudo apt-get install sudo -y
   
   <entry>
     <title type="html"><![CDATA[Vagrant使用简介]]></title>
-    <link href="http://dofa.org/blog/2014/03/09/vagrant-introduction/"/>
+    <link href="http://blog.dofa.org/blog/2014/03/09/vagrant-introduction/"/>
     <updated>2014-03-09T06:21:16+00:00</updated>
-    <id>http://dofa.org/blog/2014/03/09/vagrant-introduction</id>
+    <id>http://blog.dofa.org/blog/2014/03/09/vagrant-introduction</id>
     <content type="html"><![CDATA[<h2>Vagrant简介</h2>
 
 <blockquote><p>Vagrant is a tool for building complete development environments. With an easy-to-use workflow and focus on automation, Vagrant lowers development environment setup time, increases development/production parity, and makes the &ldquo;works on my machine&rdquo; excuse a relic of the past.</p></blockquote>
@@ -527,9 +527,9 @@ vagrant ssh                         #进入虚拟环境
   
   <entry>
     <title type="html"><![CDATA[使用PHP-FPM安装php5 server]]></title>
-    <link href="http://dofa.org/blog/2014/03/03/install-php5-server-via-php-fpm/"/>
+    <link href="http://blog.dofa.org/blog/2014/03/03/install-php5-server-via-php-fpm/"/>
     <updated>2014-03-03T13:51:40+00:00</updated>
-    <id>http://dofa.org/blog/2014/03/03/install-php5-server-via-php-fpm</id>
+    <id>http://blog.dofa.org/blog/2014/03/03/install-php5-server-via-php-fpm</id>
     <content type="html"><![CDATA[<h2>安装环境</h2>
 
 <ul>
@@ -603,9 +603,9 @@ vagrant ssh                         #进入虚拟环境
   
   <entry>
     <title type="html"><![CDATA[Octopress发生titlecase错误]]></title>
-    <link href="http://dofa.org/blog/2014/02/24/occurs-titlecase-error-in-octopress/"/>
+    <link href="http://blog.dofa.org/blog/2014/02/24/occurs-titlecase-error-in-octopress/"/>
     <updated>2014-02-24T13:25:52+00:00</updated>
-    <id>http://dofa.org/blog/2014/02/24/occurs-titlecase-error-in-octopress</id>
+    <id>http://blog.dofa.org/blog/2014/02/24/occurs-titlecase-error-in-octopress</id>
     <content type="html"><![CDATA[<p>把_config.yml中的</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -622,9 +622,9 @@ vagrant ssh                         #进入虚拟环境
   
   <entry>
     <title type="html"><![CDATA[为 Octopress 添加多说评论系统]]></title>
-    <link href="http://dofa.org/blog/2014/02/24/add-duoshuo-commemt-system-into-octopress/"/>
+    <link href="http://blog.dofa.org/blog/2014/02/24/add-duoshuo-commemt-system-into-octopress/"/>
     <updated>2014-02-24T08:49:29+00:00</updated>
-    <id>http://dofa.org/blog/2014/02/24/add-duoshuo-commemt-system-into-octopress</id>
+    <id>http://blog.dofa.org/blog/2014/02/24/add-duoshuo-commemt-system-into-octopress</id>
     <content type="html"><![CDATA[<p>disqus是国外的评论系统，速度实在太慢，使用duoshuo会比较好</p>
 
 <h2>修改配置</h2>
@@ -699,9 +699,9 @@ vagrant ssh                         #进入虚拟环境
   
   <entry>
     <title type="html"><![CDATA[事件驱动的伪任务-UOS]]></title>
-    <link href="http://dofa.org/blog/2013/10/17/Event-driven-pseudo-task-UOS/"/>
+    <link href="http://blog.dofa.org/blog/2013/10/17/Event-driven-pseudo-task-UOS/"/>
     <updated>2013-10-17T00:00:00+00:00</updated>
-    <id>http://dofa.org/blog/2013/10/17/Event-driven-pseudo-task-UOS</id>
+    <id>http://blog.dofa.org/blog/2013/10/17/Event-driven-pseudo-task-UOS</id>
     <content type="html"><![CDATA[<h3>protothread</h3>
 
 <p>protothread是专为资源有限的系统设计的一种耗费资源特别少并且不使用堆栈的线程模型</p>
@@ -753,9 +753,9 @@ vagrant ssh                         #进入虚拟环境
   
   <entry>
     <title type="html"><![CDATA[用-Jekyll-搭建个人博客]]></title>
-    <link href="http://dofa.org/blog/2013/09/10/With-Jekyll-build-Personal-Blog/"/>
+    <link href="http://blog.dofa.org/blog/2013/09/10/With-Jekyll-build-Personal-Blog/"/>
     <updated>2013-09-10T00:00:00+00:00</updated>
-    <id>http://dofa.org/blog/2013/09/10/With-Jekyll-build-Personal-Blog</id>
+    <id>http://blog.dofa.org/blog/2013/09/10/With-Jekyll-build-Personal-Blog</id>
     <content type="html"><![CDATA[<h3>使用理由</h3>
 
 <ol>
@@ -818,9 +818,9 @@ git push origin master
   
   <entry>
     <title type="html"><![CDATA[big endian与little endian（大小端）]]></title>
-    <link href="http://dofa.org/blog/2013/08/05/big-endian-and-little-endian/"/>
+    <link href="http://blog.dofa.org/blog/2013/08/05/big-endian-and-little-endian/"/>
     <updated>2013-08-05T13:25:52+00:00</updated>
-    <id>http://dofa.org/blog/2013/08/05/big-endian-and-little-endian</id>
+    <id>http://blog.dofa.org/blog/2013/08/05/big-endian-and-little-endian</id>
     <content type="html"><![CDATA[<p>在C编程中，经常遇到大小端（big endian与little endian）的问题，尤其涉及到位域的情况，很容易出错。我这里总结下C51和HTCC C18两种compiler对大小端的处理。</p>
 
 <h2>Check Endian code</h2>
@@ -949,9 +949,9 @@ git push origin master
   
   <entry>
     <title type="html"><![CDATA[TCP/IP协议学习系列之三 — 链路层]]></title>
-    <link href="http://dofa.org/blog/2013/08/01/tcp-ip-protocol-learning-series-three-of-link-layer/"/>
+    <link href="http://blog.dofa.org/blog/2013/08/01/tcp-ip-protocol-learning-series-three-of-link-layer/"/>
     <updated>2013-08-01T14:25:52+00:00</updated>
-    <id>http://dofa.org/blog/2013/08/01/tcp-ip-protocol-learning-series-three-of-link-layer</id>
+    <id>http://blog.dofa.org/blog/2013/08/01/tcp-ip-protocol-learning-series-three-of-link-layer</id>
     <content type="html"><![CDATA[<h3>TCP/IP支持多种不同的链路层协议</h3>
 
 <p>这取决于网络所使用的硬件，如以太网、令牌环网、FDDI（光纤分布式数据接口）及RS-232串行线路等。</p>
@@ -980,9 +980,9 @@ git push origin master
   
   <entry>
     <title type="html"><![CDATA[TCP/IP协议学习系列之二 — Ethernet控制器]]></title>
-    <link href="http://dofa.org/blog/2013/07/27/tcp-ip-protocol-learning-series-two-ethernet-directors/"/>
+    <link href="http://blog.dofa.org/blog/2013/07/27/tcp-ip-protocol-learning-series-two-ethernet-directors/"/>
     <updated>2013-07-27T14:25:52+00:00</updated>
-    <id>http://dofa.org/blog/2013/07/27/tcp-ip-protocol-learning-series-two-ethernet-directors</id>
+    <id>http://blog.dofa.org/blog/2013/07/27/tcp-ip-protocol-learning-series-two-ethernet-directors</id>
     <content type="html"><![CDATA[<h2>硬件架构</h2>
 
 <p>前面讲了，处理TCP/IP封包的硬件主要使用Ethernet模块。
@@ -1062,9 +1062,9 @@ MII接口主要包括4个部分：</p>
   
   <entry>
     <title type="html"><![CDATA[TCP/IP 协议学习系列之一 — 帧结构（frame）]]></title>
-    <link href="http://dofa.org/blog/2013/07/26/tcp-ip-protocol-learning-series-one-of-frame-structure/"/>
+    <link href="http://blog.dofa.org/blog/2013/07/26/tcp-ip-protocol-learning-series-one-of-frame-structure/"/>
     <updated>2013-07-26T14:25:52+00:00</updated>
-    <id>http://dofa.org/blog/2013/07/26/tcp-ip-protocol-learning-series-one-of-frame-structure</id>
+    <id>http://blog.dofa.org/blog/2013/07/26/tcp-ip-protocol-learning-series-one-of-frame-structure</id>
     <content type="html"><![CDATA[<h2>TCP/IP协议封包</h2>
 
 <p>我觉得学习TCP/IP协议可以从它的封包开始，了解它在硬件上是怎么实现的是个不错的开端。</p>
@@ -1088,9 +1088,9 @@ MII接口主要包括4个部分：</p>
   
   <entry>
     <title type="html"><![CDATA[Sublime Text的snippet]]></title>
-    <link href="http://dofa.org/blog/2013/06/02/sublime-text-snippet/"/>
+    <link href="http://blog.dofa.org/blog/2013/06/02/sublime-text-snippet/"/>
     <updated>2013-06-02T14:25:52+00:00</updated>
-    <id>http://dofa.org/blog/2013/06/02/sublime-text-snippet</id>
+    <id>http://blog.dofa.org/blog/2013/06/02/sublime-text-snippet</id>
     <content type="html"><![CDATA[<h2>snippet强大的自动补全功能</h2>
 
 <p>以前理解代码自动补全以为就是函数或变量的自动补全，其实还可以是代码块的自动补全。接触过sublime text后才发现si的自动补全弱爆了，si也就阅读代码方便，写代码以后还要靠sublime text。话说sublime text的snippet就是自动补全，我也是今天才知道snippet。在简单的接触后，马上就可以实现自己的自动补全，不得不说st2真乃coding神器！</p>
@@ -1182,9 +1182,9 @@ MII接口主要包括4个部分：</p>
   
   <entry>
     <title type="html"><![CDATA[Sublime Text的一些快捷键]]></title>
-    <link href="http://dofa.org/blog/2013/06/01/some-short-keys-of-sublime-text/"/>
+    <link href="http://blog.dofa.org/blog/2013/06/01/some-short-keys-of-sublime-text/"/>
     <updated>2013-06-01T19:25:52+00:00</updated>
-    <id>http://dofa.org/blog/2013/06/01/some-short-keys-of-sublime-text</id>
+    <id>http://blog.dofa.org/blog/2013/06/01/some-short-keys-of-sublime-text</id>
     <content type="html"><![CDATA[<h2>打开/前往</h2>
 
 <pre><code>Ctrl+P：搜索项目中的文件
@@ -1293,9 +1293,9 @@ shift+F3：查找前一个
   
   <entry>
     <title type="html"><![CDATA[Sublime Text 学习笔记]]></title>
-    <link href="http://dofa.org/blog/2013/06/01/sublime-text-study-notes/"/>
+    <link href="http://blog.dofa.org/blog/2013/06/01/sublime-text-study-notes/"/>
     <updated>2013-06-01T16:25:52+00:00</updated>
-    <id>http://dofa.org/blog/2013/06/01/sublime-text-study-notes</id>
+    <id>http://blog.dofa.org/blog/2013/06/01/sublime-text-study-notes</id>
     <content type="html"><![CDATA[<ul>
 <li>如果你的配置错误，导致Sublime Text2不能打开了，想要把配置改回来，那么配置文件在C:\Users\用户名\AppData\Roaming\Sublime Text 2\Packages\User中</li>
 <li>安装Package control，按快捷键Ctrl+`，打开命令输入界面（一般在下方），输入下面的命令后回车即可，重启Sublime Text2</li>
@@ -1352,9 +1352,9 @@ Preferences->File Setting-User，打开配置文件，看里面有没font_face�
   
   <entry>
     <title type="html"><![CDATA[Sublime Text 入门及技巧]]></title>
-    <link href="http://dofa.org/blog/2013/06/01/sublime-text-guide-and-tips/"/>
+    <link href="http://blog.dofa.org/blog/2013/06/01/sublime-text-guide-and-tips/"/>
     <updated>2013-06-01T14:25:52+00:00</updated>
-    <id>http://dofa.org/blog/2013/06/01/sublime-text-guide-and-tips</id>
+    <id>http://blog.dofa.org/blog/2013/06/01/sublime-text-guide-and-tips</id>
     <content type="html"><![CDATA[<h2>快捷的命令面板</h2>
 
 <p>和 TextMate 类似，Sublime Text 2 也提供了很方便的命令调用方式：Command Palette（命令面板）。调用方法：直接在 <code>Tool</code> 菜单中选择 <code>Command Palette</code>，或是用快捷键：<code>Shift+Command+P</code>，输入命令名称（中的字母）就可以实时搜索到相应的命令、选项、snippet 和 syntex， 按下回车就可以直接执行，减少了查找的麻烦。</p>
@@ -1394,9 +1394,9 @@ Preferences->File Setting-User，打开配置文件，看里面有没font_face�
   
   <entry>
     <title type="html"><![CDATA[常用的Vim命令]]></title>
-    <link href="http://dofa.org/blog/2013/04/10/commonly-used-vim-commands/"/>
+    <link href="http://blog.dofa.org/blog/2013/04/10/commonly-used-vim-commands/"/>
     <updated>2013-04-10T13:09:55+00:00</updated>
-    <id>http://dofa.org/blog/2013/04/10/commonly-used-vim-commands</id>
+    <id>http://blog.dofa.org/blog/2013/04/10/commonly-used-vim-commands</id>
     <content type="html"><![CDATA[<h2>光标移动(Cursor Movement)</h2>
 
 <pre><code>命令          作用（解释）
@@ -1490,9 +1490,9 @@ Ctrl+W          切换窗口, h到左边窗口，j到下方窗口，k到上方�
   
   <entry>
     <title type="html"><![CDATA[vim思维导图]]></title>
-    <link href="http://dofa.org/blog/2013/04/02/vim-mind-mapping/"/>
+    <link href="http://blog.dofa.org/blog/2013/04/02/vim-mind-mapping/"/>
     <updated>2013-04-02T16:42:52+00:00</updated>
-    <id>http://dofa.org/blog/2013/04/02/vim-mind-mapping</id>
+    <id>http://blog.dofa.org/blog/2013/04/02/vim-mind-mapping</id>
     <content type="html"><![CDATA[<p><img src="http://dofa.u.qiniudn.com/image/vim/vim-mind-mapping.png"></p>
 ]]></content>
   </entry>

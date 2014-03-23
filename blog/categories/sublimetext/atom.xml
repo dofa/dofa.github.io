@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: SublimeText | Do Far]]></title>
-  <link href="http://dofa.org/blog/categories/sublimetext/atom.xml" rel="self"/>
-  <link href="http://dofa.org/"/>
-  <updated>2014-03-23T13:50:03+00:00</updated>
-  <id>http://dofa.org/</id>
+  <link href="http://blog.dofa.org/blog/categories/sublimetext/atom.xml" rel="self"/>
+  <link href="http://blog.dofa.org/"/>
+  <updated>2014-03-23T13:52:05+00:00</updated>
+  <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[SublimeTableEditor的使用]]></title>
-    <link href="http://dofa.org/blog/2014/03/19/use-sublimetableeditor/"/>
+    <link href="http://blog.dofa.org/blog/2014/03/19/use-sublimetableeditor/"/>
     <updated>2014-03-19T14:50:39+00:00</updated>
-    <id>http://dofa.org/blog/2014/03/19/use-sublimetableeditor</id>
+    <id>http://blog.dofa.org/blog/2014/03/19/use-sublimetableeditor</id>
     <content type="html"><![CDATA[<h2>基本的使用方法</h2>
 
 <p>要使用该插件 ，需要用 <em>ctrl+shift+p</em> 打开 <em>Table Editor: Enable for current syntax</em> 来激活 插件。</p>
@@ -206,9 +206,9 @@
   
   <entry>
     <title type="html"><![CDATA[Sublime Text的snippet]]></title>
-    <link href="http://dofa.org/blog/2013/06/02/sublime-text-snippet/"/>
+    <link href="http://blog.dofa.org/blog/2013/06/02/sublime-text-snippet/"/>
     <updated>2013-06-02T14:25:52+00:00</updated>
-    <id>http://dofa.org/blog/2013/06/02/sublime-text-snippet</id>
+    <id>http://blog.dofa.org/blog/2013/06/02/sublime-text-snippet</id>
     <content type="html"><![CDATA[<h2>snippet强大的自动补全功能</h2>
 
 <p>以前理解代码自动补全以为就是函数或变量的自动补全，其实还可以是代码块的自动补全。接触过sublime text后才发现si的自动补全弱爆了，si也就阅读代码方便，写代码以后还要靠sublime text。话说sublime text的snippet就是自动补全，我也是今天才知道snippet。在简单的接触后，马上就可以实现自己的自动补全，不得不说st2真乃coding神器！</p>
@@ -285,9 +285,9 @@
   
   <entry>
     <title type="html"><![CDATA[Sublime Text的一些快捷键]]></title>
-    <link href="http://dofa.org/blog/2013/06/01/some-short-keys-of-sublime-text/"/>
+    <link href="http://blog.dofa.org/blog/2013/06/01/some-short-keys-of-sublime-text/"/>
     <updated>2013-06-01T19:25:52+00:00</updated>
-    <id>http://dofa.org/blog/2013/06/01/some-short-keys-of-sublime-text</id>
+    <id>http://blog.dofa.org/blog/2013/06/01/some-short-keys-of-sublime-text</id>
     <content type="html"><![CDATA[<h2>打开/前往</h2>
 
 <pre><code>Ctrl+P：搜索项目中的文件
@@ -396,9 +396,9 @@ shift+F3：查找前一个
   
   <entry>
     <title type="html"><![CDATA[Sublime Text 学习笔记]]></title>
-    <link href="http://dofa.org/blog/2013/06/01/sublime-text-study-notes/"/>
+    <link href="http://blog.dofa.org/blog/2013/06/01/sublime-text-study-notes/"/>
     <updated>2013-06-01T16:25:52+00:00</updated>
-    <id>http://dofa.org/blog/2013/06/01/sublime-text-study-notes</id>
+    <id>http://blog.dofa.org/blog/2013/06/01/sublime-text-study-notes</id>
     <content type="html"><![CDATA[<ul>
 <li>如果你的配置错误，导致Sublime Text2不能打开了，想要把配置改回来，那么配置文件在C:\Users\用户名\AppData\Roaming\Sublime Text 2\Packages\User中</li>
 <li>安装Package control，按快捷键Ctrl+`，打开命令输入界面（一般在下方），输入下面的命令后回车即可，重启Sublime Text2</li>
@@ -443,9 +443,9 @@ Preferences->File Setting-User，打开配置文件，看里面有没font_face�
   
   <entry>
     <title type="html"><![CDATA[Sublime Text 入门及技巧]]></title>
-    <link href="http://dofa.org/blog/2013/06/01/sublime-text-guide-and-tips/"/>
+    <link href="http://blog.dofa.org/blog/2013/06/01/sublime-text-guide-and-tips/"/>
     <updated>2013-06-01T14:25:52+00:00</updated>
-    <id>http://dofa.org/blog/2013/06/01/sublime-text-guide-and-tips</id>
+    <id>http://blog.dofa.org/blog/2013/06/01/sublime-text-guide-and-tips</id>
     <content type="html"><![CDATA[<h2>快捷的命令面板</h2>
 
 <p>和 TextMate 类似，Sublime Text 2 也提供了很方便的命令调用方式：Command Palette（命令面板）。调用方法：直接在 <code>Tool</code> 菜单中选择 <code>Command Palette</code>，或是用快捷键：<code>Shift+Command+P</code>，输入命令名称（中的字母）就可以实时搜索到相应的命令、选项、snippet 和 syntex， 按下回车就可以直接执行，减少了查找的麻烦。</p>

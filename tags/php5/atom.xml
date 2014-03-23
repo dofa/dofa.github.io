@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Tag: php5 | Do Far]]></title>
-  <link href="http://dofa.org/tags/php5/atom.xml" rel="self"/>
-  <link href="http://dofa.org/"/>
-  <updated>2014-03-23T13:50:03+00:00</updated>
-  <id>http://dofa.org/</id>
+  <link href="http://blog.dofa.org/tags/php5/atom.xml" rel="self"/>
+  <link href="http://blog.dofa.org/"/>
+  <updated>2014-03-23T13:52:05+00:00</updated>
+  <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[使用PHP-FPM安装php5 server]]></title>
-    <link href="http://dofa.org/blog/2014/03/03/install-php5-server-via-php-fpm/"/>
+    <link href="http://blog.dofa.org/blog/2014/03/03/install-php5-server-via-php-fpm/"/>
     <updated>2014-03-03T13:51:40+00:00</updated>
-    <id>http://dofa.org/blog/2014/03/03/install-php5-server-via-php-fpm</id>
+    <id>http://blog.dofa.org/blog/2014/03/03/install-php5-server-via-php-fpm</id>
     <content type="html"><![CDATA[<h2>安装环境</h2>
 
 <ul>

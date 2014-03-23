@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Octopress | Do Far]]></title>
-  <link href="http://dofa.org/blog/categories/octopress/atom.xml" rel="self"/>
-  <link href="http://dofa.org/"/>
-  <updated>2014-03-23T13:50:03+00:00</updated>
-  <id>http://dofa.org/</id>
+  <link href="http://blog.dofa.org/blog/categories/octopress/atom.xml" rel="self"/>
+  <link href="http://blog.dofa.org/"/>
+  <updated>2014-03-23T13:52:05+00:00</updated>
+  <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[为Octopress添加统计]]></title>
-    <link href="http://dofa.org/blog/2014/03/10/add-statistics-for-octopress/"/>
+    <link href="http://blog.dofa.org/blog/2014/03/10/add-statistics-for-octopress/"/>
     <updated>2014-03-10T11:24:42+00:00</updated>
-    <id>http://dofa.org/blog/2014/03/10/add-statistics-for-octopress</id>
+    <id>http://blog.dofa.org/blog/2014/03/10/add-statistics-for-octopress</id>
     <content type="html"><![CDATA[<h2>使用Google Analytics统计工具</h2>
 
 <h4>注册Google Analytics账号</h4>
@@ -45,9 +45,9 @@
   
   <entry>
     <title type="html"><![CDATA[Octopress发生titlecase错误]]></title>
-    <link href="http://dofa.org/blog/2014/02/24/occurs-titlecase-error-in-octopress/"/>
+    <link href="http://blog.dofa.org/blog/2014/02/24/occurs-titlecase-error-in-octopress/"/>
     <updated>2014-02-24T13:25:52+00:00</updated>
-    <id>http://dofa.org/blog/2014/02/24/occurs-titlecase-error-in-octopress</id>
+    <id>http://blog.dofa.org/blog/2014/02/24/occurs-titlecase-error-in-octopress</id>
     <content type="html"><![CDATA[<p>把_config.yml中的</p>
 
 <p><code>
@@ -63,9 +63,9 @@ titlecase: false
   
   <entry>
     <title type="html"><![CDATA[为 Octopress 添加多说评论系统]]></title>
-    <link href="http://dofa.org/blog/2014/02/24/add-duoshuo-commemt-system-into-octopress/"/>
+    <link href="http://blog.dofa.org/blog/2014/02/24/add-duoshuo-commemt-system-into-octopress/"/>
     <updated>2014-02-24T08:49:29+00:00</updated>
-    <id>http://dofa.org/blog/2014/02/24/add-duoshuo-commemt-system-into-octopress</id>
+    <id>http://blog.dofa.org/blog/2014/02/24/add-duoshuo-commemt-system-into-octopress</id>
     <content type="html"><![CDATA[<p>disqus是国外的评论系统，速度实在太慢，使用duoshuo会比较好</p>
 
 <h2>修改配置</h2>
