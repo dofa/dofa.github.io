@@ -103,7 +103,7 @@ duoshuo_comments: true
 duoshuo_short_name: bitbegin
 
 # Google Analytics
-google_analytics_tracking_id:
+google_analytics_tracking_id: UA-48748469-1
 
 # Facebook Like
 facebook_like: false
