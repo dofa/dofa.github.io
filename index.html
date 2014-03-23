@@ -9,8 +9,11 @@
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="基本的使用方法 要使用该插件 ，需要用 ctrl+shift+p 打开 Table Editor: Enable for current syntax 来激活 插件。 创建表头 输入： | Name | Phone |
-| 然后按下 Tab，插件帮你完成表头格式化： | Name | Phone &hellip;">
+  <meta name="description" content="Jekyll目录及一些说明 Jekyll的基本结构： | 文件或目录 | 功能描述 |
+| ----------- | ---------------- |
+| _config.yml | Jekyll的配置文件 |
+| _includes | 代码片段文件夹 |
+| _layouts | &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +81,136 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/03/23/variable-and-template-in-jekyll/">Jekyll中的变量和模板</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-23T21:10:39+00:00" pubdate data-updated="true">Mar 23<span>rd</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Jekyll目录及一些说明</h2>
+
+<p>Jekyll的基本结构：</p>
+
+<pre><code>| 文件或目录  |     功能描述     |
+| ----------- | ---------------- |
+| _config.yml | Jekyll的配置文件 |
+| _includes   | 代码片段文件夹   |
+| _layouts    | 模板文件夹       |
+| _posts      | 文章文件夹       |
+| _sites      | 生成的博客       |
+</code></pre>
+
+<p>具体描述如下：</p>
+
+<ul>
+<li>_includes文件夹中所放的文件是最终要放到模版中的一些代码片段。</li>
+<li>_layouts中放的一些模版，模版是用包含page或post内容的。Jekyll的模版使用HTML语法来写，并包含YAML Front Matter。所有的模版都可用Liquid来与网站进行交互。所的的模版都可以使用全局变量site和page，site变量包含该网站所有可以接触得到的内容和元数据(meta-data)，page变量包含的是当前渲染的page或post的所有可以接触得到的数据。</li>
+<li>_post文件夹中放的是自己要发布的post文章。post文件的命名规则为YEAR-MONTH-DATE-title.MARKUP，使用rake post会自动将post文件命名合适。而对于page，所有放在根目录下或不以下划线开头的文件夹中有格式的文件都会被Jekyll处理成page。这里说的有格式是指文件含有YAML Front Matter。所有的post和page都要用markdown或者texile或者HTML语法来写，并可以包含Liquid模版的语法。还要有 YAML Front Matter (Jekyll只处理具有YAML Front Matter的文件)。YAML Front Matter必须放在文件的开头，一对&mdash;-之间，用户可在这一对&mdash;-间设置预先定义的变量或用户自己的数据。</li>
+</ul>
+
+
+<h2>Jekyll模板全局变量</h2>
+
+<pre><code>|    变量   |                      描述                      |
+| --------- | ---------------------------------------------- |
+| site      | 全站的信息+_config.yml文件中的配置选项         |
+| --------- | ---------------------------------------------- |
+| page      | 这个变量中包含YAML前置数据,                    |
+|           | 另外加上两个额外的变量值:url和content          |
+| --------- | ---------------------------------------------- |
+| content   | 在布局模板文件中，这里变量包含了页面的子视图。 |
+|           | 这个变量将会把渲染后的内容插入到模板文件中。   |
+|           | 这个变量不能在文章和页面文件中使用             |
+| --------- | ---------------------------------------------- |
+| paginator | 一旦paginate配置选项被设置了，                 |
+|           | 这个变量才能被使用                             |
+</code></pre>
+
+<h2>Jekyll模板Page变量</h2>
+
+<pre><code>|       变量      |                  描述                 |
+| --------------- | ------------------------------------- |
+| page.content    | 页面中未渲染的内容                    |
+| --------------- | ------------------------------------- |
+| page.title      | 文章的标题                            |
+| --------------- | ------------------------------------- |
+| page.url        | 除去域名以外的URL，                   |
+|                 | 例子:/2013/12/14/higrid-net.html      |
+| --------------- | ------------------------------------- |
+| page.date       | 指定每一篇文章的时间，                |
+|                 | 这个选项能够覆盖一篇文章中            |
+|                 | 前置数据设置的时间，                  |
+|                 | 它的格式是这样的:YYYY-MM-DD HH:MM:SS  |
+| --------------- | ------------------------------------- |
+| page.id         | 每一篇文章的唯一标示符                |
+|                 | (在RSS中非常有用)                     |
+|                 | 例子：/2008/12/14/higrid-net          |
+| --------------- | ------------------------------------- |
+| page.categories | 这篇文章隶属的分类的一个列表，        |
+|                 | 分类是通过在_post目录中               |
+|                 | 的目录结构推导而来的。                |
+|                 | 举例来说，在路径/work/code/_posts/    |
+|                 | 2008-12-24-closures.textile下的文件， |
+|                 | 这个变量将会是[work,code]。           |
+|                 | 这个变量也能在YAML前置数据中被指定。  |
+| --------------- | ------------------------------------- |
+| page.tags       | 这篇文章的标签的列表。                |
+|                 | 这些数据能够在YAML前置数据中指定      |
+| --------------- | ------------------------------------- |
+| page.next       | 按时间序的下一篇文章                  |
+| --------------- | ------------------------------------- |
+| page.content    | 按时间序的上一篇文章                  |
+</code></pre>
+
+<p><strong>注意</strong> :任何你自己指定的自定义前置数据都能够通过page调用。举例来说，如果你在页面的前置数据中设置了custom_css: true，那这个值可以在模板可以这样调用:page.custom_css</p>
+
+<h2>Jekyll模板Paginator变量</h2>
+
+<pre><code>|           变量          |          描述          |
+| ----------------------- | ---------------------- |
+| paginator.per_page      | 每一个页面上文章的数量 |
+| ----------------------- | ---------------------- |
+| paginator.posts         | 当前页面上可用的文章   |
+| ----------------------- | ---------------------- |
+| paginator.total_posts   | 所有文章的数量         |
+| ----------------------- | ---------------------- |
+| paginator.total_pages   | 所有页面的数量         |
+| ----------------------- | ---------------------- |
+| paginator.page          | 当前页面的数量         |
+| ----------------------- | ---------------------- |
+| paginator.previous_page | 前面的页面的数量       |
+| ----------------------- | ---------------------- |
+| paginator.next_page     | 接下来的的页面的数量   |
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1022,164 +1155,6 @@ git push origin master
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/08/05/big-endian-and-little-endian/">big endian与little endian（大小端）</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-05T13:25:52+00:00" pubdate data-updated="true">Aug 5<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>在C编程中，经常遇到大小端（big endian与little endian）的问题，尤其涉及到位域的情况，很容易出错。我这里总结下C51和HTCC C18两种compiler对大小端的处理。</p>
-
-<h2>Check Endian code</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="kt">char</span> <span class="nf">checkEndian</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="k">union</span> <span class="n">check</span><span class="p">{</span>
-</span><span class='line'>      <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
-</span><span class='line'>      <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">b</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">};</span>
-</span><span class='line'>  <span class="k">union</span> <span class="n">check</span> <span class="n">ck</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">ck</span><span class="p">.</span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">ck</span><span class="p">.</span><span class="n">b</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="k">union</span> <span class="n">uE</span><span class="p">{</span>
-</span><span class='line'>      <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">num</span><span class="p">;</span>
-</span><span class='line'>      <span class="k">struct</span><span class="p">{</span>
-</span><span class='line'>          <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">a1</span><span class="o">:</span><span class="mi">1</span><span class="p">;</span>
-</span><span class='line'>          <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">b3</span><span class="o">:</span><span class="mi">3</span><span class="p">;</span>
-</span><span class='line'>          <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">c16</span><span class="p">;</span>
-</span><span class='line'>          <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">d3</span><span class="o">:</span><span class="mi">3</span><span class="p">;</span>
-</span><span class='line'>          <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">e1</span><span class="o">:</span><span class="mi">1</span><span class="p">;</span>
-</span><span class='line'>      <span class="p">}</span><span class="n">sN</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">union</span> <span class="n">uE</span> <span class="n">a</span><span class="p">;</span>
-</span><span class='line'>  <span class="kt">char</span> <span class="n">ttt</span> <span class="o">=</span>    <span class="n">checkEndian</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">num</span> <span class="o">=</span> <span class="mh">0x12345678</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">sN</span><span class="p">.</span><span class="n">a1</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">sN</span><span class="p">.</span><span class="n">b3</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">sN</span><span class="p">.</span><span class="n">c16</span> <span class="o">=</span> <span class="mh">0x0304</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">sN</span><span class="p">.</span><span class="n">d3</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">sN</span><span class="p">.</span><span class="n">e1</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">num</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Executed results</h2>
-
-<p>a.num = ?</p>
-
-<p>对于big endian：</p>
-
-<p>以C51来分析，结构成员按照定义顺序从小地址到大地址存放到ram中，显然按照地址从小到大排放结果就为：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="mo">05</span> <span class="mo">03</span> <span class="mo">04</span> <span class="mi">0</span><span class="n">d</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>转换为大端显示为：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="mh">0x0503040d</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>对于little endian：</p>
-
-<p>结果为</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="mh">0x0d030405</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Results</h2>
-
-<p>所以我这里结论：</p>
-
-<ul>
-<li><p>位域没有大小端的区别，区别在于各编译器的实现。上面的例子便是没有区别的compiler，C51和HTCC C18；网络字节序位域有大小端区别，这个一定要注意</p></li>
-<li><p>两个及其以上字节有大小端区别</p></li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1194,7 +1169,7 @@ git push origin master
   <h1>Categories</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/embedded/'>Embedded (5)</a></li>
-<li class='category'><a href='/blog/categories/jekyll/'>Jekyll (1)</a></li>
+<li class='category'><a href='/blog/categories/jekyll/'>Jekyll (2)</a></li>
 <li class='category'><a href='/blog/categories/octopress/'>Octopress (3)</a></li>
 <li class='category'><a href='/blog/categories/server/'>Server (2)</a></li>
 <li class='category'><a href='/blog/categories/sublimetext/'>SublimeText (5)</a></li>
@@ -1206,6 +1181,10 @@ git push origin master
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/03/23/variable-and-template-in-jekyll/">Jekyll中的变量和模板</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/03/19/use-sublimetableeditor/">SublimeTableEditor的使用</a>
@@ -1223,17 +1202,12 @@ git push origin master
         <a href="/blog/2014/03/09/vagrant-introduction/">Vagrant使用简介</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/03/03/install-php5-server-via-php-fpm/">使用PHP-FPM安装php5 server</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Tags</h1>
   <ul class="tag-cloud">
-    <a style="font-size: 90%" href="/tags/jekyll/">Jekyll</a>
-<a style="font-size: 142%" href="/tags/octopress/">octopress</a>
+    <a style="font-size: 142%" href="/tags/octopress/">octopress</a>
 <a style="font-size: 90%" href="/tags/octopress/">octopress,</a>
 <a style="font-size: 90%" href="/tags/php5/">php5</a>
 <a style="font-size: 90%" href="/tags/statistics/">statistics</a>
@@ -1242,6 +1216,7 @@ git push origin master
 <a style="font-size: 90%" href="/tags/vagrant/">vagrant,</a>
 <a style="font-size: 172%" href="/tags/vim/">vim</a>
 <a style="font-size: 90%" href="/tags/virtualbox/">virtualbox</a>
+<a style="font-size: 90%" href="/tags/vm/">vm,</a>
 
   </ul>
 </section>

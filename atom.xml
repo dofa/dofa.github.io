@@ -4,7 +4,7 @@
   <title><![CDATA[Do Far]]></title>
   <link href="http://dofa.org/atom.xml" rel="self"/>
   <link href="http://dofa.org/"/>
-  <updated>2014-03-19T14:54:49+00:00</updated>
+  <updated>2014-03-23T13:50:03+00:00</updated>
   <id>http://dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -12,6 +12,109 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Jekyll中的变量和模板]]></title>
+    <link href="http://dofa.org/blog/2014/03/23/variable-and-template-in-jekyll/"/>
+    <updated>2014-03-23T21:10:39+00:00</updated>
+    <id>http://dofa.org/blog/2014/03/23/variable-and-template-in-jekyll</id>
+    <content type="html"><![CDATA[<h2>Jekyll目录及一些说明</h2>
+
+<p>Jekyll的基本结构：</p>
+
+<pre><code>| 文件或目录  |     功能描述     |
+| ----------- | ---------------- |
+| _config.yml | Jekyll的配置文件 |
+| _includes   | 代码片段文件夹   |
+| _layouts    | 模板文件夹       |
+| _posts      | 文章文件夹       |
+| _sites      | 生成的博客       |
+</code></pre>
+
+<p>具体描述如下：</p>
+
+<ul>
+<li>_includes文件夹中所放的文件是最终要放到模版中的一些代码片段。</li>
+<li>_layouts中放的一些模版，模版是用包含page或post内容的。Jekyll的模版使用HTML语法来写，并包含YAML Front Matter。所有的模版都可用Liquid来与网站进行交互。所的的模版都可以使用全局变量site和page，site变量包含该网站所有可以接触得到的内容和元数据(meta-data)，page变量包含的是当前渲染的page或post的所有可以接触得到的数据。</li>
+<li>_post文件夹中放的是自己要发布的post文章。post文件的命名规则为YEAR-MONTH-DATE-title.MARKUP，使用rake post会自动将post文件命名合适。而对于page，所有放在根目录下或不以下划线开头的文件夹中有格式的文件都会被Jekyll处理成page。这里说的有格式是指文件含有YAML Front Matter。所有的post和page都要用markdown或者texile或者HTML语法来写，并可以包含Liquid模版的语法。还要有 YAML Front Matter (Jekyll只处理具有YAML Front Matter的文件)。YAML Front Matter必须放在文件的开头，一对&mdash;-之间，用户可在这一对&mdash;-间设置预先定义的变量或用户自己的数据。</li>
+</ul>
+
+
+<h2>Jekyll模板全局变量</h2>
+
+<pre><code>|    变量   |                      描述                      |
+| --------- | ---------------------------------------------- |
+| site      | 全站的信息+_config.yml文件中的配置选项         |
+| --------- | ---------------------------------------------- |
+| page      | 这个变量中包含YAML前置数据,                    |
+|           | 另外加上两个额外的变量值:url和content          |
+| --------- | ---------------------------------------------- |
+| content   | 在布局模板文件中，这里变量包含了页面的子视图。 |
+|           | 这个变量将会把渲染后的内容插入到模板文件中。   |
+|           | 这个变量不能在文章和页面文件中使用             |
+| --------- | ---------------------------------------------- |
+| paginator | 一旦paginate配置选项被设置了，                 |
+|           | 这个变量才能被使用                             |
+</code></pre>
+
+<h2>Jekyll模板Page变量</h2>
+
+<pre><code>|       变量      |                  描述                 |
+| --------------- | ------------------------------------- |
+| page.content    | 页面中未渲染的内容                    |
+| --------------- | ------------------------------------- |
+| page.title      | 文章的标题                            |
+| --------------- | ------------------------------------- |
+| page.url        | 除去域名以外的URL，                   |
+|                 | 例子:/2013/12/14/higrid-net.html      |
+| --------------- | ------------------------------------- |
+| page.date       | 指定每一篇文章的时间，                |
+|                 | 这个选项能够覆盖一篇文章中            |
+|                 | 前置数据设置的时间，                  |
+|                 | 它的格式是这样的:YYYY-MM-DD HH:MM:SS  |
+| --------------- | ------------------------------------- |
+| page.id         | 每一篇文章的唯一标示符                |
+|                 | (在RSS中非常有用)                     |
+|                 | 例子：/2008/12/14/higrid-net          |
+| --------------- | ------------------------------------- |
+| page.categories | 这篇文章隶属的分类的一个列表，        |
+|                 | 分类是通过在_post目录中               |
+|                 | 的目录结构推导而来的。                |
+|                 | 举例来说，在路径/work/code/_posts/    |
+|                 | 2008-12-24-closures.textile下的文件， |
+|                 | 这个变量将会是[work,code]。           |
+|                 | 这个变量也能在YAML前置数据中被指定。  |
+| --------------- | ------------------------------------- |
+| page.tags       | 这篇文章的标签的列表。                |
+|                 | 这些数据能够在YAML前置数据中指定      |
+| --------------- | ------------------------------------- |
+| page.next       | 按时间序的下一篇文章                  |
+| --------------- | ------------------------------------- |
+| page.content    | 按时间序的上一篇文章                  |
+</code></pre>
+
+<p><strong>注意</strong> :任何你自己指定的自定义前置数据都能够通过page调用。举例来说，如果你在页面的前置数据中设置了custom_css: true，那这个值可以在模板可以这样调用:page.custom_css</p>
+
+<h2>Jekyll模板Paginator变量</h2>
+
+<pre><code>|           变量          |          描述          |
+| ----------------------- | ---------------------- |
+| paginator.per_page      | 每一个页面上文章的数量 |
+| ----------------------- | ---------------------- |
+| paginator.posts         | 当前页面上可用的文章   |
+| ----------------------- | ---------------------- |
+| paginator.total_posts   | 所有文章的数量         |
+| ----------------------- | ---------------------- |
+| paginator.total_pages   | 所有页面的数量         |
+| ----------------------- | ---------------------- |
+| paginator.page          | 当前页面的数量         |
+| ----------------------- | ---------------------- |
+| paginator.previous_page | 前面的页面的数量       |
+| ----------------------- | ---------------------- |
+| paginator.next_page     | 接下来的的页面的数量   |
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[SublimeTableEditor的使用]]></title>
@@ -1391,15 +1494,6 @@ Ctrl+W          切换窗口, h到左边窗口，j到下方窗口，k到上方�
     <updated>2013-04-02T16:42:52+00:00</updated>
     <id>http://dofa.org/blog/2013/04/02/vim-mind-mapping</id>
     <content type="html"><![CDATA[<p><img src="http://dofa.u.qiniudn.com/image/vim/vim-mind-mapping.png"></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[vim cheat sheet]]></title>
-    <link href="http://dofa.org/blog/2013/03/26/vim-cheat-sheet/"/>
-    <updated>2013-03-26T16:48:52+00:00</updated>
-    <id>http://dofa.org/blog/2013/03/26/vim-cheat-sheet</id>
-    <content type="html"><![CDATA[<p><img src="http://dofa.u.qiniudn.com/image/vim/vim-cheat-sheet.png"></p>
 ]]></content>
   </entry>
   
