@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | Do Far]]></title>
   <link href="http://blog.dofa.org/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-03-27T14:57:32+00:00</updated>
+  <updated>2014-03-27T15:00:33+00:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -12,6 +12,95 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress表格设置]]></title>
+    <link href="http://blog.dofa.org/blog/2014/03/27/add-table-for-octopress/"/>
+    <updated>2014-03-27T14:50:05+00:00</updated>
+    <id>http://blog.dofa.org/blog/2014/03/27/add-table-for-octopress</id>
+    <content type="html"><![CDATA[<p>Octopress默认的表格没有边框，比较难看。需要增加一个css。</p>
+
+<h2>新建一个 <code>data-table.css</code>，放到<code>source/stylesheets</code>下面</h2>
+
+<p>
+```
+* + table {
+  border-style:solid;
+  border-width:1px;
+  border-color:#e7e3e7;
+}</p>
+
+<ul>
+<li><ul>
+<li>table th, * + table td {
+border-style:dashed;
+border-width:1px;
+border-color:#e7e3e7;
+padding-left: 3px;
+padding-right: 3px;
+}</li>
+</ul>
+</li>
+<li><ul>
+<li>table th {
+border-style:solid;
+font-weight:bold;
+background: url(&ldquo;/images/noise.png?1330434582&rdquo;) repeat scroll left top #F7F3F7;
+}</li>
+</ul>
+</li>
+<li><ul>
+<li>table th[align=&ldquo;left&rdquo;], * + table td[align=&ldquo;left&rdquo;] {
+text-align:left;
+}</li>
+</ul>
+</li>
+<li><ul>
+<li>table th[align=&ldquo;right&rdquo;], * + table td[align=&ldquo;right&rdquo;] {
+text-align:right;
+}</li>
+</ul>
+</li>
+<li><ul>
+<li>table th[align=&ldquo;center&rdquo;], * + table td[align=&ldquo;center&rdquo;] {
+text-align:center;
+}
+```
+</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>在<code>source/_includes/head.html</code>增加如下代码：</h2>
+
+<p>
+<code>
+&lt;link href="{{ root_url }}/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css"&gt;
+{% if page.styles contains 'data-table' %}
+&lt;link href="{{ root_url }}/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" /&gt;
+{% endif %}
+</code>
+</p>
+
+<h2>在需要该样式的post中增加</h2>
+
+<pre><code>styles: [data-table]
+</code></pre>
+
+<p>即可。</p>
+
+<h2>表格写法</h2>
+
+<pre><code>左对齐表头 | 中间对齐表头 | 右对齐表头
+:----------|:------------:|----------:
+左对齐数据 |中间对齐数据  |右对齐数据
+第二行数据 |也是第二行    |还是第二行
+懒得写了...|.....         |.....
+长数据，以便看出表头的对齐|长数据，以便看出表头的对齐|长数据，以便看出表头的对齐
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[为Octopress添加统计]]></title>
