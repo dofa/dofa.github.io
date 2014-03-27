@@ -113,30 +113,30 @@
 <table>
 <thead>
 <tr>
-<th align="center">文件或目录  </th>
-<th align="center">     功能描述</th>
+<th align="left">文件或目录  </th>
+<th align="right">     功能描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">_config.yml </td>
-<td align="center"> Jekyll的配置文件</td>
+<td align="left">_config.yml </td>
+<td align="right"> Jekyll的配置文件</td>
 </tr>
 <tr>
-<td align="center">_includes   </td>
-<td align="center"> 代码片段文件夹</td>
+<td align="left">_includes   </td>
+<td align="right"> 代码片段文件夹</td>
 </tr>
 <tr>
-<td align="center">_layouts    </td>
-<td align="center"> 模板文件夹</td>
+<td align="left">_layouts    </td>
+<td align="right"> 模板文件夹</td>
 </tr>
 <tr>
-<td align="center">_posts      </td>
-<td align="center"> 文章文件夹</td>
+<td align="left">_posts      </td>
+<td align="right"> 文章文件夹</td>
 </tr>
 <tr>
-<td align="center">_sites      </td>
-<td align="center"> 生成的博客</td>
+<td align="left">_sites      </td>
+<td align="right"> 生成的博客</td>
 </tr>
 </tbody>
 </table>
@@ -156,26 +156,26 @@
 <table>
 <thead>
 <tr>
-<th align="center">   变量   </th>
-<th align="center">                      描述</th>
+<th align="left">变量   </th>
+<th align="right">                      描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">site      </td>
-<td align="center"> 全站的信息+_config.yml文件中的配置选项</td>
+<td align="left">site      </td>
+<td align="right"> 全站的信息+_config.yml文件中的配置选项</td>
 </tr>
 <tr>
-<td align="center">page      </td>
-<td align="center"> 这个变量中包含YAML前置数据,另外加上两个额外的变量值:url和content</td>
+<td align="left">page      </td>
+<td align="right"> 这个变量中包含YAML前置数据,另外加上两个额外的变量值:url和content</td>
 </tr>
 <tr>
-<td align="center">content   </td>
-<td align="center"> 在布局模板文件中，这里变量包含了页面的子视图。这个变量将会把渲染后的内容插入到模板文件中。这个变量不能在文章和页面文件中使用</td>
+<td align="left">content   </td>
+<td align="right"> 在布局模板文件中，这里变量包含了页面的子视图。这个变量将会把渲染后的内容插入到模板文件中。这个变量不能在文章和页面文件中使用</td>
 </tr>
 <tr>
-<td align="center">paginator </td>
-<td align="center"> 一旦paginate配置选项被设置了， 这个变量才能被使用</td>
+<td align="left">paginator </td>
+<td align="right"> 一旦paginate配置选项被设置了， 这个变量才能被使用</td>
 </tr>
 </tbody>
 </table>
@@ -183,35 +183,97 @@
 
 <h2>Jekyll模板Page变量</h2>
 
-<pre><code>  变量      |                  描述
-</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">变量      </th>
+<th align="right">                  描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">page.content    </td>
+<td align="right"> 页面中未渲染的内容</td>
+</tr>
+<tr>
+<td align="left">page.title      </td>
+<td align="right"> 文章的标题</td>
+</tr>
+<tr>
+<td align="left">page.url        </td>
+<td align="right"> 除去域名以外的URL，例子:/2013/12/14/higrid-net.html</td>
+</tr>
+<tr>
+<td align="left">page.date       </td>
+<td align="right"> 指定每一篇文章的时间，这个选项能够覆盖一篇文章中前置数据设置的时间，它的格式是这样的:YYYY-MM-DD HH:MM:SS</td>
+</tr>
+<tr>
+<td align="left">page.id         </td>
+<td align="right"> 每一篇文章的唯一标示符(在RSS中非常有用)例子：/2008/12/14/higrid-net</td>
+</tr>
+<tr>
+<td align="left">page.categories </td>
+<td align="right"> 这篇文章隶属的分类的一个列表，分类是通过在<em>post目录中的目录结构推导而来的。举例来说，在路径/work/code/</em>posts/2008-12-24-closures.textile下的文件，这个变量将会是[work,code]。这个变量也能在YAML前置数据中被指定。</td>
+</tr>
+<tr>
+<td align="left">page.tags       </td>
+<td align="right"> 这篇文章的标签的列表。这些数据能够在YAML前置数据中指定</td>
+</tr>
+<tr>
+<td align="left">page.next       </td>
+<td align="right"> 按时间序的下一篇文章</td>
+</tr>
+<tr>
+<td align="left">page.content    </td>
+<td align="right"> 按时间序的上一篇文章</td>
+</tr>
+</tbody>
+</table>
 
-<p>:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;: | :&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;:
-page.content    | 页面中未渲染的内容
-page.title      | 文章的标题
-page.url        | 除去域名以外的URL，例子:/2013/12/14/higrid-net.html
-page.date       | 指定每一篇文章的时间，这个选项能够覆盖一篇文章中前置数据设置的时间，它的格式是这样的:YYYY-MM-DD HH:MM:SS
-page.id         | 每一篇文章的唯一标示符(在RSS中非常有用)例子：/2008/12/14/higrid-net
-page.categories | 这篇文章隶属的分类的一个列表，分类是通过在<em>post目录中的目录结构推导而来的。举例来说，在路径/work/code/</em>posts/2008-12-24-closures.textile下的文件，这个变量将会是[work,code]。这个变量也能在YAML前置数据中被指定。
-page.tags       | 这篇文章的标签的列表。这些数据能够在YAML前置数据中指定
-page.next       | 按时间序的下一篇文章
-page.content    | 按时间序的上一篇文章</p>
 
 <p><strong>注意</strong> :任何你自己指定的自定义前置数据都能够通过page调用。举例来说，如果你在页面的前置数据中设置了custom_css: true，那这个值可以在模板可以这样调用:page.custom_css</p>
 
 <h2>Jekyll模板Paginator变量</h2>
 
-<pre><code>      变量          |          描述
-</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">变量          </th>
+<th align="right">          描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">paginator.per_page      </td>
+<td align="right"> 每一个页面上文章的数量</td>
+</tr>
+<tr>
+<td align="left">paginator.posts         </td>
+<td align="right"> 当前页面上可用的文章</td>
+</tr>
+<tr>
+<td align="left">paginator.total_posts   </td>
+<td align="right"> 所有文章的数量</td>
+</tr>
+<tr>
+<td align="left">paginator.total_pages   </td>
+<td align="right"> 所有页面的数量</td>
+</tr>
+<tr>
+<td align="left">paginator.page          </td>
+<td align="right"> 当前页面的数量</td>
+</tr>
+<tr>
+<td align="left">paginator.previous_page </td>
+<td align="right"> 前面的页面的数量</td>
+</tr>
+<tr>
+<td align="left">paginator.next_page     </td>
+<td align="right"> 接下来的的页面的数量</td>
+</tr>
+</tbody>
+</table>
 
-<p>:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;: | :&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;:
-paginator.per_page      | 每一个页面上文章的数量
-paginator.posts         | 当前页面上可用的文章
-paginator.total_posts   | 所有文章的数量
-paginator.total_pages   | 所有页面的数量
-paginator.page          | 当前页面的数量
-paginator.previous_page | 前面的页面的数量
-paginator.next_page     | 接下来的的页面的数量</p>
 </div>
   
   
