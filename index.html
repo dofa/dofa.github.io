@@ -9,11 +9,33 @@
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="Octopress默认的表格没有边框，比较难看。需要增加一个css。 新建一个 data-table.css，放到source/stylesheets下面 table {
-border-style:solid;
-border-width:1px;
-border-color:#e7e3e7;
-} &hellip;">
+  <meta name="description" content="Octopress默认的表格没有边框，比较难看。需要增加一个css。 新建一个 data-table.css，放到source/stylesheets下面 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -115,60 +137,81 @@ border-color:#e7e3e7;
 
 <h2>新建一个 <code>data-table.css</code>，放到<code>source/stylesheets</code>下面</h2>
 
-<ul>
-<li><ul>
-<li>table {
-border-style:solid;
-border-width:1px;
-border-color:#e7e3e7;
-}</li>
-</ul>
-</li>
-<li><ul>
-<li>table th, * + table td {
-border-style:dashed;
-border-width:1px;
-border-color:#e7e3e7;
-padding-left: 3px;
-padding-right: 3px;
-}</li>
-</ul>
-</li>
-<li><ul>
-<li>table th {
-border-style:solid;
-font-weight:bold;
-background: url(&ldquo;/images/noise.png?1330434582&rdquo;) repeat scroll left top #F7F3F7;
-}</li>
-</ul>
-</li>
-<li><ul>
-<li>table th[align=&ldquo;left&rdquo;], * + table td[align=&ldquo;left&rdquo;] {
-text-align:left;
-}</li>
-</ul>
-</li>
-<li><ul>
-<li>table th[align=&ldquo;right&rdquo;], * + table td[align=&ldquo;right&rdquo;] {
-text-align:right;
-}</li>
-</ul>
-</li>
-<li><ul>
-<li>table th[align=&ldquo;center&rdquo;], * + table td[align=&ldquo;center&rdquo;] {
-text-align:center;
-}</li>
-</ul>
-</li>
-</ul>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>* + table {
+</span><span class='line'>  border-style:solid;
+</span><span class='line'>  border-width:1px;
+</span><span class='line'>  border-color:#e7e3e7;
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>* + table th, * + table td {
+</span><span class='line'>  border-style:dashed;
+</span><span class='line'>  border-width:1px;
+</span><span class='line'>  border-color:#e7e3e7;
+</span><span class='line'>  padding-left: 3px;
+</span><span class='line'>  padding-right: 3px;
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>* + table th {
+</span><span class='line'>  border-style:solid;
+</span><span class='line'>  font-weight:bold;
+</span><span class='line'>  background: url("/images/noise.png?1330434582") repeat scroll left top #F7F3F7;
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>* + table th[align="left"], * + table td[align="left"] {
+</span><span class='line'>  text-align:left;
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>* + table th[align="right"], * + table td[align="right"] {
+</span><span class='line'>  text-align:right;
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>* + table th[align="center"], * + table td[align="center"] {
+</span><span class='line'>  text-align:center;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>在<code>source/_includes/head.html</code>增加如下代码：</h2>
 
-<p><link href="{{ root_url }}/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-{% if page.styles contains &lsquo;data-table&rsquo; %}
-<link href="{{ root_url }}/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
-{% endif %}</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;link href="{{ root_url }}/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css"&gt;
+</span><span class='line'>{% if page.styles contains 'data-table' %}
+</span><span class='line'>&lt;link href="{{ root_url }}/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" /&gt;
+</span><span class='line'>{% endif %}</span></code></pre></td></tr></table></div></figure>
+
 
 <h2>在需要该样式的post中增加</h2>
 
