@@ -9,11 +9,7 @@
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="Jekyll目录及一些说明 Jekyll的基本结构： | 文件或目录 | 功能描述 |
-| ----------- | ---------------- |
-| _config.yml | Jekyll的配置文件 |
-| _includes | 代码片段文件夹 |
-| _layouts | &hellip;">
+  <meta name="description" content="Jekyll目录及一些说明 Jekyll的基本结构： 文件或目录 功能描述 _config.yml Jekyll的配置文件 _includes 代码片段文件夹 _layouts 模板文件夹 _posts 文章文件夹 _sites 生成的博客 具体描述如下： &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -114,14 +110,37 @@
 
 <p>Jekyll的基本结构：</p>
 
-<pre><code>| 文件或目录  |     功能描述     |
-| ----------- | ---------------- |
-| _config.yml | Jekyll的配置文件 |
-| _includes   | 代码片段文件夹   |
-| _layouts    | 模板文件夹       |
-| _posts      | 文章文件夹       |
-| _sites      | 生成的博客       |
-</code></pre>
+<table>
+<thead>
+<tr>
+<th align="center">文件或目录  </th>
+<th align="center">     功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">_config.yml </td>
+<td align="center"> Jekyll的配置文件</td>
+</tr>
+<tr>
+<td align="center">_includes   </td>
+<td align="center"> 代码片段文件夹</td>
+</tr>
+<tr>
+<td align="center">_layouts    </td>
+<td align="center"> 模板文件夹</td>
+</tr>
+<tr>
+<td align="center">_posts      </td>
+<td align="center"> 文章文件夹</td>
+</tr>
+<tr>
+<td align="center">_sites      </td>
+<td align="center"> 生成的博客</td>
+</tr>
+</tbody>
+</table>
+
 
 <p>具体描述如下：</p>
 
@@ -134,167 +153,65 @@
 
 <h2>Jekyll模板全局变量</h2>
 
-<pre><code>|    变量   |                      描述                      |
-| --------- | ---------------------------------------------- |
-| site      | 全站的信息+_config.yml文件中的配置选项         |
-| --------- | ---------------------------------------------- |
-| page      | 这个变量中包含YAML前置数据,                    |
-|           | 另外加上两个额外的变量值:url和content          |
-| --------- | ---------------------------------------------- |
-| content   | 在布局模板文件中，这里变量包含了页面的子视图。 |
-|           | 这个变量将会把渲染后的内容插入到模板文件中。   |
-|           | 这个变量不能在文章和页面文件中使用             |
-| --------- | ---------------------------------------------- |
-| paginator | 一旦paginate配置选项被设置了，                 |
-|           | 这个变量才能被使用                             |
-</code></pre>
+<table>
+<thead>
+<tr>
+<th align="center">   变量   </th>
+<th align="center">                      描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">site      </td>
+<td align="center"> 全站的信息+_config.yml文件中的配置选项</td>
+</tr>
+<tr>
+<td align="center">page      </td>
+<td align="center"> 这个变量中包含YAML前置数据,另外加上两个额外的变量值:url和content</td>
+</tr>
+<tr>
+<td align="center">content   </td>
+<td align="center"> 在布局模板文件中，这里变量包含了页面的子视图。这个变量将会把渲染后的内容插入到模板文件中。这个变量不能在文章和页面文件中使用</td>
+</tr>
+<tr>
+<td align="center">paginator </td>
+<td align="center"> 一旦paginate配置选项被设置了， 这个变量才能被使用</td>
+</tr>
+</tbody>
+</table>
+
 
 <h2>Jekyll模板Page变量</h2>
 
-<pre><code>|       变量      |                  描述                 |
-| --------------- | ------------------------------------- |
-| page.content    | 页面中未渲染的内容                    |
-| --------------- | ------------------------------------- |
-| page.title      | 文章的标题                            |
-| --------------- | ------------------------------------- |
-| page.url        | 除去域名以外的URL，                   |
-|                 | 例子:/2013/12/14/higrid-net.html      |
-| --------------- | ------------------------------------- |
-| page.date       | 指定每一篇文章的时间，                |
-|                 | 这个选项能够覆盖一篇文章中            |
-|                 | 前置数据设置的时间，                  |
-|                 | 它的格式是这样的:YYYY-MM-DD HH:MM:SS  |
-| --------------- | ------------------------------------- |
-| page.id         | 每一篇文章的唯一标示符                |
-|                 | (在RSS中非常有用)                     |
-|                 | 例子：/2008/12/14/higrid-net          |
-| --------------- | ------------------------------------- |
-| page.categories | 这篇文章隶属的分类的一个列表，        |
-|                 | 分类是通过在_post目录中               |
-|                 | 的目录结构推导而来的。                |
-|                 | 举例来说，在路径/work/code/_posts/    |
-|                 | 2008-12-24-closures.textile下的文件， |
-|                 | 这个变量将会是[work,code]。           |
-|                 | 这个变量也能在YAML前置数据中被指定。  |
-| --------------- | ------------------------------------- |
-| page.tags       | 这篇文章的标签的列表。                |
-|                 | 这些数据能够在YAML前置数据中指定      |
-| --------------- | ------------------------------------- |
-| page.next       | 按时间序的下一篇文章                  |
-| --------------- | ------------------------------------- |
-| page.content    | 按时间序的上一篇文章                  |
+<pre><code>  变量      |                  描述
 </code></pre>
+
+<p>:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;: | :&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;:
+page.content    | 页面中未渲染的内容
+page.title      | 文章的标题
+page.url        | 除去域名以外的URL，例子:/2013/12/14/higrid-net.html
+page.date       | 指定每一篇文章的时间，这个选项能够覆盖一篇文章中前置数据设置的时间，它的格式是这样的:YYYY-MM-DD HH:MM:SS
+page.id         | 每一篇文章的唯一标示符(在RSS中非常有用)例子：/2008/12/14/higrid-net
+page.categories | 这篇文章隶属的分类的一个列表，分类是通过在<em>post目录中的目录结构推导而来的。举例来说，在路径/work/code/</em>posts/2008-12-24-closures.textile下的文件，这个变量将会是[work,code]。这个变量也能在YAML前置数据中被指定。
+page.tags       | 这篇文章的标签的列表。这些数据能够在YAML前置数据中指定
+page.next       | 按时间序的下一篇文章
+page.content    | 按时间序的上一篇文章</p>
 
 <p><strong>注意</strong> :任何你自己指定的自定义前置数据都能够通过page调用。举例来说，如果你在页面的前置数据中设置了custom_css: true，那这个值可以在模板可以这样调用:page.custom_css</p>
 
 <h2>Jekyll模板Paginator变量</h2>
 
-<pre><code>|           变量          |          描述          |
-| ----------------------- | ---------------------- |
-| paginator.per_page      | 每一个页面上文章的数量 |
-| ----------------------- | ---------------------- |
-| paginator.posts         | 当前页面上可用的文章   |
-| ----------------------- | ---------------------- |
-| paginator.total_posts   | 所有文章的数量         |
-| ----------------------- | ---------------------- |
-| paginator.total_pages   | 所有页面的数量         |
-| ----------------------- | ---------------------- |
-| paginator.page          | 当前页面的数量         |
-| ----------------------- | ---------------------- |
-| paginator.previous_page | 前面的页面的数量       |
-| ----------------------- | ---------------------- |
-| paginator.next_page     | 接下来的的页面的数量   |
+<pre><code>      变量          |          描述
 </code></pre>
 
-<h2>table test</h2>
-
-<pre><code>左对齐表头 | 中间对齐表头 | 右对齐表头
-:----------|:------------:|----------:
-左对齐数据 |中间对齐数据  |右对齐数据
-第二行数据 |也是第二行    |还是第二行
-懒得写了...|.....         |.....
-长数据，以便看出表头的对齐|长数据，以便看出表头的对齐|长数据，以便看出表头的对齐
-</code></pre>
-
-<h2>table test 2</h2>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>           变量          </th>
-<th>          描述          </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td> paginator.per_page      </td>
-<td> 每一个页面上文章的数量 |</td>
-</tr>
-<tr>
-<td></td>
-<td>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</td>
-<td>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|</td>
-</tr>
-<tr>
-<td></td>
-<td> paginator.posts         </td>
-<td> 当前页面上可用的文章   |</td>
-</tr>
-<tr>
-<td></td>
-<td>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</td>
-<td>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|</td>
-</tr>
-<tr>
-<td></td>
-<td> paginator.total_posts   </td>
-<td> 所有文章的数量         |</td>
-</tr>
-<tr>
-<td></td>
-<td>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</td>
-<td>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|</td>
-</tr>
-<tr>
-<td></td>
-<td> paginator.total_pages   </td>
-<td> 所有页面的数量         |</td>
-</tr>
-<tr>
-<td></td>
-<td>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</td>
-<td>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|</td>
-</tr>
-<tr>
-<td></td>
-<td> paginator.page          </td>
-<td> 当前页面的数量         |</td>
-</tr>
-<tr>
-<td></td>
-<td>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</td>
-<td>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|</td>
-</tr>
-<tr>
-<td></td>
-<td> paginator.previous_page </td>
-<td> 前面的页面的数量       |</td>
-</tr>
-<tr>
-<td></td>
-<td>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</td>
-<td>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|</td>
-</tr>
-<tr>
-<td></td>
-<td> paginator.next_page     </td>
-<td> 接下来的的页面的数量   |</td>
-</tr>
-</tbody>
-</table>
-
+<p>:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;: | :&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;:
+paginator.per_page      | 每一个页面上文章的数量
+paginator.posts         | 当前页面上可用的文章
+paginator.total_posts   | 所有文章的数量
+paginator.total_pages   | 所有页面的数量
+paginator.page          | 当前页面的数量
+paginator.previous_page | 前面的页面的数量
+paginator.next_page     | 接下来的的页面的数量</p>
 </div>
   
   
