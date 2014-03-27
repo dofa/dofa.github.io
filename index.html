@@ -9,7 +9,11 @@
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="Jekyll目录及一些说明 Jekyll的基本结构： 文件或目录 功能描述 _config.yml Jekyll的配置文件 _includes 代码片段文件夹 _layouts 模板文件夹 _posts 文章文件夹 _sites 生成的博客 具体描述如下： &hellip;">
+  <meta name="description" content="Octopress默认的表格没有边框，比较难看。需要增加一个css。 新建一个 data-table.css，放到source/stylesheets下面 table {
+border-style:solid;
+border-width:1px;
+border-color:#e7e3e7;
+} &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +88,116 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2014/03/27/add-table-for-octopress/">Octopress表格设置</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-27T14:50:05+00:00" pubdate data-updated="true">Mar 27<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Octopress默认的表格没有边框，比较难看。需要增加一个css。</p>
+
+<h2>新建一个 <code>data-table.css</code>，放到<code>source/stylesheets</code>下面</h2>
+
+<ul>
+<li><ul>
+<li>table {
+border-style:solid;
+border-width:1px;
+border-color:#e7e3e7;
+}</li>
+</ul>
+</li>
+<li><ul>
+<li>table th, * + table td {
+border-style:dashed;
+border-width:1px;
+border-color:#e7e3e7;
+padding-left: 3px;
+padding-right: 3px;
+}</li>
+</ul>
+</li>
+<li><ul>
+<li>table th {
+border-style:solid;
+font-weight:bold;
+background: url(&ldquo;/images/noise.png?1330434582&rdquo;) repeat scroll left top #F7F3F7;
+}</li>
+</ul>
+</li>
+<li><ul>
+<li>table th[align=&ldquo;left&rdquo;], * + table td[align=&ldquo;left&rdquo;] {
+text-align:left;
+}</li>
+</ul>
+</li>
+<li><ul>
+<li>table th[align=&ldquo;right&rdquo;], * + table td[align=&ldquo;right&rdquo;] {
+text-align:right;
+}</li>
+</ul>
+</li>
+<li><ul>
+<li>table th[align=&ldquo;center&rdquo;], * + table td[align=&ldquo;center&rdquo;] {
+text-align:center;
+}</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>在<code>source/_includes/head.html</code>增加如下代码：</h2>
+
+<p><link href="{{ root_url }}/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+{% if page.styles contains &lsquo;data-table&rsquo; %}
+<link href="{{ root_url }}/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+{% endif %}</p>
+
+<h2>在需要该样式的post中增加</h2>
+
+<pre><code>styles: [data-table]
+</code></pre>
+
+<p>即可。</p>
+
+<h2>表格写法</h2>
+
+<pre><code>左对齐表头 | 中间对齐表头 | 右对齐表头
+:----------|:------------:|----------:
+左对齐数据 |中间对齐数据  |右对齐数据
+第二行数据 |也是第二行    |还是第二行
+懒得写了...|.....         |.....
+长数据，以便看出表头的对齐|长数据，以便看出表头的对齐|长数据，以便看出表头的对齐
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2014/03/23/variable-and-template-in-jekyll/">Jekyll中的变量和模板</a></h1>
     
     
@@ -114,30 +228,30 @@
 <table>
 <thead>
 <tr>
-<th align="left">文件或目录  </th>
-<th align="right">     功能描述</th>
+<th align="center">文件或目录  </th>
+<th align="left">     功能描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">_config.yml </td>
-<td align="right"> Jekyll的配置文件</td>
+<td align="center">_config.yml </td>
+<td align="left"> Jekyll的配置文件</td>
 </tr>
 <tr>
-<td align="left">_includes   </td>
-<td align="right"> 代码片段文件夹</td>
+<td align="center">_includes   </td>
+<td align="left"> 代码片段文件夹</td>
 </tr>
 <tr>
-<td align="left">_layouts    </td>
-<td align="right"> 模板文件夹</td>
+<td align="center">_layouts    </td>
+<td align="left"> 模板文件夹</td>
 </tr>
 <tr>
-<td align="left">_posts      </td>
-<td align="right"> 文章文件夹</td>
+<td align="center">_posts      </td>
+<td align="left"> 文章文件夹</td>
 </tr>
 <tr>
-<td align="left">_sites      </td>
-<td align="right"> 生成的博客</td>
+<td align="center">_sites      </td>
+<td align="left"> 生成的博客</td>
 </tr>
 </tbody>
 </table>
@@ -157,26 +271,26 @@
 <table>
 <thead>
 <tr>
-<th align="left">变量   </th>
-<th align="right">                      描述</th>
+<th align="center">变量   </th>
+<th align="left">                      描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">site      </td>
-<td align="right"> 全站的信息+_config.yml文件中的配置选项</td>
+<td align="center">site      </td>
+<td align="left"> 全站的信息+_config.yml文件中的配置选项</td>
 </tr>
 <tr>
-<td align="left">page      </td>
-<td align="right"> 这个变量中包含YAML前置数据,另外加上两个额外的变量值:url和content</td>
+<td align="center">page      </td>
+<td align="left"> 这个变量中包含YAML前置数据,另外加上两个额外的变量值:url和content</td>
 </tr>
 <tr>
-<td align="left">content   </td>
-<td align="right"> 在布局模板文件中，这里变量包含了页面的子视图。这个变量将会把渲染后的内容插入到模板文件中。这个变量不能在文章和页面文件中使用</td>
+<td align="center">content   </td>
+<td align="left"> 在布局模板文件中，这里变量包含了页面的子视图。这个变量将会把渲染后的内容插入到模板文件中。这个变量不能在文章和页面文件中使用</td>
 </tr>
 <tr>
-<td align="left">paginator </td>
-<td align="right"> 一旦paginate配置选项被设置了， 这个变量才能被使用</td>
+<td align="center">paginator </td>
+<td align="left"> 一旦paginate配置选项被设置了， 这个变量才能被使用</td>
 </tr>
 </tbody>
 </table>
@@ -187,46 +301,46 @@
 <table>
 <thead>
 <tr>
-<th align="left">变量      </th>
-<th align="right">                  描述</th>
+<th align="center">变量      </th>
+<th align="left">                  描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">page.content    </td>
-<td align="right"> 页面中未渲染的内容</td>
+<td align="center">page.content    </td>
+<td align="left"> 页面中未渲染的内容</td>
 </tr>
 <tr>
-<td align="left">page.title      </td>
-<td align="right"> 文章的标题</td>
+<td align="center">page.title      </td>
+<td align="left"> 文章的标题</td>
 </tr>
 <tr>
-<td align="left">page.url        </td>
-<td align="right"> 除去域名以外的URL，例子:/2013/12/14/higrid-net.html</td>
+<td align="center">page.url        </td>
+<td align="left"> 除去域名以外的URL，例子:/2013/12/14/higrid-net.html</td>
 </tr>
 <tr>
-<td align="left">page.date       </td>
-<td align="right"> 指定每一篇文章的时间，这个选项能够覆盖一篇文章中前置数据设置的时间，它的格式是这样的:YYYY-MM-DD HH:MM:SS</td>
+<td align="center">page.date       </td>
+<td align="left"> 指定每一篇文章的时间，这个选项能够覆盖一篇文章中前置数据设置的时间，它的格式是这样的:YYYY-MM-DD HH:MM:SS</td>
 </tr>
 <tr>
-<td align="left">page.id         </td>
-<td align="right"> 每一篇文章的唯一标示符(在RSS中非常有用)例子：/2008/12/14/higrid-net</td>
+<td align="center">page.id         </td>
+<td align="left"> 每一篇文章的唯一标示符(在RSS中非常有用)例子：/2008/12/14/higrid-net</td>
 </tr>
 <tr>
-<td align="left">page.categories </td>
-<td align="right"> 这篇文章隶属的分类的一个列表，分类是通过在<em>post目录中的目录结构推导而来的。举例来说，在路径/work/code/</em>posts/2008-12-24-closures.textile下的文件，这个变量将会是[work,code]。这个变量也能在YAML前置数据中被指定。</td>
+<td align="center">page.categories </td>
+<td align="left"> 这篇文章隶属的分类的一个列表，分类是通过在<em>post目录中的目录结构推导而来的。举例来说，在路径/work/code/</em>posts/2008-12-24-closures.textile下的文件，这个变量将会是[work,code]。这个变量也能在YAML前置数据中被指定。</td>
 </tr>
 <tr>
-<td align="left">page.tags       </td>
-<td align="right"> 这篇文章的标签的列表。这些数据能够在YAML前置数据中指定</td>
+<td align="center">page.tags       </td>
+<td align="left"> 这篇文章的标签的列表。这些数据能够在YAML前置数据中指定</td>
 </tr>
 <tr>
-<td align="left">page.next       </td>
-<td align="right"> 按时间序的下一篇文章</td>
+<td align="center">page.next       </td>
+<td align="left"> 按时间序的下一篇文章</td>
 </tr>
 <tr>
-<td align="left">page.content    </td>
-<td align="right"> 按时间序的上一篇文章</td>
+<td align="center">page.content    </td>
+<td align="left"> 按时间序的上一篇文章</td>
 </tr>
 </tbody>
 </table>
@@ -239,38 +353,38 @@
 <table>
 <thead>
 <tr>
-<th align="left">变量          </th>
-<th align="right">          描述</th>
+<th align="center">变量          </th>
+<th align="left">          描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">paginator.per_page      </td>
-<td align="right"> 每一个页面上文章的数量</td>
+<td align="center">paginator.per_page      </td>
+<td align="left"> 每一个页面上文章的数量</td>
 </tr>
 <tr>
-<td align="left">paginator.posts         </td>
-<td align="right"> 当前页面上可用的文章</td>
+<td align="center">paginator.posts         </td>
+<td align="left"> 当前页面上可用的文章</td>
 </tr>
 <tr>
-<td align="left">paginator.total_posts   </td>
-<td align="right"> 所有文章的数量</td>
+<td align="center">paginator.total_posts   </td>
+<td align="left"> 所有文章的数量</td>
 </tr>
 <tr>
-<td align="left">paginator.total_pages   </td>
-<td align="right"> 所有页面的数量</td>
+<td align="center">paginator.total_pages   </td>
+<td align="left"> 所有页面的数量</td>
 </tr>
 <tr>
-<td align="left">paginator.page          </td>
-<td align="right"> 当前页面的数量</td>
+<td align="center">paginator.page          </td>
+<td align="left"> 当前页面的数量</td>
 </tr>
 <tr>
-<td align="left">paginator.previous_page </td>
-<td align="right"> 前面的页面的数量</td>
+<td align="center">paginator.previous_page </td>
+<td align="left"> 前面的页面的数量</td>
 </tr>
 <tr>
-<td align="left">paginator.next_page     </td>
-<td align="right"> 接下来的的页面的数量</td>
+<td align="center">paginator.next_page     </td>
+<td align="left"> 接下来的的页面的数量</td>
 </tr>
 </tbody>
 </table>
@@ -1133,98 +1247,6 @@ vagrant ssh                         #进入虚拟环境
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/09/10/With-Jekyll-build-Personal-Blog/">用-Jekyll-搭建个人博客</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-09-10T00:00:00+00:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>使用理由</h3>
-
-<ol>
-<li> 使用 Markdown， 专心写博客，无样式排版烦恼</li>
-<li> 使用自己喜欢的本地编辑器，本地随时写博客，可以本地预览，方便自己使用</li>
-<li> 并使用 Git 管理博客，内容永不丢失</li>
-<li> 可以部署在 github 上，不用自己购买管理 VPS，甚至域名也可以不买，对学生来说很适合</li>
-<li> 没有第三方博客系统的广告，限制，随心而写</li>
-</ol>
-
-
-<h3>如何搭建</h3>
-
-<ol>
-<li> 由于 Jekyll 是用 Ruby 写的，因此首先要搭建 Ruby 执行环境，同时安装 git 版本控制工具</li>
-<li> 在 Github 上创建一个仓库，仓库名为 <code>github 账户名.github.com</code> 或者 <code>github 账户名.github.io</code></li>
-<li><p> 克隆仓库到本地，并初始化仓库。然后发布博客，第一次发布后大约需要 <code>十分钟</code> 就可以通过 <code>yourname.github.com</code> 访问博客了</p>
-
-<pre><code>git clone https://github.com/yourname/yourname.github.com blog
-cd blog
-touch {README.md,index.html}        # 在 README.md 和 index.html 中加入内容
-git add .
-git commit -m "初始化提交"
-git push origin master
-</code></pre></li>
-<li><p> 安装 Jekyll 规则搭建个人博客框架，具体参考 <a href="http://jekyllrb.com/" title="Jekyll 官方文档">Jekyll官方文档</a></p></li>
-</ol>
-
-
-<h3>Markdown 语法简记</h3>
-
-<ul>
-<li><code>1--6 级标题</code> 在行首使用 1-6 个 # 号</li>
-<li><code>块引用</code> 在一段的第一行前面加上 > 表示一个区块引用， > 可以嵌套</li>
-<li><code>列表</code> 无序列表 使用 *、 + 或是 &ndash; 作为列表标记，有序列表 则使用 数字接着一个英文句点</li>
-<li><code>代码</code> 缩进 4 个空格 表示一个代码块， 使用 反引号（`）  标记一小段行内代码</li>
-<li><code>强调</code> 用一个 * 或 _ 包围转成 &lt;em> 标签，用两个 * 或 _ 包围转成 &lt;strong> 标签，</li>
-<li><code>分割线</code> 用三个以上的 *、 -、 _ 来建立一个分隔线，行内不能有其他东西</li>
-<li><p><code>超链接和图片链接</code> 图片链接和超链接基本相同，图片链接多一个 ！。都有两种样式：行内式 和 参考式</p>
-
-<pre><code>行内式：
-    [潮汐猎人的博客](http://bitbegin.github.io "潮汐猎人的博客")
-
-参考式：
-    [潮汐猎人的博客][bitbegin]
-    [bitbegin]: http://bitbegin.github.io "潮汐猎人的博客"        # 此行可以放在文章的任意位置
-</code></pre></li>
-<li><p><code>反斜杠和自动链接</code> 特殊字符可用 \ 转义； 把 网址 或 电子邮件信箱 用 &lt;> 包起来，会自动链接</p></li>
-<li><p><code>表格</code> 不是 Markdown 的标准语法</p>
-
-<pre><code>|     用户名     |     年龄    |
-| -------------  | ----------- |
-|     路人甲     |     21      |
-|     路人乙     |     21      |
-</code></pre></li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1253,6 +1275,10 @@ git push origin master
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/03/27/add-table-for-octopress/">Octopress表格设置</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/03/23/variable-and-template-in-jekyll/">Jekyll中的变量和模板</a>
       </li>
     
@@ -1266,10 +1292,6 @@ git push origin master
     
       <li class="post">
         <a href="/blog/2014/03/09/update-debian-wheezy-mirrors/">Debian7 Wheezy 镜像源的配置</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/09/vagrant-introduction/">Vagrant使用简介</a>
       </li>
     
   </ul>

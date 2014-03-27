@@ -5,13 +5,15 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>about - Do Far</title>
+  <title>Octopress表格设置 - Do Far</title>
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="about Feb 26th, 2014 关于我 昵称： 潮汐猎人
-E名： arthur
-Gmail： &#98;&#105;&#x74;&#98;&#x65;&#103;&#105;&#x6e;&#x40;&#103;&#x6d;&#x61;&#105;&#108;&#x2e;&#99;&# &hellip;">
+  <meta name="description" content="Octopress默认的表格没有边框，比较难看。需要增加一个css。 新建一个 data-table.css，放到source/stylesheets下面 table {
+border-style:solid;
+border-width:1px;
+border-color:#e7e3e7;
+} &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +22,7 @@ Gmail： &#98;&#105;&#x74;&#98;&#x65;&#103;&#105;&#x6e;&#x40;&#103;&#x6d;&#x61;&
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.dofa.org/about">
+  <link rel="canonical" href="http://blog.dofa.org/blog/2014/03/27/add-table-for-octopress">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -79,50 +81,15 @@ Gmail： &#98;&#105;&#x74;&#98;&#x65;&#103;&#105;&#x6e;&#x40;&#103;&#x6d;&#x61;&
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">about</h1>
-    <p class="meta">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-26T07:40:00+00:00" pubdate data-updated="true">Feb 26<span>th</span>, 2014</time></p>
-  </header>
-  
-  <h2>关于我</h2>
-
-<ul>
-<li>昵称： 潮汐猎人</li>
-<li>E名： arthur</li>
-<li>Gmail： <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#x3a;&#98;&#105;&#116;&#x62;&#101;&#x67;&#105;&#110;&#x40;&#x67;&#109;&#97;&#x69;&#108;&#x2e;&#x63;&#x6f;&#109;">&#98;&#105;&#x74;&#98;&#x65;&#103;&#105;&#x6e;&#x40;&#103;&#x6d;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#109;</a></li>
-<li>QQ： 516199859</li>
-<li>爱好： Internet、Ebedded and etc</li>
-</ul>
-
-
-<h2>关于站点</h2>
-
-<ul>
-<li>站名： dofa的博客</li>
-<li>描述： There is a will, there is a way.</li>
-<li>偏重： 通信、网络、设计、开发</li>
-</ul>
-
-
-  
-    <footer>
+    
+      <h1 class="entry-title">Octopress表格设置</h1>
+    
+    
       <p class="meta">
         
-        
 
 
 
@@ -134,20 +101,151 @@ Gmail： &#98;&#105;&#x74;&#98;&#x65;&#103;&#105;&#x6e;&#x40;&#103;&#x6d;&#x61;&
   
 
 
-<time datetime="2014-02-26T07:40:00+00:00" pubdate data-updated="true">Feb 26<span>th</span>, 2014</time>
+<time datetime="2014-03-27T14:50:05+00:00" pubdate data-updated="true">Mar 27<span>th</span>, 2014</time>
         
       </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Octopress默认的表格没有边框，比较难看。需要增加一个css。</p>
+
+<h2>新建一个 <code>data-table.css</code>，放到<code>source/stylesheets</code>下面</h2>
+
+<ul>
+<li><ul>
+<li>table {
+border-style:solid;
+border-width:1px;
+border-color:#e7e3e7;
+}</li>
+</ul>
+</li>
+<li><ul>
+<li>table th, * + table td {
+border-style:dashed;
+border-width:1px;
+border-color:#e7e3e7;
+padding-left: 3px;
+padding-right: 3px;
+}</li>
+</ul>
+</li>
+<li><ul>
+<li>table th {
+border-style:solid;
+font-weight:bold;
+background: url(&ldquo;/images/noise.png?1330434582&rdquo;) repeat scroll left top #F7F3F7;
+}</li>
+</ul>
+</li>
+<li><ul>
+<li>table th[align=&ldquo;left&rdquo;], * + table td[align=&ldquo;left&rdquo;] {
+text-align:left;
+}</li>
+</ul>
+</li>
+<li><ul>
+<li>table th[align=&ldquo;right&rdquo;], * + table td[align=&ldquo;right&rdquo;] {
+text-align:right;
+}</li>
+</ul>
+</li>
+<li><ul>
+<li>table th[align=&ldquo;center&rdquo;], * + table td[align=&ldquo;center&rdquo;] {
+text-align:center;
+}</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>在<code>source/_includes/head.html</code>增加如下代码：</h2>
+
+<p><link href="{{ root_url }}/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+{% if page.styles contains &lsquo;data-table&rsquo; %}
+<link href="{{ root_url }}/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+{% endif %}</p>
+
+<h2>在需要该样式的post中增加</h2>
+
+<pre><code>styles: [data-table]
+</code></pre>
+
+<p>即可。</p>
+
+<h2>表格写法</h2>
+
+<pre><code>左对齐表头 | 中间对齐表头 | 右对齐表头
+:----------|:------------:|----------:
+左对齐数据 |中间对齐数据  |右对齐数据
+第二行数据 |也是第二行    |还是第二行
+懒得写了...|.....         |.....
+长数据，以便看出表头的对齐|长数据，以便看出表头的对齐|长数据，以便看出表头的对齐
+</code></pre>
+</div>
+
+
+  <footer>
+    <p class="meta">
       
-        <div class="sharing">
+  
+
+<span class="byline author vcard">Posted by <span class="fn">dofa</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-27T14:50:05+00:00" pubdate data-updated="true">Mar 27<span>th</span>, 2014</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
   
   
   
 </div>
 
+    
+    <p class="meta">
       
-    </footer>
-  
+        <a class="basic-alignment left" href="/blog/2014/03/23/variable-and-template-in-jekyll/" title="Previous Post: Jekyll中的变量和模板">&laquo; Jekyll中的变量和模板</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+
+  <section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread" data-title=""></div>
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"bitbegin"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<!-- Duoshuo Comment END -->
+</div>
+  </section>
 
 </div>
 
