@@ -4,7 +4,7 @@
   <title><![CDATA[Do Far]]></title>
   <link href="http://blog.dofa.org/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-03-27T13:18:19+00:00</updated>
+  <updated>2014-03-27T13:23:19+00:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -123,6 +123,86 @@
 懒得写了...|.....         |.....
 长数据，以便看出表头的对齐|长数据，以便看出表头的对齐|长数据，以便看出表头的对齐
 </code></pre>
+
+<h2>table test 2</h2>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>           变量          </th>
+<th>          描述          </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td> paginator.per_page      </td>
+<td> 每一个页面上文章的数量 |</td>
+</tr>
+<tr>
+<td></td>
+<td>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</td>
+<td>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|</td>
+</tr>
+<tr>
+<td></td>
+<td> paginator.posts         </td>
+<td> 当前页面上可用的文章   |</td>
+</tr>
+<tr>
+<td></td>
+<td>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</td>
+<td>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|</td>
+</tr>
+<tr>
+<td></td>
+<td> paginator.total_posts   </td>
+<td> 所有文章的数量         |</td>
+</tr>
+<tr>
+<td></td>
+<td>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</td>
+<td>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|</td>
+</tr>
+<tr>
+<td></td>
+<td> paginator.total_pages   </td>
+<td> 所有页面的数量         |</td>
+</tr>
+<tr>
+<td></td>
+<td>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</td>
+<td>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|</td>
+</tr>
+<tr>
+<td></td>
+<td> paginator.page          </td>
+<td> 当前页面的数量         |</td>
+</tr>
+<tr>
+<td></td>
+<td>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</td>
+<td>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|</td>
+</tr>
+<tr>
+<td></td>
+<td> paginator.previous_page </td>
+<td> 前面的页面的数量       |</td>
+</tr>
+<tr>
+<td></td>
+<td>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</td>
+<td>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|</td>
+</tr>
+<tr>
+<td></td>
+<td> paginator.next_page     </td>
+<td> 接下来的的页面的数量   |</td>
+</tr>
+</tbody>
+</table>
+
 ]]></content>
   </entry>
   
