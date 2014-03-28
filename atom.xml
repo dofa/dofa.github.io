@@ -4,7 +4,7 @@
   <title><![CDATA[Do Far]]></title>
   <link href="http://blog.dofa.org/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-03-28T13:44:22+00:00</updated>
+  <updated>2014-03-28T13:50:20+00:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -20,9 +20,9 @@
     <id>http://blog.dofa.org/blog/2014/03/27/add-table-for-octopress</id>
     <content type="html"><![CDATA[<p>Octopress默认的表格没有边框，比较难看。需要增加一个css。</p>
 
-<h2>添加样式<em>css</em></h2>
+<h2>添加样式 <em>css</em></h2>
 
-<p>新建一个 <em>data-table.css</em>，放到<em>source/stylesheets</em>下面</p>
+<p>新建一个 <em>data-table.css</em> ，放到 <em>source/stylesheets</em> 下面</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -86,24 +86,13 @@
 
 <h2>包含样式</h2>
 
-<p>在<em>source/_includes/head.html</em>增加如下代码：</p>
+<p>在 <em>source/_includes/head.html</em> 增加如下代码：</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>&lt;link href="{{ root_url }}/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css"&gt;
-</span><span class='line'>{% if page.styles contains 'data-table' %}
-</span><span class='line'>&lt;link href="{{ root_url }}/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" /&gt;
-</span><span class='line'>{% endif %}</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>&lt;link href="{{ root_url }}/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" /&gt;</span></code></pre></td></tr></table></div></figure>
 
-
-<h2>在需要该样式的post中增加</h2>
-
-<pre><code>styles: [data-table]
-</code></pre>
-
-<p>即可。</p>
 
 <h2>表格写法</h2>
 
