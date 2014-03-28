@@ -17,7 +17,7 @@ Octopress默认的表格没有边框，比较难看。需要增加一个css。
 
 {% raw %}
 ```
-table th, table td {
+* + table th, * + table td {
   border-style:dashed;
   border-width:1px;
   border-color:#007eff;
@@ -25,25 +25,25 @@ table th, table td {
   padding-right: 3px;
 }
  
-table th {
+* + table th {
   border-style:solid;
   font-weight:bold;
   background-color:#d2e8ff;
 }
 
-table tr:hover{
+* + table tr:hover{
     background-color:#c4e4fe;
 } 
 
-table th[align="left"], table td[align="left"] {
+* + table th[align="left"], * + table td[align="left"] {
   text-align:left;
 }
  
-table th[align="right"], table td[align="right"] {
+* + table th[align="right"], * + table td[align="right"] {
   text-align:right;
 }
  
-table th[align="center"], table td[align="center"] {
+* + table th[align="center"], * + table td[align="center"] {
   text-align:center;
 }
 ```
