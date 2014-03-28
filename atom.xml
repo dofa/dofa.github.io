@@ -4,7 +4,7 @@
   <title><![CDATA[Do Far]]></title>
   <link href="http://blog.dofa.org/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-03-28T13:50:20+00:00</updated>
+  <updated>2014-03-28T13:59:41+00:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -22,7 +22,7 @@
 
 <h2>添加样式 <em>css</em></h2>
 
-<p>新建一个 <em>data-table.css</em> ，放到 <em>source/stylesheets</em> 下面</p>
+<p>新建一个 <code>data-table.css</code> ，放到 <code>source/stylesheets</code> 下面</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -86,7 +86,7 @@
 
 <h2>包含样式</h2>
 
-<p>在 <em>source/_includes/head.html</em> 增加如下代码：</p>
+<p>在 <code>source/_includes/head.html</code> 增加如下代码：</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -517,7 +517,7 @@
 
 <h4>注册Google Analytics账号</h4>
 
-<p>到<a href="http://www.google.com/analytics/" title="Google Analytics">Google Analytics</a>注册Analytics，获得一个google_analytics_tracking_id，添加到<code>_config</code>.yml中对应位置，并对网站进行验证即可</p>
+<p>到 <a href="http://www.google.com/analytics/" title="Google Analytics"><code>Google Analytics</code></a> 注册<code>Analytics</code>，获得一个<code>google_analytics_tracking_id</code>，添加到<code>_config.yml</code>中对应位置，并对网站进行验证即可</p>
 
 <h4>验证Google Analytics</h4>
 
@@ -842,7 +842,7 @@ vagrant ssh                         #进入虚拟环境
 
 <h2>修改post模板</h2>
 
-<p>在 source/_layouts/post.html 中的 disqus代码下下方添加多说评论模块</p>
+<p>在 <code>source/_layouts/post.html</code> 中的 disqus代码下下方添加多说评论模块</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -861,7 +861,7 @@ vagrant ssh                         #进入虚拟环境
 
 <h2>增加duoshuo模板</h2>
 
-<p>创建一个 source/_includes/post/duoshuo.html</p>
+<p>创建一个 <code>source/_includes/post/duoshuo.html</code></p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
