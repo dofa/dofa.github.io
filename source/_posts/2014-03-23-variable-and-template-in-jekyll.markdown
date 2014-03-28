@@ -5,7 +5,6 @@ date: 2014-03-23 21:10:39 +0000
 comments: true
 categories: Jekyll
 tags: jekyll
-styles: [data-table]
 ---
 
 ## Jekyll目录及一些说明

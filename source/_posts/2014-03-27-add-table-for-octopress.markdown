@@ -5,15 +5,14 @@ date: 2014-03-27 14:50:05 +0000
 comments: true
 categories: Octopress
 tags: octopress
-styles: [data-table]
 ---
 
 
 Octopress默认的表格没有边框，比较难看。需要增加一个css。
 
-## 添加样式*css*
+## 添加样式 *css*
 
-新建一个 *data-table.css*，放到*source/stylesheets*下面
+新建一个 *data-table.css* ，放到 *source/stylesheets* 下面
 
 {% raw %}
 ```
@@ -51,22 +50,15 @@ Octopress默认的表格没有边框，比较难看。需要增加一个css。
 
 ## 包含样式
 
-在*source/_includes/head.html*增加如下代码：
+在 *source/_includes/head.html* 增加如下代码：
 
 {% raw %}
 ```
 <link href="{{ root_url }}/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-{% if page.styles contains 'data-table' %}
 <link href="{{ root_url }}/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
-{% endif %}
 ```
 {% endraw %}
 
-## 在需要该样式的post中增加
-
-	styles: [data-table]
-
-即可。
 
 ## 表格写法
 
