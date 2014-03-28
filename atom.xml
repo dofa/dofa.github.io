@@ -4,7 +4,7 @@
   <title><![CDATA[Do Far]]></title>
   <link href="http://blog.dofa.org/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-03-28T13:22:02+00:00</updated>
+  <updated>2014-03-28T13:44:22+00:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -53,7 +53,7 @@
 <span class='line-number'>27</span>
 <span class='line-number'>28</span>
 <span class='line-number'>29</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>table th, table td {
+</pre></td><td class='code'><pre><code class=''><span class='line'>* + table th, * + table td {
 </span><span class='line'>  border-style:dashed;
 </span><span class='line'>  border-width:1px;
 </span><span class='line'>  border-color:#007eff;
@@ -61,25 +61,25 @@
 </span><span class='line'>  padding-right: 3px;
 </span><span class='line'>}
 </span><span class='line'> 
-</span><span class='line'>table th {
+</span><span class='line'>* + table th {
 </span><span class='line'>  border-style:solid;
 </span><span class='line'>  font-weight:bold;
 </span><span class='line'>  background-color:#d2e8ff;
 </span><span class='line'>}
 </span><span class='line'>
-</span><span class='line'>table tr:hover{
+</span><span class='line'>* + table tr:hover{
 </span><span class='line'>    background-color:#c4e4fe;
 </span><span class='line'>} 
 </span><span class='line'>
-</span><span class='line'>table th[align="left"], table td[align="left"] {
+</span><span class='line'>* + table th[align="left"], * + table td[align="left"] {
 </span><span class='line'>  text-align:left;
 </span><span class='line'>}
 </span><span class='line'> 
-</span><span class='line'>table th[align="right"], table td[align="right"] {
+</span><span class='line'>* + table th[align="right"], * + table td[align="right"] {
 </span><span class='line'>  text-align:right;
 </span><span class='line'>}
 </span><span class='line'> 
-</span><span class='line'>table th[align="center"], table td[align="center"] {
+</span><span class='line'>* + table th[align="center"], * + table td[align="center"] {
 </span><span class='line'>  text-align:center;
 </span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
 

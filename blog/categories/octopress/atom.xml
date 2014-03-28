@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | Do Far]]></title>
   <link href="http://blog.dofa.org/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-03-28T13:22:02+00:00</updated>
+  <updated>2014-03-28T13:44:22+00:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -26,7 +26,7 @@
 
 <p>
 ```
-table th, table td {
+* + table th, * + table td {
   border-style:dashed;
   border-width:1px;
   border-color:#007eff;
@@ -34,32 +34,43 @@ table th, table td {
   padding-right: 3px;
 }</p>
 
-<p>table th {
-  border-style:solid;
-  font-weight:bold;
-  background-color:#d2e8ff;
-}</p>
-
-<p>table tr:hover{</p>
-
-<pre><code>background-color:#c4e4fe;
-</code></pre>
-
-<p>}</p>
-
-<p>table th[align=&ldquo;left&rdquo;], table td[align=&ldquo;left&rdquo;] {
-  text-align:left;
-}</p>
-
-<p>table th[align=&ldquo;right&rdquo;], table td[align=&ldquo;right&rdquo;] {
-  text-align:right;
-}</p>
-
-<p>table th[align=&ldquo;center&rdquo;], table td[align=&ldquo;center&rdquo;] {
-  text-align:center;
+<ul>
+<li><ul>
+<li>table th {
+border-style:solid;
+font-weight:bold;
+background-color:#d2e8ff;
+}</li>
+</ul>
+</li>
+<li><ul>
+<li>table tr:hover{
+background-color:#c4e4fe;
+}</li>
+</ul>
+</li>
+<li><ul>
+<li>table th[align=&ldquo;left&rdquo;], * + table td[align=&ldquo;left&rdquo;] {
+text-align:left;
+}</li>
+</ul>
+</li>
+<li><ul>
+<li>table th[align=&ldquo;right&rdquo;], * + table td[align=&ldquo;right&rdquo;] {
+text-align:right;
+}</li>
+</ul>
+</li>
+<li><ul>
+<li>table th[align=&ldquo;center&rdquo;], * + table td[align=&ldquo;center&rdquo;] {
+text-align:center;
 }
 ```
-</p>
+</li>
+</ul>
+</li>
+</ul>
+
 
 <h2>包含样式</h2>
 
