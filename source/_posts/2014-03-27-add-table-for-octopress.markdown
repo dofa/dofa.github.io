@@ -12,7 +12,7 @@ Octopress默认的表格没有边框，比较难看。需要增加一个css。
 
 ## 添加样式 *css*
 
-新建一个 *data-table.css* ，放到 *source/stylesheets* 下面
+新建一个 `data-table.css` ，放到 `source/stylesheets` 下面
 
 {% raw %}
 ```
@@ -50,7 +50,7 @@ Octopress默认的表格没有边框，比较难看。需要增加一个css。
 
 ## 包含样式
 
-在 *source/_includes/head.html* 增加如下代码：
+在 `source/_includes/head.html` 增加如下代码：
 
 {% raw %}
 ```

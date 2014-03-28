@@ -12,7 +12,7 @@ tags: octopress, statistics
 
 #### 注册Google Analytics账号
 
-到[Google Analytics](http://www.google.com/analytics/ "Google Analytics")注册Analytics，获得一个google_analytics_tracking_id，添加到`_config`.yml中对应位置，并对网站进行验证即可
+到 [`Google Analytics`](http://www.google.com/analytics/ "Google Analytics") 注册`Analytics`，获得一个`google_analytics_tracking_id`，添加到`_config.yml`中对应位置，并对网站进行验证即可
 
 #### 验证Google Analytics
 

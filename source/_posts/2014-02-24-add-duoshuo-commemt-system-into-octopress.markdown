@@ -21,7 +21,7 @@ duoshuo_short_name: yourname
 
 ## 修改post模板
 
-在 source/_layouts/post.html 中的 disqus代码下下方添加多说评论模块
+在 `source/_layouts/post.html` 中的 disqus代码下下方添加多说评论模块
 
 {% raw %}
 ```html
@@ -36,7 +36,7 @@ duoshuo_short_name: yourname
 
 ## 增加duoshuo模板
 
-创建一个 source/_includes/post/duoshuo.html
+创建一个 `source/_includes/post/duoshuo.html`
 
 {% raw %}
 ```html
