@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "把octopress博客从github搬到gitcafe"
+title: "把Octopress从github搬到gitcafe"
 date: 2014-03-29 01:49:00 -0700
 comments: true
 categories: Octopress
