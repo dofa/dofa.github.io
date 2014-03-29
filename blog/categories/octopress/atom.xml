@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | Do Far]]></title>
   <link href="http://blog.dofa.org/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-03-29T08:30:31+00:00</updated>
+  <updated>2014-03-29T09:01:06+00:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -12,6 +12,41 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[把octopress博客从github搬到gitcafe]]></title>
+    <link href="http://blog.dofa.org/blog/2014/03/29/move-octopress-from-gihub-to-gitcafe/"/>
+    <updated>2014-03-29T08:49:00+00:00</updated>
+    <id>http://blog.dofa.org/blog/2014/03/29/move-octopress-from-gihub-to-gitcafe</id>
+    <content type="html"><![CDATA[<p>其实找就想把<code>octopress</code>博客从<code>github</code>搬到<code>gitcafe</code>了，因为国内访问<code>github</code>的速度实在慢，而且还不时被墙。比如，今天不翻墙就无法访问了。</p>
+
+<p>我采用了比较笨的方法：原本的东西都不需要改动，在一个新的文件夹下 <em>clone github master</em> 分支，增加 <em>gitcafe remote</em>，然后<code>push</code>到<code>gitcafe</code>的<code>gitcafe-pages</code>分支上。</p>
+
+<h2>clone github master</h2>
+
+<p>这个是<code>rake deploy</code>到<code>github</code>上去的文件。</p>
+
+<h2>增加remote</h2>
+
+<pre><code>git remote addd gitcafe git@gitcafe.com:xx/xx
+</code></pre>
+
+<h2>push到gitcafe</h2>
+
+<pre><code>git push gitcafe gitcafe-pages
+</code></pre>
+
+<h2>注意事项</h2>
+
+<h4>在gitcafe上增加ssh密钥</h4>
+
+<p>否则git无法连接</p>
+
+<h4>把指向github的域名改到gitcafe上去</h4>
+
+<p>这样方便再次迁移</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Octopress表格设置]]></title>
