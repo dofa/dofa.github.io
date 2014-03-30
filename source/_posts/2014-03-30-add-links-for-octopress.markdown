@@ -31,9 +31,6 @@ tags: octopress
         <li>
         <a href="http://coolshell.cn/">酷壳CoolShell</a>
         </li>
-        <li>
-        <a href="http://www.cnblogs.com/Solstice/">陈硕</a>
-        </li>
 </ul>
 </section>
 ```
