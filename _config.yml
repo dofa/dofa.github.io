@@ -8,6 +8,7 @@ subtitle: There is a will, there is a way.
 author: dofa
 simple_search: http://google.com/search
 description: Technical reflections and records of thoughts
+keywords: c/c++, lisp, ruby, ror, web, Octopress, Jekyll, Embedded, Sublime Text, Vim
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
