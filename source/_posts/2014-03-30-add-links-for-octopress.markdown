@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "为Octopress增加博客链接"
+title: "为Octopress增加友情链接"
 date: 2014-03-30 10:16:12 -0700
 comments: true
 categories: Octopress
@@ -9,7 +9,9 @@ tags: octopress
 
 ## 酷站博客
 
-你有一些经常去的网站、博客，想推荐给大家，则可以在侧边栏加上一个“酷站博客” ，当然名字你自己取即可。
+
+
+你有一些经常去的网站、博客，想推荐给大家，则可以在侧边栏加上一个“友情链接” 。
 
 在 `source/_includes/custom/asides` 创建 `blog_link.html` ，代码如下：
 
@@ -17,7 +19,7 @@ tags: octopress
 
 ```html
 <section>
-<h1>酷站博客</h1>
+<h1>友情链接</h1>
 <ul>
         <li>
         <a href="http://blog.jobbole.com/">伯乐在线</a>
