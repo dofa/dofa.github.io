@@ -7,7 +7,7 @@ categories: Octopress
 tags: octopress
 ---
 
-## 酷站博客
+## 友情链接
 
 
 
