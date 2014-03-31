@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Javascript | Do Far]]></title>
+  <link href="http://blog.dofa.org/blog/categories/javascript/atom.xml" rel="self"/>
+  <link href="http://blog.dofa.org/"/>
+  <updated>2014-03-31T15:29:40+00:00</updated>
+  <id>http://blog.dofa.org/</id>
+  <author>
+    <name><![CDATA[dofa]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript学习--BOM基础之window对象]]></title>
+    <link href="http://blog.dofa.org/blog/2014/03/31/learn-javastript-bom-base-window-object/"/>
+    <updated>2014-03-31T15:26:06+00:00</updated>
+    <id>http://blog.dofa.org/blog/2014/03/31/learn-javastript-bom-base-window-object</id>
+    <content type="html"><![CDATA[<h2>什么是 <code>BOM</code></h2>
+
+<ul>
+<li><code>BOM</code>是<code>browser object model</code>的缩写，简称浏览器对象模型</li>
+<li><code>BOM</code>提供了独立于内容而与浏览器窗口进行交互的对象</li>
+<li>由于<code>BOM</code>主要用于管理窗口与窗口之间的通讯，因此其核心对象是<code>window</code></li>
+<li><code>BOM</code>由一系列相关的对象构成，并且每个对象都提供了很多方法与属性</li>
+<li><code>BOM</code>缺乏标准，<code>JavaScript</code>语法的标准化组织是<code>ECMA</code>，<code>DOM</code>的标准化组织是<code>W3C</code></li>
+<li><code>BOM</code>最初是<code>Netscape</code>浏览器标准的一部分</li>
+</ul>
+
+
+<h2>BOM结构图</h2>
+
+<p><img src="http://dofa.u.qiniudn.com/image/web/browser_objects.png"></p>
+
+<p>window对象是BOM的顶层(核心)对象，所有对象都是通过它延伸出来的，也可以称为window的子对象。</p>
+
+<p>由于window是顶层对象，因此调用它的子对象时可以不显示的指明window对象，例如下面两行代码是一样的：</p>
+
+<pre><code>document.write("blog.dofa.org");
+window.document.write("blog.dofa.org");
+</code></pre>
+
+<h2>全局的window对象</h2>
+
+<h4>JavaScript中的任何一个全局函数或变量都是window的属性</h4>
+
+<pre><code>var sTest="dofa";
+document.write(sTest==window.sTest);
+</code></pre>
+
+<p>结果：</p>
+
+<pre><code>true    
+</code></pre>
+
+<p>由于sTest是全局变量，因此可以通过window.sTest访问这个变量</p>
+
+<h4>window与self对象</h4>
+
+<p>self对象与window对象完全相同，self通常用于确认就是在当前的窗体内</p>
+
+<h4>window的子对象</h4>
+
+<ul>
+<li>JavaScript document 对象</li>
+<li>JavaScript frames 对象</li>
+<li>JavaScript history 对象</li>
+<li>JavaScript location 对象</li>
+<li>JavaScript navigator 对象</li>
+<li>JavaScript screen 对象</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

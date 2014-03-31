@@ -4,7 +4,7 @@
   <title><![CDATA[Do Far]]></title>
   <link href="http://blog.dofa.org/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-03-30T02:43:29+00:00</updated>
+  <updated>2014-03-31T15:29:40+00:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -14,11 +14,73 @@
 
   
   <entry>
+    <title type="html"><![CDATA[JavaScript学习--BOM基础之window对象]]></title>
+    <link href="http://blog.dofa.org/blog/2014/03/31/learn-javastript-bom-base-window-object/"/>
+    <updated>2014-03-31T15:26:06+00:00</updated>
+    <id>http://blog.dofa.org/blog/2014/03/31/learn-javastript-bom-base-window-object</id>
+    <content type="html"><![CDATA[<h2>什么是 <code>BOM</code></h2>
+
+<ul>
+<li><code>BOM</code>是<code>browser object model</code>的缩写，简称浏览器对象模型</li>
+<li><code>BOM</code>提供了独立于内容而与浏览器窗口进行交互的对象</li>
+<li>由于<code>BOM</code>主要用于管理窗口与窗口之间的通讯，因此其核心对象是<code>window</code></li>
+<li><code>BOM</code>由一系列相关的对象构成，并且每个对象都提供了很多方法与属性</li>
+<li><code>BOM</code>缺乏标准，<code>JavaScript</code>语法的标准化组织是<code>ECMA</code>，<code>DOM</code>的标准化组织是<code>W3C</code></li>
+<li><code>BOM</code>最初是<code>Netscape</code>浏览器标准的一部分</li>
+</ul>
+
+
+<h2>BOM结构图</h2>
+
+<p><img src="http://dofa.u.qiniudn.com/image/web/browser_objects.png"></p>
+
+<p>window对象是BOM的顶层(核心)对象，所有对象都是通过它延伸出来的，也可以称为window的子对象。</p>
+
+<p>由于window是顶层对象，因此调用它的子对象时可以不显示的指明window对象，例如下面两行代码是一样的：</p>
+
+<pre><code>document.write("blog.dofa.org");
+window.document.write("blog.dofa.org");
+</code></pre>
+
+<h2>全局的window对象</h2>
+
+<h4>JavaScript中的任何一个全局函数或变量都是window的属性</h4>
+
+<pre><code>var sTest="dofa";
+document.write(sTest==window.sTest);
+</code></pre>
+
+<p>结果：</p>
+
+<pre><code>true    
+</code></pre>
+
+<p>由于sTest是全局变量，因此可以通过window.sTest访问这个变量</p>
+
+<h4>window与self对象</h4>
+
+<p>self对象与window对象完全相同，self通常用于确认就是在当前的窗体内</p>
+
+<h4>window的子对象</h4>
+
+<ul>
+<li>JavaScript document 对象</li>
+<li>JavaScript frames 对象</li>
+<li>JavaScript history 对象</li>
+<li>JavaScript location 对象</li>
+<li>JavaScript navigator 对象</li>
+<li>JavaScript screen 对象</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[为Octopress增加友情链接]]></title>
     <link href="http://blog.dofa.org/blog/2014/03/30/add-links-for-octopress/"/>
     <updated>2014-03-30T17:16:12+00:00</updated>
     <id>http://blog.dofa.org/blog/2014/03/30/add-links-for-octopress</id>
-    <content type="html"><![CDATA[<h2>酷站博客</h2>
+    <content type="html"><![CDATA[<h2>友情链接</h2>
 
 <p>你有一些经常去的网站、博客，想推荐给大家，则可以在侧边栏加上一个“友情链接” 。</p>
 
@@ -1664,65 +1726,6 @@ Ctrl+H：替换
 F3：查找下一个
 shift+F3：查找前一个
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Sublime Text 学习笔记]]></title>
-    <link href="http://blog.dofa.org/blog/2013/06/01/sublime-text-study-notes/"/>
-    <updated>2013-06-01T16:25:52+00:00</updated>
-    <id>http://blog.dofa.org/blog/2013/06/01/sublime-text-study-notes</id>
-    <content type="html"><![CDATA[<ul>
-<li>如果你的配置错误，导致Sublime Text2不能打开了，想要把配置改回来，那么配置文件在C:\Users\用户名\AppData\Roaming\Sublime Text 2\Packages\User中</li>
-<li>安装Package control，按快捷键Ctrl+`，打开命令输入界面（一般在下方），输入下面的命令后回车即可，重启Sublime Text2</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">urllib2</span><span class="o">,</span><span class="nn">os</span><span class="p">;</span><span class="n">pf</span><span class="o">=</span><span class="s">&#39;Package Control.sublime-package&#39;</span><span class="p">;</span><span class="n">ipp</span><span class="o">=</span><span class="n">sublime</span><span class="o">.</span><span class="n">installed_packages_path</span><span class="p">();</span><span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">ipp</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">ipp</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span><span class="p">;</span><span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ipp</span><span class="p">,</span><span class="n">pf</span><span class="p">),</span><span class="s">&#39;wb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&#39;http://sublime.wbond.net/&#39;</span><span class="o">+</span><span class="n">pf</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">,</span><span class="s">&#39;%20&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>修改字体
-Preferences->File Setting-User，打开配置文件，看里面有没font_face配置项，有就直接改，没有就自己加上，可能的配置文件如下：</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="s">&quot;color_scheme&quot;</span><span class="p">:</span> <span class="s">&quot;Packages/Color Scheme - Default/Black-Pearl2.tmTheme&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="s">&quot;font_face&quot;</span><span class="p">:</span> <span class="s">&quot;微软雅黑&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="s">&quot;font_size&quot;</span><span class="p">:</span> <span class="mf">10.0</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>设置代理(GoAgent)
-打开<code>settings - user</code>，输入：</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="s">&quot;http_proxy&quot;</span><span class="p">:</span> <span class="s">&quot;http://127.0.0.1:8087&quot;</span><span class="p">,</span>
-</span><span class='line'><span class="s">&quot;https_proxy&quot;</span><span class="p">:</span> <span class="s">&quot;http://127.0.0.1:8087&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li><p>同时编辑多行 (Ctrl+Shift+L (Win) 或  Command+Shift+L (Mac))
-如要在选中的多行文本的最后面同时添加一个字符“a”，先选中要编辑的多行文字，然后按快捷键，此时每行的末尾都会有个输入光标在闪，再按End键将鼠标定位到行末，（再按Home键将鼠标定位到行首）输入字母a即可。如要退出多行编辑状态，按Esc键即可。</p></li>
-<li><p>一次性选择全部的相同文本 (Alt+F3 (Win) 或 Ctrl+Command+G (Mac))</p></li>
-<li><p>竖向多行选择 (Shift+鼠标右键 (Win) 或 Option+鼠标左键 (Mac))</p></li>
-<li><p>手动选择多处不同文本 (Ctrl+鼠标左键(Win) 或 Command+鼠标左键(Mac) )</p></li>
-</ul>
-
 ]]></content>
   </entry>
   
