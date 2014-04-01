@@ -5,12 +5,14 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Sublime Text 学习笔记 - Do Far</title>
+  <title>JavaScript学习--BOM基础之document对象 - Do Far</title>
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="如果你的配置错误，导致Sublime Text2不能打开了，想要把配置改回来，那么配置文件在C:\Users\用户名\AppData\Roaming\Sublime Text 2\Packages\User中
-安装Package control，按快捷键Ctrl+`，打开命令输入界面（一般在下方 &hellip;">
+  <meta name="description" content="Document对象 document是BOM中最重要对象之一
+document对象是window对象的属性
+document对象包含一个节点对象，此对象包含每个单独页面的所有HTML元素，这就是W3C的DOM对象 Document属性 cookie &mdash; 用户cookie
+title &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.dofa.org/blog/2013/06/01/sublime-text-study-notes">
+  <link rel="canonical" href="http://blog.dofa.org/blog/2014/04/02/learn-javastript-bom-base-document-object+">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -82,7 +84,7 @@
   
   <header>
     
-      <h1 class="entry-title">Sublime Text 学习笔记</h1>
+      <h1 class="entry-title">JavaScript学习--BOM基础之document对象</h1>
     
     
       <p class="meta">
@@ -98,7 +100,7 @@
   
 
 
-<time datetime="2013-06-01T16:25:52+00:00" pubdate data-updated="true">Jun 1<span>st</span>, 2013</time>
+<time datetime="2014-04-02T04:35:06+00:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2014</time>
         
         
            | <a href="#comments">Comments</a>
@@ -108,57 +110,89 @@
   </header>
 
 
-<div class="entry-content"><ul>
-<li>如果你的配置错误，导致Sublime Text2不能打开了，想要把配置改回来，那么配置文件在C:\Users\用户名\AppData\Roaming\Sublime Text 2\Packages\User中</li>
-<li>安装Package control，按快捷键Ctrl+`，打开命令输入界面（一般在下方），输入下面的命令后回车即可，重启Sublime Text2</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">urllib2</span><span class="o">,</span><span class="nn">os</span><span class="p">;</span><span class="n">pf</span><span class="o">=</span><span class="s">&#39;Package Control.sublime-package&#39;</span><span class="p">;</span><span class="n">ipp</span><span class="o">=</span><span class="n">sublime</span><span class="o">.</span><span class="n">installed_packages_path</span><span class="p">();</span><span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">ipp</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">ipp</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span><span class="p">;</span><span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ipp</span><span class="p">,</span><span class="n">pf</span><span class="p">),</span><span class="s">&#39;wb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&#39;http://sublime.wbond.net/&#39;</span><span class="o">+</span><span class="n">pf</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">,</span><span class="s">&#39;%20&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="entry-content"><h2>Document对象</h2>
 
 <ul>
-<li>修改字体
-Preferences->File Setting-User，打开配置文件，看里面有没font_face配置项，有就直接改，没有就自己加上，可能的配置文件如下：</li>
+<li><code>document</code>是<code>BOM</code>中最重要对象之一</li>
+<li><code>document</code>对象是<code>window</code>对象的属性</li>
+<li><code>document</code>对象包含一个节点对象，此对象包含每个单独页面的所有<code>HTML</code>元素，这就是W3C的<code>DOM</code>对象</li>
 </ul>
 
+
+<h2>Document属性</h2>
+
+<ul>
+<li><code>cookie</code> &mdash;   用户<code>cookie</code></li>
+<li><code>title</code>   &mdash;  当前页面<code>title</code>标签中定义的文字</li>
+<li><code>URL</code> &mdash;  当前页面的<code>URL</code></li>
+</ul>
+
+
+<p>下面内容的不建议使用</p>
+
+<ul>
+<li><code>alinkColor</code>  &mdash;  代表<code>HTML body</code>标签的<code>alink</code>属性</li>
+<li><code>bgColor</code> &mdash;  代表<code>HTML body</code>标签的<code>bgcolor</code>属性</li>
+<li><code>fgColor</code> &mdash;  代表<code>HTML body</code>标签的<code>text</code>属性</li>
+<li><code>linkColor</code> &mdash;    代表<code>HTML body</code>标签的<code>link</code>属性</li>
+<li><code>vlinkColor</code>  &mdash;  代表<code>HTML body</code>标签的<code>vlink</code>属性</li>
+<li><code>lastModified</code>    &mdash; 页面最后修改的日期字符串，可以使用<code>Date</code>的构造函数转换为日期，例如：<code>new Date(document.lastModified);</code></li>
+<li><code>referrer</code>    &mdash;  浏览器<code>history</code>中后退一个位置的<code>URL</code></li>
+</ul>
+
+
+<p>由于document代表HTML文档的内容，因此可以通过它表示文档中加载的一些元素，这些元素全部通过集合访问。</p>
+
+<ul>
+<li><code>anchors</code> &mdash;  文档中所有锚(a name=&ldquo;aname&rdquo;)的集合</li>
+<li><code>applets</code> &mdash;  文档中所有<code>applet</code>标签表示的内容的集合</li>
+<li><code>embeds</code>  &mdash;  文档中所有<code>embed</code>标签表示的内容的集合</li>
+<li><code>forms</code>   &mdash;  文档中所有<code>form</code>标签表示的内容的集合</li>
+<li><code>images</code>  &mdash;  文档中所有<code>image</code>标签表示的内容的集合</li>
+<li><code>links</code>   &mdash; 文档中所有<code>a</code>(链接)标签表示的内容的集合</li>
+</ul>
+
+
+<h2>Document函数</h2>
+
+<ul>
+<li><code>JavaScript</code> <code>write()</code> 函数</li>
+<li><code>JavaScript</code> <code>writeln()</code> 函数</li>
+<li><code>JavaScript</code> <code>document.open()</code> 函数</li>
+<li><code>JavaScript</code> <code>document.close()</code> 函数</li>
+</ul>
+
+
+<h2>使用document索引页面内的元素</h2>
+
+<p>可以使用数字或名称索引页面中的元素集合，每个元素的属性都变成了集合中相应对象的属性。</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="s">&quot;color_scheme&quot;</span><span class="p">:</span> <span class="s">&quot;Packages/Color Scheme - Default/Black-Pearl2.tmTheme&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="s">&quot;font_face&quot;</span><span class="p">:</span> <span class="s">&quot;微软雅黑&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="s">&quot;font_size&quot;</span><span class="p">:</span> <span class="mf">10.0</span>
-</span><span class='line'><span class="p">}</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;form</span> <span class="na">name=</span><span class="s">&quot;form1&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://www.dreamdu.com/xhtml/&quot;</span> <span class="na">name=</span><span class="s">&quot;a1&quot;</span><span class="nt">&gt;</span>xhtml<span class="nt">&lt;/a&gt;&lt;/form&gt;</span>
+</span><span class='line'><span class="nt">&lt;form</span> <span class="na">name=</span><span class="s">&quot;form2&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://www.dreamdu.com/css/&quot;</span> <span class="na">name=</span><span class="s">&quot;a2&quot;</span><span class="nt">&gt;</span>css<span class="nt">&lt;/a&gt;&lt;/form&gt;</span>
+</span><span class='line'><span class="nt">&lt;form</span> <span class="na">name=</span><span class="s">&quot;form3&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://www.dreamdu.com/javascript/&quot;</span> <span class="na">name=</span><span class="s">&quot;a3&quot;</span><span class="nt">&gt;</span>javascript<span class="nt">&lt;/a&gt;&lt;/form&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">value=</span><span class="s">&quot;显示第二个表单的名称&quot;</span> <span class="na">onclick=</span><span class="s">&quot;alert(document.forms[1].name)&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">value=</span><span class="s">&quot;显示第二个表单的名称第二种方法&quot;</span> <span class="na">onclick=</span><span class="s">&quot;alert(document.forms[&#39;form2&#39;].name)&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">value=</span><span class="s">&quot;显示第三个链接的名称&quot;</span> <span class="na">onclick=</span><span class="s">&quot;alert(document.links[2].name)&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">value=</span><span class="s">&quot;显示第三个链接的名称第二种方法&quot;</span> <span class="na">onclick=</span><span class="s">&quot;alert(document.links[&#39;a3&#39;].name)&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">value=</span><span class="s">&quot;显示第三个链接href属性的值&quot;</span> <span class="na">onclick=</span><span class="s">&quot;alert(document.links[2].href)&quot;</span> <span class="nt">/&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<ul>
-<li>设置代理(GoAgent)
-打开<code>settings - user</code>，输入：</li>
-</ul>
+<p>表示第二个表单的方法：<code>document.forms[1]或document.forms["form2"]</code></p>
 
+<p>表示第三个链接的方法：<code>document.links[2]或document.links["a3"]</code></p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="s">&quot;http_proxy&quot;</span><span class="p">:</span> <span class="s">&quot;http://127.0.0.1:8087&quot;</span><span class="p">,</span>
-</span><span class='line'><span class="s">&quot;https_proxy&quot;</span><span class="p">:</span> <span class="s">&quot;http://127.0.0.1:8087&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li><p>同时编辑多行 (Ctrl+Shift+L (Win) 或  Command+Shift+L (Mac))
-如要在选中的多行文本的最后面同时添加一个字符“a”，先选中要编辑的多行文字，然后按快捷键，此时每行的末尾都会有个输入光标在闪，再按End键将鼠标定位到行末，（再按Home键将鼠标定位到行首）输入字母a即可。如要退出多行编辑状态，按Esc键即可。</p></li>
-<li><p>一次性选择全部的相同文本 (Alt+F3 (Win) 或 Ctrl+Command+G (Mac))</p></li>
-<li><p>竖向多行选择 (Shift+鼠标右键 (Win) 或 Option+鼠标左键 (Mac))</p></li>
-<li><p>手动选择多处不同文本 (Ctrl+鼠标左键(Win) 或 Command+鼠标左键(Mac) )</p></li>
-</ul>
-
+<p>表示第三个链接<code>href</code>属性的方法：<code>document.links[2].href</code></p>
 </div>
 
 
@@ -181,12 +215,12 @@ Preferences->File Setting-User，打开配置文件，看里面有没font_face�
   
 
 
-<time datetime="2013-06-01T16:25:52+00:00" pubdate data-updated="true">Jun 1<span>st</span>, 2013</time>
+<time datetime="2014-04-02T04:35:06+00:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/sublimetext/'>SublimeText</a>
+    <a class='category' href='/blog/categories/javascript/'>Javascript</a>
   
 </span>
 
@@ -202,10 +236,8 @@ Preferences->File Setting-User，打开配置文件，看里面有没font_face�
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/06/01/sublime-text-guide-and-tips/" title="Previous Post: Sublime Text 入门及技巧">&laquo; Sublime Text 入门及技巧</a>
+        <a class="basic-alignment left" href="/blog/2014/03/31/learn-javastript-bom-base-window-object/" title="Previous Post: JavaScript学习--BOM基础之window对象">&laquo; JavaScript学习--BOM基础之window对象</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/06/01/some-short-keys-of-sublime-text/" title="Next Post: Sublime Text的一些快捷键">Sublime Text的一些快捷键 &raquo;</a>
       
     </p>
   </footer>

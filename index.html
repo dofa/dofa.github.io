@@ -9,11 +9,10 @@
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="什么是 BOM BOM是browser object model的缩写，简称浏览器对象模型
-BOM提供了独立于内容而与浏览器窗口进行交互的对象
-由于BOM主要用于管理窗口与窗口之间的通讯，因此其核心对象是window
-BOM由一系列相关的对象构成，并且每个对象都提供了很多方法与属性
-BOM缺乏标准 &hellip;">
+  <meta name="description" content="Document对象 document是BOM中最重要对象之一
+document对象是window对象的属性
+document对象包含一个节点对象，此对象包含每个单独页面的所有HTML元素，这就是W3C的DOM对象 Document属性 cookie &mdash; 用户cookie
+title &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,127 @@ BOM缺乏标准 &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/04/02/learn-javastript-bom-base-document-object+/">JavaScript学习&#8211;BOM基础之document对象</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-02T04:35:06+00:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2014</time>
+        
+        
+           | <a href="/blog/2014/04/02/learn-javastript-bom-base-document-object+/#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Document对象</h2>
+
+<ul>
+<li><code>document</code>是<code>BOM</code>中最重要对象之一</li>
+<li><code>document</code>对象是<code>window</code>对象的属性</li>
+<li><code>document</code>对象包含一个节点对象，此对象包含每个单独页面的所有<code>HTML</code>元素，这就是W3C的<code>DOM</code>对象</li>
+</ul>
+
+
+<h2>Document属性</h2>
+
+<ul>
+<li><code>cookie</code> &mdash;   用户<code>cookie</code></li>
+<li><code>title</code>   &mdash;  当前页面<code>title</code>标签中定义的文字</li>
+<li><code>URL</code> &mdash;  当前页面的<code>URL</code></li>
+</ul>
+
+
+<p>下面内容的不建议使用</p>
+
+<ul>
+<li><code>alinkColor</code>  &mdash;  代表<code>HTML body</code>标签的<code>alink</code>属性</li>
+<li><code>bgColor</code> &mdash;  代表<code>HTML body</code>标签的<code>bgcolor</code>属性</li>
+<li><code>fgColor</code> &mdash;  代表<code>HTML body</code>标签的<code>text</code>属性</li>
+<li><code>linkColor</code> &mdash;    代表<code>HTML body</code>标签的<code>link</code>属性</li>
+<li><code>vlinkColor</code>  &mdash;  代表<code>HTML body</code>标签的<code>vlink</code>属性</li>
+<li><code>lastModified</code>    &mdash; 页面最后修改的日期字符串，可以使用<code>Date</code>的构造函数转换为日期，例如：<code>new Date(document.lastModified);</code></li>
+<li><code>referrer</code>    &mdash;  浏览器<code>history</code>中后退一个位置的<code>URL</code></li>
+</ul>
+
+
+<p>由于document代表HTML文档的内容，因此可以通过它表示文档中加载的一些元素，这些元素全部通过集合访问。</p>
+
+<ul>
+<li><code>anchors</code> &mdash;  文档中所有锚(a name=&ldquo;aname&rdquo;)的集合</li>
+<li><code>applets</code> &mdash;  文档中所有<code>applet</code>标签表示的内容的集合</li>
+<li><code>embeds</code>  &mdash;  文档中所有<code>embed</code>标签表示的内容的集合</li>
+<li><code>forms</code>   &mdash;  文档中所有<code>form</code>标签表示的内容的集合</li>
+<li><code>images</code>  &mdash;  文档中所有<code>image</code>标签表示的内容的集合</li>
+<li><code>links</code>   &mdash; 文档中所有<code>a</code>(链接)标签表示的内容的集合</li>
+</ul>
+
+
+<h2>Document函数</h2>
+
+<ul>
+<li><code>JavaScript</code> <code>write()</code> 函数</li>
+<li><code>JavaScript</code> <code>writeln()</code> 函数</li>
+<li><code>JavaScript</code> <code>document.open()</code> 函数</li>
+<li><code>JavaScript</code> <code>document.close()</code> 函数</li>
+</ul>
+
+
+<h2>使用document索引页面内的元素</h2>
+
+<p>可以使用数字或名称索引页面中的元素集合，每个元素的属性都变成了集合中相应对象的属性。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;form</span> <span class="na">name=</span><span class="s">&quot;form1&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://www.dreamdu.com/xhtml/&quot;</span> <span class="na">name=</span><span class="s">&quot;a1&quot;</span><span class="nt">&gt;</span>xhtml<span class="nt">&lt;/a&gt;&lt;/form&gt;</span>
+</span><span class='line'><span class="nt">&lt;form</span> <span class="na">name=</span><span class="s">&quot;form2&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://www.dreamdu.com/css/&quot;</span> <span class="na">name=</span><span class="s">&quot;a2&quot;</span><span class="nt">&gt;</span>css<span class="nt">&lt;/a&gt;&lt;/form&gt;</span>
+</span><span class='line'><span class="nt">&lt;form</span> <span class="na">name=</span><span class="s">&quot;form3&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://www.dreamdu.com/javascript/&quot;</span> <span class="na">name=</span><span class="s">&quot;a3&quot;</span><span class="nt">&gt;</span>javascript<span class="nt">&lt;/a&gt;&lt;/form&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">value=</span><span class="s">&quot;显示第二个表单的名称&quot;</span> <span class="na">onclick=</span><span class="s">&quot;alert(document.forms[1].name)&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">value=</span><span class="s">&quot;显示第二个表单的名称第二种方法&quot;</span> <span class="na">onclick=</span><span class="s">&quot;alert(document.forms[&#39;form2&#39;].name)&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">value=</span><span class="s">&quot;显示第三个链接的名称&quot;</span> <span class="na">onclick=</span><span class="s">&quot;alert(document.links[2].name)&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">value=</span><span class="s">&quot;显示第三个链接的名称第二种方法&quot;</span> <span class="na">onclick=</span><span class="s">&quot;alert(document.links[&#39;a3&#39;].name)&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">value=</span><span class="s">&quot;显示第三个链接href属性的值&quot;</span> <span class="na">onclick=</span><span class="s">&quot;alert(document.links[2].href)&quot;</span> <span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>表示第二个表单的方法：<code>document.forms[1]或document.forms["form2"]</code></p>
+
+<p>表示第三个链接的方法：<code>document.links[2]或document.links["a3"]</code></p>
+
+<p>表示第三个链接<code>href</code>属性的方法：<code>document.links[2].href</code></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1215,112 +1335,6 @@ vagrant ssh                         #进入虚拟环境
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/03/03/install-php5-server-via-php-fpm/">使用PHP-FPM安装php5 server</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-03T13:51:40+00:00" pubdate data-updated="true">Mar 3<span>rd</span>, 2014</time>
-        
-        
-           | <a href="/blog/2014/03/03/install-php5-server-via-php-fpm/#comments">Comments</a>
-                
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>安装环境</h2>
-
-<ul>
-<li><p>nginx</p></li>
-<li><p>mysql</p></li>
-</ul>
-
-
-<h2>使用<code>PHP-FPM</code>安装php5 server</h2>
-
-<pre><code>apt-get install php5-fpm
-</code></pre>
-
-<blockquote><p>PHP-FPM is a daemon process (with the init script /etc/init.d/php5-fpm) that runs a FastCGI server on the socket /var/run/php5-fpm.sock.</p></blockquote>
-
-<h2>配置nginx</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>[...]
-</span><span class='line'>worker_processes  4;
-</span><span class='line'>[...]
-</span><span class='line'>    keepalive_timeout   2;
-</span><span class='line'>[...]</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>网站配置</h2>
-
-<pre><code>vim /etc/nginx/sites-available/yoursite
-</code></pre>
-
-<h2>PHP配置</h2>
-
-<pre><code>vim /etc/php5/fpm/php.ini
-</code></pre>
-
-<p>set cgi.fix_pathinfo=0:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>[...]
-</span><span class='line'>; cgi.fix_pathinfo provides *real* PATH_INFO/PATH_TRANSLATED support for CGI.  PHP's
-</span><span class='line'>; previous behaviour was to set PATH_TRANSLATED to SCRIPT_FILENAME, and to not grok
-</span><span class='line'>; what PATH_INFO is.  For more information on PATH_INFO, see the cgi specs.  Setting
-</span><span class='line'>; this to 1 will cause PHP CGI to fix its paths to conform to the spec.  A setting
-</span><span class='line'>; of zero causes PHP to behave as before.  Default is 1.  You should fix your scripts
-</span><span class='line'>; to use SCRIPT_FILENAME rather than PATH_TRANSLATED.
-</span><span class='line'>; http://php.net/cgi.fix-pathinfo
-</span><span class='line'>cgi.fix_pathinfo=0
-</span><span class='line'>[...]</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Server Reload</h2>
-
-<pre><code>/etc/init.d/nginx -s reload
-/etc/init.d/php5-fpm reload
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1335,7 +1349,7 @@ vagrant ssh                         #进入虚拟环境
   <h1>Categories</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/embedded/'>Embedded (5)</a></li>
-<li class='category'><a href='/blog/categories/javascript/'>Javascript (1)</a></li>
+<li class='category'><a href='/blog/categories/javascript/'>Javascript (2)</a></li>
 <li class='category'><a href='/blog/categories/jekyll/'>Jekyll (2)</a></li>
 <li class='category'><a href='/blog/categories/octopress/'>Octopress (6)</a></li>
 <li class='category'><a href='/blog/categories/server/'>Server (2)</a></li>
@@ -1348,6 +1362,10 @@ vagrant ssh                         #进入虚拟环境
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/04/02/learn-javastript-bom-base-document-object+/">JavaScript学习&#8211;BOM基础之document对象</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/03/31/learn-javastript-bom-base-window-object/">JavaScript学习&#8211;BOM基础之window对象</a>
@@ -1365,17 +1383,14 @@ vagrant ssh                         #进入虚拟环境
         <a href="/blog/2014/03/27/add-table-for-octopress/">Octopress表格设置</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/03/23/variable-and-template-in-jekyll/">Jekyll中的变量和模板</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Tags</h1>
   <ul class="tag-cloud">
-    <a style="font-size: 90%" href="/tags/github/">github,</a>
-<a style="font-size: 90%" href="/tags/javascript/">javascript,</a>
+    <a style="font-size: 142%" href="/tags/bom/">BOM</a>
+<a style="font-size: 90%" href="/tags/github/">github,</a>
+<a style="font-size: 142%" href="/tags/javascript/">javascript,</a>
 <a style="font-size: 193%" href="/tags/octopress/">octopress</a>
 <a style="font-size: 142%" href="/tags/octopress/">octopress,</a>
 <a style="font-size: 90%" href="/tags/php5/">php5</a>
@@ -1383,7 +1398,6 @@ vagrant ssh                         #进入虚拟环境
 <a style="font-size: 172%" href="/tags/tcpip/">tcpip</a>
 <a style="font-size: 90%" href="/tags/vagrant/">vagrant,</a>
 <a style="font-size: 172%" href="/tags/vim/">vim</a>
-<a style="font-size: 90%" href="/tags/vm/">vm,</a>
 
   </ul>
 </section>

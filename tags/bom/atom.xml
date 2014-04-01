@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: BOM | Do Far]]></title>
   <link href="http://blog.dofa.org/tags/bom/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-03-31T15:29:40+00:00</updated>
+  <updated>2014-04-01T13:52:22+00:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -12,6 +12,92 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript学习--BOM基础之document对象]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/02/learn-javastript-bom-base-document-object+/"/>
+    <updated>2014-04-02T04:35:06+00:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/02/learn-javastript-bom-base-document-object </id>
+    <content type="html"><![CDATA[<h2>Document对象</h2>
+
+<ul>
+<li><code>document</code>是<code>BOM</code>中最重要对象之一</li>
+<li><code>document</code>对象是<code>window</code>对象的属性</li>
+<li><code>document</code>对象包含一个节点对象，此对象包含每个单独页面的所有<code>HTML</code>元素，这就是W3C的<code>DOM</code>对象</li>
+</ul>
+
+
+<h2>Document属性</h2>
+
+<ul>
+<li><code>cookie</code> &mdash;   用户<code>cookie</code></li>
+<li><code>title</code>   &mdash;  当前页面<code>title</code>标签中定义的文字</li>
+<li><code>URL</code> &mdash;  当前页面的<code>URL</code></li>
+</ul>
+
+
+<p>下面内容的不建议使用</p>
+
+<ul>
+<li><code>alinkColor</code>  &mdash;  代表<code>HTML body</code>标签的<code>alink</code>属性</li>
+<li><code>bgColor</code> &mdash;  代表<code>HTML body</code>标签的<code>bgcolor</code>属性</li>
+<li><code>fgColor</code> &mdash;  代表<code>HTML body</code>标签的<code>text</code>属性</li>
+<li><code>linkColor</code> &mdash;    代表<code>HTML body</code>标签的<code>link</code>属性</li>
+<li><code>vlinkColor</code>  &mdash;  代表<code>HTML body</code>标签的<code>vlink</code>属性</li>
+<li><code>lastModified</code>    &mdash; 页面最后修改的日期字符串，可以使用<code>Date</code>的构造函数转换为日期，例如：<code>new Date(document.lastModified);</code></li>
+<li><code>referrer</code>    &mdash;  浏览器<code>history</code>中后退一个位置的<code>URL</code></li>
+</ul>
+
+
+<p>由于document代表HTML文档的内容，因此可以通过它表示文档中加载的一些元素，这些元素全部通过集合访问。</p>
+
+<ul>
+<li><code>anchors</code> &mdash;  文档中所有锚(a name=&ldquo;aname&rdquo;)的集合</li>
+<li><code>applets</code> &mdash;  文档中所有<code>applet</code>标签表示的内容的集合</li>
+<li><code>embeds</code>  &mdash;  文档中所有<code>embed</code>标签表示的内容的集合</li>
+<li><code>forms</code>   &mdash;  文档中所有<code>form</code>标签表示的内容的集合</li>
+<li><code>images</code>  &mdash;  文档中所有<code>image</code>标签表示的内容的集合</li>
+<li><code>links</code>   &mdash; 文档中所有<code>a</code>(链接)标签表示的内容的集合</li>
+</ul>
+
+
+<h2>Document函数</h2>
+
+<ul>
+<li><code>JavaScript</code> <code>write()</code> 函数</li>
+<li><code>JavaScript</code> <code>writeln()</code> 函数</li>
+<li><code>JavaScript</code> <code>document.open()</code> 函数</li>
+<li><code>JavaScript</code> <code>document.close()</code> 函数</li>
+</ul>
+
+
+<h2>使用document索引页面内的元素</h2>
+
+<p>可以使用数字或名称索引页面中的元素集合，每个元素的属性都变成了集合中相应对象的属性。</p>
+
+<p></p>
+
+<p>```html
+<form name="form1"><a href="http://www.dreamdu.com/xhtml/" name="a1">xhtml</a></form>
+<form name="form2"><a href="http://www.dreamdu.com/css/" name="a2">css</a></form>
+<form name="form3"><a href="http://www.dreamdu.com/javascript/" name="a3">javascript</a></form></p>
+
+<p><input type="button" value="显示第二个表单的名称" onclick="alert(document.forms[1].name)" />
+<input type="button" value="显示第二个表单的名称第二种方法" onclick="alert(document.forms['form2'].name)" />
+<input type="button" value="显示第三个链接的名称" onclick="alert(document.links[2].name)" />
+<input type="button" value="显示第三个链接的名称第二种方法" onclick="alert(document.links['a3'].name)" />
+<input type="button" value="显示第三个链接href属性的值" onclick="alert(document.links[2].href)" />
+```</p>
+
+<p></p>
+
+<p>表示第二个表单的方法：<code>document.forms[1]或document.forms["form2"]</code></p>
+
+<p>表示第三个链接的方法：<code>document.links[2]或document.links["a3"]</code></p>
+
+<p>表示第三个链接<code>href</code>属性的方法：<code>document.links[2].href</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[JavaScript学习--BOM基础之window对象]]></title>

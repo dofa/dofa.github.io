@@ -107,6 +107,12 @@
         <lastmod>2014-03-31T15:29:31+00:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://blog.dofa.org/blog/2014/04/02/learn-javastript-bom-base-document-object+/
+        </loc>
+        <lastmod>2014-04-01T13:52:13+00:00</lastmod>
+    </url>
+    <url>
         <loc>http://blog.dofa.org/robots.txt</loc>
         <lastmod>2014-02-24T07:47:51+00:00</lastmod>
     </url>
@@ -120,10 +126,10 @@
     </url>
     <url>
         <loc>http://blog.dofa.org/blog/archives/</loc>
-        <lastmod>2014-03-31T15:29:31+00:00</lastmod>
+        <lastmod>2014-04-01T13:52:13+00:00</lastmod>
     </url>
     <url>
         <loc>http://blog.dofa.org/</loc>
-        <lastmod>2014-03-31T15:29:31+00:00</lastmod>
+        <lastmod>2014-04-01T13:52:13+00:00</lastmod>
     </url>
 </urlset>
