@@ -25,7 +25,7 @@ self | 当前框架，总是等于window对象
 
 ## 示例
 
-<% raw %>
+{% raw %}
 ```html
 <frameset rows="20%, *, 20%">
         <frame src="http://www.dreamdu.com/javascript/exe_window.frames.top/" name="top" />
@@ -36,7 +36,7 @@ self | 当前框架，总是等于window对象
         <frame src="http://www.dreamdu.com/javascript/exe_window.frames.top/" name="bottom" />
 </frameset>
 ```
-<% endraw %>
+{% endraw %}
 
 上面的框架页示例产生了一个框架集
 
