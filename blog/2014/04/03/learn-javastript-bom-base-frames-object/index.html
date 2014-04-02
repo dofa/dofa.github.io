@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Sublime Text 入门及技巧 - Do Far</title>
+  <title>JavaScript学习--BOM基础之frames对象 - Do Far</title>
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="快捷的命令面板 和 TextMate 类似，Sublime Text 2 也提供了很方便的命令调用方式：Command Palette（命令面板）。调用方法：直接在 Tool 菜单中选择 Command Palette，或是用快捷键：Shift+Command+P，输入命令名称（中的字母） &hellip;">
+  <meta name="description" content="Frames用于表现HTML页面当前窗体的中的框架集合 Frames对象 frames对象是window对象的属性
+如果页面使用框架，将产生一个框架集合frames，在集合中可用数字(从0开始，从左到右，逐行索引)或名字索引框架 框架集引用中使用的对象 对象 位置 window 当前框架 top &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.dofa.org/blog/2013/06/01/sublime-text-guide-and-tips">
+  <link rel="canonical" href="http://blog.dofa.org/blog/2014/04/03/learn-javastript-bom-base-frames-object">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -81,7 +82,7 @@
   
   <header>
     
-      <h1 class="entry-title">Sublime Text 入门及技巧</h1>
+      <h1 class="entry-title">JavaScript学习--BOM基础之frames对象</h1>
     
     
       <p class="meta">
@@ -97,7 +98,7 @@
   
 
 
-<time datetime="2013-06-01T14:25:52+00:00" pubdate data-updated="true">Jun 1<span>st</span>, 2013</time>
+<time datetime="2014-04-03T05:35:06+00:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2014</time>
         
         
            | <a href="#comments">Comments</a>
@@ -107,40 +108,93 @@
   </header>
 
 
-<div class="entry-content"><h2>快捷的命令面板</h2>
+<div class="entry-content"><p>Frames用于表现HTML页面当前窗体的中的框架集合</p>
 
-<p>和 TextMate 类似，Sublime Text 2 也提供了很方便的命令调用方式：Command Palette（命令面板）。调用方法：直接在 <code>Tool</code> 菜单中选择 <code>Command Palette</code>，或是用快捷键：<code>Shift+Command+P</code>，输入命令名称（中的字母）就可以实时搜索到相应的命令、选项、snippet 和 syntex， 按下回车就可以直接执行，减少了查找的麻烦。</p>
-
-<h2>即时的文件切换</h2>
-
-<p>按下 <code>Command+P</code>(Mac) 或是 <code>Ctrl+P</code>(Windows)，输入想要切换到的文件的文件名，都不用按下回车键，目标文件就已经展现在眼前了，虽然 Vim 配合 PeepOpen 也可以实现同样的功能，但速度却远没有这么迅速。</p>
-
-<h2>随心所欲的跳转</h2>
-
-<p><code>Cmd+P</code> 之所以被叫做 Goto Anything 并不是虚名：</p>
+<h2>Frames对象</h2>
 
 <ul>
-<li>用 <code>Command+P</code> 可以快速跳转到当前项目中的任意文件，可进行关键词匹配。</li>
-<li>用 <code>Command+P</code> 后 <code>@</code> (或是<code>Command+R</code>)可以快速列出/跳转到某个函数（很爽的是在 markdown 当中是匹配到标题，而且还是带缩进的！）。</li>
-<li>用 <code>Command+P</code> 后 <code>#</code> 可以在当前文件中进行搜索。</li>
-<li>用 <code>Command+P</code> 后 <code>:</code> (或是<code>Ctrl+G</code>)加上数字可以跳转到相应的行。</li>
+<li><code>frames</code>对象是<code>window</code>对象的属性</li>
+<li>如果页面使用框架，将产生一个框架集合<code>frames</code>，在集合中可用数字(从0开始，从左到右，逐行索引)或名字索引框架</li>
 </ul>
 
 
-<p>而更酷的是你可以用 <code>Command+P</code> 加上一些关键词跳转到某个文件同时加上 <code>@</code> 来列出/跳转到目标文件中的某个函数，或是同时加上 <code>#</code> 来在目标文件中进行搜索，或是同时加上 <code>:</code> 和数字来跳转到目标文件中相应的行。</p>
+<h2>框架集引用中使用的对象</h2>
 
-<h2>多重选择(Multi-Selection)</h2>
+<table>
+<thead>
+<tr>
+<th align="left">对象 </th>
+<th align="left"> 位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">window </td>
+<td align="left"> 当前框架</td>
+</tr>
+<tr>
+<td align="left">top </td>
+<td align="left"> 最顶层的框架，就是浏览器窗体</td>
+</tr>
+<tr>
+<td align="left">parent </td>
+<td align="left"> 包含当前框架的父框架</td>
+</tr>
+<tr>
+<td align="left">self </td>
+<td align="left"> 当前框架，总是等于window对象</td>
+</tr>
+</tbody>
+</table>
 
-<p>多重选择功能允许在页面中同时存在多个光标，让很多本来需要正则表达式、高级搜索和替换才能完成的任务也变得游刃有余了。
-激活多重选择的方法有两几种：</p>
 
-<ul>
-<li>按住 <code>Command</code> 或 <code>Alt</code>，然后在页面中希望中现光标的位置点击。</li>
-<li>选择数行文本，然后按下 <code>Shift+Command+L</code>。</li>
-<li>通过反复按下 <code>Control/Command+D</code> 即可将全文中与光标当前所在位置的词相同的词逐一加入选择，而直接按下 <code>Alt+F3</code>(Windows) 或是 <code>Ctrl+Command+G</code>(Mac) 即可一次性选择所有相同的词。</li>
-<li>按下鼠标中键来进行垂直方向的纵列选择，也可以进入多重编辑状态。</li>
-</ul>
+<h2>示例</h2>
 
+<p>&lt;% raw %></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;frameset</span> <span class="na">rows=</span><span class="s">&quot;20%, *, 20%&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;frame</span> <span class="na">src=</span><span class="s">&quot;http://www.dreamdu.com/javascript/exe_window.frames.top/&quot;</span> <span class="na">name=</span><span class="s">&quot;top&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;frameset</span> <span class="na">cols=</span><span class="s">&quot;20%, *&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;frame</span> <span class="na">src=</span><span class="s">&quot;http://www.dreamdu.com/javascript/exe_window.frames.top/&quot;</span> <span class="na">name=</span><span class="s">&quot;left&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;frame</span> <span class="na">src=</span><span class="s">&quot;http://www.dreamdu.com/javascript/exe_window.frames.right/&quot;</span> <span class="na">name=</span><span class="s">&quot;right&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/frameset&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;frame</span> <span class="na">src=</span><span class="s">&quot;http://www.dreamdu.com/javascript/exe_window.frames.top/&quot;</span> <span class="na">name=</span><span class="s">&quot;bottom&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/frameset&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>&lt;% endraw %></p>
+
+<p>上面的框架页示例产生了一个框架集</p>
+
+<p><code>window</code>与<code>self</code>代表相同的对象，但是<code>self</code>是为了确定正在使用的框架不是<code>parent</code>，而是自身,<code>top</code>对象代表最顶层框架，浏览器窗体本身，因此在这个例子中就等于<code>window</code>对象,如果页面上没有框架，<code>window</code>，<code>self</code>都等于<code>top</code>，并且框架集合的长度为0</p>
+
+<p>如果框架名称为<code>right</code>的页面包括下面框架：</p>
+
+<p>&lt;% raw %></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;frameset</span> <span class="na">cols=</span><span class="s">&quot;50%, *&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;frame</span> <span class="na">src=</span><span class="s">&quot;http://www.dreamdu.com/javascript/exe_window.frames.top/&quot;</span> <span class="na">name=</span><span class="s">&quot;righttop&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;frame</span> <span class="na">src=</span><span class="s">&quot;http://www.dreamdu.com/javascript/exe_window.frames.top/&quot;</span> <span class="na">name=</span><span class="s">&quot;rightbottom&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/frameset&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>&lt;% endraw %></p>
+
+<p>那么righttop与rightbottom的parent父框架为right</p>
 </div>
 
 
@@ -163,12 +217,12 @@
   
 
 
-<time datetime="2013-06-01T14:25:52+00:00" pubdate data-updated="true">Jun 1<span>st</span>, 2013</time>
+<time datetime="2014-04-03T05:35:06+00:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/sublimetext/'>SublimeText</a>
+    <a class='category' href='/blog/categories/javascript/'>Javascript</a>
   
 </span>
 
@@ -184,10 +238,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/04/10/commonly-used-vim-commands/" title="Previous Post: 常用的Vim命令">&laquo; 常用的Vim命令</a>
+        <a class="basic-alignment left" href="/blog/2014/04/01/learn-javastript-bom-base-document-object/" title="Previous Post: JavaScript学习--BOM基础之document对象">&laquo; JavaScript学习--BOM基础之document对象</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/06/01/sublime-text-study-notes/" title="Next Post: Sublime Text 学习笔记">Sublime Text 学习笔记 &raquo;</a>
       
     </p>
   </footer>
