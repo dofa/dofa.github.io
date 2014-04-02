@@ -7,6 +7,8 @@ categories: Javascript
 tags:  javascript, BOM
 ---
 
+Document用于表现HTML页面当前窗体的内容
+
 ## Document对象
 
 * `document`是`BOM`中最重要对象之一

@@ -29,6 +29,8 @@ window对象是BOM的顶层(核心)对象，所有对象都是通过它延伸出
 
 ## 全局的window对象
 
+window对象是BOM中所有对象的核心
+
 #### JavaScript中的任何一个全局函数或变量都是window的属性
 
 	var sTest="dofa";
