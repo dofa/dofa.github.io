@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "JavaScript学习--BOM基础之document对象"
-date: 2014-04-01 21:35:06 -0700
+date: 2014-04-01 08:35:06 -0700
 comments: true
 categories: Javascript
 tags:  javascript, BOM
