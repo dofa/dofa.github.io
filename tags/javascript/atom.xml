@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: javascript, | Do Far]]></title>
   <link href="http://blog.dofa.org/tags/javascript/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-04-02T14:47:36+00:00</updated>
+  <updated>2014-04-02T15:10:51+00:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -12,6 +12,87 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript学习--BOM基础之location对象]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/03/learn-javastript-bom-base-location-object/"/>
+    <updated>2014-04-03T06:10:06+00:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/03/learn-javastript-bom-base-location-object</id>
+    <content type="html"><![CDATA[<p>Location用于获取或设置窗体的URL，并且可以用于解析URL，是BOM中最重要的对象之一</p>
+
+<h2>Location对象</h2>
+
+<ul>
+<li><code>Location</code>既是<code>window</code>对象的属性又是<code>document</code>对象的属性</li>
+<li><code>location</code>包含8个属性，其中7个都是当前窗体的<code>URL</code>的一部分，剩下的也是最重要的一个是<code>href</code>属性，代表当前窗体的<code>URL</code></li>
+<li><code>location</code>的8个属性都是可读写的，但是只有<code>href</code>与<code>hash</code>的写才有意义。例如改变<code>location.href</code>会重新定位到一个<code>URL</code>，而修改<code>location.hash</code>会跳到当前页面中的<code>anchor(&lt;a id="name"&gt;</code>或者<code>&lt;div id="id"&gt;</code>等)名字的标记(如果有)，而且页面不会被重新加载</li>
+</ul>
+
+
+<h2>示例</h2>
+
+<pre><code>document.write(window.location==document.location);
+</code></pre>
+
+<h2>Location对象属性图示</h2>
+
+<p><img src="http://dofa.u.qiniudn.com/image/web/window_location.png"></p>
+
+<p>location属性</p>
+
+<ul>
+<li><code>JavaScript</code> <code>hash</code> 属性    &mdash;  返回<code>URL</code>中<code>#</code>符号后面的内容</li>
+<li><code>JavaScript</code> <code>host</code> 属性    &mdash;  返回域名</li>
+<li><code>JavaScript</code> <code>hostname</code> 属性    &mdash;  返回主域名</li>
+<li><code>JavaScript</code> <code>href</code> 属性    &mdash;  返回当前文档的完整<code>URL</code>或设置当前文档的<code>URL</code></li>
+<li><code>JavaScript</code> <code>pathname</code> 属性    &mdash;  返回<code>URL</code>中域名后的部分</li>
+<li><code>JavaScript</code> <code>port</code> 属性    &mdash;  返回<code>URL</code>中的端口</li>
+<li><code>JavaScript</code> <code>protocol</code> 属性    &mdash;  返回<code>URL</code>中的协议</li>
+<li><code>JavaScript</code> <code>search</code> 属性  &mdash;  返回<code>URL</code>中的查询字符串</li>
+<li><code>JavaScript</code> <code>assign()</code>   函数 &mdash;   设置当前文档的<code>URL</code></li>
+<li><code>JavaScript</code> <code>replace()</code> 函数 &mdash;    设置当前文档的<code>URL</code>，并在<code>history</code>对象的地址列表中删除这个<code>URL</code></li>
+<li><code>JavaScript</code> <code>reload()</code>   函数 &mdash;   重新载入当前文档(从<code>server</code>服务器端)</li>
+<li><code>JavaScript</code> <code>toString()</code> 函数 &mdash;   返回<code>location</code>对象<code>href</code>属性当前的值</li>
+</ul>
+
+
+<p>Note: 主域名是不带www的域名，例如dreamdu.com，主域名前面带前缀的通常都为二级域名或多级域名，例如www.dreamdu.com其实是二级域名。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript学习--BOM基础之history对象]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/03/learn-javastript-bom-base-history-object/"/>
+    <updated>2014-04-03T06:00:06+00:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/03/learn-javastript-bom-base-history-object</id>
+    <content type="html"><![CDATA[<p>History用于窗体中的导航</p>
+
+<h2>History对象</h2>
+
+<ul>
+<li><code>history</code>对象是<code>window</code>对象的属性</li>
+<li>浏览者通常可以使用浏览器的前进与后退按钮访问曾经浏览过的页面。<code>JavaScript</code>的<code>history</code>对象记录了用户曾经浏览过的页面，并可以实现浏览器前进与后退相似的导航功能</li>
+<li>可以通过<code>back</code>函数后退一个页面，<code>forward</code>函数前进一个页面，或者使用<code>go</code>函数任意后退或前进页面，还可以通过<code>length</code>属性查看<code>history</code>对象中存储的页面数</li>
+</ul>
+
+
+<h2>History对象函数</h2>
+
+<ul>
+<li><code>JavaScript</code> <code>history.go()</code> 函数 &mdash; 前进或后退指定的页面数</li>
+<li><code>JavaScript</code> <code>history.back()</code> 函数 &mdash; 后退一页</li>
+<li><code>JavaScript</code> <code>history.forward()</code> 函数 &mdash; 前进一页</li>
+</ul>
+
+
+<h2>History对象属性</h2>
+
+<ul>
+<li><code>JavaScript</code> <code>length</code> 属性 &mdash; <code>history</code>对象中缓存了多少个<code>URL</code></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[JavaScript学习--BOM基础之frames对象]]></title>
@@ -60,7 +141,7 @@
 
 <h2>示例</h2>
 
-<p>&lt;% raw %>
+<p>
 ```html
 <frameset rows="20%, *, 20%"></p>
 
@@ -74,7 +155,7 @@
 
 <p></frameset>
 ```
-&lt;% endraw %></p>
+</p>
 
 <p>上面的框架页示例产生了一个框架集</p>
 

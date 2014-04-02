@@ -4,7 +4,7 @@
   <title><![CDATA[Do Far]]></title>
   <link href="http://blog.dofa.org/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-04-02T14:47:36+00:00</updated>
+  <updated>2014-04-02T15:10:51+00:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -12,6 +12,87 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript学习--BOM基础之location对象]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/03/learn-javastript-bom-base-location-object/"/>
+    <updated>2014-04-03T06:10:06+00:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/03/learn-javastript-bom-base-location-object</id>
+    <content type="html"><![CDATA[<p>Location用于获取或设置窗体的URL，并且可以用于解析URL，是BOM中最重要的对象之一</p>
+
+<h2>Location对象</h2>
+
+<ul>
+<li><code>Location</code>既是<code>window</code>对象的属性又是<code>document</code>对象的属性</li>
+<li><code>location</code>包含8个属性，其中7个都是当前窗体的<code>URL</code>的一部分，剩下的也是最重要的一个是<code>href</code>属性，代表当前窗体的<code>URL</code></li>
+<li><code>location</code>的8个属性都是可读写的，但是只有<code>href</code>与<code>hash</code>的写才有意义。例如改变<code>location.href</code>会重新定位到一个<code>URL</code>，而修改<code>location.hash</code>会跳到当前页面中的<code>anchor(&lt;a id="name"&gt;</code>或者<code>&lt;div id="id"&gt;</code>等)名字的标记(如果有)，而且页面不会被重新加载</li>
+</ul>
+
+
+<h2>示例</h2>
+
+<pre><code>document.write(window.location==document.location);
+</code></pre>
+
+<h2>Location对象属性图示</h2>
+
+<p><img src="http://dofa.u.qiniudn.com/image/web/window_location.png"></p>
+
+<p>location属性</p>
+
+<ul>
+<li><code>JavaScript</code> <code>hash</code> 属性    &mdash;  返回<code>URL</code>中<code>#</code>符号后面的内容</li>
+<li><code>JavaScript</code> <code>host</code> 属性    &mdash;  返回域名</li>
+<li><code>JavaScript</code> <code>hostname</code> 属性    &mdash;  返回主域名</li>
+<li><code>JavaScript</code> <code>href</code> 属性    &mdash;  返回当前文档的完整<code>URL</code>或设置当前文档的<code>URL</code></li>
+<li><code>JavaScript</code> <code>pathname</code> 属性    &mdash;  返回<code>URL</code>中域名后的部分</li>
+<li><code>JavaScript</code> <code>port</code> 属性    &mdash;  返回<code>URL</code>中的端口</li>
+<li><code>JavaScript</code> <code>protocol</code> 属性    &mdash;  返回<code>URL</code>中的协议</li>
+<li><code>JavaScript</code> <code>search</code> 属性  &mdash;  返回<code>URL</code>中的查询字符串</li>
+<li><code>JavaScript</code> <code>assign()</code>   函数 &mdash;   设置当前文档的<code>URL</code></li>
+<li><code>JavaScript</code> <code>replace()</code> 函数 &mdash;    设置当前文档的<code>URL</code>，并在<code>history</code>对象的地址列表中删除这个<code>URL</code></li>
+<li><code>JavaScript</code> <code>reload()</code>   函数 &mdash;   重新载入当前文档(从<code>server</code>服务器端)</li>
+<li><code>JavaScript</code> <code>toString()</code> 函数 &mdash;   返回<code>location</code>对象<code>href</code>属性当前的值</li>
+</ul>
+
+
+<p>Note: 主域名是不带www的域名，例如dreamdu.com，主域名前面带前缀的通常都为二级域名或多级域名，例如www.dreamdu.com其实是二级域名。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript学习--BOM基础之history对象]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/03/learn-javastript-bom-base-history-object/"/>
+    <updated>2014-04-03T06:00:06+00:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/03/learn-javastript-bom-base-history-object</id>
+    <content type="html"><![CDATA[<p>History用于窗体中的导航</p>
+
+<h2>History对象</h2>
+
+<ul>
+<li><code>history</code>对象是<code>window</code>对象的属性</li>
+<li>浏览者通常可以使用浏览器的前进与后退按钮访问曾经浏览过的页面。<code>JavaScript</code>的<code>history</code>对象记录了用户曾经浏览过的页面，并可以实现浏览器前进与后退相似的导航功能</li>
+<li>可以通过<code>back</code>函数后退一个页面，<code>forward</code>函数前进一个页面，或者使用<code>go</code>函数任意后退或前进页面，还可以通过<code>length</code>属性查看<code>history</code>对象中存储的页面数</li>
+</ul>
+
+
+<h2>History对象函数</h2>
+
+<ul>
+<li><code>JavaScript</code> <code>history.go()</code> 函数 &mdash; 前进或后退指定的页面数</li>
+<li><code>JavaScript</code> <code>history.back()</code> 函数 &mdash; 后退一页</li>
+<li><code>JavaScript</code> <code>history.forward()</code> 函数 &mdash; 前进一页</li>
+</ul>
+
+
+<h2>History对象属性</h2>
+
+<ul>
+<li><code>JavaScript</code> <code>length</code> 属性 &mdash; <code>history</code>对象中缓存了多少个<code>URL</code></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[JavaScript学习--BOM基础之frames对象]]></title>
@@ -60,8 +141,6 @@
 
 <h2>示例</h2>
 
-<p>&lt;% raw %></p>
-
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -80,8 +159,6 @@
 </span><span class='line'><span class="nt">&lt;/frameset&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
-
-<p>&lt;% endraw %></p>
 
 <p>上面的框架页示例产生了一个框架集</p>
 
@@ -1603,114 +1680,6 @@ git push origin master
 <h3>MTU</h3>
 
 <p>以太网一次可以传送的最大传输单元（MTU）为1500B。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[TCP/IP协议学习系列之二 — Ethernet控制器]]></title>
-    <link href="http://blog.dofa.org/blog/2013/07/27/tcp-ip-protocol-learning-series-two-ethernet-directors/"/>
-    <updated>2013-07-27T14:25:52+00:00</updated>
-    <id>http://blog.dofa.org/blog/2013/07/27/tcp-ip-protocol-learning-series-two-ethernet-directors</id>
-    <content type="html"><![CDATA[<h2>硬件架构</h2>
-
-<p>前面讲了，处理TCP/IP封包的硬件主要使用Ethernet模块。
-大多数Ethernet模块分为这几个部分：PHY，MAC，MII/RMII管理，DMA和控制器。</p>
-
-<ul>
-<li>PHY实现bit流到cat5的transfer</li>
-<li>MAC实现数据链路层的介质访问控制子层，并执行CSMA/CD功能</li>
-<li>MII/RMII提供访问PHY的接口给MAC使用</li>
-<li>DMA大家都懂得</li>
-<li>控制器这里指的是协调MAC、MII/RMII管理、DMA的工具，不过一般也理解为Ethernet模块。比如PIC32中Ethernet控制器包括MAC、MII/RMII管理、DMA和SFR。</li>
-</ul>
-
-
-<h2>以太网原理—CSMA/CD</h2>
-
-<p>CS：载波侦听
-在发送数据之前进行监听，以确保线路空闲，减少冲突的机会。
-MA：多址访问
-每个站点发送的数据，可以同时被多个站点接收。
-CD：冲突检测
-边发送边检测，发现冲突就停止发送，然后延迟一个随机时间之后继续发送。</p>
-
-<h2>以太网发展简史</h2>
-
-<p>IEEE802.3 以太网标准
-IEEE802.3u 100BASE-T快速以太网标准
-IEEE802.3z/ab 1000Mb/s千兆以太网标准
-IEEE802.3ae 10GE以太网标准</p>
-
-<h2>相关技术</h2>
-
-<h4>自协商技术</h4>
-
-<p><img src="http://dofa.u.qiniudn.com/imgage/embeded/negotiation.bmp"></p>
-
-<h4>自适应技术： 智能MDI/MDIX</h4>
-
-<p>直连网线、交叉网线自动识别</p>
-
-<h4>流量控制</h4>
-
-<ul>
-<li>当通过交换机一个端口的流量过大，超过了它的处理能力时，就会发生端口阻塞。流量控制的作用是防止在出现阻塞的情况下丢帧。</li>
-<li>在半双工方式下，流量控制是通过反压（backpressure）技术实现的，模拟产生碰撞，使得信息源降低发送速度。</li>
-<li>在全双工方式下流量控制一般遵循IEEE 802.3x标准。</li>
-</ul>
-
-
-<h4>全双工流量控制</h4>
-
-<ul>
-<li>IEEE802.3x标准定义了一种新方法，在全双工环境中去实现流量控制。交换机产生一个PAUSE帧，PAUSE帧使用一个保留的组播地址：01-80-C2-00-00-01，将它发送给正在发送的站，发送站接收到该帧后，就会暂停或停止发送。</li>
-<li>PAUSE帧利用了一个保留的组播地址，它不会被网桥和交换机所转发，这样，PAUSE帧不会产生附加信息量。</li>
-</ul>
-
-
-<h2>MII接口介绍</h2>
-
-<p>MII接口提供了MAC和PHY之间、PHY与STA（Station Management）之间的互联技术，该接口支持10Mb/s与100Mb/s的数据传输速率，数据传输的位宽为4位。
-MII通过增加数据位宽实现参考时钟的降低。
-MII接口主要包括4个部分：</p>
-
-<ul>
-<li>从MAC层到物理层的发送数据的接口</li>
-<li>从物理层到MAC层的接受数据的接口</li>
-<li>从物理层到MAC层的状态指示信号</li>
-<li>MAC层和物理层之间传送控制和状态信息的MDIO接口</li>
-</ul>
-
-
-<p>MII接口可分为MAC模式和PHY模式，实际中主要用MAC模式，MAC模式的接口定义为：</p>
-
-<p><img src="http://dofa.u.qiniudn.com/imgage/embeded/MII.bmp"></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[TCP/IP 协议学习系列之一 — 帧结构（frame）]]></title>
-    <link href="http://blog.dofa.org/blog/2013/07/26/tcp-ip-protocol-learning-series-one-of-frame-structure/"/>
-    <updated>2013-07-26T14:25:52+00:00</updated>
-    <id>http://blog.dofa.org/blog/2013/07/26/tcp-ip-protocol-learning-series-one-of-frame-structure</id>
-    <content type="html"><![CDATA[<h2>TCP/IP协议封包</h2>
-
-<p>我觉得学习TCP/IP协议可以从它的封包开始，了解它在硬件上是怎么实现的是个不错的开端。</p>
-
-<p><img src="http://dofa.u.qiniudn.com/imgage/embeded/tcpip-package.bmp"></p>
-
-<p>上图是应用程序通过TCP/IP协议传输时的数据封包过程，该图基本反应了TCP/IP协议簇的数据打包过程。
-封装好的IP协议一般通过硬件发送出去，比如Ethernet、令牌网、电话线。目前广泛应用的是Ethernet，我们的产品也不例外。</p>
-
-<h2>Ethernet Frame结构</h2>
-
-<p>我们看下Ethernet的帧结构：</p>
-
-<p><img src="http://dofa.u.qiniudn.com/imgage/embeded/ethernet-frame.bmp"></p>
-
-<p>基本上就是在TCP/IP封包基础上增加了一个Ethernet Frame Header和Frame Tail(CRC)。</p>
-
-<p>这里的DA和SA指的是MAC，固定为6字节。类型/长度在不同的协议规格下有不同意义，Ethernet-II要求不小于0×8000的类型码，IEEE 802规格定义该字段为报文数据的长度。</p>
 ]]></content>
   </entry>
   

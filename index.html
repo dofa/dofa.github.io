@@ -9,8 +9,8 @@
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="Frames用于表现HTML页面当前窗体的中的框架集合 Frames对象 frames对象是window对象的属性
-如果页面使用框架，将产生一个框架集合frames，在集合中可用数字(从0开始，从左到右，逐行索引)或名字索引框架 框架集引用中使用的对象 对象 位置 window 当前框架 top &hellip;">
+  <meta name="description" content="Location用于获取或设置窗体的URL，并且可以用于解析URL，是BOM中最重要的对象之一 Location对象 Location既是window对象的属性又是document对象的属性
+location包含8个属性，其中7个都是当前窗体的URL的一部分，剩下的也是最重要的一个是href属性， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +85,147 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2014/04/03/learn-javastript-bom-base-location-object/">JavaScript学习&#8211;BOM基础之location对象</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-03T06:10:06+00:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2014</time>
+        
+        
+           | <a href="/blog/2014/04/03/learn-javastript-bom-base-location-object/#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Location用于获取或设置窗体的URL，并且可以用于解析URL，是BOM中最重要的对象之一</p>
+
+<h2>Location对象</h2>
+
+<ul>
+<li><code>Location</code>既是<code>window</code>对象的属性又是<code>document</code>对象的属性</li>
+<li><code>location</code>包含8个属性，其中7个都是当前窗体的<code>URL</code>的一部分，剩下的也是最重要的一个是<code>href</code>属性，代表当前窗体的<code>URL</code></li>
+<li><code>location</code>的8个属性都是可读写的，但是只有<code>href</code>与<code>hash</code>的写才有意义。例如改变<code>location.href</code>会重新定位到一个<code>URL</code>，而修改<code>location.hash</code>会跳到当前页面中的<code>anchor(&lt;a id="name"&gt;</code>或者<code>&lt;div id="id"&gt;</code>等)名字的标记(如果有)，而且页面不会被重新加载</li>
+</ul>
+
+
+<h2>示例</h2>
+
+<pre><code>document.write(window.location==document.location);
+</code></pre>
+
+<h2>Location对象属性图示</h2>
+
+<p><img src="http://dofa.u.qiniudn.com/image/web/window_location.png"></p>
+
+<p>location属性</p>
+
+<ul>
+<li><code>JavaScript</code> <code>hash</code> 属性    &mdash;  返回<code>URL</code>中<code>#</code>符号后面的内容</li>
+<li><code>JavaScript</code> <code>host</code> 属性    &mdash;  返回域名</li>
+<li><code>JavaScript</code> <code>hostname</code> 属性    &mdash;  返回主域名</li>
+<li><code>JavaScript</code> <code>href</code> 属性    &mdash;  返回当前文档的完整<code>URL</code>或设置当前文档的<code>URL</code></li>
+<li><code>JavaScript</code> <code>pathname</code> 属性    &mdash;  返回<code>URL</code>中域名后的部分</li>
+<li><code>JavaScript</code> <code>port</code> 属性    &mdash;  返回<code>URL</code>中的端口</li>
+<li><code>JavaScript</code> <code>protocol</code> 属性    &mdash;  返回<code>URL</code>中的协议</li>
+<li><code>JavaScript</code> <code>search</code> 属性  &mdash;  返回<code>URL</code>中的查询字符串</li>
+<li><code>JavaScript</code> <code>assign()</code>   函数 &mdash;   设置当前文档的<code>URL</code></li>
+<li><code>JavaScript</code> <code>replace()</code> 函数 &mdash;    设置当前文档的<code>URL</code>，并在<code>history</code>对象的地址列表中删除这个<code>URL</code></li>
+<li><code>JavaScript</code> <code>reload()</code>   函数 &mdash;   重新载入当前文档(从<code>server</code>服务器端)</li>
+<li><code>JavaScript</code> <code>toString()</code> 函数 &mdash;   返回<code>location</code>对象<code>href</code>属性当前的值</li>
+</ul>
+
+
+<p>Note: 主域名是不带www的域名，例如dreamdu.com，主域名前面带前缀的通常都为二级域名或多级域名，例如www.dreamdu.com其实是二级域名。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/04/03/learn-javastript-bom-base-history-object/">JavaScript学习&#8211;BOM基础之history对象</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-03T06:00:06+00:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2014</time>
+        
+        
+           | <a href="/blog/2014/04/03/learn-javastript-bom-base-history-object/#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>History用于窗体中的导航</p>
+
+<h2>History对象</h2>
+
+<ul>
+<li><code>history</code>对象是<code>window</code>对象的属性</li>
+<li>浏览者通常可以使用浏览器的前进与后退按钮访问曾经浏览过的页面。<code>JavaScript</code>的<code>history</code>对象记录了用户曾经浏览过的页面，并可以实现浏览器前进与后退相似的导航功能</li>
+<li>可以通过<code>back</code>函数后退一个页面，<code>forward</code>函数前进一个页面，或者使用<code>go</code>函数任意后退或前进页面，还可以通过<code>length</code>属性查看<code>history</code>对象中存储的页面数</li>
+</ul>
+
+
+<h2>History对象函数</h2>
+
+<ul>
+<li><code>JavaScript</code> <code>history.go()</code> 函数 &mdash; 前进或后退指定的页面数</li>
+<li><code>JavaScript</code> <code>history.back()</code> 函数 &mdash; 后退一页</li>
+<li><code>JavaScript</code> <code>history.forward()</code> 函数 &mdash; 前进一页</li>
+</ul>
+
+
+<h2>History对象属性</h2>
+
+<ul>
+<li><code>JavaScript</code> <code>length</code> 属性 &mdash; <code>history</code>对象中缓存了多少个<code>URL</code></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2014/04/03/learn-javastript-bom-base-frames-object/">JavaScript学习&#8211;BOM基础之frames对象</a></h1>
     
     
@@ -153,8 +294,6 @@
 
 <h2>示例</h2>
 
-<p>&lt;% raw %></p>
-
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -173,8 +312,6 @@
 </span><span class='line'><span class="nt">&lt;/frameset&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
-
-<p>&lt;% endraw %></p>
 
 <p>上面的框架页示例产生了一个框架集</p>
 
@@ -1154,141 +1291,6 @@ document.write(sTest==window.sTest);
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/03/10/add-statistics-for-octopress/">为Octopress添加统计</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-10T11:24:42+00:00" pubdate data-updated="true">Mar 10<span>th</span>, 2014</time>
-        
-        
-           | <a href="/blog/2014/03/10/add-statistics-for-octopress/#comments">Comments</a>
-                
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>使用Google Analytics统计工具</h2>
-
-<h4>注册Google Analytics账号</h4>
-
-<p>到 <a href="http://www.google.com/analytics/" title="Google Analytics"><code>Google Analytics</code></a> 注册<code>Analytics</code>，获得一个<code>google_analytics_tracking_id</code>，添加到<code>_config.yml</code>中对应位置，并对网站进行验证即可</p>
-
-<h4>验证Google Analytics</h4>
-
-<p>对自己的网站进行验证，只需将网站提供的用于验证的代码添加到<code>source/_includes/head.html</code>的<code>&lt;head&gt;</code>标签之间，网站部署到网上后，过几分钟即可验证通过，其他 需要验证的也同样操作。</p>
-
-<pre><code>注意：如果head中有include google-analitics.html，这一步就不需要了
-</code></pre>
-
-<h2>使用CNZZ统计工具</h2>
-
-<h4>注册CNZZ账号</h4>
-
-<p>到<a href="http://zhanzhang.cnzz.com/" title="CNZZ">CNZZ</a>注册一个账号。注册后，添加并验证你的网站就可以添加统计代码了</p>
-
-<h4>验证CNZZ</h4>
-
-<p>选好自己喜欢的样式，获得代码，可添加到<code>source/_includes/custom/footer.html</code>中。即可查看每天你的博客的流量，进行相应的优化了。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/03/09/update-debian-wheezy-mirrors/">Debian7 Wheezy 镜像源的配置</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-09T08:13:15+00:00" pubdate data-updated="true">Mar 9<span>th</span>, 2014</time>
-        
-        
-           | <a href="/blog/2014/03/09/update-debian-wheezy-mirrors/#comments">Comments</a>
-                
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>debian update或install package使用国内源会非常慢，一般我们使用163源。
-简单的说有两种方法修改源，我们直接使用第二种方法。</p>
-
-<hr />
-
-<h2>方法1：增加163源</h2>
-
-<p>以Squeeze为例, 编辑/etc/apt/sources.list文件, 在文件最前面添加以下条目(操作前请做好相应备份)</p>
-
-<pre><code>deb http://mirrors.163.com/debian/ squeeze main non-free contrib
-deb http://mirrors.163.com/debian/ squeeze-proposed-updates main non-free contrib
-deb-src http://mirrors.163.com/debian/ squeeze main non-free contrib
-deb-src http://mirrors.163.com/debian/ squeeze-proposed-updates main non-free contrib
-</code></pre>
-
-<h2>方法2：替换使用163的源</h2>
-
-<p>下载相应版本的sources.list, 覆盖/etc/apt/sources.list即可(操作前请做好相应备份)</p>
-
-<pre><code>http://mirrors.163.com/.help/debian.html
-</code></pre>
-
-<h2>使用新的源更新debian</h2>
-
-<pre><code>sudo apt-get update -y
-sudo apt-get upgrade -y
-sudo apt-get install sudo -y
-</code></pre>
-
-<h2>更新失败时</h2>
-
-<p>注释掉下面的三行，删除也行</p>
-
-<pre><code>#deb http://http.us.debian.org/debian wheezy main contrib non-free
-#deb http://non-us.debian.org/debian-non-US wheezy/non-US main contrib non-free
-#deb http://security.debian.org wheezy/updates main contrib non-free
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1303,7 +1305,7 @@ sudo apt-get install sudo -y
   <h1>Categories</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/embedded/'>Embedded (5)</a></li>
-<li class='category'><a href='/blog/categories/javascript/'>Javascript (3)</a></li>
+<li class='category'><a href='/blog/categories/javascript/'>Javascript (5)</a></li>
 <li class='category'><a href='/blog/categories/jekyll/'>Jekyll (2)</a></li>
 <li class='category'><a href='/blog/categories/octopress/'>Octopress (6)</a></li>
 <li class='category'><a href='/blog/categories/server/'>Server (2)</a></li>
@@ -1318,6 +1320,14 @@ sudo apt-get install sudo -y
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/04/03/learn-javastript-bom-base-location-object/">JavaScript学习&#8211;BOM基础之location对象</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/03/learn-javastript-bom-base-history-object/">JavaScript学习&#8211;BOM基础之history对象</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/04/03/learn-javastript-bom-base-frames-object/">JavaScript学习&#8211;BOM基础之frames对象</a>
       </li>
     
@@ -1329,22 +1339,14 @@ sudo apt-get install sudo -y
         <a href="/blog/2014/03/31/learn-javastript-bom-base-window-object/">JavaScript学习&#8211;BOM基础之window对象</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/03/30/add-links-for-octopress/">为Octopress增加友情链接</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/29/move-octopress-from-gihub-to-gitcafe/">把Octopress从github搬到gitcafe</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Tags</h1>
   <ul class="tag-cloud">
-    <a style="font-size: 172%" href="/tags/bom/">BOM</a>
+    <a style="font-size: 210%" href="/tags/bom/">BOM</a>
 <a style="font-size: 90%" href="/tags/github/">github,</a>
-<a style="font-size: 172%" href="/tags/javascript/">javascript,</a>
+<a style="font-size: 210%" href="/tags/javascript/">javascript,</a>
 <a style="font-size: 193%" href="/tags/octopress/">octopress</a>
 <a style="font-size: 142%" href="/tags/octopress/">octopress,</a>
 <a style="font-size: 210%" href="/tags/sublime-text/">sublime-text</a>
