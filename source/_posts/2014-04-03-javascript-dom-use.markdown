@@ -1,5 +1,12 @@
+---
+layout: post
+title: "JavaScript DOM基础操作实例"
+date: 2014-04-03 23:25:06 -0700
+comments: true
+categories: Javascript
+tags:  javascript, BOM
+---
 
-JavaScript DOM基础操作实例
 
 文档对象模型(Document Object Model)，通常简称为DOM，是网站内容与JavaScript互通的接口。自JavaScript成为最常用的语言时JavaScript和DOM通常被视为独立的实体。DOM接口用于存取、遍历和控制HTML和XML文档。下面我们将简单的介绍一些JavaScript DOM的基本操作实例，包括建立、增加、删除、克隆、访问节点等等。
 
