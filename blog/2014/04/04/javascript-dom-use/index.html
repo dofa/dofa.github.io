@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>JavaScript学习--BOM基础之history对象(转) - Do Far</title>
+  <title>JavaScript DOM基础操作实例 - Do Far</title>
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="History用于窗体中的导航 History对象 history对象是window对象的属性
-浏览者通常可以使用浏览器的前进与后退按钮访问曾经浏览过的页面。JavaScript的history对象记录了用户曾经浏览过的页面，并可以实现浏览器前进与后退相似的导航功能 &hellip;">
+  <meta name="description" content="文档对象模型(Document Object Model)，通常简称为DOM，是网站内容与JavaScript互通的接口。自JavaScript成为最常用的语言时JavaScript和DOM通常被视为独立的实体。DOM接口用于存取、遍历和控制HTML和XML文档。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.dofa.org/blog/2014/04/03/learn-javascript-bom-base-history-object">
+  <link rel="canonical" href="http://blog.dofa.org/blog/2014/04/04/javascript-dom-use">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -82,7 +81,7 @@
   
   <header>
     
-      <h1 class="entry-title">JavaScript学习--BOM基础之history对象(转)</h1>
+      <h1 class="entry-title">JavaScript DOM基础操作实例</h1>
     
     
       <p class="meta">
@@ -98,7 +97,7 @@
   
 
 
-<time datetime="2014-04-03T06:00:06+00:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2014</time>
+<time datetime="2014-04-04T06:25:06+00:00" pubdate data-updated="true">Apr 4<span>th</span>, 2014</time>
         
         
            | <a href="#comments">Comments</a>
@@ -108,32 +107,129 @@
   </header>
 
 
-<div class="entry-content"><p>History用于窗体中的导航</p>
+<div class="entry-content"><p>文档对象模型(Document Object Model)，通常简称为DOM，是网站内容与JavaScript互通的接口。自JavaScript成为最常用的语言时JavaScript和DOM通常被视为独立的实体。DOM接口用于存取、遍历和控制HTML和XML文档。下面我们将简单的介绍一些JavaScript DOM的基本操作实例，包括建立、增加、删除、克隆、访问节点等等。</p>
 
-<h2>History对象</h2>
+<h2>getElementById(id)</h2>
 
-<ul>
-<li><code>history</code>对象是<code>window</code>对象的属性</li>
-<li>浏览者通常可以使用浏览器的前进与后退按钮访问曾经浏览过的页面。<code>JavaScript</code>的<code>history</code>对象记录了用户曾经浏览过的页面，并可以实现浏览器前进与后退相似的导航功能</li>
-<li>可以通过<code>back</code>函数后退一个页面，<code>forward</code>函数前进一个页面，或者使用<code>go</code>函数任意后退或前进页面，还可以通过<code>length</code>属性查看<code>history</code>对象中存储的页面数</li>
-</ul>
+<p>这是通过<code>id</code>来访问某一元素，最常用的之一，例：</p>
 
+<pre><code>&lt;html&gt; 
+         &lt;body&gt; 
+         &lt;div id="myid"&gt; 
+         test  
+         &lt;/div&gt; 
+         &lt;script language="javascript"&gt; 
+         alert(document.getElementById("myid").innerHTML);  
+         &lt;/script&gt; 
+         &lt;/body&gt; 
+&lt;/html&gt; 
+</code></pre>
 
-<h2>History对象函数</h2>
+<p>注意点：如果元素的<code>ID</code>不是唯一，则会取得第一个该<code>ID</code>名称的元素。</p>
 
-<ul>
-<li><code>JavaScript</code> <code>history.go()</code> 函数 &mdash; 前进或后退指定的页面数</li>
-<li><code>JavaScript</code> <code>history.back()</code> 函数 &mdash; 后退一页</li>
-<li><code>JavaScript</code> <code>history.forward()</code> 函数 &mdash; 前进一页</li>
-</ul>
+<h2>getElementsByName(name)</h2>
 
+<p>这是通过<code>name</code>来取得某一堆元素（作为数组），看 <code>Element</code>后面有个小<code>s</code>就知道了，<code>ID</code>是<code>HTML</code>文档中要求唯一的，<code>name</code>可以不是唯一，如<code>checkbox</code>、<code>radio</code>等地方会用到多个<code>input</code>用同一个<code>name</code>来识别是否为同党。对了，<code>getElementsByName(name)</code>仅用于取得<code>input</code>、<code>radio</code>、 <code>checkbox</code>等元素，如</p>
 
-<h2>History对象属性</h2>
+<pre><code>&lt;input name="myradio" type="radio" /&gt;。
+</code></pre>
 
-<ul>
-<li><code>JavaScript</code> <code>length</code> 属性 &mdash; <code>history</code>对象中缓存了多少个<code>URL</code></li>
-</ul>
+<h2>getElementsByTagName(tagname)</h2>
 
+<p>看这方法就知道这也是取得某一堆元素（作为数组），是通过<code>TagName</code>也就是标签名来取得。你可以遍历这个数组获得每一个单独的元素。当一个<code>DOM</code>结构很大时，可以通过它来有效地缩小搜查范围。</p>
+
+<pre><code>&lt;html&gt;           
+     &lt;head&gt; 
+     &lt;script&gt; 
+     function test() {  
+     testall=document.getElementsByTagName("body");  
+     testbody=testall.item(0); //获得所有tagName是body的元素（当然每个页面只有一个）  
+     testall=testbody.getElementsByTagName("p");// 获得body子元素种的所有P元素  
+     testnode=testall.item(1); // 获得第二个P元素           
+     alert(testnode.firstChild.nodeValue); //显示这个元素的文本         }  
+     &lt;/script&gt; 
+     &lt;/head&gt; 
+     &lt;body&gt; 
+     &lt;p&gt;hi&lt;/p&gt; 
+     &lt;p&gt;hello&lt;/p&gt; 
+     &lt;script language="javascript"&gt; 
+     test();  
+     &lt;/script&gt; 
+     &lt;/body&gt; 
+&lt;/html&gt; 
+</code></pre>
+
+<h2>appendChild(node)</h2>
+
+<p>向当前的元素（应该叫对象比较恰当）追加节点。</p>
+
+<pre><code>&lt;html&gt; 
+     &lt;body&gt; 
+     &lt;head&gt; 
+     &lt;/head&gt; 
+     &lt;div id="test"&gt;&lt;/div&gt; 
+     &lt;script type="text/javascript"&gt; 
+     var newdiv=document.createElement("div")  
+     var newtext=document.createTextNode("A new div")           
+     newdiv.appendChild(newtext)  
+     document.getElementById("test").appendChild(newdiv)  
+     &lt;/script&gt; 
+     &lt;/body&gt; 
+&lt;/html&gt; 
+</code></pre>
+
+<p>刚才我在第一个例子中为了显示出内容，用了<code>innerHTML</code>，刚才看到文章才得知<code>innerHTMl</code>不属于<code>DOM</code>。</p>
+
+<h2>removeChild(childreference)</h2>
+
+<p>删除当前节点的子节点，返回被删除的节点。这个被删除的节点可以被插入到别的地方。</p>
+
+<pre><code>&lt;html&gt; 
+     &lt;body&gt; 
+     &lt;div id="parent"&gt;&lt;div id="child"&gt;A child&lt;/div&gt;&lt;/div&gt; 
+     &lt;script language="javascript"&gt; 
+     var childnode=document.getElementById("child")  
+     var removednode=document.getElementById("parent").removeChild(childnode)  
+     &lt;/script&gt; 
+     &lt;/body&gt; 
+&lt;/html&gt; 
+</code></pre>
+
+<h2>cloneNode(deepBoolean)</h2>
+
+<p>复制并返回当前节点的复制节点，复制节点是一个孤立节点，它复制了原节点的属性，在把这个新节点加入到<code>document</code>前，根据需要修改<code>ID</code>属性确保其<code>ID</code>的唯一。这个方法支持一个布尔参数，当<code>deepBoolean</code>设置<code>true</code>时，复制当前节点的所有子节点，包括该节点内的文本。</p>
+
+<pre><code>&lt;html&gt; 
+     &lt;body&gt; 
+     &lt;p id="mynode"&gt;test&lt;/p&gt; 
+     &lt;script language="javascript"&gt; 
+     p=document.getElementById("mynode")   
+    ppclone = p.cloneNode(true);  
+     p.parentNode.appendChild(pclone);  
+     &lt;/script&gt; 
+     &lt;/body&gt; 
+&lt;/html&gt; 
+</code></pre>
+
+<h2>replaceChild(newChild, oldChild)</h2>
+
+<p>把当前节点的一个子节点换成另一个节点。</p>
+
+<pre><code>&lt;html&gt; 
+     &lt;body&gt; 
+     &lt;div id="mynode2"&gt; 
+     &lt;span id="orispan"&gt;span&lt;/span&gt; 
+     &lt;/div&gt; 
+     &lt;script language="javascript"&gt; 
+     var orinode=document.getElementById("orispan");  
+     var newnode=document.createElement("p");  
+     var text=document.createTextNode("test ppp ");  
+     newnode.appendChild(text);  
+     document.getElementById("mynode2").replaceChild(newnode, orinode);  
+     &lt;/script&gt; 
+     &lt;/body&gt; 
+&lt;/html&gt; 
+</code></pre>
 </div>
 
 
@@ -156,7 +252,7 @@
   
 
 
-<time datetime="2014-04-03T06:00:06+00:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2014</time>
+<time datetime="2014-04-04T06:25:06+00:00" pubdate data-updated="true">Apr 4<span>th</span>, 2014</time>
       
 
 <span class="categories">
@@ -177,10 +273,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/04/03/learn-javascript-bom-base-frames-object/" title="Previous Post: JavaScript学习--BOM基础之frames对象(转)">&laquo; JavaScript学习--BOM基础之frames对象(转)</a>
+        <a class="basic-alignment left" href="/blog/2014/04/04/javascript-dom-cheat-sheet/" title="Previous Post: JavaScript DOM cheat sheet">&laquo; JavaScript DOM cheat sheet</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/04/03/learn-javascript-bom-base-location-object/" title="Next Post: JavaScript学习--BOM基础之location对象(转)">JavaScript学习--BOM基础之location对象(转) &raquo;</a>
       
     </p>
   </footer>
