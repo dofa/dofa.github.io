@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "JavaScript学习--BOM基础之frames对象"
+title: "JavaScript学习--BOM基础之frames对象(转)"
 date: 2014-04-02 22:35:06 -0700
 comments: true
 categories: Javascript

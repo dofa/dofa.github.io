@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "JavaScript学习--BOM基础之history对象"
+title: "JavaScript学习--BOM基础之history对象(转)"
 date: 2014-04-02 23:00:06 -0700
 comments: true
 categories: Javascript

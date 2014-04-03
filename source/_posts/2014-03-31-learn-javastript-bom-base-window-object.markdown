@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "JavaScript学习--BOM基础之window对象"
+title: "JavaScript学习--BOM基础之window对象(转)"
 date: 2014-03-31 08:26:06 -0700
 comments: true
 categories: Javascript
