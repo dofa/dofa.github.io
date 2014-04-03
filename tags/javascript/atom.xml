@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: javascript, | Do Far]]></title>
   <link href="http://blog.dofa.org/tags/javascript/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-04-03T14:03:22+00:00</updated>
+  <updated>2014-04-03T15:04:20+00:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript DOM cheat sheet]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/04/javastript-dom-cheat-sheet/"/>
+    <updated>2014-04-04T06:02:06+00:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/04/javastript-dom-cheat-sheet</id>
+    <content type="html"><![CDATA[<p><img src="http://dofa.u.qiniudn.com/image/web/JavaScript-DOM-Cheatsheet.png"></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[JavaScript学习--BOM基础之screen对象(转)]]></title>
@@ -159,91 +168,6 @@ window.resizeTo(screen.availWidth, screen.availHeight);
 <li><code>JavaScript</code> <code>length</code> 属性 &mdash; <code>history</code>对象中缓存了多少个<code>URL</code></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[JavaScript学习--BOM基础之frames对象(转)]]></title>
-    <link href="http://blog.dofa.org/blog/2014/04/03/learn-javastript-bom-base-frames-object/"/>
-    <updated>2014-04-03T05:35:06+00:00</updated>
-    <id>http://blog.dofa.org/blog/2014/04/03/learn-javastript-bom-base-frames-object</id>
-    <content type="html"><![CDATA[<p>Frames用于表现HTML页面当前窗体的中的框架集合</p>
-
-<h2>Frames对象</h2>
-
-<ul>
-<li><code>frames</code>对象是<code>window</code>对象的属性</li>
-<li>如果页面使用框架，将产生一个框架集合<code>frames</code>，在集合中可用数字(从0开始，从左到右，逐行索引)或名字索引框架</li>
-</ul>
-
-
-<h2>框架集引用中使用的对象</h2>
-
-<table>
-<thead>
-<tr>
-<th align="left">对象 </th>
-<th align="left"> 位置</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">window </td>
-<td align="left"> 当前框架</td>
-</tr>
-<tr>
-<td align="left">top </td>
-<td align="left"> 最顶层的框架，就是浏览器窗体</td>
-</tr>
-<tr>
-<td align="left">parent </td>
-<td align="left"> 包含当前框架的父框架</td>
-</tr>
-<tr>
-<td align="left">self </td>
-<td align="left"> 当前框架，总是等于window对象</td>
-</tr>
-</tbody>
-</table>
-
-
-<h2>示例</h2>
-
-<p>
-```html
-<frameset rows="20%, *, 20%"></p>
-
-<pre><code>    &lt;frame src="http://www.dreamdu.com/javascript/exe_window.frames.top/" name="top" /&gt;
-    &lt;frameset cols="20%, *"&gt;
-            &lt;frame src="http://www.dreamdu.com/javascript/exe_window.frames.top/" name="left" /&gt;
-            &lt;frame src="http://www.dreamdu.com/javascript/exe_window.frames.right/" name="right" /&gt;
-    &lt;/frameset&gt;
-    &lt;frame src="http://www.dreamdu.com/javascript/exe_window.frames.top/" name="bottom" /&gt;
-</code></pre>
-
-<p></frameset>
-```
-</p>
-
-<p>上面的框架页示例产生了一个框架集</p>
-
-<p><code>window</code>与<code>self</code>代表相同的对象，但是<code>self</code>是为了确定正在使用的框架不是<code>parent</code>，而是自身,<code>top</code>对象代表最顶层框架，浏览器窗体本身，因此在这个例子中就等于<code>window</code>对象,如果页面上没有框架，<code>window</code>，<code>self</code>都等于<code>top</code>，并且框架集合的长度为0</p>
-
-<p>如果框架名称为<code>right</code>的页面包括下面框架：</p>
-
-<p>&lt;% raw %>
-```html
-<frameset cols="50%, *"></p>
-
-<pre><code>    &lt;frame src="http://www.dreamdu.com/javascript/exe_window.frames.top/" name="righttop" /&gt;
-    &lt;frame src="http://www.dreamdu.com/javascript/exe_window.frames.top/" name="rightbottom" /&gt;
-</code></pre>
-
-<p></frameset>
-```
-&lt;% endraw %></p>
-
-<p>那么righttop与rightbottom的parent父框架为right</p>
 ]]></content>
   </entry>
   

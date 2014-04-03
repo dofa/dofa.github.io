@@ -133,6 +133,10 @@
         <lastmod>2014-04-03T14:03:12+00:00</lastmod>
     </url>
     <url>
+        <loc>http://blog.dofa.org/blog/2014/04/04/javastript-dom-cheat-sheet/</loc>
+        <lastmod>2014-04-03T15:04:12+00:00</lastmod>
+    </url>
+    <url>
         <loc>http://blog.dofa.org/robots.txt</loc>
         <lastmod>2014-02-24T07:47:51+00:00</lastmod>
     </url>
@@ -146,10 +150,10 @@
     </url>
     <url>
         <loc>http://blog.dofa.org/blog/archives/</loc>
-        <lastmod>2014-04-03T14:03:12+00:00</lastmod>
+        <lastmod>2014-04-03T15:04:12+00:00</lastmod>
     </url>
     <url>
         <loc>http://blog.dofa.org/</loc>
-        <lastmod>2014-04-03T14:03:12+00:00</lastmod>
+        <lastmod>2014-04-03T15:04:12+00:00</lastmod>
     </url>
 </urlset>
