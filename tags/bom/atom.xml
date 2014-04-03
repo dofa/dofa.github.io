@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: BOM | Do Far]]></title>
   <link href="http://blog.dofa.org/tags/bom/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-04-02T15:10:51+00:00</updated>
+  <updated>2014-04-03T14:03:22+00:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -14,7 +14,75 @@
 
   
   <entry>
-    <title type="html"><![CDATA[JavaScript学习--BOM基础之location对象]]></title>
+    <title type="html"><![CDATA[JavaScript学习--BOM基础之screen对象(转)]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/04/learn-javastript-bom-base-screen-object/"/>
+    <updated>2014-04-04T04:57:06+00:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/04/learn-javastript-bom-base-screen-object</id>
+    <content type="html"><![CDATA[<p>screen对象用于获取用户的屏幕信息</p>
+
+<h2>Screen对象</h2>
+
+<ul>
+<li><code>Screen</code>对象是<code>window</code>对象的属性</li>
+</ul>
+
+
+<h2>Screen对象属性</h2>
+
+<ul>
+<li><code>JavaScript</code> <code>availHeight</code> 属性 &mdash;  窗口可以使用的屏幕高度，单位像素</li>
+<li><code>JavaScript</code> <code>availWidth</code> 属性  &mdash;  窗口可以使用的屏幕宽度，单位像素</li>
+<li><code>JavaScript</code> <code>colorDepth</code> 属性  &mdash;  用户浏览器表示的颜色位数，通常为32位(每像素的位数)</li>
+<li><code>JavaScript</code> <code>pixelDepth</code> 属性  &mdash;  用户浏览器表示的颜色位数，通常为32位(每像素的位数)（<code>IE</code>不支持此属性）</li>
+<li><code>JavaScript</code> <code>height</code> 属性  &mdash;  屏幕的高度，单位像素</li>
+<li><code>JavaScript</code> <code>width</code> 属性   &mdash;  屏幕的宽度，单位像素</li>
+</ul>
+
+
+<p><code>availWidth</code>与<code>availHeight</code>属性非常有用，例如：可以使用下面的代码填充用户的屏幕：</p>
+
+<pre><code>window.moveTo(0,0);
+window.resizeTo(screen.availWidth, screen.availHeight);
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript学习--BOM基础之navigator对象(转)]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/04/learn-javastript-bom-base-navigator-object/"/>
+    <updated>2014-04-04T04:52:06+00:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/04/learn-javastript-bom-base-navigator-object</id>
+    <content type="html"><![CDATA[<p>navigator对象通常用于检测浏览器与操作系统的版本</p>
+
+<h2>Navigator对象</h2>
+
+<ul>
+<li><code>navigator</code>对象是<code>window</code>对象的属性</li>
+<li>由于<code>navigator</code>没有统一的标准，因此各个浏览器都有自己不同的<code>navigator</code>版本，这里只介绍最普遍支持且最常用的</li>
+</ul>
+
+
+<h2>常用的navigator属性</h2>
+
+<ul>
+<li><code>appCodeName</code> &mdash;  浏览器代码名的字符串表示</li>
+<li><code>appName</code> &mdash;  官方浏览器名的字符串表示</li>
+<li><code>appVersion</code>  &mdash;  浏览器版本信息的字符串表示</li>
+<li><code>cookieEnabled</code>   &mdash;  如果启用<code>cookie</code>返回<code>true</code>，否则返回<code>false</code></li>
+<li><code>javaEnabled</code> &mdash;  如果启用<code>java</code>返回<code>true</code>，否则返回<code>false</code></li>
+<li><code>platform</code>    &mdash;  浏览器所在计算机平台的字符串表示</li>
+<li><code>plugins</code> &mdash;  安装在浏览器中的插件数组</li>
+<li><code>taintEnabled</code>    &mdash;  如果启用了数据污点返回<code>true</code>，否则返回<code>false</code></li>
+<li><code>userAgent</code>   &mdash;  用户代理头的字符串表示</li>
+</ul>
+
+
+<p><code>navigator</code>中最重要的是<code>userAgent</code>属性，返回包含浏览器版本等信息的字符串，其次<code>cookieEnabled</code>也很重要，使用它可以判断用户浏览器是否开启<code>cookie</code>。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript学习--BOM基础之location对象(转)]]></title>
     <link href="http://blog.dofa.org/blog/2014/04/03/learn-javastript-bom-base-location-object/"/>
     <updated>2014-04-03T06:10:06+00:00</updated>
     <id>http://blog.dofa.org/blog/2014/04/03/learn-javastript-bom-base-location-object</id>
@@ -61,7 +129,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[JavaScript学习--BOM基础之history对象]]></title>
+    <title type="html"><![CDATA[JavaScript学习--BOM基础之history对象(转)]]></title>
     <link href="http://blog.dofa.org/blog/2014/04/03/learn-javastript-bom-base-history-object/"/>
     <updated>2014-04-03T06:00:06+00:00</updated>
     <id>http://blog.dofa.org/blog/2014/04/03/learn-javastript-bom-base-history-object</id>
@@ -95,7 +163,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[JavaScript学习--BOM基础之frames对象]]></title>
+    <title type="html"><![CDATA[JavaScript学习--BOM基础之frames对象(转)]]></title>
     <link href="http://blog.dofa.org/blog/2014/04/03/learn-javastript-bom-base-frames-object/"/>
     <updated>2014-04-03T05:35:06+00:00</updated>
     <id>http://blog.dofa.org/blog/2014/04/03/learn-javastript-bom-base-frames-object</id>
@@ -176,158 +244,6 @@
 &lt;% endraw %></p>
 
 <p>那么righttop与rightbottom的parent父框架为right</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[JavaScript学习--BOM基础之document对象]]></title>
-    <link href="http://blog.dofa.org/blog/2014/04/01/learn-javastript-bom-base-document-object/"/>
-    <updated>2014-04-01T15:35:06+00:00</updated>
-    <id>http://blog.dofa.org/blog/2014/04/01/learn-javastript-bom-base-document-object</id>
-    <content type="html"><![CDATA[<p>Document用于表现HTML页面当前窗体的内容</p>
-
-<h2>Document对象</h2>
-
-<ul>
-<li><code>document</code>是<code>BOM</code>中最重要对象之一</li>
-<li><code>document</code>对象是<code>window</code>对象的属性</li>
-<li><code>document</code>对象包含一个节点对象，此对象包含每个单独页面的所有<code>HTML</code>元素，这就是W3C的<code>DOM</code>对象</li>
-</ul>
-
-
-<h2>Document属性</h2>
-
-<ul>
-<li><code>cookie</code> &mdash;   用户<code>cookie</code></li>
-<li><code>title</code>   &mdash;  当前页面<code>title</code>标签中定义的文字</li>
-<li><code>URL</code> &mdash;  当前页面的<code>URL</code></li>
-</ul>
-
-
-<p>下面内容的不建议使用</p>
-
-<ul>
-<li><code>alinkColor</code>  &mdash;  代表<code>HTML body</code>标签的<code>alink</code>属性</li>
-<li><code>bgColor</code> &mdash;  代表<code>HTML body</code>标签的<code>bgcolor</code>属性</li>
-<li><code>fgColor</code> &mdash;  代表<code>HTML body</code>标签的<code>text</code>属性</li>
-<li><code>linkColor</code> &mdash;    代表<code>HTML body</code>标签的<code>link</code>属性</li>
-<li><code>vlinkColor</code>  &mdash;  代表<code>HTML body</code>标签的<code>vlink</code>属性</li>
-<li><code>lastModified</code>    &mdash; 页面最后修改的日期字符串，可以使用<code>Date</code>的构造函数转换为日期，例如：<code>new Date(document.lastModified);</code></li>
-<li><code>referrer</code>    &mdash;  浏览器<code>history</code>中后退一个位置的<code>URL</code></li>
-</ul>
-
-
-<p>由于document代表HTML文档的内容，因此可以通过它表示文档中加载的一些元素，这些元素全部通过集合访问。</p>
-
-<ul>
-<li><code>anchors</code> &mdash;  文档中所有锚(a name=&ldquo;aname&rdquo;)的集合</li>
-<li><code>applets</code> &mdash;  文档中所有<code>applet</code>标签表示的内容的集合</li>
-<li><code>embeds</code>  &mdash;  文档中所有<code>embed</code>标签表示的内容的集合</li>
-<li><code>forms</code>   &mdash;  文档中所有<code>form</code>标签表示的内容的集合</li>
-<li><code>images</code>  &mdash;  文档中所有<code>image</code>标签表示的内容的集合</li>
-<li><code>links</code>   &mdash; 文档中所有<code>a</code>(链接)标签表示的内容的集合</li>
-</ul>
-
-
-<h2>Document函数</h2>
-
-<ul>
-<li><code>JavaScript</code> <code>write()</code> 函数</li>
-<li><code>JavaScript</code> <code>writeln()</code> 函数</li>
-<li><code>JavaScript</code> <code>document.open()</code> 函数</li>
-<li><code>JavaScript</code> <code>document.close()</code> 函数</li>
-</ul>
-
-
-<h2>使用document索引页面内的元素</h2>
-
-<p>可以使用数字或名称索引页面中的元素集合，每个元素的属性都变成了集合中相应对象的属性。</p>
-
-<p></p>
-
-<p>```html
-<form name="form1"><a href="http://www.dreamdu.com/xhtml/" name="a1">xhtml</a></form>
-<form name="form2"><a href="http://www.dreamdu.com/css/" name="a2">css</a></form>
-<form name="form3"><a href="http://www.dreamdu.com/javascript/" name="a3">javascript</a></form></p>
-
-<p><input type="button" value="显示第二个表单的名称" onclick="alert(document.forms[1].name)" />
-<input type="button" value="显示第二个表单的名称第二种方法" onclick="alert(document.forms['form2'].name)" />
-<input type="button" value="显示第三个链接的名称" onclick="alert(document.links[2].name)" />
-<input type="button" value="显示第三个链接的名称第二种方法" onclick="alert(document.links['a3'].name)" />
-<input type="button" value="显示第三个链接href属性的值" onclick="alert(document.links[2].href)" />
-```</p>
-
-<p></p>
-
-<p>表示第二个表单的方法：<code>document.forms[1]或document.forms["form2"]</code></p>
-
-<p>表示第三个链接的方法：<code>document.links[2]或document.links["a3"]</code></p>
-
-<p>表示第三个链接<code>href</code>属性的方法：<code>document.links[2].href</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[JavaScript学习--BOM基础之window对象]]></title>
-    <link href="http://blog.dofa.org/blog/2014/03/31/learn-javastript-bom-base-window-object/"/>
-    <updated>2014-03-31T15:26:06+00:00</updated>
-    <id>http://blog.dofa.org/blog/2014/03/31/learn-javastript-bom-base-window-object</id>
-    <content type="html"><![CDATA[<h2>什么是 <code>BOM</code></h2>
-
-<ul>
-<li><code>BOM</code>是<code>browser object model</code>的缩写，简称浏览器对象模型</li>
-<li><code>BOM</code>提供了独立于内容而与浏览器窗口进行交互的对象</li>
-<li>由于<code>BOM</code>主要用于管理窗口与窗口之间的通讯，因此其核心对象是<code>window</code></li>
-<li><code>BOM</code>由一系列相关的对象构成，并且每个对象都提供了很多方法与属性</li>
-<li><code>BOM</code>缺乏标准，<code>JavaScript</code>语法的标准化组织是<code>ECMA</code>，<code>DOM</code>的标准化组织是<code>W3C</code></li>
-<li><code>BOM</code>最初是<code>Netscape</code>浏览器标准的一部分</li>
-</ul>
-
-
-<h2>BOM结构图</h2>
-
-<p><img src="http://dofa.u.qiniudn.com/image/web/browser_objects.png"></p>
-
-<p>window对象是BOM的顶层(核心)对象，所有对象都是通过它延伸出来的，也可以称为window的子对象。</p>
-
-<p>由于window是顶层对象，因此调用它的子对象时可以不显示的指明window对象，例如下面两行代码是一样的：</p>
-
-<pre><code>document.write("blog.dofa.org");
-window.document.write("blog.dofa.org");
-</code></pre>
-
-<h2>全局的window对象</h2>
-
-<p>window对象是BOM中所有对象的核心</p>
-
-<h4>JavaScript中的任何一个全局函数或变量都是window的属性</h4>
-
-<pre><code>var sTest="dofa";
-document.write(sTest==window.sTest);
-</code></pre>
-
-<p>结果：</p>
-
-<pre><code>true    
-</code></pre>
-
-<p>由于sTest是全局变量，因此可以通过window.sTest访问这个变量</p>
-
-<h4>window与self对象</h4>
-
-<p>self对象与window对象完全相同，self通常用于确认就是在当前的窗体内</p>
-
-<h4>window的子对象</h4>
-
-<ul>
-<li>JavaScript document 对象</li>
-<li>JavaScript frames 对象</li>
-<li>JavaScript history 对象</li>
-<li>JavaScript location 对象</li>
-<li>JavaScript navigator 对象</li>
-<li>JavaScript screen 对象</li>
-</ul>
-
 ]]></content>
   </entry>
   

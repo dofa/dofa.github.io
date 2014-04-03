@@ -9,8 +9,8 @@
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="Location用于获取或设置窗体的URL，并且可以用于解析URL，是BOM中最重要的对象之一 Location对象 Location既是window对象的属性又是document对象的属性
-location包含8个属性，其中7个都是当前窗体的URL的一部分，剩下的也是最重要的一个是href属性， &hellip;">
+  <meta name="description" content="screen对象用于获取用户的屏幕信息 Screen对象 Screen对象是window对象的属性 Screen对象属性 JavaScript availHeight 属性 &mdash; 窗口可以使用的屏幕高度，单位像素
+JavaScript availWidth 属性 &mdash; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,7 +85,135 @@ location包含8个属性，其中7个都是当前窗体的URL的一部分，剩�
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/04/03/learn-javastript-bom-base-location-object/">JavaScript学习&#8211;BOM基础之location对象</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/04/04/learn-javastript-bom-base-screen-object/">JavaScript学习&#8211;BOM基础之screen对象(转)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-04T04:57:06+00:00" pubdate data-updated="true">Apr 4<span>th</span>, 2014</time>
+        
+        
+           | <a href="/blog/2014/04/04/learn-javastript-bom-base-screen-object/#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>screen对象用于获取用户的屏幕信息</p>
+
+<h2>Screen对象</h2>
+
+<ul>
+<li><code>Screen</code>对象是<code>window</code>对象的属性</li>
+</ul>
+
+
+<h2>Screen对象属性</h2>
+
+<ul>
+<li><code>JavaScript</code> <code>availHeight</code> 属性 &mdash;  窗口可以使用的屏幕高度，单位像素</li>
+<li><code>JavaScript</code> <code>availWidth</code> 属性  &mdash;  窗口可以使用的屏幕宽度，单位像素</li>
+<li><code>JavaScript</code> <code>colorDepth</code> 属性  &mdash;  用户浏览器表示的颜色位数，通常为32位(每像素的位数)</li>
+<li><code>JavaScript</code> <code>pixelDepth</code> 属性  &mdash;  用户浏览器表示的颜色位数，通常为32位(每像素的位数)（<code>IE</code>不支持此属性）</li>
+<li><code>JavaScript</code> <code>height</code> 属性  &mdash;  屏幕的高度，单位像素</li>
+<li><code>JavaScript</code> <code>width</code> 属性   &mdash;  屏幕的宽度，单位像素</li>
+</ul>
+
+
+<p><code>availWidth</code>与<code>availHeight</code>属性非常有用，例如：可以使用下面的代码填充用户的屏幕：</p>
+
+<pre><code>window.moveTo(0,0);
+window.resizeTo(screen.availWidth, screen.availHeight);
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/04/04/learn-javastript-bom-base-navigator-object/">JavaScript学习&#8211;BOM基础之navigator对象(转)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-04T04:52:06+00:00" pubdate data-updated="true">Apr 4<span>th</span>, 2014</time>
+        
+        
+           | <a href="/blog/2014/04/04/learn-javastript-bom-base-navigator-object/#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>navigator对象通常用于检测浏览器与操作系统的版本</p>
+
+<h2>Navigator对象</h2>
+
+<ul>
+<li><code>navigator</code>对象是<code>window</code>对象的属性</li>
+<li>由于<code>navigator</code>没有统一的标准，因此各个浏览器都有自己不同的<code>navigator</code>版本，这里只介绍最普遍支持且最常用的</li>
+</ul>
+
+
+<h2>常用的navigator属性</h2>
+
+<ul>
+<li><code>appCodeName</code> &mdash;  浏览器代码名的字符串表示</li>
+<li><code>appName</code> &mdash;  官方浏览器名的字符串表示</li>
+<li><code>appVersion</code>  &mdash;  浏览器版本信息的字符串表示</li>
+<li><code>cookieEnabled</code>   &mdash;  如果启用<code>cookie</code>返回<code>true</code>，否则返回<code>false</code></li>
+<li><code>javaEnabled</code> &mdash;  如果启用<code>java</code>返回<code>true</code>，否则返回<code>false</code></li>
+<li><code>platform</code>    &mdash;  浏览器所在计算机平台的字符串表示</li>
+<li><code>plugins</code> &mdash;  安装在浏览器中的插件数组</li>
+<li><code>taintEnabled</code>    &mdash;  如果启用了数据污点返回<code>true</code>，否则返回<code>false</code></li>
+<li><code>userAgent</code>   &mdash;  用户代理头的字符串表示</li>
+</ul>
+
+
+<p><code>navigator</code>中最重要的是<code>userAgent</code>属性，返回包含浏览器版本等信息的字符串，其次<code>cookieEnabled</code>也很重要，使用它可以判断用户浏览器是否开启<code>cookie</code>。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/04/03/learn-javastript-bom-base-location-object/">JavaScript学习&#8211;BOM基础之location对象(转)</a></h1>
     
     
       <p class="meta">
@@ -162,7 +290,7 @@ location包含8个属性，其中7个都是当前窗体的URL的一部分，剩�
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/04/03/learn-javastript-bom-base-history-object/">JavaScript学习&#8211;BOM基础之history对象</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/04/03/learn-javastript-bom-base-history-object/">JavaScript学习&#8211;BOM基础之history对象(转)</a></h1>
     
     
       <p class="meta">
@@ -226,7 +354,7 @@ location包含8个属性，其中7个都是当前窗体的URL的一部分，剩�
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/04/03/learn-javastript-bom-base-frames-object/">JavaScript学习&#8211;BOM基础之frames对象</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/04/03/learn-javastript-bom-base-frames-object/">JavaScript学习&#8211;BOM基础之frames对象(转)</a></h1>
     
     
       <p class="meta">
@@ -347,7 +475,7 @@ location包含8个属性，其中7个都是当前窗体的URL的一部分，剩�
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/04/01/learn-javastript-bom-base-document-object/">JavaScript学习&#8211;BOM基础之document对象</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/04/01/learn-javastript-bom-base-document-object/">JavaScript学习&#8211;BOM基础之document对象(转)</a></h1>
     
     
       <p class="meta">
@@ -470,7 +598,7 @@ location包含8个属性，其中7个都是当前窗体的URL的一部分，剩�
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/03/31/learn-javastript-bom-base-window-object/">JavaScript学习&#8211;BOM基础之window对象</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/03/31/learn-javastript-bom-base-window-object/">JavaScript学习&#8211;BOM基础之window对象(转)</a></h1>
     
     
       <p class="meta">
@@ -864,433 +992,6 @@ document.write(sTest==window.sTest);
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/03/23/variable-and-template-in-jekyll/">Jekyll中的变量和模板</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-23T21:10:39+00:00" pubdate data-updated="true">Mar 23<span>rd</span>, 2014</time>
-        
-        
-           | <a href="/blog/2014/03/23/variable-and-template-in-jekyll/#comments">Comments</a>
-                
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Jekyll目录及一些说明</h2>
-
-<p>Jekyll的基本结构：</p>
-
-<table>
-<thead>
-<tr>
-<th align="center">文件或目录  </th>
-<th align="left">     功能描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">_config.yml </td>
-<td align="left"> Jekyll的配置文件</td>
-</tr>
-<tr>
-<td align="center">_includes   </td>
-<td align="left"> 代码片段文件夹</td>
-</tr>
-<tr>
-<td align="center">_layouts    </td>
-<td align="left"> 模板文件夹</td>
-</tr>
-<tr>
-<td align="center">_posts      </td>
-<td align="left"> 文章文件夹</td>
-</tr>
-<tr>
-<td align="center">_sites      </td>
-<td align="left"> 生成的博客</td>
-</tr>
-</tbody>
-</table>
-
-
-<p>具体描述如下：</p>
-
-<ul>
-<li>_includes文件夹中所放的文件是最终要放到模版中的一些代码片段。</li>
-<li>_layouts中放的一些模版，模版是用包含page或post内容的。Jekyll的模版使用HTML语法来写，并包含YAML Front Matter。所有的模版都可用Liquid来与网站进行交互。所的的模版都可以使用全局变量site和page，site变量包含该网站所有可以接触得到的内容和元数据(meta-data)，page变量包含的是当前渲染的page或post的所有可以接触得到的数据。</li>
-<li>_post文件夹中放的是自己要发布的post文章。post文件的命名规则为YEAR-MONTH-DATE-title.MARKUP，使用rake post会自动将post文件命名合适。而对于page，所有放在根目录下或不以下划线开头的文件夹中有格式的文件都会被Jekyll处理成page。这里说的有格式是指文件含有YAML Front Matter。所有的post和page都要用markdown或者texile或者HTML语法来写，并可以包含Liquid模版的语法。还要有 YAML Front Matter (Jekyll只处理具有YAML Front Matter的文件)。YAML Front Matter必须放在文件的开头，一对&mdash;-之间，用户可在这一对&mdash;-间设置预先定义的变量或用户自己的数据。</li>
-</ul>
-
-
-<h2>Jekyll模板全局变量</h2>
-
-<table>
-<thead>
-<tr>
-<th align="center">变量   </th>
-<th align="left">                      描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">site      </td>
-<td align="left"> 全站的信息+_config.yml文件中的配置选项</td>
-</tr>
-<tr>
-<td align="center">page      </td>
-<td align="left"> 这个变量中包含YAML前置数据,另外加上两个额外的变量值:url和content</td>
-</tr>
-<tr>
-<td align="center">content   </td>
-<td align="left"> 在布局模板文件中，这里变量包含了页面的子视图。这个变量将会把渲染后的内容插入到模板文件中。这个变量不能在文章和页面文件中使用</td>
-</tr>
-<tr>
-<td align="center">paginator </td>
-<td align="left"> 一旦paginate配置选项被设置了， 这个变量才能被使用</td>
-</tr>
-</tbody>
-</table>
-
-
-<h2>Jekyll模板Page变量</h2>
-
-<table>
-<thead>
-<tr>
-<th align="center">变量      </th>
-<th align="left">                  描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">page.content    </td>
-<td align="left"> 页面中未渲染的内容</td>
-</tr>
-<tr>
-<td align="center">page.title      </td>
-<td align="left"> 文章的标题</td>
-</tr>
-<tr>
-<td align="center">page.url        </td>
-<td align="left"> 除去域名以外的URL，例子:/2013/12/14/higrid-net.html</td>
-</tr>
-<tr>
-<td align="center">page.date       </td>
-<td align="left"> 指定每一篇文章的时间，这个选项能够覆盖一篇文章中前置数据设置的时间，它的格式是这样的:YYYY-MM-DD HH:MM:SS</td>
-</tr>
-<tr>
-<td align="center">page.id         </td>
-<td align="left"> 每一篇文章的唯一标示符(在RSS中非常有用)例子：/2008/12/14/higrid-net</td>
-</tr>
-<tr>
-<td align="center">page.categories </td>
-<td align="left"> 这篇文章隶属的分类的一个列表，分类是通过在<em>post目录中的目录结构推导而来的。举例来说，在路径/work/code/</em>posts/2008-12-24-closures.textile下的文件，这个变量将会是[work,code]。这个变量也能在YAML前置数据中被指定。</td>
-</tr>
-<tr>
-<td align="center">page.tags       </td>
-<td align="left"> 这篇文章的标签的列表。这些数据能够在YAML前置数据中指定</td>
-</tr>
-<tr>
-<td align="center">page.next       </td>
-<td align="left"> 按时间序的下一篇文章</td>
-</tr>
-<tr>
-<td align="center">page.content    </td>
-<td align="left"> 按时间序的上一篇文章</td>
-</tr>
-</tbody>
-</table>
-
-
-<p><strong>注意</strong> :任何你自己指定的自定义前置数据都能够通过page调用。举例来说，如果你在页面的前置数据中设置了custom_css: true，那这个值可以在模板可以这样调用:page.custom_css</p>
-
-<h2>Jekyll模板Paginator变量</h2>
-
-<table>
-<thead>
-<tr>
-<th align="center">变量          </th>
-<th align="left">          描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">paginator.per_page      </td>
-<td align="left"> 每一个页面上文章的数量</td>
-</tr>
-<tr>
-<td align="center">paginator.posts         </td>
-<td align="left"> 当前页面上可用的文章</td>
-</tr>
-<tr>
-<td align="center">paginator.total_posts   </td>
-<td align="left"> 所有文章的数量</td>
-</tr>
-<tr>
-<td align="center">paginator.total_pages   </td>
-<td align="left"> 所有页面的数量</td>
-</tr>
-<tr>
-<td align="center">paginator.page          </td>
-<td align="left"> 当前页面的数量</td>
-</tr>
-<tr>
-<td align="center">paginator.previous_page </td>
-<td align="left"> 前面的页面的数量</td>
-</tr>
-<tr>
-<td align="center">paginator.next_page     </td>
-<td align="left"> 接下来的的页面的数量</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/03/19/use-sublimetableeditor/">SublimeTableEditor的使用</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-19T14:50:39+00:00" pubdate data-updated="true">Mar 19<span>th</span>, 2014</time>
-        
-        
-           | <a href="/blog/2014/03/19/use-sublimetableeditor/#comments">Comments</a>
-                
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>基本的使用方法</h2>
-
-<p>要使用该插件 ，需要用 <em>ctrl+shift+p</em> 打开 <em>Table Editor: Enable for current syntax</em> 来激活 插件。</p>
-
-<h4>创建表头</h4>
-
-<p>输入：</p>
-
-<pre><code>| Name | Phone |
-|
-</code></pre>
-
-<p>然后按下 <em>Tab</em>，插件帮你完成表头格式化：</p>
-
-<pre><code>| Name | Phone |
-|------|-------|
-|      |       |
-</code></pre>
-
-<p>更快的创建表头方法：</p>
-
-<pre><code>|Name|Phone
-</code></pre>
-
-<p>然后按下 <em>ctrl+k, enter</em>，你会得到：</p>
-
-<pre><code>| Name | Phone |
-|------|-------|
-|      |       |
-</code></pre>
-
-<p>如果按下 <em>ctrl+k, &ndash;</em>，你会得到：</p>
-
-<pre><code>| Name | Phone |
-|------|-------|
-</code></pre>
-
-<h4>新建行、在table中移动和输入文字后的对其</h4>
-
-<p><em>tab</em> 为向后移动，<em>shift+tab</em> 向后移动，并且可以完成对其和新建行</p>
-
-<h2>对列的操作</h2>
-
-<p><em>alt+shift+right</em>完成新建列，<em>alt+shift+left</em>删除列，<em>alt+right</em>和<em>alt+left</em>完成交换列。</p>
-
-<h4>新建列</h4>
-
-<pre><code>|    Name   |   Phone   |
-|-----------|-----------|
-| Anna      | 123456789 |
-| Alexander | 987654321 |
-|           | _         |
-</code></pre>
-
-<p>如果按下 <em>alt+shift+right</em>，你会得到：</p>
-
-<pre><code>|    Name   |   |   Phone   |
-|-----------|---|-----------|
-| Anna      |   | 123456789 |
-| Alexander |   | 987654321 |
-|           | _ |           |
-</code></pre>
-
-<h4>删除列</h4>
-
-<p>继续按下 <em>alt+shift+left</em>，你会得到：</p>
-
-<pre><code>|    Name   |   Phone   |
-|-----------|-----------|
-| Anna      | 123456789 |
-| Alexander | 987654321 |
-|           | _         |
-</code></pre>
-
-<h4>交换列</h4>
-
-<pre><code>|    Name   | Age |   Phone   |
-|-----------|-----|-----------|
-| Anna      |  32 | 123456789 |
-| Alexander |  28_| 987654321 |
-|           |     |           |
-</code></pre>
-
-<p>继续按下 <em>alt+left</em>，你会得到：</p>
-
-<pre><code>|    Name   | Age |   Phone   |
-|-----------|-----|-----------|
-| Anna      | 32  | 123456789 |
-| Alexander | 28_ | 987654321 |
-|           |     |           |
-</code></pre>
-
-<p>继续按下 <em>alt+right</em>，你会得到：</p>
-
-<pre><code>|    Name   | Age |   Phone   |
-|-----------|-----|-----------|
-| Anna      | 32  | 123456789 |
-| Alexander | 28_ | 987654321 |
-|           |     |           |
-</code></pre>
-
-<h2>对行的操作</h2>
-
-<h4>插入新行</h4>
-
-<pre><code>|    Name   |   Phone   | Age |
-|-----------|-----------|-----|
-| Anna      | 123456789 | 32_ |
-| Alexander | 987654321 | 28  |
-|           |           |     |
-</code></pre>
-
-<p>如果按下 <em>alt+shift+down</em>，你会得到：</p>
-
-<pre><code>|    Name   |   Phone   | Age |
-|-----------|-----------|-----|
-|           |           |     |
-| Anna      | 123456789 | 32_ |
-| Alexander | 987654321 | 28  |
-|           |           |     |
-</code></pre>
-
-<h4>删除行</h4>
-
-<p>移动到要删除的行，</p>
-
-<pre><code>|    Name   |   Phone   | Age |
-|-----------|-----------|-----|
-|           |           | _   |
-| Anna      | 123456789 | 32  |
-| Alexander | 987654321 | 28  |
-|           |           |     |
-</code></pre>
-
-<p>按下 <em>alt+shift+up</em>，你会得到：</p>
-
-<pre><code>|    Name   |   Phone   | Age |
-|-----------|-----------|-----|
-| Anna      | 123456789 |  32 |
-| Alexander | 987654321 |  28 |
-|           |           |     |
-</code></pre>
-
-<h4>插入分割线</h4>
-
-<pre><code>|    Name   |   Phone   | Age |             Position             |
-|-----------|-----------|-----|----------------------------------|
-| Anna      | 123456789 |  32 | Senior Software Engineer_        |
-| Alexander | 987654321 |  28 | Senior Software Testing Engineer |
-|           |           |     |                                  |
-</code></pre>
-
-<p>按下 <em>ctrl+k,&ndash;</em>，得到：</p>
-
-<pre><code>|    Name   |   Phone   | Age |             Position             |
-|-----------|-----------|-----|----------------------------------|
-| Anna      | 123456789 |  32 | Senior Software Engineer_        |
-|-----------|-----------|-----|----------------------------------|
-| Alexander | 987654321 |  28 | Senior Software Testing Engineer |
-|           |           |     |                                  |
-</code></pre>
-
-<h4>单元中内容分行</h4>
-
-<pre><code>|    Name   |   Phone   | Age |              Position             |
-|-----------|-----------|-----|-----------------------------------|
-| Anna      | 123456789 |  32 | Senior Software Engineer          |
-| Alexander | 987654321 |  28 | Senior Software _Testing Engineer |
-|           |           |     |                                   |
-</code></pre>
-
-<p>按下 <em>alt+enter</em>，得到：</p>
-
-<pre><code>|    Name   |   Phone   | Age |         Position         |
-|-----------|-----------|-----|--------------------------|
-| Anna      | 123456789 |  32 | Senior Software Engineer |
-| Alexander | 987654321 |  28 | Senior Software          |
-|           |           |     | Testing Engineer         |
-</code></pre>
-
-<h4>单元中内容合并</h4>
-
-<p>命令为：<em>ctrl+j</em></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1305,7 +1006,7 @@ document.write(sTest==window.sTest);
   <h1>Categories</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/embedded/'>Embedded (5)</a></li>
-<li class='category'><a href='/blog/categories/javascript/'>Javascript (5)</a></li>
+<li class='category'><a href='/blog/categories/javascript/'>Javascript (7)</a></li>
 <li class='category'><a href='/blog/categories/jekyll/'>Jekyll (2)</a></li>
 <li class='category'><a href='/blog/categories/octopress/'>Octopress (6)</a></li>
 <li class='category'><a href='/blog/categories/server/'>Server (2)</a></li>
@@ -1320,23 +1021,23 @@ document.write(sTest==window.sTest);
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2014/04/03/learn-javastript-bom-base-location-object/">JavaScript学习&#8211;BOM基础之location对象</a>
+        <a href="/blog/2014/04/04/learn-javastript-bom-base-screen-object/">JavaScript学习&#8211;BOM基础之screen对象(转)</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/03/learn-javastript-bom-base-history-object/">JavaScript学习&#8211;BOM基础之history对象</a>
+        <a href="/blog/2014/04/04/learn-javastript-bom-base-navigator-object/">JavaScript学习&#8211;BOM基础之navigator对象(转)</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/03/learn-javastript-bom-base-frames-object/">JavaScript学习&#8211;BOM基础之frames对象</a>
+        <a href="/blog/2014/04/03/learn-javastript-bom-base-location-object/">JavaScript学习&#8211;BOM基础之location对象(转)</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/01/learn-javastript-bom-base-document-object/">JavaScript学习&#8211;BOM基础之document对象</a>
+        <a href="/blog/2014/04/03/learn-javastript-bom-base-history-object/">JavaScript学习&#8211;BOM基础之history对象(转)</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/03/31/learn-javastript-bom-base-window-object/">JavaScript学习&#8211;BOM基础之window对象</a>
+        <a href="/blog/2014/04/03/learn-javastript-bom-base-frames-object/">JavaScript学习&#8211;BOM基础之frames对象(转)</a>
       </li>
     
   </ul>
@@ -1347,12 +1048,12 @@ document.write(sTest==window.sTest);
     <a style="font-size: 210%" href="/tags/bom/">BOM</a>
 <a style="font-size: 90%" href="/tags/github/">github,</a>
 <a style="font-size: 210%" href="/tags/javascript/">javascript,</a>
-<a style="font-size: 193%" href="/tags/octopress/">octopress</a>
-<a style="font-size: 142%" href="/tags/octopress/">octopress,</a>
-<a style="font-size: 210%" href="/tags/sublime-text/">sublime-text</a>
-<a style="font-size: 172%" href="/tags/tcpip/">tcpip</a>
+<a style="font-size: 175%" href="/tags/octopress/">octopress</a>
+<a style="font-size: 133%" href="/tags/octopress/">octopress,</a>
+<a style="font-size: 189%" href="/tags/sublime-text/">sublime-text</a>
+<a style="font-size: 158%" href="/tags/tcpip/">tcpip</a>
 <a style="font-size: 90%" href="/tags/vagrant/">vagrant,</a>
-<a style="font-size: 172%" href="/tags/vim/">vim</a>
+<a style="font-size: 158%" href="/tags/vim/">vim</a>
 <a style="font-size: 90%" href="/tags/virtualbox/">virtualbox</a>
 
   </ul>

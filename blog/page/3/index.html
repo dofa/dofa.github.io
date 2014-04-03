@@ -9,10 +9,20 @@
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="硬件架构 前面讲了，处理TCP/IP封包的硬件主要使用Ethernet模块。
-大多数Ethernet模块分为这几个部分：PHY，MAC，MII/RMII管理，DMA和控制器。 PHY实现bit流到cat5的transfer
-MAC实现数据链路层的介质访问控制子层，并执行CSMA/CD功能
-MII/ &hellip;">
+  <meta name="description" content="在C编程中，经常遇到大小端（big endian与little endian）的问题，尤其涉及到位域的情况，很容易出错。我这里总结下C51和HTCC C18两种compiler对大小端的处理。 Check Endian code 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +91,228 @@ MII/ &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/08/05/big-endian-and-little-endian/">big endian与little endian（大小端）</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-05T13:25:52+00:00" pubdate data-updated="true">Aug 5<span>th</span>, 2013</time>
+        
+        
+           | <a href="/blog/2013/08/05/big-endian-and-little-endian/#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>在C编程中，经常遇到大小端（big endian与little endian）的问题，尤其涉及到位域的情况，很容易出错。我这里总结下C51和HTCC C18两种compiler对大小端的处理。</p>
+
+<h2>Check Endian code</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="kt">char</span> <span class="nf">checkEndian</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="k">union</span> <span class="n">check</span><span class="p">{</span>
+</span><span class='line'>      <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+</span><span class='line'>      <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">b</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>  <span class="k">union</span> <span class="n">check</span> <span class="n">ck</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">ck</span><span class="p">.</span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">ck</span><span class="p">.</span><span class="n">b</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="k">union</span> <span class="n">uE</span><span class="p">{</span>
+</span><span class='line'>      <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">num</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">struct</span><span class="p">{</span>
+</span><span class='line'>          <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">a1</span><span class="o">:</span><span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>          <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">b3</span><span class="o">:</span><span class="mi">3</span><span class="p">;</span>
+</span><span class='line'>          <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">c16</span><span class="p">;</span>
+</span><span class='line'>          <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">d3</span><span class="o">:</span><span class="mi">3</span><span class="p">;</span>
+</span><span class='line'>          <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">e1</span><span class="o">:</span><span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>      <span class="p">}</span><span class="n">sN</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">union</span> <span class="n">uE</span> <span class="n">a</span><span class="p">;</span>
+</span><span class='line'>  <span class="kt">char</span> <span class="n">ttt</span> <span class="o">=</span>    <span class="n">checkEndian</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">num</span> <span class="o">=</span> <span class="mh">0x12345678</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">sN</span><span class="p">.</span><span class="n">a1</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">sN</span><span class="p">.</span><span class="n">b3</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">sN</span><span class="p">.</span><span class="n">c16</span> <span class="o">=</span> <span class="mh">0x0304</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">sN</span><span class="p">.</span><span class="n">d3</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">sN</span><span class="p">.</span><span class="n">e1</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">num</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Executed results</h2>
+
+<p>a.num = ?</p>
+
+<p>对于big endian：</p>
+
+<p>以C51来分析，结构成员按照定义顺序从小地址到大地址存放到ram中，显然按照地址从小到大排放结果就为：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="mo">05</span> <span class="mo">03</span> <span class="mo">04</span> <span class="mi">0</span><span class="n">d</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>转换为大端显示为：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="mh">0x0503040d</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>对于little endian：</p>
+
+<p>结果为</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="mh">0x0d030405</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Results</h2>
+
+<p>所以我这里结论：</p>
+
+<ul>
+<li><p>位域没有大小端的区别，区别在于各编译器的实现。上面的例子便是没有区别的compiler，C51和HTCC C18；网络字节序位域有大小端区别，这个一定要注意</p></li>
+<li><p>两个及其以上字节有大小端区别</p></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/08/01/tcp-ip-protocol-learning-series-three-of-link-layer/">TCP/IP协议学习系列之三 — 链路层</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-01T14:25:52+00:00" pubdate data-updated="true">Aug 1<span>st</span>, 2013</time>
+        
+        
+           | <a href="/blog/2013/08/01/tcp-ip-protocol-learning-series-three-of-link-layer/#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>TCP/IP支持多种不同的链路层协议</h3>
+
+<p>这取决于网络所使用的硬件，如以太网、令牌环网、FDDI（光纤分布式数据接口）及RS-232串行线路等。</p>
+
+<h3>以太网是当今TCP/IP采用的主要的局域网技术</h3>
+
+<p>它采用一种称作CSMA/CD的媒体接入方法，其意思是带冲突检测的载波侦听多路接入（Carrier Sense, Multiple Access with Collision Detection）。它的速率为10 Mb/s，地址为48 bit。</p>
+
+<h3>以太网IP数据报的封装</h3>
+
+<p>以太网IP数据报的封装是在RFC 894[Hornig 1984]中定义的，但存在另外一个IEEE 802规格RFC 1042[Postel and Reynolds 1988]，只是大多数人采用RFC 894。RFC 894在有的地方称作Ethernet-II。</p>
+
+<h3>SLIP和PPP</h3>
+
+<p>串行线路IP–SLIP和他的升级版PPP使用RS-232串口传数据，速度太慢，基本上大家都不用这种方式了，而改用宽带上网。这年头问别人如何上网，都是“你家多少兆？”。</p>
+
+<h3>环回接口</h3>
+
+<p>下面再来看一个大家都熟悉的ip：127.0.0.1。这个IP称作环回接口，它还有个英文名localhost。基本上，对这个ip的访问就是访问自己的主机。</p>
+
+<h3>MTU</h3>
+
+<p>以太网一次可以传送的最大传输单元（MTU）为1500B。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -841,46 +1073,9 @@ Ctrl+W          切换窗口, h到左边窗口，j到下方窗口，k到上方�
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/03/26/vim-cheat-sheet/">vim cheat sheet</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-03-26T16:48:52+00:00" pubdate data-updated="true">Mar 26<span>th</span>, 2013</time>
-        
-        
-           | <a href="/blog/2013/03/26/vim-cheat-sheet/#comments">Comments</a>
-                
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="http://dofa.u.qiniudn.com/image/vim/vim-cheat-sheet.png"></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/4/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -894,7 +1089,7 @@ Ctrl+W          切换窗口, h到左边窗口，j到下方窗口，k到上方�
   <h1>Categories</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/embedded/'>Embedded (5)</a></li>
-<li class='category'><a href='/blog/categories/javascript/'>Javascript (5)</a></li>
+<li class='category'><a href='/blog/categories/javascript/'>Javascript (7)</a></li>
 <li class='category'><a href='/blog/categories/jekyll/'>Jekyll (2)</a></li>
 <li class='category'><a href='/blog/categories/octopress/'>Octopress (6)</a></li>
 <li class='category'><a href='/blog/categories/server/'>Server (2)</a></li>
@@ -909,23 +1104,23 @@ Ctrl+W          切换窗口, h到左边窗口，j到下方窗口，k到上方�
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2014/04/03/learn-javastript-bom-base-location-object/">JavaScript学习&#8211;BOM基础之location对象</a>
+        <a href="/blog/2014/04/04/learn-javastript-bom-base-screen-object/">JavaScript学习&#8211;BOM基础之screen对象(转)</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/03/learn-javastript-bom-base-history-object/">JavaScript学习&#8211;BOM基础之history对象</a>
+        <a href="/blog/2014/04/04/learn-javastript-bom-base-navigator-object/">JavaScript学习&#8211;BOM基础之navigator对象(转)</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/03/learn-javastript-bom-base-frames-object/">JavaScript学习&#8211;BOM基础之frames对象</a>
+        <a href="/blog/2014/04/03/learn-javastript-bom-base-location-object/">JavaScript学习&#8211;BOM基础之location对象(转)</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/01/learn-javastript-bom-base-document-object/">JavaScript学习&#8211;BOM基础之document对象</a>
+        <a href="/blog/2014/04/03/learn-javastript-bom-base-history-object/">JavaScript学习&#8211;BOM基础之history对象(转)</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/03/31/learn-javastript-bom-base-window-object/">JavaScript学习&#8211;BOM基础之window对象</a>
+        <a href="/blog/2014/04/03/learn-javastript-bom-base-frames-object/">JavaScript学习&#8211;BOM基础之frames对象(转)</a>
       </li>
     
   </ul>
@@ -936,12 +1131,12 @@ Ctrl+W          切换窗口, h到左边窗口，j到下方窗口，k到上方�
     <a style="font-size: 210%" href="/tags/bom/">BOM</a>
 <a style="font-size: 90%" href="/tags/github/">github,</a>
 <a style="font-size: 210%" href="/tags/javascript/">javascript,</a>
-<a style="font-size: 193%" href="/tags/octopress/">octopress</a>
-<a style="font-size: 142%" href="/tags/octopress/">octopress,</a>
-<a style="font-size: 210%" href="/tags/sublime-text/">sublime-text</a>
-<a style="font-size: 172%" href="/tags/tcpip/">tcpip</a>
+<a style="font-size: 175%" href="/tags/octopress/">octopress</a>
+<a style="font-size: 133%" href="/tags/octopress/">octopress,</a>
+<a style="font-size: 189%" href="/tags/sublime-text/">sublime-text</a>
+<a style="font-size: 158%" href="/tags/tcpip/">tcpip</a>
 <a style="font-size: 90%" href="/tags/vagrant/">vagrant,</a>
-<a style="font-size: 172%" href="/tags/vim/">vim</a>
+<a style="font-size: 158%" href="/tags/vim/">vim</a>
 <a style="font-size: 90%" href="/tags/virtualbox/">virtualbox</a>
 
   </ul>

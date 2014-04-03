@@ -4,7 +4,7 @@
   <title><![CDATA[Do Far]]></title>
   <link href="http://blog.dofa.org/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-04-02T15:10:51+00:00</updated>
+  <updated>2014-04-03T14:03:22+00:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -14,7 +14,75 @@
 
   
   <entry>
-    <title type="html"><![CDATA[JavaScript学习--BOM基础之location对象]]></title>
+    <title type="html"><![CDATA[JavaScript学习--BOM基础之screen对象(转)]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/04/learn-javastript-bom-base-screen-object/"/>
+    <updated>2014-04-04T04:57:06+00:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/04/learn-javastript-bom-base-screen-object</id>
+    <content type="html"><![CDATA[<p>screen对象用于获取用户的屏幕信息</p>
+
+<h2>Screen对象</h2>
+
+<ul>
+<li><code>Screen</code>对象是<code>window</code>对象的属性</li>
+</ul>
+
+
+<h2>Screen对象属性</h2>
+
+<ul>
+<li><code>JavaScript</code> <code>availHeight</code> 属性 &mdash;  窗口可以使用的屏幕高度，单位像素</li>
+<li><code>JavaScript</code> <code>availWidth</code> 属性  &mdash;  窗口可以使用的屏幕宽度，单位像素</li>
+<li><code>JavaScript</code> <code>colorDepth</code> 属性  &mdash;  用户浏览器表示的颜色位数，通常为32位(每像素的位数)</li>
+<li><code>JavaScript</code> <code>pixelDepth</code> 属性  &mdash;  用户浏览器表示的颜色位数，通常为32位(每像素的位数)（<code>IE</code>不支持此属性）</li>
+<li><code>JavaScript</code> <code>height</code> 属性  &mdash;  屏幕的高度，单位像素</li>
+<li><code>JavaScript</code> <code>width</code> 属性   &mdash;  屏幕的宽度，单位像素</li>
+</ul>
+
+
+<p><code>availWidth</code>与<code>availHeight</code>属性非常有用，例如：可以使用下面的代码填充用户的屏幕：</p>
+
+<pre><code>window.moveTo(0,0);
+window.resizeTo(screen.availWidth, screen.availHeight);
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript学习--BOM基础之navigator对象(转)]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/04/learn-javastript-bom-base-navigator-object/"/>
+    <updated>2014-04-04T04:52:06+00:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/04/learn-javastript-bom-base-navigator-object</id>
+    <content type="html"><![CDATA[<p>navigator对象通常用于检测浏览器与操作系统的版本</p>
+
+<h2>Navigator对象</h2>
+
+<ul>
+<li><code>navigator</code>对象是<code>window</code>对象的属性</li>
+<li>由于<code>navigator</code>没有统一的标准，因此各个浏览器都有自己不同的<code>navigator</code>版本，这里只介绍最普遍支持且最常用的</li>
+</ul>
+
+
+<h2>常用的navigator属性</h2>
+
+<ul>
+<li><code>appCodeName</code> &mdash;  浏览器代码名的字符串表示</li>
+<li><code>appName</code> &mdash;  官方浏览器名的字符串表示</li>
+<li><code>appVersion</code>  &mdash;  浏览器版本信息的字符串表示</li>
+<li><code>cookieEnabled</code>   &mdash;  如果启用<code>cookie</code>返回<code>true</code>，否则返回<code>false</code></li>
+<li><code>javaEnabled</code> &mdash;  如果启用<code>java</code>返回<code>true</code>，否则返回<code>false</code></li>
+<li><code>platform</code>    &mdash;  浏览器所在计算机平台的字符串表示</li>
+<li><code>plugins</code> &mdash;  安装在浏览器中的插件数组</li>
+<li><code>taintEnabled</code>    &mdash;  如果启用了数据污点返回<code>true</code>，否则返回<code>false</code></li>
+<li><code>userAgent</code>   &mdash;  用户代理头的字符串表示</li>
+</ul>
+
+
+<p><code>navigator</code>中最重要的是<code>userAgent</code>属性，返回包含浏览器版本等信息的字符串，其次<code>cookieEnabled</code>也很重要，使用它可以判断用户浏览器是否开启<code>cookie</code>。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript学习--BOM基础之location对象(转)]]></title>
     <link href="http://blog.dofa.org/blog/2014/04/03/learn-javastript-bom-base-location-object/"/>
     <updated>2014-04-03T06:10:06+00:00</updated>
     <id>http://blog.dofa.org/blog/2014/04/03/learn-javastript-bom-base-location-object</id>
@@ -61,7 +129,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[JavaScript学习--BOM基础之history对象]]></title>
+    <title type="html"><![CDATA[JavaScript学习--BOM基础之history对象(转)]]></title>
     <link href="http://blog.dofa.org/blog/2014/04/03/learn-javastript-bom-base-history-object/"/>
     <updated>2014-04-03T06:00:06+00:00</updated>
     <id>http://blog.dofa.org/blog/2014/04/03/learn-javastript-bom-base-history-object</id>
@@ -95,7 +163,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[JavaScript学习--BOM基础之frames对象]]></title>
+    <title type="html"><![CDATA[JavaScript学习--BOM基础之frames对象(转)]]></title>
     <link href="http://blog.dofa.org/blog/2014/04/03/learn-javastript-bom-base-frames-object/"/>
     <updated>2014-04-03T05:35:06+00:00</updated>
     <id>http://blog.dofa.org/blog/2014/04/03/learn-javastript-bom-base-frames-object</id>
@@ -186,7 +254,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[JavaScript学习--BOM基础之document对象]]></title>
+    <title type="html"><![CDATA[JavaScript学习--BOM基础之document对象(转)]]></title>
     <link href="http://blog.dofa.org/blog/2014/04/01/learn-javastript-bom-base-document-object/"/>
     <updated>2014-04-01T15:35:06+00:00</updated>
     <id>http://blog.dofa.org/blog/2014/04/01/learn-javastript-bom-base-document-object</id>
@@ -279,7 +347,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[JavaScript学习--BOM基础之window对象]]></title>
+    <title type="html"><![CDATA[JavaScript学习--BOM基础之window对象(转)]]></title>
     <link href="http://blog.dofa.org/blog/2014/03/31/learn-javastript-bom-base-window-object/"/>
     <updated>2014-03-31T15:26:06+00:00</updated>
     <id>http://blog.dofa.org/blog/2014/03/31/learn-javastript-bom-base-window-object</id>
@@ -1518,168 +1586,6 @@ git push origin master
 </code></pre></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[big endian与little endian（大小端）]]></title>
-    <link href="http://blog.dofa.org/blog/2013/08/05/big-endian-and-little-endian/"/>
-    <updated>2013-08-05T13:25:52+00:00</updated>
-    <id>http://blog.dofa.org/blog/2013/08/05/big-endian-and-little-endian</id>
-    <content type="html"><![CDATA[<p>在C编程中，经常遇到大小端（big endian与little endian）的问题，尤其涉及到位域的情况，很容易出错。我这里总结下C51和HTCC C18两种compiler对大小端的处理。</p>
-
-<h2>Check Endian code</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="kt">char</span> <span class="nf">checkEndian</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="k">union</span> <span class="n">check</span><span class="p">{</span>
-</span><span class='line'>      <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
-</span><span class='line'>      <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">b</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">};</span>
-</span><span class='line'>  <span class="k">union</span> <span class="n">check</span> <span class="n">ck</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">ck</span><span class="p">.</span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">ck</span><span class="p">.</span><span class="n">b</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="k">union</span> <span class="n">uE</span><span class="p">{</span>
-</span><span class='line'>      <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">num</span><span class="p">;</span>
-</span><span class='line'>      <span class="k">struct</span><span class="p">{</span>
-</span><span class='line'>          <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">a1</span><span class="o">:</span><span class="mi">1</span><span class="p">;</span>
-</span><span class='line'>          <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">b3</span><span class="o">:</span><span class="mi">3</span><span class="p">;</span>
-</span><span class='line'>          <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">c16</span><span class="p">;</span>
-</span><span class='line'>          <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">d3</span><span class="o">:</span><span class="mi">3</span><span class="p">;</span>
-</span><span class='line'>          <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">e1</span><span class="o">:</span><span class="mi">1</span><span class="p">;</span>
-</span><span class='line'>      <span class="p">}</span><span class="n">sN</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">union</span> <span class="n">uE</span> <span class="n">a</span><span class="p">;</span>
-</span><span class='line'>  <span class="kt">char</span> <span class="n">ttt</span> <span class="o">=</span>    <span class="n">checkEndian</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">num</span> <span class="o">=</span> <span class="mh">0x12345678</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">sN</span><span class="p">.</span><span class="n">a1</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">sN</span><span class="p">.</span><span class="n">b3</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">sN</span><span class="p">.</span><span class="n">c16</span> <span class="o">=</span> <span class="mh">0x0304</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">sN</span><span class="p">.</span><span class="n">d3</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">sN</span><span class="p">.</span><span class="n">e1</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">a</span><span class="p">.</span><span class="n">num</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Executed results</h2>
-
-<p>a.num = ?</p>
-
-<p>对于big endian：</p>
-
-<p>以C51来分析，结构成员按照定义顺序从小地址到大地址存放到ram中，显然按照地址从小到大排放结果就为：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="mo">05</span> <span class="mo">03</span> <span class="mo">04</span> <span class="mi">0</span><span class="n">d</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>转换为大端显示为：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="mh">0x0503040d</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>对于little endian：</p>
-
-<p>结果为</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="mh">0x0d030405</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Results</h2>
-
-<p>所以我这里结论：</p>
-
-<ul>
-<li><p>位域没有大小端的区别，区别在于各编译器的实现。上面的例子便是没有区别的compiler，C51和HTCC C18；网络字节序位域有大小端区别，这个一定要注意</p></li>
-<li><p>两个及其以上字节有大小端区别</p></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[TCP/IP协议学习系列之三 — 链路层]]></title>
-    <link href="http://blog.dofa.org/blog/2013/08/01/tcp-ip-protocol-learning-series-three-of-link-layer/"/>
-    <updated>2013-08-01T14:25:52+00:00</updated>
-    <id>http://blog.dofa.org/blog/2013/08/01/tcp-ip-protocol-learning-series-three-of-link-layer</id>
-    <content type="html"><![CDATA[<h3>TCP/IP支持多种不同的链路层协议</h3>
-
-<p>这取决于网络所使用的硬件，如以太网、令牌环网、FDDI（光纤分布式数据接口）及RS-232串行线路等。</p>
-
-<h3>以太网是当今TCP/IP采用的主要的局域网技术</h3>
-
-<p>它采用一种称作CSMA/CD的媒体接入方法，其意思是带冲突检测的载波侦听多路接入（Carrier Sense, Multiple Access with Collision Detection）。它的速率为10 Mb/s，地址为48 bit。</p>
-
-<h3>以太网IP数据报的封装</h3>
-
-<p>以太网IP数据报的封装是在RFC 894[Hornig 1984]中定义的，但存在另外一个IEEE 802规格RFC 1042[Postel and Reynolds 1988]，只是大多数人采用RFC 894。RFC 894在有的地方称作Ethernet-II。</p>
-
-<h3>SLIP和PPP</h3>
-
-<p>串行线路IP–SLIP和他的升级版PPP使用RS-232串口传数据，速度太慢，基本上大家都不用这种方式了，而改用宽带上网。这年头问别人如何上网，都是“你家多少兆？”。</p>
-
-<h3>环回接口</h3>
-
-<p>下面再来看一个大家都熟悉的ip：127.0.0.1。这个IP称作环回接口，它还有个英文名localhost。基本上，对这个ip的访问就是访问自己的主机。</p>
-
-<h3>MTU</h3>
-
-<p>以太网一次可以传送的最大传输单元（MTU）为1500B。</p>
 ]]></content>
   </entry>
   
