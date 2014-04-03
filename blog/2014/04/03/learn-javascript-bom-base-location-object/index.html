@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>JavaScript学习--BOM基础之navigator对象(转) - Do Far</title>
+  <title>JavaScript学习--BOM基础之location对象(转) - Do Far</title>
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="navigator对象通常用于检测浏览器与操作系统的版本 Navigator对象 navigator对象是window对象的属性
-由于navigator没有统一的标准，因此各个浏览器都有自己不同的navigator版本，这里只介绍最普遍支持且最常用的 常用的navigator属性 &hellip;">
+  <meta name="description" content="Location用于获取或设置窗体的URL，并且可以用于解析URL，是BOM中最重要的对象之一 Location对象 Location既是window对象的属性又是document对象的属性
+location包含8个属性，其中7个都是当前窗体的URL的一部分，剩下的也是最重要的一个是href属性， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.dofa.org/blog/2014/04/04/learn-javastript-bom-base-navigator-object">
+  <link rel="canonical" href="http://blog.dofa.org/blog/2014/04/03/learn-javascript-bom-base-location-object">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -82,7 +82,7 @@
   
   <header>
     
-      <h1 class="entry-title">JavaScript学习--BOM基础之navigator对象(转)</h1>
+      <h1 class="entry-title">JavaScript学习--BOM基础之location对象(转)</h1>
     
     
       <p class="meta">
@@ -98,7 +98,7 @@
   
 
 
-<time datetime="2014-04-04T04:52:06+00:00" pubdate data-updated="true">Apr 4<span>th</span>, 2014</time>
+<time datetime="2014-04-03T06:10:06+00:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2014</time>
         
         
            | <a href="#comments">Comments</a>
@@ -108,32 +108,45 @@
   </header>
 
 
-<div class="entry-content"><p>navigator对象通常用于检测浏览器与操作系统的版本</p>
+<div class="entry-content"><p>Location用于获取或设置窗体的URL，并且可以用于解析URL，是BOM中最重要的对象之一</p>
 
-<h2>Navigator对象</h2>
+<h2>Location对象</h2>
 
 <ul>
-<li><code>navigator</code>对象是<code>window</code>对象的属性</li>
-<li>由于<code>navigator</code>没有统一的标准，因此各个浏览器都有自己不同的<code>navigator</code>版本，这里只介绍最普遍支持且最常用的</li>
+<li><code>Location</code>既是<code>window</code>对象的属性又是<code>document</code>对象的属性</li>
+<li><code>location</code>包含8个属性，其中7个都是当前窗体的<code>URL</code>的一部分，剩下的也是最重要的一个是<code>href</code>属性，代表当前窗体的<code>URL</code></li>
+<li><code>location</code>的8个属性都是可读写的，但是只有<code>href</code>与<code>hash</code>的写才有意义。例如改变<code>location.href</code>会重新定位到一个<code>URL</code>，而修改<code>location.hash</code>会跳到当前页面中的<code>anchor(&lt;a id="name"&gt;</code>或者<code>&lt;div id="id"&gt;</code>等)名字的标记(如果有)，而且页面不会被重新加载</li>
 </ul>
 
 
-<h2>常用的navigator属性</h2>
+<h2>示例</h2>
+
+<pre><code>document.write(window.location==document.location);
+</code></pre>
+
+<h2>Location对象属性图示</h2>
+
+<p><img src="http://dofa.u.qiniudn.com/image/web/window_location.png"></p>
+
+<p>location属性</p>
 
 <ul>
-<li><code>appCodeName</code> &mdash;  浏览器代码名的字符串表示</li>
-<li><code>appName</code> &mdash;  官方浏览器名的字符串表示</li>
-<li><code>appVersion</code>  &mdash;  浏览器版本信息的字符串表示</li>
-<li><code>cookieEnabled</code>   &mdash;  如果启用<code>cookie</code>返回<code>true</code>，否则返回<code>false</code></li>
-<li><code>javaEnabled</code> &mdash;  如果启用<code>java</code>返回<code>true</code>，否则返回<code>false</code></li>
-<li><code>platform</code>    &mdash;  浏览器所在计算机平台的字符串表示</li>
-<li><code>plugins</code> &mdash;  安装在浏览器中的插件数组</li>
-<li><code>taintEnabled</code>    &mdash;  如果启用了数据污点返回<code>true</code>，否则返回<code>false</code></li>
-<li><code>userAgent</code>   &mdash;  用户代理头的字符串表示</li>
+<li><code>JavaScript</code> <code>hash</code> 属性    &mdash;  返回<code>URL</code>中<code>#</code>符号后面的内容</li>
+<li><code>JavaScript</code> <code>host</code> 属性    &mdash;  返回域名</li>
+<li><code>JavaScript</code> <code>hostname</code> 属性    &mdash;  返回主域名</li>
+<li><code>JavaScript</code> <code>href</code> 属性    &mdash;  返回当前文档的完整<code>URL</code>或设置当前文档的<code>URL</code></li>
+<li><code>JavaScript</code> <code>pathname</code> 属性    &mdash;  返回<code>URL</code>中域名后的部分</li>
+<li><code>JavaScript</code> <code>port</code> 属性    &mdash;  返回<code>URL</code>中的端口</li>
+<li><code>JavaScript</code> <code>protocol</code> 属性    &mdash;  返回<code>URL</code>中的协议</li>
+<li><code>JavaScript</code> <code>search</code> 属性  &mdash;  返回<code>URL</code>中的查询字符串</li>
+<li><code>JavaScript</code> <code>assign()</code>   函数 &mdash;   设置当前文档的<code>URL</code></li>
+<li><code>JavaScript</code> <code>replace()</code> 函数 &mdash;    设置当前文档的<code>URL</code>，并在<code>history</code>对象的地址列表中删除这个<code>URL</code></li>
+<li><code>JavaScript</code> <code>reload()</code>   函数 &mdash;   重新载入当前文档(从<code>server</code>服务器端)</li>
+<li><code>JavaScript</code> <code>toString()</code> 函数 &mdash;   返回<code>location</code>对象<code>href</code>属性当前的值</li>
 </ul>
 
 
-<p><code>navigator</code>中最重要的是<code>userAgent</code>属性，返回包含浏览器版本等信息的字符串，其次<code>cookieEnabled</code>也很重要，使用它可以判断用户浏览器是否开启<code>cookie</code>。</p>
+<p>Note: 主域名是不带www的域名，例如dreamdu.com，主域名前面带前缀的通常都为二级域名或多级域名，例如www.dreamdu.com其实是二级域名。</p>
 </div>
 
 
@@ -156,7 +169,7 @@
   
 
 
-<time datetime="2014-04-04T04:52:06+00:00" pubdate data-updated="true">Apr 4<span>th</span>, 2014</time>
+<time datetime="2014-04-03T06:10:06+00:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2014</time>
       
 
 <span class="categories">
@@ -177,10 +190,10 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/04/03/learn-javastript-bom-base-location-object/" title="Previous Post: JavaScript学习--BOM基础之location对象(转)">&laquo; JavaScript学习--BOM基础之location对象(转)</a>
+        <a class="basic-alignment left" href="/blog/2014/04/03/learn-javascript-bom-base-history-object/" title="Previous Post: JavaScript学习--BOM基础之history对象(转)">&laquo; JavaScript学习--BOM基础之history对象(转)</a>
       
       
-        <a class="basic-alignment right" href="/blog/2014/04/04/learn-javastript-bom-base-screen-object/" title="Next Post: JavaScript学习--BOM基础之screen对象(转)">JavaScript学习--BOM基础之screen对象(转) &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2014/04/04/learn-javascript-bom-base-navigator-object/" title="Next Post: JavaScript学习--BOM基础之navigator对象(转)">JavaScript学习--BOM基础之navigator对象(转) &raquo;</a>
       
     </p>
   </footer>
@@ -229,23 +242,23 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2014/04/04/javastript-dom-cheat-sheet/">JavaScript DOM cheat sheet</a>
+        <a href="/blog/2014/04/04/javascript-dom-cheat-sheet/">JavaScript DOM cheat sheet</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/04/learn-javastript-bom-base-screen-object/">JavaScript学习--BOM基础之screen对象(转)</a>
+        <a href="/blog/2014/04/04/learn-javascript-bom-base-screen-object/">JavaScript学习--BOM基础之screen对象(转)</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/04/learn-javastript-bom-base-navigator-object/">JavaScript学习--BOM基础之navigator对象(转)</a>
+        <a href="/blog/2014/04/04/learn-javascript-bom-base-navigator-object/">JavaScript学习--BOM基础之navigator对象(转)</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/03/learn-javastript-bom-base-location-object/">JavaScript学习--BOM基础之location对象(转)</a>
+        <a href="/blog/2014/04/03/learn-javascript-bom-base-location-object/">JavaScript学习--BOM基础之location对象(转)</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/03/learn-javastript-bom-base-history-object/">JavaScript学习--BOM基础之history对象(转)</a>
+        <a href="/blog/2014/04/03/learn-javascript-bom-base-history-object/">JavaScript学习--BOM基础之history对象(转)</a>
       </li>
     
   </ul>
@@ -258,11 +271,11 @@
 <a style="font-size: 210%" href="/tags/javascript/">javascript,</a>
 <a style="font-size: 170%" href="/tags/octopress/">octopress</a>
 <a style="font-size: 130%" href="/tags/octopress/">octopress,</a>
+<a style="font-size: 90%" href="/tags/php5/">php5</a>
 <a style="font-size: 183%" href="/tags/sublime-text/">sublime-text</a>
 <a style="font-size: 153%" href="/tags/tcpip/">tcpip</a>
 <a style="font-size: 90%" href="/tags/vagrant/">vagrant,</a>
 <a style="font-size: 153%" href="/tags/vim/">vim</a>
-<a style="font-size: 90%" href="/tags/virtualbox/">virtualbox</a>
 
   </ul>
 </section>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Javascript | Do Far]]></title>
   <link href="http://blog.dofa.org/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-04-03T15:04:20+00:00</updated>
+  <updated>2014-04-03T15:22:45+00:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -15,18 +15,18 @@
   
   <entry>
     <title type="html"><![CDATA[JavaScript DOM cheat sheet]]></title>
-    <link href="http://blog.dofa.org/blog/2014/04/04/javastript-dom-cheat-sheet/"/>
+    <link href="http://blog.dofa.org/blog/2014/04/04/javascript-dom-cheat-sheet/"/>
     <updated>2014-04-04T06:02:06+00:00</updated>
-    <id>http://blog.dofa.org/blog/2014/04/04/javastript-dom-cheat-sheet</id>
+    <id>http://blog.dofa.org/blog/2014/04/04/javascript-dom-cheat-sheet</id>
     <content type="html"><![CDATA[<p><img src="http://dofa.u.qiniudn.com/image/web/JavaScript-DOM-Cheatsheet.png"></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[JavaScript学习--BOM基础之screen对象(转)]]></title>
-    <link href="http://blog.dofa.org/blog/2014/04/04/learn-javastript-bom-base-screen-object/"/>
+    <link href="http://blog.dofa.org/blog/2014/04/04/learn-javascript-bom-base-screen-object/"/>
     <updated>2014-04-04T04:57:06+00:00</updated>
-    <id>http://blog.dofa.org/blog/2014/04/04/learn-javastript-bom-base-screen-object</id>
+    <id>http://blog.dofa.org/blog/2014/04/04/learn-javascript-bom-base-screen-object</id>
     <content type="html"><![CDATA[<p>screen对象用于获取用户的屏幕信息</p>
 
 <h2>Screen对象</h2>
@@ -58,9 +58,9 @@ window.resizeTo(screen.availWidth, screen.availHeight);
   
   <entry>
     <title type="html"><![CDATA[JavaScript学习--BOM基础之navigator对象(转)]]></title>
-    <link href="http://blog.dofa.org/blog/2014/04/04/learn-javastript-bom-base-navigator-object/"/>
+    <link href="http://blog.dofa.org/blog/2014/04/04/learn-javascript-bom-base-navigator-object/"/>
     <updated>2014-04-04T04:52:06+00:00</updated>
-    <id>http://blog.dofa.org/blog/2014/04/04/learn-javastript-bom-base-navigator-object</id>
+    <id>http://blog.dofa.org/blog/2014/04/04/learn-javascript-bom-base-navigator-object</id>
     <content type="html"><![CDATA[<p>navigator对象通常用于检测浏览器与操作系统的版本</p>
 
 <h2>Navigator对象</h2>
@@ -92,9 +92,9 @@ window.resizeTo(screen.availWidth, screen.availHeight);
   
   <entry>
     <title type="html"><![CDATA[JavaScript学习--BOM基础之location对象(转)]]></title>
-    <link href="http://blog.dofa.org/blog/2014/04/03/learn-javastript-bom-base-location-object/"/>
+    <link href="http://blog.dofa.org/blog/2014/04/03/learn-javascript-bom-base-location-object/"/>
     <updated>2014-04-03T06:10:06+00:00</updated>
-    <id>http://blog.dofa.org/blog/2014/04/03/learn-javastript-bom-base-location-object</id>
+    <id>http://blog.dofa.org/blog/2014/04/03/learn-javascript-bom-base-location-object</id>
     <content type="html"><![CDATA[<p>Location用于获取或设置窗体的URL，并且可以用于解析URL，是BOM中最重要的对象之一</p>
 
 <h2>Location对象</h2>
@@ -139,9 +139,9 @@ window.resizeTo(screen.availWidth, screen.availHeight);
   
   <entry>
     <title type="html"><![CDATA[JavaScript学习--BOM基础之history对象(转)]]></title>
-    <link href="http://blog.dofa.org/blog/2014/04/03/learn-javastript-bom-base-history-object/"/>
+    <link href="http://blog.dofa.org/blog/2014/04/03/learn-javascript-bom-base-history-object/"/>
     <updated>2014-04-03T06:00:06+00:00</updated>
-    <id>http://blog.dofa.org/blog/2014/04/03/learn-javastript-bom-base-history-object</id>
+    <id>http://blog.dofa.org/blog/2014/04/03/learn-javascript-bom-base-history-object</id>
     <content type="html"><![CDATA[<p>History用于窗体中的导航</p>
 
 <h2>History对象</h2>

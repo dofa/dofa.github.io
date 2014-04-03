@@ -9,7 +9,8 @@
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="使用理由 使用 Markdown， 专心写博客，无样式排版烦恼 使用自己喜欢的本地编辑器，本地随时写博客，可以本地预览，方便自己使用 并使用 Git 管理博客，内容永不丢失 可以部署在 github 上，不用自己购买管理 VPS，甚至域名也可以不买，对学生来说很适合 没有第三方博客系统的广告，限制 &hellip;">
+  <meta name="description" content="protothread protothread是专为资源有限的系统设计的一种耗费资源特别少并且不使用堆栈的线程模型 相比于嵌入式操作系统， protothread其有如下优点： 以纯C语言实现，无硬件依靠性； 因此不存在移植的困难
+极少的资源需求，每个 Protothread 仅需要2个额外的字节 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +79,90 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/10/17/Event-driven-pseudo-task-UOS/">事件驱动的伪任务-UOS</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-17T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+        
+           | <a href="/blog/2013/10/17/Event-driven-pseudo-task-UOS/#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>protothread</h3>
+
+<p>protothread是专为资源有限的系统设计的一种耗费资源特别少并且不使用堆栈的线程模型</p>
+
+<h3>相比于嵌入式操作系统， protothread其有如下优点：</h3>
+
+<ul>
+<li>以纯C语言实现，无硬件依靠性； 因此不存在移植的困难</li>
+<li>极少的资源需求，每个 Protothread 仅需要2个额外的字节</li>
+<li>支持阻塞操纵且没有栈的切换</li>
+</ul>
+
+
+<h3>protothread的缺陷在于：</h3>
+
+<ul>
+<li>函数中不具备可重入型，不能使用局部变量；</li>
+<li>按顺序判断各任务条件是否满足，因此无优先级抢占；</li>
+<li>任务中的各条件也是按顺序判断的，因此要求任务中的条件必须是依次出现的。</li>
+</ul>
+
+
+<h3>Uos的核心便是protothread</h3>
+
+<ul>
+<li>Uos使用protothread实现Task Switch</li>
+<li>Uos另外一个先进的地方：event-driven</li>
+</ul>
+
+
+<h3>Uos的Task Switch和event-driven</h3>
+
+<ul>
+<li>Task Switch负责把任务所有权切换出去</li>
+<li>切换任务之前，要设置触发事件</li>
+<li>任务调度时，会根据是否有触发事件发生，调用该任务</li>
+</ul>
+
+
+<h3>UOS项目官网</h3>
+
+<ul>
+<li>project网址：<a href="http://www.uos.co">http://www.uos.co</a></li>
+<li>github网址：<a href="https://github.com/bitbegin/uos">https://github.com/bitbegin/uos</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -990,132 +1075,6 @@ Preferences->File Setting-User，打开配置文件，看里面有没font_face�
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/04/10/commonly-used-vim-commands/">常用的Vim命令</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-04-10T13:09:55+00:00" pubdate data-updated="true">Apr 10<span>th</span>, 2013</time>
-        
-        
-           | <a href="/blog/2013/04/10/commonly-used-vim-commands/#comments">Comments</a>
-                
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>光标移动(Cursor Movement)</h2>
-
-<pre><code>命令          作用（解释）
-h,j,k,l         h表示往左，j表示往下，k表示往右，l表示往上
-Ctrl+f          上一页
-Ctrl+b          下一页
-w, e, W, E      跳到单词的后面，小写包括标点
-b, B            以单词为单位往前跳动光标，小写包含标点
-O               开启新的一行
-^               一行的开始
-$               一行的结尾
-gg              文档的第一行
-[N]G            文档的第N行或者最后一行
-</code></pre>
-
-<h2>插入模式(Insert Mode)</h2>
-
-<pre><code>命令          作用（解释)
-i               插入到光标前面
-I               插入到行的开始位置
-a               插入到光标的后面
-A               插入到行的最后位置
-o, O            新开一行
-Esc             关闭插入模式
-</code></pre>
-
-<h2>编辑(Editing)</h2>
-
-<pre><code>命令          作用（解释）
-r               在插入模式替换光标所在的一个字符
-J               合并下一行到上一行
-s               删除光标所在的一个字符, 光标还在当行
-S               删除光标所在的一行，光标还在当行，不同于dd
-u               撤销上一步操作
-ctrl+r          恢复上一步操作
-.               重复最后一个命令
-~               变换为大写
-[N]&gt;&gt;           一行或N行往右移动一个tab
-[N]&lt;&lt;           一行或N行往左移动一个tab
-</code></pre>
-
-<h2>关闭(Exiting)</h2>
-
-<pre><code>命令          作用（解释)
-:w              保存
-:wq, :x         保存并关闭
-:q              关闭（已保存）
-:q!             强制关闭
-</code></pre>
-
-<h2>搜索(Search)</h2>
-
-<pre><code>命令          作用（解释)
-/pattern        搜索（非插入模式)
-?pattern        往后搜索
-n               光标到达搜索结果的前一个目标
-N               光标到达搜索结果的后一个目标
-</code></pre>
-
-<h2>视觉模式(Visual Mode)</h2>
-
-<pre><code>命令          作用（解释)
-v               选中一个或多个字符
-V               选中一行
-ctrl+v          块选择
-</code></pre>
-
-<h2>剪切和复制(Cut and Paste)</h2>
-
-<pre><code>命令          作用（解释)
-dd              删除一行
-dw              删除一个单词
-x               删除后一个字符
-X               删除前一个字符
-D               删除一行最后一个字符
-[N]yy           复制一行或者N行
-yw              复制一个单词
-p               粘贴
-</code></pre>
-
-<h2>窗口操作</h2>
-
-<pre><code>命令          作用（解释)
-:split          水平方向分割出一个窗口
-:vsplit         垂直方向分割出一个窗口
-:close          关闭窗口
-Ctrl+W          切换窗口, h到左边窗口，j到下方窗口，k到上方窗口，l到右边窗口
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -1147,23 +1106,23 @@ Ctrl+W          切换窗口, h到左边窗口，j到下方窗口，k到上方�
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2014/04/04/javastript-dom-cheat-sheet/">JavaScript DOM cheat sheet</a>
+        <a href="/blog/2014/04/04/javascript-dom-cheat-sheet/">JavaScript DOM cheat sheet</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/04/learn-javastript-bom-base-screen-object/">JavaScript学习&#8211;BOM基础之screen对象(转)</a>
+        <a href="/blog/2014/04/04/learn-javascript-bom-base-screen-object/">JavaScript学习&#8211;BOM基础之screen对象(转)</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/04/learn-javastript-bom-base-navigator-object/">JavaScript学习&#8211;BOM基础之navigator对象(转)</a>
+        <a href="/blog/2014/04/04/learn-javascript-bom-base-navigator-object/">JavaScript学习&#8211;BOM基础之navigator对象(转)</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/03/learn-javastript-bom-base-location-object/">JavaScript学习&#8211;BOM基础之location对象(转)</a>
+        <a href="/blog/2014/04/03/learn-javascript-bom-base-location-object/">JavaScript学习&#8211;BOM基础之location对象(转)</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/03/learn-javastript-bom-base-history-object/">JavaScript学习&#8211;BOM基础之history对象(转)</a>
+        <a href="/blog/2014/04/03/learn-javascript-bom-base-history-object/">JavaScript学习&#8211;BOM基础之history对象(转)</a>
       </li>
     
   </ul>
@@ -1176,11 +1135,11 @@ Ctrl+W          切换窗口, h到左边窗口，j到下方窗口，k到上方�
 <a style="font-size: 210%" href="/tags/javascript/">javascript,</a>
 <a style="font-size: 170%" href="/tags/octopress/">octopress</a>
 <a style="font-size: 130%" href="/tags/octopress/">octopress,</a>
+<a style="font-size: 90%" href="/tags/php5/">php5</a>
 <a style="font-size: 183%" href="/tags/sublime-text/">sublime-text</a>
 <a style="font-size: 153%" href="/tags/tcpip/">tcpip</a>
 <a style="font-size: 90%" href="/tags/vagrant/">vagrant,</a>
 <a style="font-size: 153%" href="/tags/vim/">vim</a>
-<a style="font-size: 90%" href="/tags/virtualbox/">virtualbox</a>
 
   </ul>
 </section>

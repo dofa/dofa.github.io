@@ -5,12 +5,15 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>JavaScript DOM cheat sheet - Do Far</title>
+  <title>JavaScript学习--BOM基础之window对象(转) - Do Far</title>
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="什么是 BOM BOM是browser object model的缩写，简称浏览器对象模型
+BOM提供了独立于内容而与浏览器窗口进行交互的对象
+由于BOM主要用于管理窗口与窗口之间的通讯，因此其核心对象是window
+BOM由一系列相关的对象构成，并且每个对象都提供了很多方法与属性
+BOM缺乏标准 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +22,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.dofa.org/blog/2014/04/04/javastript-dom-cheat-sheet">
+  <link rel="canonical" href="http://blog.dofa.org/blog/2014/03/31/learn-javascript-bom-base-window-object">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -82,7 +85,7 @@
   
   <header>
     
-      <h1 class="entry-title">JavaScript DOM cheat sheet</h1>
+      <h1 class="entry-title">JavaScript学习--BOM基础之window对象(转)</h1>
     
     
       <p class="meta">
@@ -98,7 +101,7 @@
   
 
 
-<time datetime="2014-04-04T06:02:06+00:00" pubdate data-updated="true">Apr 4<span>th</span>, 2014</time>
+<time datetime="2014-03-31T15:26:06+00:00" pubdate data-updated="true">Mar 31<span>st</span>, 2014</time>
         
         
            | <a href="#comments">Comments</a>
@@ -108,7 +111,62 @@
   </header>
 
 
-<div class="entry-content"><p><img src="http://dofa.u.qiniudn.com/image/web/JavaScript-DOM-Cheatsheet.png"></p>
+<div class="entry-content"><h2>什么是 <code>BOM</code></h2>
+
+<ul>
+<li><code>BOM</code>是<code>browser object model</code>的缩写，简称浏览器对象模型</li>
+<li><code>BOM</code>提供了独立于内容而与浏览器窗口进行交互的对象</li>
+<li>由于<code>BOM</code>主要用于管理窗口与窗口之间的通讯，因此其核心对象是<code>window</code></li>
+<li><code>BOM</code>由一系列相关的对象构成，并且每个对象都提供了很多方法与属性</li>
+<li><code>BOM</code>缺乏标准，<code>JavaScript</code>语法的标准化组织是<code>ECMA</code>，<code>DOM</code>的标准化组织是<code>W3C</code></li>
+<li><code>BOM</code>最初是<code>Netscape</code>浏览器标准的一部分</li>
+</ul>
+
+
+<h2>BOM结构图</h2>
+
+<p><img src="http://dofa.u.qiniudn.com/image/web/browser_objects.png"></p>
+
+<p>window对象是BOM的顶层(核心)对象，所有对象都是通过它延伸出来的，也可以称为window的子对象。</p>
+
+<p>由于window是顶层对象，因此调用它的子对象时可以不显示的指明window对象，例如下面两行代码是一样的：</p>
+
+<pre><code>document.write("blog.dofa.org");
+window.document.write("blog.dofa.org");
+</code></pre>
+
+<h2>全局的window对象</h2>
+
+<p>window对象是BOM中所有对象的核心</p>
+
+<h4>JavaScript中的任何一个全局函数或变量都是window的属性</h4>
+
+<pre><code>var sTest="dofa";
+document.write(sTest==window.sTest);
+</code></pre>
+
+<p>结果：</p>
+
+<pre><code>true    
+</code></pre>
+
+<p>由于sTest是全局变量，因此可以通过window.sTest访问这个变量</p>
+
+<h4>window与self对象</h4>
+
+<p>self对象与window对象完全相同，self通常用于确认就是在当前的窗体内</p>
+
+<h4>window的子对象</h4>
+
+<ul>
+<li>JavaScript document 对象</li>
+<li>JavaScript frames 对象</li>
+<li>JavaScript history 对象</li>
+<li>JavaScript location 对象</li>
+<li>JavaScript navigator 对象</li>
+<li>JavaScript screen 对象</li>
+</ul>
+
 </div>
 
 
@@ -131,7 +189,7 @@
   
 
 
-<time datetime="2014-04-04T06:02:06+00:00" pubdate data-updated="true">Apr 4<span>th</span>, 2014</time>
+<time datetime="2014-03-31T15:26:06+00:00" pubdate data-updated="true">Mar 31<span>st</span>, 2014</time>
       
 
 <span class="categories">
@@ -152,8 +210,10 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/04/04/learn-javastript-bom-base-screen-object/" title="Previous Post: JavaScript学习--BOM基础之screen对象(转)">&laquo; JavaScript学习--BOM基础之screen对象(转)</a>
+        <a class="basic-alignment left" href="/blog/2014/03/30/add-links-for-octopress/" title="Previous Post: 为Octopress增加友情链接">&laquo; 为Octopress增加友情链接</a>
       
+      
+        <a class="basic-alignment right" href="/blog/2014/04/01/learn-javascript-bom-base-document-object/" title="Next Post: JavaScript学习--BOM基础之document对象(转)">JavaScript学习--BOM基础之document对象(转) &raquo;</a>
       
     </p>
   </footer>
@@ -202,23 +262,23 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2014/04/04/javastript-dom-cheat-sheet/">JavaScript DOM cheat sheet</a>
+        <a href="/blog/2014/04/04/javascript-dom-cheat-sheet/">JavaScript DOM cheat sheet</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/04/learn-javastript-bom-base-screen-object/">JavaScript学习--BOM基础之screen对象(转)</a>
+        <a href="/blog/2014/04/04/learn-javascript-bom-base-screen-object/">JavaScript学习--BOM基础之screen对象(转)</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/04/learn-javastript-bom-base-navigator-object/">JavaScript学习--BOM基础之navigator对象(转)</a>
+        <a href="/blog/2014/04/04/learn-javascript-bom-base-navigator-object/">JavaScript学习--BOM基础之navigator对象(转)</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/03/learn-javastript-bom-base-location-object/">JavaScript学习--BOM基础之location对象(转)</a>
+        <a href="/blog/2014/04/03/learn-javascript-bom-base-location-object/">JavaScript学习--BOM基础之location对象(转)</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/03/learn-javastript-bom-base-history-object/">JavaScript学习--BOM基础之history对象(转)</a>
+        <a href="/blog/2014/04/03/learn-javascript-bom-base-history-object/">JavaScript学习--BOM基础之history对象(转)</a>
       </li>
     
   </ul>
@@ -231,11 +291,11 @@
 <a style="font-size: 210%" href="/tags/javascript/">javascript,</a>
 <a style="font-size: 170%" href="/tags/octopress/">octopress</a>
 <a style="font-size: 130%" href="/tags/octopress/">octopress,</a>
+<a style="font-size: 90%" href="/tags/php5/">php5</a>
 <a style="font-size: 183%" href="/tags/sublime-text/">sublime-text</a>
 <a style="font-size: 153%" href="/tags/tcpip/">tcpip</a>
 <a style="font-size: 90%" href="/tags/vagrant/">vagrant,</a>
 <a style="font-size: 153%" href="/tags/vim/">vim</a>
-<a style="font-size: 90%" href="/tags/virtualbox/">virtualbox</a>
 
   </ul>
 </section>

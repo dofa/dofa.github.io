@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: DOM | Do Far]]></title>
   <link href="http://blog.dofa.org/tags/dom/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-04-03T15:04:20+00:00</updated>
+  <updated>2014-04-03T15:22:45+00:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[JavaScript DOM cheat sheet]]></title>
-    <link href="http://blog.dofa.org/blog/2014/04/04/javastript-dom-cheat-sheet/"/>
+    <link href="http://blog.dofa.org/blog/2014/04/04/javascript-dom-cheat-sheet/"/>
     <updated>2014-04-04T06:02:06+00:00</updated>
-    <id>http://blog.dofa.org/blog/2014/04/04/javastript-dom-cheat-sheet</id>
+    <id>http://blog.dofa.org/blog/2014/04/04/javascript-dom-cheat-sheet</id>
     <content type="html"><![CDATA[<p><img src="http://dofa.u.qiniudn.com/image/web/JavaScript-DOM-Cheatsheet.png"></p>
 ]]></content>
   </entry>

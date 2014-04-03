@@ -103,38 +103,42 @@
         <lastmod>2014-03-31T15:29:31+00:00</lastmod>
     </url>
     <url>
-        <loc>http://blog.dofa.org/blog/2014/03/31/learn-javastript-bom-base-window-object/</loc>
-        <lastmod>2014-04-03T14:03:12+00:00</lastmod>
+        <loc>http://blog.dofa.org/blog/2014/03/31/learn-javascript-bom-base-window-object/</loc>
+        <lastmod>2014-04-03T15:22:36+00:00</lastmod>
     </url>
     <url>
-        <loc>http://blog.dofa.org/blog/2014/04/01/learn-javastript-bom-base-document-object/</loc>
-        <lastmod>2014-04-03T14:03:12+00:00</lastmod>
+        <loc>http://blog.dofa.org/blog/2014/04/01/learn-javascript-bom-base-document-object/</loc>
+        <lastmod>2014-04-03T15:22:36+00:00</lastmod>
     </url>
     <url>
-        <loc>http://blog.dofa.org/blog/2014/04/03/learn-javastript-bom-base-frames-object/</loc>
-        <lastmod>2014-04-03T14:03:12+00:00</lastmod>
+        <loc>http://blog.dofa.org/blog/2014/04/03/javascript-dom-use/</loc>
+        <lastmod>2014-04-03T15:22:36+00:00</lastmod>
     </url>
     <url>
-        <loc>http://blog.dofa.org/blog/2014/04/03/learn-javastript-bom-base-history-object/</loc>
-        <lastmod>2014-04-03T14:03:12+00:00</lastmod>
+        <loc>http://blog.dofa.org/blog/2014/04/03/learn-javascript-bom-base-frames-object/</loc>
+        <lastmod>2014-04-03T15:22:36+00:00</lastmod>
     </url>
     <url>
-        <loc>http://blog.dofa.org/blog/2014/04/03/learn-javastript-bom-base-location-object/</loc>
-        <lastmod>2014-04-03T14:03:12+00:00</lastmod>
+        <loc>http://blog.dofa.org/blog/2014/04/03/learn-javascript-bom-base-history-object/</loc>
+        <lastmod>2014-04-03T15:22:36+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://blog.dofa.org/blog/2014/04/03/learn-javascript-bom-base-location-object/</loc>
+        <lastmod>2014-04-03T15:22:36+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://blog.dofa.org/blog/2014/04/04/learn-javastript-bom-base-navigator-object/
+            http://blog.dofa.org/blog/2014/04/04/learn-javascript-bom-base-navigator-object/
         </loc>
-        <lastmod>2014-04-03T14:03:12+00:00</lastmod>
+        <lastmod>2014-04-03T15:22:36+00:00</lastmod>
     </url>
     <url>
-        <loc>http://blog.dofa.org/blog/2014/04/04/learn-javastript-bom-base-screen-object/</loc>
-        <lastmod>2014-04-03T14:03:12+00:00</lastmod>
+        <loc>http://blog.dofa.org/blog/2014/04/04/learn-javascript-bom-base-screen-object/</loc>
+        <lastmod>2014-04-03T15:22:36+00:00</lastmod>
     </url>
     <url>
-        <loc>http://blog.dofa.org/blog/2014/04/04/javastript-dom-cheat-sheet/</loc>
-        <lastmod>2014-04-03T15:04:12+00:00</lastmod>
+        <loc>http://blog.dofa.org/blog/2014/04/04/javascript-dom-cheat-sheet/</loc>
+        <lastmod>2014-04-03T15:22:36+00:00</lastmod>
     </url>
     <url>
         <loc>http://blog.dofa.org/robots.txt</loc>
@@ -150,10 +154,10 @@
     </url>
     <url>
         <loc>http://blog.dofa.org/blog/archives/</loc>
-        <lastmod>2014-04-03T15:04:12+00:00</lastmod>
+        <lastmod>2014-04-03T15:22:36+00:00</lastmod>
     </url>
     <url>
         <loc>http://blog.dofa.org/</loc>
-        <lastmod>2014-04-03T15:04:12+00:00</lastmod>
+        <lastmod>2014-04-03T15:22:36+00:00</lastmod>
     </url>
 </urlset>
