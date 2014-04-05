@@ -4,7 +4,7 @@
   <title><![CDATA[Do Far]]></title>
   <link href="http://blog.dofa.org/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-04-05T11:15:17+00:00</updated>
+  <updated>2014-04-05T11:27:44+00:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[angularjs入门环境的搭建]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/06/build-angularjs-develop-environment/"/>
+    <updated>2014-04-06T02:20:25+00:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/06/build-angularjs-develop-environment</id>
+    <content type="html"><![CDATA[<h2>git clone &ldquo;PhoneCat Tutorial App&rdquo;</h2>
+
+<pre><code>git clone https://github.com/angular/angular-phonecat.git
+</code></pre>
+
+<h2>包安装</h2>
+
+<p>在angular-phonecat目录下安装包：</p>
+
+<pre><code>cd angular-phonecat
+
+npm install -d
+</code></pre>
+
+<h2>本地浏览</h2>
+
+<p>开启服务</p>
+
+<pre><code>npm start
+</code></pre>
+
+<p>在浏览器中输入：</p>
+
+<pre><code>http://localhost:8000/app/index.html
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[在Windows环境下搭建nodejs环境]]></title>
@@ -1796,82 +1829,6 @@ vagrant ssh                         #进入虚拟环境
 
 
 <p>&ldquo;src/&#8221;：物理机目录;&rdquo;/srv/website&#8221;虚拟机目录</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[使用PHP-FPM安装php5 server]]></title>
-    <link href="http://blog.dofa.org/blog/2014/03/03/install-php5-server-via-php-fpm/"/>
-    <updated>2014-03-03T13:51:40+00:00</updated>
-    <id>http://blog.dofa.org/blog/2014/03/03/install-php5-server-via-php-fpm</id>
-    <content type="html"><![CDATA[<h2>安装环境</h2>
-
-<ul>
-<li><p>nginx</p></li>
-<li><p>mysql</p></li>
-</ul>
-
-
-<h2>使用<code>PHP-FPM</code>安装php5 server</h2>
-
-<pre><code>apt-get install php5-fpm
-</code></pre>
-
-<blockquote><p>PHP-FPM is a daemon process (with the init script /etc/init.d/php5-fpm) that runs a FastCGI server on the socket /var/run/php5-fpm.sock.</p></blockquote>
-
-<h2>配置nginx</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>[...]
-</span><span class='line'>worker_processes  4;
-</span><span class='line'>[...]
-</span><span class='line'>    keepalive_timeout   2;
-</span><span class='line'>[...]</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>网站配置</h2>
-
-<pre><code>vim /etc/nginx/sites-available/yoursite
-</code></pre>
-
-<h2>PHP配置</h2>
-
-<pre><code>vim /etc/php5/fpm/php.ini
-</code></pre>
-
-<p>set cgi.fix_pathinfo=0:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>[...]
-</span><span class='line'>; cgi.fix_pathinfo provides *real* PATH_INFO/PATH_TRANSLATED support for CGI.  PHP's
-</span><span class='line'>; previous behaviour was to set PATH_TRANSLATED to SCRIPT_FILENAME, and to not grok
-</span><span class='line'>; what PATH_INFO is.  For more information on PATH_INFO, see the cgi specs.  Setting
-</span><span class='line'>; this to 1 will cause PHP CGI to fix its paths to conform to the spec.  A setting
-</span><span class='line'>; of zero causes PHP to behave as before.  Default is 1.  You should fix your scripts
-</span><span class='line'>; to use SCRIPT_FILENAME rather than PATH_TRANSLATED.
-</span><span class='line'>; http://php.net/cgi.fix-pathinfo
-</span><span class='line'>cgi.fix_pathinfo=0
-</span><span class='line'>[...]</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Server Reload</h2>
-
-<pre><code>/etc/init.d/nginx -s reload
-/etc/init.d/php5-fpm reload
-</code></pre>
 ]]></content>
   </entry>
   

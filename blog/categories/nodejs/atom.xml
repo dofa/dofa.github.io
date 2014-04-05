@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Nodejs | Do Far]]></title>
   <link href="http://blog.dofa.org/blog/categories/nodejs/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-04-05T11:15:17+00:00</updated>
+  <updated>2014-04-05T11:27:44+00:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[angularjs入门环境的搭建]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/06/build-angularjs-develop-environment/"/>
+    <updated>2014-04-06T02:20:25+00:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/06/build-angularjs-develop-environment</id>
+    <content type="html"><![CDATA[<h2>git clone &ldquo;PhoneCat Tutorial App&rdquo;</h2>
+
+<pre><code>git clone https://github.com/angular/angular-phonecat.git
+</code></pre>
+
+<h2>包安装</h2>
+
+<p>在angular-phonecat目录下安装包：</p>
+
+<pre><code>cd angular-phonecat
+
+npm install -d
+</code></pre>
+
+<h2>本地浏览</h2>
+
+<p>开启服务</p>
+
+<pre><code>npm start
+</code></pre>
+
+<p>在浏览器中输入：</p>
+
+<pre><code>http://localhost:8000/app/index.html
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[在Windows环境下搭建nodejs环境]]></title>
