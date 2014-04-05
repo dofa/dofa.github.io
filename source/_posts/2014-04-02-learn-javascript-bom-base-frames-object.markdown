@@ -44,13 +44,13 @@ self | 当前框架，总是等于window对象
 
 如果框架名称为`right`的页面包括下面框架：
 
-<% raw %>
+{% raw %}
 ```html
 <frameset cols="50%, *">
         <frame src="http://www.dreamdu.com/javascript/exe_window.frames.top/" name="righttop" />
         <frame src="http://www.dreamdu.com/javascript/exe_window.frames.top/" name="rightbottom" />
 </frameset>
 ```
-<% endraw %>
+{% endraw %}
 
 那么righttop与rightbottom的parent父框架为right

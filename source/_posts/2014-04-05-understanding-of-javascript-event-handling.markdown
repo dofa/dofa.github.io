@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Understanding of JavaScript event handling"
+title: "理解JavaScript中的事件处理"
 date: 2014-04-05 09:37:25 -0700
 comments: true
 categories: Javascript
