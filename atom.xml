@@ -4,7 +4,7 @@
   <title><![CDATA[Do Far]]></title>
   <link href="http://blog.dofa.org/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-04-05T11:51:29+00:00</updated>
+  <updated>2014-04-05T14:46:32+00:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -43,6 +43,10 @@ npm install -d
 
 <pre><code>http://localhost:8000/app/index.html
 </code></pre>
+
+<h2>phonecat最终效果演示</h2>
+
+<p><a href="http://blog.dofa.org/phonecat/step-12/app/#/phones">angularjs phonecat</a></p>
 ]]></content>
   </entry>
   
