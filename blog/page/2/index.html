@@ -9,7 +9,24 @@
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="其实找就想把octopress博客从github搬到gitcafe了，因为国内访问github的速度实在慢，而且还不时被墙。比如，今天不翻墙就无法访问了。 我采用了比较笨的方法：原本的东西都不需要改动，在一个新的文件夹下 clone github master 分支，增加 gitcafe &hellip;">
+  <meta name="description" content="友情链接 你有一些经常去的网站、博客，想推荐给大家，则可以在侧边栏加上一个“友情链接” 。 在 source/_includes/custom/asides 创建 blog_link.html ，代码如下： 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+&lt &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +95,88 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/03/30/add-links-for-octopress/">为Octopress增加友情链接</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-30T17:16:12+00:00" pubdate data-updated="true">Mar 30<span>th</span>, 2014</time>
+        
+        
+           | <a href="/blog/2014/03/30/add-links-for-octopress/#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>友情链接</h2>
+
+<p>你有一些经常去的网站、博客，想推荐给大家，则可以在侧边栏加上一个“友情链接” 。</p>
+
+<p>在 <code>source/_includes/custom/asides</code> 创建 <code>blog_link.html</code> ，代码如下：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;section&gt;</span>
+</span><span class='line'><span class="nt">&lt;h1&gt;</span>友情链接<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'><span class="nt">&lt;ul&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;li&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://blog.jobbole.com/&quot;</span><span class="nt">&gt;</span>伯乐在线<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;li&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://www.csdn.net/&quot;</span><span class="nt">&gt;</span>CSDN<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;li&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://www.cnblogs.com/&quot;</span><span class="nt">&gt;</span>博客园<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;li&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://coolshell.cn/&quot;</span><span class="nt">&gt;</span>酷壳CoolShell<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'><span class="nt">&lt;/ul&gt;</span>
+</span><span class='line'><span class="nt">&lt;/section&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>可以自行添加喜爱网站，然后在default_asides中加入<code>custom/asides/blog_link.html</code></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1192,201 +1291,6 @@ vagrant ssh                         #进入虚拟环境
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/02/24/add-duoshuo-commemt-system-into-octopress/">为 Octopress 添加多说评论系统</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-24T08:49:29+00:00" pubdate data-updated="true">Feb 24<span>th</span>, 2014</time>
-        
-        
-           | <a href="/blog/2014/02/24/add-duoshuo-commemt-system-into-octopress/#comments">Comments</a>
-                
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>disqus是国外的评论系统，速度实在太慢，使用duoshuo会比较好</p>
-
-<h2>修改配置</h2>
-
-<p>在_config.yml中注释掉有关disqus的配置，增加：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># duoshuo comments
-</span><span class='line'>duoshuo_comments: true
-</span><span class='line'>duoshuo_short_name: yourname</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>修改post模板</h2>
-
-<p>在 <code>source/_layouts/post.html</code> 中的 disqus代码下方添加多说评论模块</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'>{% if site.duoshuo_short_name and site.duoshuo_comments == true and page.comments == true %}
-</span><span class='line'>  <span class="nt">&lt;section&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;h1&gt;</span>Comments<span class="nt">&lt;/h1&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;comments&quot;</span> <span class="na">aria-live=</span><span class="s">&quot;polite&quot;</span><span class="nt">&gt;</span>{% include post/duoshuo.html %}<span class="nt">&lt;/div&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;/section&gt;</span>
-</span><span class='line'>{% endif %}
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>增加duoshuo模板</h2>
-
-<p>创建一个 <code>source/_includes/post/duoshuo.html</code></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="c">&lt;!-- Duoshuo Comment BEGIN --&gt;</span>
-</span><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;ds-thread&quot;</span> <span class="na">data-title=</span><span class="s">&quot;{% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
-</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">duoshuoQuery</span> <span class="o">=</span> <span class="p">{</span><span class="nx">short_name</span><span class="o">:</span><span class="s2">&quot;{{ site.duoshuo_short_name }}&quot;</span><span class="p">};</span>
-</span><span class='line'>  <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">ds</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">ds</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s1">&#39;text/javascript&#39;</span><span class="p">;</span><span class="nx">ds</span><span class="p">.</span><span class="nx">async</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-</span><span class='line'>    <span class="nx">ds</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">&#39;http://static.duoshuo.com/embed.js&#39;</span><span class="p">;</span>
-</span><span class='line'>    <span class="nx">ds</span><span class="p">.</span><span class="nx">charset</span> <span class="o">=</span> <span class="s1">&#39;UTF-8&#39;</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-</span><span class='line'>    <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">ds</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">})();</span>
-</span><span class='line'><span class="nt">&lt;/script&gt;</span>
-</span><span class='line'><span class="c">&lt;!-- Duoshuo Comment END --&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>204-03-29更新</h2>
-
-<h4>为page增加评论功能</h4>
-
-<p>在 <code>source/_layouts/page.html</code> 中的disqus代码下方添加多说评论模块：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'>{% if site.duoshuo_short_name and site.duoshuo_comments == true and page.comments == true %}
-</span><span class='line'>  <span class="nt">&lt;section&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;h1&gt;</span>Comments<span class="nt">&lt;/h1&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;comments&quot;</span> <span class="na">aria-live=</span><span class="s">&quot;polite&quot;</span><span class="nt">&gt;</span>{% include post/duoshuo.html %}<span class="nt">&lt;/div&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;/section&gt;</span>
-</span><span class='line'>{% endif %}
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>在 <code>_includes/article.html</code> 文件的disqus代码下方添加：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'>     {% if site.duoshuo_short_name and page.comments != false and post.comments != false and site.duoshuo_comments == true %}
-</span><span class='line'>      | <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;{% if index %}{{ root_url }}{{ post.url }}{% endif %}#comments&quot;</span><span class="nt">&gt;</span>Comments<span class="nt">&lt;/a&gt;</span>
-</span><span class='line'>     {% endif %}
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>为首页侧边栏插入最新评论</h4>
-
-<p>首先在 _config.yml 中再插入如下代码</p>
-
-<pre><code>duoshuo_asides_num: 10      # 侧边栏评论显示条目数
-duoshuo_asides_avatars: 0   # 侧边栏评论是否显示头像
-duoshuo_asides_time: 0      # 侧边栏评论是否显示时间
-duoshuo_asides_title: 0     # 侧边栏评论是否显示标题
-duoshuo_asides_admin: 0     # 侧边栏评论是否显示作者评论
-duoshuo_asides_length: 18   # 侧边栏评论截取的长度
-</code></pre>
-
-<p>再创建 <code>_includes/custom/asides/recent_comments.html</code></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;section&gt;</span>
-</span><span class='line'><span class="nt">&lt;h1&gt;</span>Recent Comments<span class="nt">&lt;/h1&gt;</span>
-</span><span class='line'><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;ds-recent-comments&quot;</span> <span class="na">data-num-items=</span><span class="s">&quot;{{ site.duoshuo_asides_num }}&quot;</span> <span class="na">data-show-avatars=</span><span class="s">&quot;{{ site.duoshuo_asides_avatars }}&quot;</span> <span class="na">data-show-time=</span><span class="s">&quot;{{ site.duoshuo_asides_time }}&quot;</span> <span class="na">data-show-title=</span><span class="s">&quot;{{ site.duoshuo_asides_title }}&quot;</span> <span class="na">data-show-admin=</span><span class="s">&quot;{{ site.duoshuo_asides_admin }}&quot;</span> <span class="na">data-excerpt-length=</span><span class="s">&quot;{{ site.duoshuo_asides_length }}&quot;</span><span class="nt">&gt;&lt;/ul&gt;</span>
-</span><span class='line'>{% if index %}
-</span><span class='line'><span class="c">&lt;!--多说js加载开始，一个页面只需要加载一次 --&gt;</span>
-</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">duoshuoQuery</span> <span class="o">=</span> <span class="p">{</span><span class="nx">short_name</span><span class="o">:</span><span class="s2">&quot;{{ site.duoshuo_short_name }}&quot;</span><span class="p">};</span>
-</span><span class='line'>  <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">ds</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">ds</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s1">&#39;text/javascript&#39;</span><span class="p">;</span><span class="nx">ds</span><span class="p">.</span><span class="nx">async</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-</span><span class='line'>    <span class="nx">ds</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">&#39;http://static.duoshuo.com/embed.js&#39;</span><span class="p">;</span>
-</span><span class='line'>    <span class="nx">ds</span><span class="p">.</span><span class="nx">charset</span> <span class="o">=</span> <span class="s1">&#39;UTF-8&#39;</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">ds</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">})();</span>
-</span><span class='line'><span class="nt">&lt;/script&gt;</span>
-</span><span class='line'><span class="c">&lt;!--多说js加载结束，一个页面只需要加载一次 --&gt;</span>
-</span><span class='line'>{% endif %}
-</span><span class='line'><span class="nt">&lt;/section&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>最后，_confit.yml 中的 blog_index_asides 行或 page_asides 行或 post_asides 添加:</p>
-
-<pre><code>custom/asides/recent_comments.html
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -1403,7 +1307,7 @@ duoshuo_asides_length: 18   # 侧边栏评论截取的长度
   <h1>Categories</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/embedded/'>Embedded (5)</a></li>
-<li class='category'><a href='/blog/categories/javascript/'>Javascript (9)</a></li>
+<li class='category'><a href='/blog/categories/javascript/'>Javascript (10)</a></li>
 <li class='category'><a href='/blog/categories/jekyll/'>Jekyll (2)</a></li>
 <li class='category'><a href='/blog/categories/octopress/'>Octopress (6)</a></li>
 <li class='category'><a href='/blog/categories/server/'>Server (2)</a></li>
@@ -1416,6 +1320,10 @@ duoshuo_asides_length: 18   # 侧边栏评论截取的长度
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/04/05/understanding-of-javascript-event-handling/">Understanding of JavaScript event handling</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/04/04/javascript-dom-use/">JavaScript DOM基础操作实例</a>
@@ -1431,10 +1339,6 @@ duoshuo_asides_length: 18   # 侧边栏评论截取的长度
     
       <li class="post">
         <a href="/blog/2014/04/04/learn-javascript-bom-base-navigator-object/">JavaScript学习&#8211;BOM基础之navigator对象(转)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/04/03/learn-javascript-bom-base-location-object/">JavaScript学习&#8211;BOM基础之location对象(转)</a>
       </li>
     
   </ul>

@@ -9,8 +9,12 @@
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="protothread protothread是专为资源有限的系统设计的一种耗费资源特别少并且不使用堆栈的线程模型 相比于嵌入式操作系统， protothread其有如下优点： 以纯C语言实现，无硬件依靠性； 因此不存在移植的困难
-极少的资源需求，每个 Protothread 仅需要2个额外的字节 &hellip;">
+  <meta name="description" content="disqus是国外的评论系统，速度实在太慢，使用duoshuo会比较好 修改配置 在_config.yml中注释掉有关disqus的配置，增加： 1
+2
+3
+# duoshuo comments
+duoshuo_comments: true
+duoshuo_short_name: yourname &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +83,201 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/24/add-duoshuo-commemt-system-into-octopress/">为 Octopress 添加多说评论系统</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-24T08:49:29+00:00" pubdate data-updated="true">Feb 24<span>th</span>, 2014</time>
+        
+        
+           | <a href="/blog/2014/02/24/add-duoshuo-commemt-system-into-octopress/#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>disqus是国外的评论系统，速度实在太慢，使用duoshuo会比较好</p>
+
+<h2>修改配置</h2>
+
+<p>在_config.yml中注释掉有关disqus的配置，增加：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># duoshuo comments
+</span><span class='line'>duoshuo_comments: true
+</span><span class='line'>duoshuo_short_name: yourname</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>修改post模板</h2>
+
+<p>在 <code>source/_layouts/post.html</code> 中的 disqus代码下方添加多说评论模块</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{% if site.duoshuo_short_name and site.duoshuo_comments == true and page.comments == true %}
+</span><span class='line'>  <span class="nt">&lt;section&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;h1&gt;</span>Comments<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;comments&quot;</span> <span class="na">aria-live=</span><span class="s">&quot;polite&quot;</span><span class="nt">&gt;</span>{% include post/duoshuo.html %}<span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/section&gt;</span>
+</span><span class='line'>{% endif %}
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>增加duoshuo模板</h2>
+
+<p>创建一个 <code>source/_includes/post/duoshuo.html</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="c">&lt;!-- Duoshuo Comment BEGIN --&gt;</span>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;ds-thread&quot;</span> <span class="na">data-title=</span><span class="s">&quot;{% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">duoshuoQuery</span> <span class="o">=</span> <span class="p">{</span><span class="nx">short_name</span><span class="o">:</span><span class="s2">&quot;{{ site.duoshuo_short_name }}&quot;</span><span class="p">};</span>
+</span><span class='line'>  <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">ds</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">ds</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s1">&#39;text/javascript&#39;</span><span class="p">;</span><span class="nx">ds</span><span class="p">.</span><span class="nx">async</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">ds</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">&#39;http://static.duoshuo.com/embed.js&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">ds</span><span class="p">.</span><span class="nx">charset</span> <span class="o">=</span> <span class="s1">&#39;UTF-8&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</span><span class='line'>    <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">ds</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">})();</span>
+</span><span class='line'><span class="nt">&lt;/script&gt;</span>
+</span><span class='line'><span class="c">&lt;!-- Duoshuo Comment END --&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>204-03-29更新</h2>
+
+<h4>为page增加评论功能</h4>
+
+<p>在 <code>source/_layouts/page.html</code> 中的disqus代码下方添加多说评论模块：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{% if site.duoshuo_short_name and site.duoshuo_comments == true and page.comments == true %}
+</span><span class='line'>  <span class="nt">&lt;section&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;h1&gt;</span>Comments<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;comments&quot;</span> <span class="na">aria-live=</span><span class="s">&quot;polite&quot;</span><span class="nt">&gt;</span>{% include post/duoshuo.html %}<span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/section&gt;</span>
+</span><span class='line'>{% endif %}
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在 <code>_includes/article.html</code> 文件的disqus代码下方添加：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>     {% if site.duoshuo_short_name and page.comments != false and post.comments != false and site.duoshuo_comments == true %}
+</span><span class='line'>      | <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;{% if index %}{{ root_url }}{{ post.url }}{% endif %}#comments&quot;</span><span class="nt">&gt;</span>Comments<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>     {% endif %}
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>为首页侧边栏插入最新评论</h4>
+
+<p>首先在 _config.yml 中再插入如下代码</p>
+
+<pre><code>duoshuo_asides_num: 10      # 侧边栏评论显示条目数
+duoshuo_asides_avatars: 0   # 侧边栏评论是否显示头像
+duoshuo_asides_time: 0      # 侧边栏评论是否显示时间
+duoshuo_asides_title: 0     # 侧边栏评论是否显示标题
+duoshuo_asides_admin: 0     # 侧边栏评论是否显示作者评论
+duoshuo_asides_length: 18   # 侧边栏评论截取的长度
+</code></pre>
+
+<p>再创建 <code>_includes/custom/asides/recent_comments.html</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;section&gt;</span>
+</span><span class='line'><span class="nt">&lt;h1&gt;</span>Recent Comments<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;ds-recent-comments&quot;</span> <span class="na">data-num-items=</span><span class="s">&quot;{{ site.duoshuo_asides_num }}&quot;</span> <span class="na">data-show-avatars=</span><span class="s">&quot;{{ site.duoshuo_asides_avatars }}&quot;</span> <span class="na">data-show-time=</span><span class="s">&quot;{{ site.duoshuo_asides_time }}&quot;</span> <span class="na">data-show-title=</span><span class="s">&quot;{{ site.duoshuo_asides_title }}&quot;</span> <span class="na">data-show-admin=</span><span class="s">&quot;{{ site.duoshuo_asides_admin }}&quot;</span> <span class="na">data-excerpt-length=</span><span class="s">&quot;{{ site.duoshuo_asides_length }}&quot;</span><span class="nt">&gt;&lt;/ul&gt;</span>
+</span><span class='line'>{% if index %}
+</span><span class='line'><span class="c">&lt;!--多说js加载开始，一个页面只需要加载一次 --&gt;</span>
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">duoshuoQuery</span> <span class="o">=</span> <span class="p">{</span><span class="nx">short_name</span><span class="o">:</span><span class="s2">&quot;{{ site.duoshuo_short_name }}&quot;</span><span class="p">};</span>
+</span><span class='line'>  <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">ds</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">ds</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s1">&#39;text/javascript&#39;</span><span class="p">;</span><span class="nx">ds</span><span class="p">.</span><span class="nx">async</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">ds</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">&#39;http://static.duoshuo.com/embed.js&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">ds</span><span class="p">.</span><span class="nx">charset</span> <span class="o">=</span> <span class="s1">&#39;UTF-8&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">ds</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">})();</span>
+</span><span class='line'><span class="nt">&lt;/script&gt;</span>
+</span><span class='line'><span class="c">&lt;!--多说js加载结束，一个页面只需要加载一次 --&gt;</span>
+</span><span class='line'>{% endif %}
+</span><span class='line'><span class="nt">&lt;/section&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>最后，_confit.yml 中的 blog_index_asides 行或 page_asides 行或 post_asides 添加:</p>
+
+<pre><code>custom/asides/recent_comments.html
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1003,78 +1202,6 @@ Preferences->File Setting-User，打开配置文件，看里面有没font_face�
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/06/01/sublime-text-guide-and-tips/">Sublime Text 入门及技巧</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-06-01T14:25:52+00:00" pubdate data-updated="true">Jun 1<span>st</span>, 2013</time>
-        
-        
-           | <a href="/blog/2013/06/01/sublime-text-guide-and-tips/#comments">Comments</a>
-                
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>快捷的命令面板</h2>
-
-<p>和 TextMate 类似，Sublime Text 2 也提供了很方便的命令调用方式：Command Palette（命令面板）。调用方法：直接在 <code>Tool</code> 菜单中选择 <code>Command Palette</code>，或是用快捷键：<code>Shift+Command+P</code>，输入命令名称（中的字母）就可以实时搜索到相应的命令、选项、snippet 和 syntex， 按下回车就可以直接执行，减少了查找的麻烦。</p>
-
-<h2>即时的文件切换</h2>
-
-<p>按下 <code>Command+P</code>(Mac) 或是 <code>Ctrl+P</code>(Windows)，输入想要切换到的文件的文件名，都不用按下回车键，目标文件就已经展现在眼前了，虽然 Vim 配合 PeepOpen 也可以实现同样的功能，但速度却远没有这么迅速。</p>
-
-<h2>随心所欲的跳转</h2>
-
-<p><code>Cmd+P</code> 之所以被叫做 Goto Anything 并不是虚名：</p>
-
-<ul>
-<li>用 <code>Command+P</code> 可以快速跳转到当前项目中的任意文件，可进行关键词匹配。</li>
-<li>用 <code>Command+P</code> 后 <code>@</code> (或是<code>Command+R</code>)可以快速列出/跳转到某个函数（很爽的是在 markdown 当中是匹配到标题，而且还是带缩进的！）。</li>
-<li>用 <code>Command+P</code> 后 <code>#</code> 可以在当前文件中进行搜索。</li>
-<li>用 <code>Command+P</code> 后 <code>:</code> (或是<code>Ctrl+G</code>)加上数字可以跳转到相应的行。</li>
-</ul>
-
-
-<p>而更酷的是你可以用 <code>Command+P</code> 加上一些关键词跳转到某个文件同时加上 <code>@</code> 来列出/跳转到目标文件中的某个函数，或是同时加上 <code>#</code> 来在目标文件中进行搜索，或是同时加上 <code>:</code> 和数字来跳转到目标文件中相应的行。</p>
-
-<h2>多重选择(Multi-Selection)</h2>
-
-<p>多重选择功能允许在页面中同时存在多个光标，让很多本来需要正则表达式、高级搜索和替换才能完成的任务也变得游刃有余了。
-激活多重选择的方法有两几种：</p>
-
-<ul>
-<li>按住 <code>Command</code> 或 <code>Alt</code>，然后在页面中希望中现光标的位置点击。</li>
-<li>选择数行文本，然后按下 <code>Shift+Command+L</code>。</li>
-<li>通过反复按下 <code>Control/Command+D</code> 即可将全文中与光标当前所在位置的词相同的词逐一加入选择，而直接按下 <code>Alt+F3</code>(Windows) 或是 <code>Ctrl+Command+G</code>(Mac) 即可一次性选择所有相同的词。</li>
-<li>按下鼠标中键来进行垂直方向的纵列选择，也可以进入多重编辑状态。</li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -1091,7 +1218,7 @@ Preferences->File Setting-User，打开配置文件，看里面有没font_face�
   <h1>Categories</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/embedded/'>Embedded (5)</a></li>
-<li class='category'><a href='/blog/categories/javascript/'>Javascript (9)</a></li>
+<li class='category'><a href='/blog/categories/javascript/'>Javascript (10)</a></li>
 <li class='category'><a href='/blog/categories/jekyll/'>Jekyll (2)</a></li>
 <li class='category'><a href='/blog/categories/octopress/'>Octopress (6)</a></li>
 <li class='category'><a href='/blog/categories/server/'>Server (2)</a></li>
@@ -1104,6 +1231,10 @@ Preferences->File Setting-User，打开配置文件，看里面有没font_face�
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/04/05/understanding-of-javascript-event-handling/">Understanding of JavaScript event handling</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/04/04/javascript-dom-use/">JavaScript DOM基础操作实例</a>
@@ -1119,10 +1250,6 @@ Preferences->File Setting-User，打开配置文件，看里面有没font_face�
     
       <li class="post">
         <a href="/blog/2014/04/04/learn-javascript-bom-base-navigator-object/">JavaScript学习&#8211;BOM基础之navigator对象(转)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/04/03/learn-javascript-bom-base-location-object/">JavaScript学习&#8211;BOM基础之location对象(转)</a>
       </li>
     
   </ul>

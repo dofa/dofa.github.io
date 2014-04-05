@@ -1,24 +1,113 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Tag: javascript | Do Far]]></title>
-  <link href="http://blog.dofa.org/tags/javascript/atom.xml" rel="self"/>
-  <link href="http://blog.dofa.org/"/>
-  <updated>2014-04-05T02:16:52+00:00</updated>
-  <id>http://blog.dofa.org/</id>
-  <author>
-    <name><![CDATA[dofa]]></name>
-    
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Understanding of JavaScript event handling - Do Far</title>
+  <meta name="author" content="dofa">
 
   
-  <entry>
-    <title type="html"><![CDATA[Understanding of JavaScript event handling]]></title>
-    <link href="http://blog.dofa.org/blog/2014/04/05/understanding-of-javascript-event-handling/"/>
-    <updated>2014-04-05T16:37:25+00:00</updated>
-    <id>http://blog.dofa.org/blog/2014/04/05/understanding-of-javascript-event-handling</id>
-    <content type="html"><![CDATA[<p>这篇文章对于了解Javascript的事件处理机制非常好，将它全文转载于此，以备不时之需。</p>
+  <meta name="description" content="这篇文章对于了解Javascript的事件处理机制非常好，将它全文转载于此，以备不时之需。 什么是事件？ 事件(Event)是JavaScript应用跳动的心脏 ，也是把所有东西粘在一起的胶水。当我们与浏览器中 Web 页面进行某些类型的交互时，事件就发生了。事件可能是用户在某些内容上的点击、 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.dofa.org/blog/2014/04/05/understanding-of-javascript-event-handling">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/atom.xml" rel="alternate" title="Do Far" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-48748469-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Do Far</a></h1>
+  
+    <h2>There is a will, there is a way.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:blog.dofa.org" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">归档</a></li>
+  <li><a href="/github">Github</a></li>
+  <li><a href="/about">关于我</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Understanding of JavaScript event handling</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-05T16:37:25+00:00" pubdate data-updated="true">Apr 5<span>th</span>, 2014</time>
+        
+        
+           | <a href="#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>这篇文章对于了解Javascript的事件处理机制非常好，将它全文转载于此，以备不时之需。</p>
 
 <h2>什么是事件？</h2>
 
@@ -116,7 +205,7 @@ link.onclick=function(){
 
 <p>如果在<code>HTML</code>中分配事件句柄的话，则直接通过<code>HTML</code>属性来设置事件处理函数就行了，并在其中包含合适的脚本作为特性值就可以了，例如：</p>
 
-<pre><code>&lt;a href="http://blog.dofa.org/" onclick="JavaScript code here"&gt;......&lt;/a&gt;
+<pre><code>&lt;a href="/" onclick="JavaScript code here"&gt;......&lt;/a&gt;
 </code></pre>
 
 <p>这种<code>JavaScript</code>代码和通过<code>HTML</code>的<code>style</code>属性直接将<code>CSS</code>属性赋给元素类似。这样会代码看起来一团糟，也违背了将实现动态行为的代码与显示文档静态内容的代码相分离的原则。从1998年开始，这种写法就过时了。</p>
@@ -432,7 +521,182 @@ EventUtil.addHandler(div2, 'click', function(event){
 </code></pre>
 
 <p>以上代码中的监听函数由于是捕获型传递时被调用的,所以点击红色区域后,虽然事件源是<code>ID</code>为<code>event_source</code>的元素,但捕获型选传递,从最顶层开始,body结点监听函数先被调用,并且取消了事件进一步向下传递,所以只会出现 <code>current is body</code>。</p>
-]]></content>
-  </entry>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
   
-</feed>
+
+<span class="byline author vcard">Posted by <span class="fn">dofa</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-05T16:37:25+00:00" pubdate data-updated="true">Apr 5<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/javascript/'>Javascript</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/04/04/javascript-dom-use/" title="Previous Post: JavaScript DOM基础操作实例">&laquo; JavaScript DOM基础操作实例</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+
+  <section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread" data-title=""></div>
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"bitbegin"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<!-- Duoshuo Comment END -->
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/embedded/'>Embedded (5)</a></li>
+<li class='category'><a href='/blog/categories/javascript/'>Javascript (10)</a></li>
+<li class='category'><a href='/blog/categories/jekyll/'>Jekyll (2)</a></li>
+<li class='category'><a href='/blog/categories/octopress/'>Octopress (6)</a></li>
+<li class='category'><a href='/blog/categories/server/'>Server (2)</a></li>
+<li class='category'><a href='/blog/categories/sublimetext/'>SublimeText (5)</a></li>
+<li class='category'><a href='/blog/categories/vm/'>VM (1)</a></li>
+<li class='category'><a href='/blog/categories/vim/'>Vim (3)</a></li>
+
+  </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/04/05/understanding-of-javascript-event-handling/">Understanding of JavaScript event handling</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/04/javascript-dom-use/">JavaScript DOM基础操作实例</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/04/javascript-dom-cheat-sheet/">JavaScript DOM cheat sheet</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/04/learn-javascript-bom-base-screen-object/">JavaScript学习--BOM基础之screen对象(转)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/04/learn-javascript-bom-base-navigator-object/">JavaScript学习--BOM基础之navigator对象(转)</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Tags</h1>
+  <ul class="tag-cloud">
+    <a style="font-size: 204%" href="/tags/bom/">BOM</a>
+<a style="font-size: 90%" href="/tags/gitcafe/">gitcafe</a>
+<a style="font-size: 210%" href="/tags/javascript/">javascript,</a>
+<a style="font-size: 166%" href="/tags/octopress/">octopress</a>
+<a style="font-size: 128%" href="/tags/octopress/">octopress,</a>
+<a style="font-size: 90%" href="/tags/php5/">php5</a>
+<a style="font-size: 178%" href="/tags/sublime-text/">sublime-text</a>
+<a style="font-size: 150%" href="/tags/tcpip/">tcpip</a>
+<a style="font-size: 90%" href="/tags/vagrant/">vagrant,</a>
+<a style="font-size: 150%" href="/tags/vim/">vim</a>
+
+  </ul>
+</section>
+<section>
+<h1>Recent Comments</h1>
+<ul class="ds-recent-comments" data-num-items="10" data-show-avatars="0" data-show-time="0" data-show-title="0" data-show-admin="0" data-excerpt-length="18"></ul>
+
+</section><section>
+<h1>友情链接</h1>
+<ul>
+        <li>
+        <a href="http://blog.jobbole.com/">伯乐在线</a>
+        </li>
+        <li>
+        <a href="http://www.csdn.net/">CSDN</a>
+        </li>
+        <li>
+        <a href="http://www.cnblogs.com/">博客园</a>
+        </li>
+        <li>
+        <a href="http://coolshell.cn/">酷壳CoolShell</a>
+        </li>
+</ul>
+</section>
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - dofa -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1000309119'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s5.cnzz.com/z_stat.php%3Fid%3D1000309119%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
