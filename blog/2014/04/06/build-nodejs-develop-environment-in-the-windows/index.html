@@ -5,11 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>TCP/IP协议学习系列之三 — 链路层 - Do Far</title>
+  <title>在Windows环境下搭建nodejs环境 - Do Far</title>
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="TCP/IP支持多种不同的链路层协议 这取决于网络所使用的硬件，如以太网、令牌环网、FDDI（光纤分布式数据接口）及RS-232串行线路等。 以太网是当今TCP/IP采用的主要的局域网技术 它采用一种称作CSMA/CD的媒体接入方法，其意思是带冲突检测的载波侦听多路接入（Carrier Sense &hellip;">
+  <meta name="description" content="Windows环境下安装nodejs环境 到http://nodejs.org/download/下载最新版本的windows安装程序，目前是v0.10.26
+v0.10.26版本默认已经安装npm，并添加了PATH
+命令行下测试node和npm（注意系统要更新环境变量，在CMD下执行PATH=c &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.dofa.org/blog/2013/08/01/tcp-ip-protocol-learning-series-three-of-link-layer">
+  <link rel="canonical" href="http://blog.dofa.org/blog/2014/04/06/build-nodejs-develop-environment-in-the-windows">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -81,7 +83,7 @@
   
   <header>
     
-      <h1 class="entry-title">TCP/IP协议学习系列之三 — 链路层</h1>
+      <h1 class="entry-title">在Windows环境下搭建nodejs环境</h1>
     
     
       <p class="meta">
@@ -97,7 +99,7 @@
   
 
 
-<time datetime="2013-08-01T14:25:52+00:00" pubdate data-updated="true">Aug 1<span>st</span>, 2013</time>
+<time datetime="2014-04-06T01:58:25+00:00" pubdate data-updated="true">Apr 6<span>th</span>, 2014</time>
         
         
            | <a href="#comments">Comments</a>
@@ -107,29 +109,29 @@
   </header>
 
 
-<div class="entry-content"><h3>TCP/IP支持多种不同的链路层协议</h3>
+<div class="entry-content"><h2>Windows环境下安装nodejs环境</h2>
 
-<p>这取决于网络所使用的硬件，如以太网、令牌环网、FDDI（光纤分布式数据接口）及RS-232串行线路等。</p>
+<ul>
+<li><p>到<code>http://nodejs.org/download/</code>下载最新版本的windows安装程序，目前是<code>v0.10.26</code></p></li>
+<li><p><code>v0.10.26</code>版本默认已经安装<code>npm</code>，并添加了<code>PATH</code></p></li>
+<li><p>命令行下测试<code>node</code>和<code>npm</code>（注意系统要更新环境变量，在<code>CMD</code>下执行<code>PATH=c:\</code>退出即可）</p></li>
+</ul>
 
-<h3>以太网是当今TCP/IP采用的主要的局域网技术</h3>
 
-<p>它采用一种称作CSMA/CD的媒体接入方法，其意思是带冲突检测的载波侦听多路接入（Carrier Sense, Multiple Access with Collision Detection）。它的速率为10 Mb/s，地址为48 bit。</p>
+<h2>包安装</h2>
 
-<h3>以太网IP数据报的封装</h3>
+<p>在项目文件下执行：</p>
 
-<p>以太网IP数据报的封装是在RFC 894[Hornig 1984]中定义的，但存在另外一个IEEE 802规格RFC 1042[Postel and Reynolds 1988]，只是大多数人采用RFC 894。RFC 894在有的地方称作Ethernet-II。</p>
+<pre><code>npm install
+</code></pre>
 
-<h3>SLIP和PPP</h3>
+<h2>有用的命令</h2>
 
-<p>串行线路IP–SLIP和他的升级版PPP使用RS-232串口传数据，速度太慢，基本上大家都不用这种方式了，而改用宽带上网。这年头问别人如何上网，都是“你家多少兆？”。</p>
-
-<h3>环回接口</h3>
-
-<p>下面再来看一个大家都熟悉的ip：127.0.0.1。这个IP称作环回接口，它还有个英文名localhost。基本上，对这个ip的访问就是访问自己的主机。</p>
-
-<h3>MTU</h3>
-
-<p>以太网一次可以传送的最大传输单元（MTU）为1500B。</p>
+<pre><code>npm start : start a local development web-server
+npm test : start the Karma unit test runner
+npm run protractor : run the Protractor end 2 end tests
+npm update-webdriver : install the drivers needed by Protractor
+</code></pre>
 </div>
 
 
@@ -152,12 +154,12 @@
   
 
 
-<time datetime="2013-08-01T14:25:52+00:00" pubdate data-updated="true">Aug 1<span>st</span>, 2013</time>
+<time datetime="2014-04-06T01:58:25+00:00" pubdate data-updated="true">Apr 6<span>th</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/embedded/'>Embedded</a>
+    <a class='category' href='/blog/categories/nodejs/'>Nodejs</a>
   
 </span>
 
@@ -173,10 +175,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/07/27/tcp-ip-protocol-learning-series-two-ethernet-directors/" title="Previous Post: TCP/IP协议学习系列之二 — Ethernet控制器">&laquo; TCP/IP协议学习系列之二 — Ethernet控制器</a>
+        <a class="basic-alignment left" href="/blog/2014/04/05/understanding-of-javascript-event-handling/" title="Previous Post: 理解JavaScript中的事件处理">&laquo; 理解JavaScript中的事件处理</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/08/05/big-endian-and-little-endian/" title="Next Post: big endian与little endian（大小端）">big endian与little endian（大小端） &raquo;</a>
       
     </p>
   </footer>
