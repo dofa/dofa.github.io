@@ -31,4 +31,7 @@ tags: nodejs, angularjs
 
 	http://localhost:8000/app/index.html
 
-	
+## phonecat最终效果演示
+
+[angularjs phonecat](/phonecat/step-12/app/#/phones)
+
