@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "angularjs入门环境的搭建"
+title: "Angularjs入门环境的搭建"
 date: 2014-04-05 19:20:25 -0700
 comments: true
 categories: Nodejs
