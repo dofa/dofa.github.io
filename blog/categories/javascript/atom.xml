@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Javascript | Do Far]]></title>
   <link href="http://blog.dofa.org/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-04-05T02:31:19+00:00</updated>
+  <updated>2014-04-05T02:39:26+00:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -30,7 +30,8 @@
 
 <p>在漫长的演变史，我们已经告别了内嵌式的事件处理方式（直接将事件处理器放在 <code>HTML</code> 元素之内来使用）。今天的事件，它已是DOM的重要组成部分，遗憾的是， <code>IE</code>继续保留它最早在<code>IE4.0</code>中实现的事件模型，以后的<code>IE</code>版本中也没有做太大的改变，这也就是说<code>IE</code>还是使用的是一种专有的事件模型（冒泡型）,而其它的主流浏览器直到<code>DOM</code> 级别 3 规定定案后，才陆陆续续支持<code>DOM</code>标准的事件处理模型 — 捕获型与冒泡型。</p>
 
-<blockquote><p>历史原因是：<code>W3C</code> 规范 在<code>DOM</code> 级别 1中并没有定义任何的事件，直到发布于 2000 年 11 月 的<code>DOM</code> 级别 2 才定义了一小部分子集，<code>DOM</code> 级别 2中已经提供了提供了一种更详细的更细致的方式以控制 <code>Web</code> 页面中的事件，最后，完整的事件是在2004年 <code>DOM</code> 级别 3的规定中才最终定案。因为<code>IE4</code>是1995推出的并已实现了自己的事件模型（冒泡型），当时根本就没有<code>DOM</code>标准，不过在以后的<code>DOM</code>标准规范过程中已经把IE的事件模型吸收到了其中。</p></blockquote>
+<pre><code>历史原因是：`W3C` 规范 在`DOM` 级别 1中并没有定义任何的事件，直到发布于 2000 年 11 月 的`DOM` 级别 2 才定义了一小部分子集，`DOM` 级别 2中已经提供了提供了一种更详细的更细致的方式以控制 `Web` 页面中的事件，最后，完整的事件是在2004年 `DOM` 级别 3的规定中才最终定案。因为`IE4`是1995推出的并已实现了自己的事件模型（冒泡型），当时根本就没有`DOM`标准，不过在以后的`DOM`标准规范过程中已经把IE的事件模型吸收到了其中。
+</code></pre>
 
 <p>目前除<code>IE</code>浏览器外，其它主流的<code>Firefox</code>, <code>Opera</code>,
 <code>Safari</code>都支持标准的<code>DOM</code>事件处理模型。<code>IE</code>仍然使用自己专有的事件模型，即冒泡型，它事件模型的一部份被<code>DOM</code>标准采用，这点对于开发者来说也是有好处的，只有使用
@@ -76,22 +77,22 @@
 
 <p>如图：标准的事件转送模式</p>
 
-<ol>
+<ul>
 <li>在事件捕捉（<code>Capturing</code>）阶段，事件将沿着<code>DOM</code>树向下转送，目标节点的每一个祖先节点，直至目标节点。例如，若用户单击了一个超链接，则该单击事件将从<code>document</code>节点转送到<code>html</code>元素，<code>body</code>元素以及包含该链接的<code>p</code>元素。</li>
-</ol>
+</ul>
 
 
 <p>在此过程中，浏览器都会检测针对该事件的捕捉事件监听器，并且运行这件事件监听器。</p>
 
-<ol>
+<ul>
 <li><p>在目标（<code>target</code>）阶段，浏览器在查找到已经指定给目标事件的事件监听器之后，就会运行 该事件监听器。目标节点就是触发事件的<code>DOM</code>节点。例如，如果用户单击一个超链接，那么该链接就是目标节点（此时的目标节点实际上是超链接内的文本节点）。</p></li>
-<li><p>在冒泡（<code>Bubbling</code>）阶段，事件将沿着<code>DOM</code>树向上转送，再次逐个访问目标元素的祖先节点到<code>document</code>节点。该过程中的每一步。浏览器都将检测那些不是捕捉事件监听器的事件监听器，并执行它们。</p></li>
-</ol>
+<li><p>在冒泡（<code>Bubbling</code>）阶段，事件将沿着<code>DOM</code>树向上转送，再次逐个访问目标元素的祖先节点到<code>document</code>节点。该过程中的每一步。浏览器都将检测那些不是捕捉事件监听器的事件监听器，并执行它们。</p>
 
+<p>  并非所有的事件都会经过冒泡阶段的</p>
 
-<blockquote><p>并非所有的事件都会经过冒泡阶段的</p>
+<p>  所有的事件都要经过捕捉阶段和目标阶段，但是有些事件会跳过冒泡阶段。例如，让元素获得输入焦点的<code>focus</code>事件以及失去输入焦点的<code>blur</code>事件就都不会冒泡。</p></li>
+</ul>
 
-<p>所有的事件都要经过捕捉阶段和目标阶段，但是有些事件会跳过冒泡阶段。例如，让元素获得输入焦点的<code>focus</code>事件以及失去输入焦点的<code>blur</code>事件就都不会冒泡。</p></blockquote>
 
 <h2>事件句柄和事件接听器</h2>
 
@@ -232,16 +233,16 @@ element.removeEventListener('event', eventListener, false);
 
 <p>“停止事件冒泡“和”阻止浏览器的默认行为“，这两个概念非常重要，它们对复杂的应用程序处理非常有用。</p>
 
-<ol>
+<ul>
 <li>停止事件冒泡</li>
-</ol>
+</ul>
 
 
 <p>停止事件冒泡是指，停止冒泡型事件的进一步传递（取消事件传递,不只是停止<code>IE</code>和<code>DOM</code>标准共有的冒泡型事件，我们还可以停止支持DOM标准浏览器的捕捉型事件，用<code>topPropagation()</code>方法）。例如上图中的冒泡型事件传递中，在<code>body</code>处理停止事件传递后，位于上层的<code>document</code>的事件监听器就不再收到通知，不再被处理。</p>
 
-<ol>
+<ul>
 <li>阻止事件的默认行为</li>
-</ol>
+</ul>
 
 
 <p>停止事件的默认行为是指，通常浏览器在事件传递并处理完后会执行与该事件关联的默认动作（如果存在这样的动作）。例如，如果表单中<code>input type</code>属性是<code>submit</code>，点击后在事件传播完浏览器就自动提交表单。又例如，<code>input</code> 元素的<code>keydown</code>事件发生并处理后，浏览器默认会将用户键入的字符自动追加到<code>input</code>元素的值中。</p>
@@ -352,9 +353,9 @@ element.removeEventListener('event', eventListener, false);
 <p>标准事件模型为我们提供了两种方案，可能很多朋友分不清这两种不同模型有啥好处，为什么不只采取一种模型。
 这里抛开IE浏览器讨论（<code>IE</code>只有一种，没法选择）什么情况下适合哪种事件模型。</p>
 
-<ol>
+<ul>
 <li>捕获型应用场合</li>
-</ol>
+</ul>
 
 
 <p>捕获型事件传递由最不精确的祖先元素一直到最精确的事件源元素，传递方式与操作系统中的全局快捷键与应用程序快捷键相似。当一个系统组合键发生时，如果注
@@ -375,9 +376,9 @@ element.removeEventListener('event', eventListener, false);
 
 <p>这样一来，当<code>canEventPass</code>条件为假时，<code>document</code>下所有的子结点<code>click</code>注册事件都不会被浏览器处理。</p>
 
-<ol>
+<ul>
 <li>冒泡型的应用场合</li>
-</ol>
+</ul>
 
 
 <p>可以说我们平时用的都是冒泡事件模型，因为<code>IE</code>只支持这模型。这里还是说说，在恰当利用该模型可以提高脚本性能。在元素一些频繁触发的事件中，如<code>onmousemove</code>,
