@@ -4,7 +4,7 @@
   <title><![CDATA[Do Far]]></title>
   <link href="http://blog.dofa.org/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-04-05T02:16:52+00:00</updated>
+  <updated>2014-04-05T02:31:19+00:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Understanding of JavaScript event handling]]></title>
+    <title type="html"><![CDATA[理解JavaScript中的事件处理]]></title>
     <link href="http://blog.dofa.org/blog/2014/04/05/understanding-of-javascript-event-handling/"/>
     <updated>2014-04-05T16:37:25+00:00</updated>
     <id>http://blog.dofa.org/blog/2014/04/05/understanding-of-javascript-event-handling</id>
@@ -796,8 +796,6 @@ window.resizeTo(screen.availWidth, screen.availHeight);
 
 <p>如果框架名称为<code>right</code>的页面包括下面框架：</p>
 
-<p>&lt;% raw %></p>
-
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -808,8 +806,6 @@ window.resizeTo(screen.availWidth, screen.availHeight);
 </span><span class='line'><span class="nt">&lt;/frameset&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
-
-<p>&lt;% endraw %></p>
 
 <p>那么righttop与rightbottom的parent父框架为right</p>
 ]]></content>
