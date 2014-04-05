@@ -3,7 +3,7 @@ layout: post
 title: "Vagrant使用简介"
 date: 2014-03-09 06:21:16 +0000
 comments: true
-categories: VM
+categories: Server
 tags: vm, vagrant, virtualbox
 ---
 
