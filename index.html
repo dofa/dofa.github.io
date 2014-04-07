@@ -177,24 +177,38 @@ phonecatApp.controller('PhoneListCtrl', function ($scope, $http) {
 <p>We can overcome this problem by annotating the function with the names of the dependencies, provided as strings, which will not get minified. There are two ways to provide these injection annotations:</p>
 
 <ul>
-<li><p>Create a <code>$inject</code> property on the controller function which holds an array of strings. Each string in the array is the name of the service to inject for the corresponding parameter. In our example we would write:</p>
-
-<p>  function PhoneListCtrl($scope, $http) {&hellip;}
-  PhoneListCtrl.$inject = [&lsquo;$scope&rsquo;, &lsquo;$http&rsquo;];
-  phonecatApp.controller(&lsquo;PhoneListCtrl&rsquo;, PhoneListCtrl);</p></li>
-<li><p>Use an inline annotation where, instead of just providing the function, you provide an array. This array contains a list of the service names, followed by the function itself.</p>
-
-<p>  function PhoneListCtrl($scope, $http) {&hellip;}
-  phonecatApp.controller(&lsquo;PhoneListCtrl&rsquo;, [&lsquo;$scope&rsquo;, &lsquo;$http&rsquo;, PhoneListCtrl]);</p></li>
+<li>Create a <code>$inject</code> property on the controller function which holds an array of strings. Each string in the array is the name of the service to inject for the corresponding parameter. In our example we would write:</li>
 </ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>function PhoneListCtrl($scope, $http) {...}
+</span><span class='line'>PhoneListCtrl.$inject = ['$scope', '$http'];
+</span><span class='line'>phonecatApp.controller('PhoneListCtrl', PhoneListCtrl);</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Use an inline annotation where, instead of just providing the function, you provide an array. This array contains a list of the service names, followed by the function itself.</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>function PhoneListCtrl($scope, $http) {...}
+</span><span class='line'>phonecatApp.controller('PhoneListCtrl', ['$scope', '$http', PhoneListCtrl]);</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Both of these methods work with any function that can be injected by Angular, so it&rsquo;s up to your project&rsquo;s style guide to decide which one you use.</p>
 
 <p>When using the second method, it is common to provide the constructor function inline as an anonymous function when registering the controller:</p>
 
-<pre><code>phonecatApp.controller('PhoneListCtrl', ['$scope', '$http', function($scope, $http) {...}]);
-</code></pre>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>phonecatApp.controller('PhoneListCtrl', ['$scope', '$http', function($scope, $http) {...}]);</span></code></pre></td></tr></table></div></figure>
+
+
+<p>{% raw %}</p>
 
 <p>From this point onward, we&rsquo;re going to use the inline method in the tutorial. With that in mind, let&rsquo;s add the annotations to our PhoneListCtrl:</p>
 

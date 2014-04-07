@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Angularjs | Do Far]]></title>
   <link href="http://blog.dofa.org/tags/angularjs/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-04-07T07:12:17-07:00</updated>
+  <updated>2014-04-07T07:21:17-07:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -85,24 +85,39 @@ phonecatApp.controller('PhoneListCtrl', function ($scope, $http) {
 <p>We can overcome this problem by annotating the function with the names of the dependencies, provided as strings, which will not get minified. There are two ways to provide these injection annotations:</p>
 
 <ul>
-<li><p>Create a <code>$inject</code> property on the controller function which holds an array of strings. Each string in the array is the name of the service to inject for the corresponding parameter. In our example we would write:</p>
-
-<p>  function PhoneListCtrl($scope, $http) {&hellip;}
-  PhoneListCtrl.$inject = [&lsquo;$scope&rsquo;, &lsquo;$http&rsquo;];
-  phonecatApp.controller(&lsquo;PhoneListCtrl&rsquo;, PhoneListCtrl);</p></li>
-<li><p>Use an inline annotation where, instead of just providing the function, you provide an array. This array contains a list of the service names, followed by the function itself.</p>
-
-<p>  function PhoneListCtrl($scope, $http) {&hellip;}
-  phonecatApp.controller(&lsquo;PhoneListCtrl&rsquo;, [&lsquo;$scope&rsquo;, &lsquo;$http&rsquo;, PhoneListCtrl]);</p></li>
+<li>Create a <code>$inject</code> property on the controller function which holds an array of strings. Each string in the array is the name of the service to inject for the corresponding parameter. In our example we would write:</li>
 </ul>
 
+
+<p>
+<code>
+function PhoneListCtrl($scope, $http) {...}
+PhoneListCtrl.$inject = ['$scope', '$http'];
+phonecatApp.controller('PhoneListCtrl', PhoneListCtrl);
+</code>
+</p>
+
+<ul>
+<li>Use an inline annotation where, instead of just providing the function, you provide an array. This array contains a list of the service names, followed by the function itself.</li>
+</ul>
+
+
+<p>
+<code>
+function PhoneListCtrl($scope, $http) {...}
+phonecatApp.controller('PhoneListCtrl', ['$scope', '$http', PhoneListCtrl]);
+</code>
+</p>
 
 <p>Both of these methods work with any function that can be injected by Angular, so it&rsquo;s up to your project&rsquo;s style guide to decide which one you use.</p>
 
 <p>When using the second method, it is common to provide the constructor function inline as an anonymous function when registering the controller:</p>
 
-<pre><code>phonecatApp.controller('PhoneListCtrl', ['$scope', '$http', function($scope, $http) {...}]);
-</code></pre>
+<p>
+<code>
+phonecatApp.controller('PhoneListCtrl', ['$scope', '$http', function($scope, $http) {...}]);
+</code>
+{% raw %}</p>
 
 <p>From this point onward, we&rsquo;re going to use the inline method in the tutorial. With that in mind, let&rsquo;s add the annotations to our PhoneListCtrl:</p>
 
@@ -222,8 +237,8 @@ Sort by:
 
 &lt;ul class="phones"&gt;
     &lt;li ng-repeat="phone in phones | filter:query | orderBy:orderProp"&gt;
-        
-        &lt;p&gt;&lt;/p&gt;
+        {{phone.name}}
+        &lt;p&gt;{{phone.snippet}}&lt;/p&gt;
     &lt;/li&gt;
 &lt;/ul&gt;
 </code></pre>
@@ -317,7 +332,7 @@ phonecatApp.controller('PhoneListCtrl', function ($scope) {
 <pre><code>...
 it('should be possible to control phone order via the drop down select box', function() {
 
-  var phoneNameColumn = element.all(by.repeater('phone in phones').column(''));
+  var phoneNameColumn = element.all(by.repeater('phone in phones').column('{{phone.name}}'));
   var query = element(by.model('query'));
 
   function getNames() {
@@ -381,8 +396,8 @@ it('should be possible to control phone order via the drop down select box', fun
 
     &lt;ul class="phones"&gt;
       &lt;li ng-repeat="phone in phones | filter:query"&gt;
-        
-        &lt;p&gt;&lt;/p&gt;
+        {{phone.name}}
+        &lt;p&gt;{{phone.snippet}}&lt;/p&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
 
@@ -481,8 +496,8 @@ it('should be possible to control phone order via the drop down select box', fun
 
   &lt;ul&gt;
     &lt;li ng-repeat="phone in phones"&gt;
-      
-      &lt;p&gt;&lt;/p&gt;
+      {{phone.name}}
+      &lt;p&gt;{{phone.snippet}}&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ul&gt;
 
@@ -490,7 +505,7 @@ it('should be possible to control phone order via the drop down select box', fun
 &lt;/html&gt;
 </code></pre>
 
-<p>我们刚刚把静态编码的手机列表替换掉了，因为这里我们使用<code>ngRepeat</code>指令和两个用花括号包裹起来的<code>AngularJS</code>表达式——<code>{{phone.name}}</code>
+<p>我们刚刚把静态编码的手机列表替换掉了，因为这里我们使用<code>ngRepeat</code>指令和两个用花括号包裹起来的<code>AngularJS</code>表达式——{% raw %}<code>{{phone.name}}</code>
 和<code>{{phone.snippet}}</code>——能达到同样的效果。</p>
 
 <p>在<code>&lt;li&gt;</code>标签里面的<code>ng-repeat="phone in phones"</code>语句是一个<code>AngularJS</code>迭代器。这个迭代器告诉<code>AngularJS</code>用第一个<code>&lt;li&gt;</code>标签作为模板为列表中的每一部手机创建一个<code>&lt;li&gt;</code>元素。
