@@ -12,20 +12,20 @@ tags: javascript, Angularjs
 ## 模板
 `app/index.html:`
 
-  Search: <input ng-model="query">
-  Sort by:
-  <select ng-model="orderProp">
-    <option value="name">Alphabetical</option>
-    <option value="age">Newest</option>
-  </select>
- 
- 
-  <ul class="phones">
-    <li ng-repeat="phone in phones | filter:query | orderBy:orderProp">
-      {{phone.name}}
-      <p>{{phone.snippet}}</p>
-    </li>
-  </ul>
+	Search: <input ng-model="query">
+	Sort by:
+	<select ng-model="orderProp">
+		<option value="name">Alphabetical</option>
+		<option value="age">Newest</option>
+	</select>
+
+
+	<ul class="phones">
+		<li ng-repeat="phone in phones | filter:query | orderBy:orderProp">
+			{{phone.name}}
+			<p>{{phone.snippet}}</p>
+		</li>
+	</ul>
 
 我们在`index.html`中做了如下更改：
 
