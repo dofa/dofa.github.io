@@ -1,0 +1,895 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Do Far</title>
+  <meta name="author" content="dofa">
+
+  
+  <meta name="description" content="TCP/IP协议封包 我觉得学习TCP/IP协议可以从它的封包开始，了解它在硬件上是怎么实现的是个不错的开端。 上图是应用程序通过TCP/IP协议传输时的数据封包过程，该图基本反应了TCP/IP协议簇的数据打包过程。
+封装好的IP协议一般通过硬件发送出去，比如Ethernet、令牌网、电话线。 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.dofa.org/blog/page/4">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/atom.xml" rel="alternate" title="Do Far" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-48748469-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Do Far</a></h1>
+  
+    <h2>There is a will, there is a way.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:blog.dofa.org" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">归档</a></li>
+  <li><a href="/github">Github</a></li>
+  <li><a href="/about">关于我</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/07/26/tcp-ip-protocol-learning-series-one-of-frame-structure/">TCP/IP 协议学习系列之一 — 帧结构（frame）</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-26T07:25:52-07:00" pubdate data-updated="true">Jul 26<span>th</span>, 2013</time>
+        
+        
+           | <a href="/blog/2013/07/26/tcp-ip-protocol-learning-series-one-of-frame-structure/#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>TCP/IP协议封包</h2>
+
+<p>我觉得学习TCP/IP协议可以从它的封包开始，了解它在硬件上是怎么实现的是个不错的开端。</p>
+
+<p><img src="http://dofa.u.qiniudn.com/imgage/embeded/tcpip-package.bmp"></p>
+
+<p>上图是应用程序通过TCP/IP协议传输时的数据封包过程，该图基本反应了TCP/IP协议簇的数据打包过程。
+封装好的IP协议一般通过硬件发送出去，比如Ethernet、令牌网、电话线。目前广泛应用的是Ethernet，我们的产品也不例外。</p>
+
+<h2>Ethernet Frame结构</h2>
+
+<p>我们看下Ethernet的帧结构：</p>
+
+<p><img src="http://dofa.u.qiniudn.com/imgage/embeded/ethernet-frame.bmp"></p>
+
+<p>基本上就是在TCP/IP封包基础上增加了一个Ethernet Frame Header和Frame Tail(CRC)。</p>
+
+<p>这里的DA和SA指的是MAC，固定为6字节。类型/长度在不同的协议规格下有不同意义，Ethernet-II要求不小于0×8000的类型码，IEEE 802规格定义该字段为报文数据的长度。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/06/02/sublime-text-snippet/">Sublime Text的snippet</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-02T07:25:52-07:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2013</time>
+        
+        
+           | <a href="/blog/2013/06/02/sublime-text-snippet/#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>snippet强大的自动补全功能</h2>
+
+<p>以前理解代码自动补全以为就是函数或变量的自动补全，其实还可以是代码块的自动补全。接触过sublime text后才发现si的自动补全弱爆了，si也就阅读代码方便，写代码以后还要靠sublime text。话说sublime text的snippet就是自动补全，我也是今天才知道snippet。在简单的接触后，马上就可以实现自己的自动补全，不得不说st2真乃coding神器！</p>
+
+<h2>Example：for语句的补全</h2>
+
+<p>当匹配到<code>for</code>后，</p>
+
+<p><img src="http://dofa.u.qiniudn.com/imgage/embeded/snippet-for.jpg">
+输入<code>tab</code>，这时st2帮你输入以下代码：
+<img src="http://dofa.u.qiniudn.com/imgage/embeded/snippet-for-tab.jpg">
+当前光标会停留在<code>count</code>上，继续key字就会把<code>count</code>替换掉，接着按下<code>tab</code>会把<code>i</code>也替换掉。</p>
+
+<h2>自定义snipppet</h2>
+
+<p>通过<code>tools</code>&mdash;> <code>New snippet</code>，会出现：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;snippet&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;content&gt;</span><span class="cp">&lt;![CDATA[</span>
+</span><span class='line'><span class="cp">Hello, ${1:this} is a ${2:snippet}.</span>
+</span><span class='line'><span class="cp">]]&gt;</span><span class="nt">&lt;/content&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!-- Optional: Set a tabTrigger to define how to trigger the snippet --&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!-- &lt;tabTrigger&gt;hello&lt;/tabTrigger&gt; --&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!-- Optional: Set a scope to limit where the snippet will trigger --&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!-- &lt;scope&gt;source.python&lt;/scope&gt; --&gt;</span>
+</span><span class='line'><span class="nt">&lt;/snippet&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>修改这行<code>&lt;!-- &lt;tabTrigger&gt;hello&lt;/tabTrigger&gt; --&gt;</code>为<code>&lt;tabTrigger&gt;hello&lt;/tabTrigger&gt;</code>就可以使用<code>hello+tab</code>调出<code>Hello, ${1:this} is a ${2:snippet}.</code>。光标首先会出现在<code>${1}</code>的位置上，<code>:this</code>表示<code>${1}</code>的默认值为<code>this</code>。</p>
+
+<p>这里再给一个doxygen格式snippet配置：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;snippet&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;content&gt;</span><span class="cp">&lt;![CDATA[</span>
+</span><span class='line'><span class="cp">/*!</span>
+</span><span class='line'><span class="cp"> * \file ${1:file.c}</span>
+</span><span class='line'><span class="cp"> * \brief this is a ${2:description} file</span>
+</span><span class='line'><span class="cp"> * \author bitbegin</span>
+</span><span class='line'><span class="cp"> * \date ${3:2013-6-3}</span>
+</span><span class='line'><span class="cp"> * \version V1.0.061</span>
+</span><span class='line'><span class="cp"> * \note this is a ${2:description} file</span>
+</span><span class='line'><span class="cp"> * \warning Only for bitbegin</span>
+</span><span class='line'><span class="cp"> * \details</span>
+</span><span class='line'><span class="cp"> * ${4:your details}</span>
+</span><span class='line'><span class="cp"> *</span>
+</span><span class='line'><span class="cp"> */</span>
+</span><span class='line'><span class="cp">]]&gt;</span><span class="nt">&lt;/content&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!-- Optional: Set a tabTrigger to define how to trigger the snippet --&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;tabTrigger&gt;</span>doxy-file<span class="nt">&lt;/tabTrigger&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!-- Optional: Set a scope to limit where the snippet will trigger --&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!-- &lt;scope&gt;source.python&lt;/scope&gt; --&gt;</span>
+</span><span class='line'><span class="nt">&lt;/snippet&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/06/01/some-short-keys-of-sublime-text/">Sublime Text的一些快捷键</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-01T12:25:52-07:00" pubdate data-updated="true">Jun 1<span>st</span>, 2013</time>
+        
+        
+           | <a href="/blog/2013/06/01/some-short-keys-of-sublime-text/#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>打开/前往</h2>
+
+<pre><code>Ctrl+P：搜索项目中的文件
+Ctrl+G：跳转到第几行
+Ctrl+R：前往 method
+Ctrl+;：前往字段
+Ctrl+Shift+P：打开命令面板
+Ctrl+N：新建窗口
+Ctrl+o：打开文件
+Ctrl+shift+s：另存为
+Ctrl+W：关闭当前打开文件
+Ctrl+Shift+W：关闭所有打开文件
+Ctrl+`：显示python命令行
+</code></pre>
+
+<h2>界面</h2>
+
+<pre><code>F11 全屏
+shift+F11：无干绕全屏
+ctrl+kb：开关侧边栏
+Alt+Shift+数字：分屏显示
+ctrl+I：显示底部面板
+</code></pre>
+
+<h2>编辑</h2>
+
+<pre><code>F6：拼写检查
+F9：行排序
+</code></pre>
+
+<p>选择类</p>
+
+<pre><code>ctrl+l：选择整行（继续按键则选择下行）
+ctrl+shift+l：将光标放至选中单行内容末尾或多行内容每行行尾
+ctrl+d：选中光标位置所在单词 （继续按键则选择下个相同的字符串）
+ctrl+m：光标移动至括号内开始或结束的位置
+ctrl+shift+m：选择括号内的内容（继续按键则选择父括号）
+Alt+F3：选择所有相同的词
+Shift+右键拖动：光标多不，用来更改或插入列内容
+Ctrl+鼠标左键：依次点击或选取，可需要编辑的多个位置
+ctrl+shfit+space：选择本范围
+ctrl+alt+上下箭头：多竖行同时编辑
+</code></pre>
+
+<p>代码折叠</p>
+
+<pre><code>ctrl+shift+[：按照缩进指示折叠光标所在标签对或折叠所选内容
+ctrl+shift+]：展开光标所在标签对内容或所选内容
+</code></pre>
+
+<p>行操作</p>
+
+<pre><code>ctrl+kk：从光标处删除至行尾
+ctrl+k+backspace：从光标处删除至行首
+ctrl+shift+k：删除整行
+ctrl+shift+backspace：删除整行
+ctrl+shift+up：光标所在行与上行互换
+ctrl+shift+down：光标所在行与下行互换
+ctrl+shift+d：复制光标所在整行，插入在该行之前
+ctrl+enter：在当前行后插入新行
+ctrl+shift+enter：在当前行前插入新行
+ctrl+[：减少当前行缩进
+ctrl+]：增加当前行缩进
+tab：增加当前行缩进
+shift+tab：减少当前行缩进
+</code></pre>
+
+<p>常用编辑</p>
+
+<pre><code>ctrl+u：软撤销
+ctrl+z：撤销
+ctrl+y：恢复撤销
+ctrl+backspace：删除一个单词
+ctrl+ku：改为大写
+ctrl+kl：改为小写
+ctrl+x：选定内容状态下为剪切内容，未选中为剪切光标当前所在行
+ctrl+t：光标所在位置左右字符或词互换
+Ctrl+Shift+V：粘贴并格式化
+Alt + Ctrl + ]：代码自动对齐
+</code></pre>
+
+<h2>拆分窗口/标签页</h2>
+
+<pre><code>alt+.：闭合当前标签
+Alt+Shift+数字：分屏显示
+ctrl+tab：切换选项卡
+ctrl+shift+tab：逆序切换选项卡
+Alt+数字：切换打开第N个文件
+</code></pre>
+
+<h2>标记</h2>
+
+<pre><code>Ctrl+F2：设置/删除标记
+</code></pre>
+
+<h2>查找/替换</h2>
+
+<pre><code>Ctrl+F：查找内容
+Ctrl+Shift+F：查找并替换
+Ctrl+H：替换
+F3：查找下一个
+shift+F3：查找前一个
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/06/01/sublime-text-study-notes/">Sublime Text 学习笔记</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-01T09:25:52-07:00" pubdate data-updated="true">Jun 1<span>st</span>, 2013</time>
+        
+        
+           | <a href="/blog/2013/06/01/sublime-text-study-notes/#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>如果你的配置错误，导致Sublime Text2不能打开了，想要把配置改回来，那么配置文件在C:\Users\用户名\AppData\Roaming\Sublime Text 2\Packages\User中</li>
+<li>安装Package control，按快捷键Ctrl+`，打开命令输入界面（一般在下方），输入下面的命令后回车即可，重启Sublime Text2</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">urllib2</span><span class="o">,</span><span class="nn">os</span><span class="p">;</span><span class="n">pf</span><span class="o">=</span><span class="s">&#39;Package Control.sublime-package&#39;</span><span class="p">;</span><span class="n">ipp</span><span class="o">=</span><span class="n">sublime</span><span class="o">.</span><span class="n">installed_packages_path</span><span class="p">();</span><span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">ipp</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">ipp</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span><span class="p">;</span><span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ipp</span><span class="p">,</span><span class="n">pf</span><span class="p">),</span><span class="s">&#39;wb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&#39;http://sublime.wbond.net/&#39;</span><span class="o">+</span><span class="n">pf</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">,</span><span class="s">&#39;%20&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>修改字体
+Preferences->File Setting-User，打开配置文件，看里面有没font_face配置项，有就直接改，没有就自己加上，可能的配置文件如下：</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="s">&quot;color_scheme&quot;</span><span class="p">:</span> <span class="s">&quot;Packages/Color Scheme - Default/Black-Pearl2.tmTheme&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&quot;font_face&quot;</span><span class="p">:</span> <span class="s">&quot;微软雅黑&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&quot;font_size&quot;</span><span class="p">:</span> <span class="mf">10.0</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>设置代理(GoAgent)
+打开<code>settings - user</code>，输入：</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="s">&quot;http_proxy&quot;</span><span class="p">:</span> <span class="s">&quot;http://127.0.0.1:8087&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s">&quot;https_proxy&quot;</span><span class="p">:</span> <span class="s">&quot;http://127.0.0.1:8087&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p>同时编辑多行 (Ctrl+Shift+L (Win) 或  Command+Shift+L (Mac))
+如要在选中的多行文本的最后面同时添加一个字符“a”，先选中要编辑的多行文字，然后按快捷键，此时每行的末尾都会有个输入光标在闪，再按End键将鼠标定位到行末，（再按Home键将鼠标定位到行首）输入字母a即可。如要退出多行编辑状态，按Esc键即可。</p></li>
+<li><p>一次性选择全部的相同文本 (Alt+F3 (Win) 或 Ctrl+Command+G (Mac))</p></li>
+<li><p>竖向多行选择 (Shift+鼠标右键 (Win) 或 Option+鼠标左键 (Mac))</p></li>
+<li><p>手动选择多处不同文本 (Ctrl+鼠标左键(Win) 或 Command+鼠标左键(Mac) )</p></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/06/01/sublime-text-guide-and-tips/">Sublime Text 入门及技巧</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-01T07:25:52-07:00" pubdate data-updated="true">Jun 1<span>st</span>, 2013</time>
+        
+        
+           | <a href="/blog/2013/06/01/sublime-text-guide-and-tips/#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>快捷的命令面板</h2>
+
+<p>和 TextMate 类似，Sublime Text 2 也提供了很方便的命令调用方式：Command Palette（命令面板）。调用方法：直接在 <code>Tool</code> 菜单中选择 <code>Command Palette</code>，或是用快捷键：<code>Shift+Command+P</code>，输入命令名称（中的字母）就可以实时搜索到相应的命令、选项、snippet 和 syntex， 按下回车就可以直接执行，减少了查找的麻烦。</p>
+
+<h2>即时的文件切换</h2>
+
+<p>按下 <code>Command+P</code>(Mac) 或是 <code>Ctrl+P</code>(Windows)，输入想要切换到的文件的文件名，都不用按下回车键，目标文件就已经展现在眼前了，虽然 Vim 配合 PeepOpen 也可以实现同样的功能，但速度却远没有这么迅速。</p>
+
+<h2>随心所欲的跳转</h2>
+
+<p><code>Cmd+P</code> 之所以被叫做 Goto Anything 并不是虚名：</p>
+
+<ul>
+<li>用 <code>Command+P</code> 可以快速跳转到当前项目中的任意文件，可进行关键词匹配。</li>
+<li>用 <code>Command+P</code> 后 <code>@</code> (或是<code>Command+R</code>)可以快速列出/跳转到某个函数（很爽的是在 markdown 当中是匹配到标题，而且还是带缩进的！）。</li>
+<li>用 <code>Command+P</code> 后 <code>#</code> 可以在当前文件中进行搜索。</li>
+<li>用 <code>Command+P</code> 后 <code>:</code> (或是<code>Ctrl+G</code>)加上数字可以跳转到相应的行。</li>
+</ul>
+
+
+<p>而更酷的是你可以用 <code>Command+P</code> 加上一些关键词跳转到某个文件同时加上 <code>@</code> 来列出/跳转到目标文件中的某个函数，或是同时加上 <code>#</code> 来在目标文件中进行搜索，或是同时加上 <code>:</code> 和数字来跳转到目标文件中相应的行。</p>
+
+<h2>多重选择(Multi-Selection)</h2>
+
+<p>多重选择功能允许在页面中同时存在多个光标，让很多本来需要正则表达式、高级搜索和替换才能完成的任务也变得游刃有余了。
+激活多重选择的方法有两几种：</p>
+
+<ul>
+<li>按住 <code>Command</code> 或 <code>Alt</code>，然后在页面中希望中现光标的位置点击。</li>
+<li>选择数行文本，然后按下 <code>Shift+Command+L</code>。</li>
+<li>通过反复按下 <code>Control/Command+D</code> 即可将全文中与光标当前所在位置的词相同的词逐一加入选择，而直接按下 <code>Alt+F3</code>(Windows) 或是 <code>Ctrl+Command+G</code>(Mac) 即可一次性选择所有相同的词。</li>
+<li>按下鼠标中键来进行垂直方向的纵列选择，也可以进入多重编辑状态。</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/10/commonly-used-vim-commands/">常用的Vim命令</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-10T06:09:55-07:00" pubdate data-updated="true">Apr 10<span>th</span>, 2013</time>
+        
+        
+           | <a href="/blog/2013/04/10/commonly-used-vim-commands/#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>光标移动(Cursor Movement)</h2>
+
+<pre><code>命令          作用（解释）
+h,j,k,l         h表示往左，j表示往下，k表示往右，l表示往上
+Ctrl+f          上一页
+Ctrl+b          下一页
+w, e, W, E      跳到单词的后面，小写包括标点
+b, B            以单词为单位往前跳动光标，小写包含标点
+O               开启新的一行
+^               一行的开始
+$               一行的结尾
+gg              文档的第一行
+[N]G            文档的第N行或者最后一行
+</code></pre>
+
+<h2>插入模式(Insert Mode)</h2>
+
+<pre><code>命令          作用（解释)
+i               插入到光标前面
+I               插入到行的开始位置
+a               插入到光标的后面
+A               插入到行的最后位置
+o, O            新开一行
+Esc             关闭插入模式
+</code></pre>
+
+<h2>编辑(Editing)</h2>
+
+<pre><code>命令          作用（解释）
+r               在插入模式替换光标所在的一个字符
+J               合并下一行到上一行
+s               删除光标所在的一个字符, 光标还在当行
+S               删除光标所在的一行，光标还在当行，不同于dd
+u               撤销上一步操作
+ctrl+r          恢复上一步操作
+.               重复最后一个命令
+~               变换为大写
+[N]&gt;&gt;           一行或N行往右移动一个tab
+[N]&lt;&lt;           一行或N行往左移动一个tab
+</code></pre>
+
+<h2>关闭(Exiting)</h2>
+
+<pre><code>命令          作用（解释)
+:w              保存
+:wq, :x         保存并关闭
+:q              关闭（已保存）
+:q!             强制关闭
+</code></pre>
+
+<h2>搜索(Search)</h2>
+
+<pre><code>命令          作用（解释)
+/pattern        搜索（非插入模式)
+?pattern        往后搜索
+n               光标到达搜索结果的前一个目标
+N               光标到达搜索结果的后一个目标
+</code></pre>
+
+<h2>视觉模式(Visual Mode)</h2>
+
+<pre><code>命令          作用（解释)
+v               选中一个或多个字符
+V               选中一行
+ctrl+v          块选择
+</code></pre>
+
+<h2>剪切和复制(Cut and Paste)</h2>
+
+<pre><code>命令          作用（解释)
+dd              删除一行
+dw              删除一个单词
+x               删除后一个字符
+X               删除前一个字符
+D               删除一行最后一个字符
+[N]yy           复制一行或者N行
+yw              复制一个单词
+p               粘贴
+</code></pre>
+
+<h2>窗口操作</h2>
+
+<pre><code>命令          作用（解释)
+:split          水平方向分割出一个窗口
+:vsplit         垂直方向分割出一个窗口
+:close          关闭窗口
+Ctrl+W          切换窗口, h到左边窗口，j到下方窗口，k到上方窗口，l到右边窗口
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/02/vim-mind-mapping/">vim思维导图</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-02T09:42:52-07:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2013</time>
+        
+        
+           | <a href="/blog/2013/04/02/vim-mind-mapping/#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="http://dofa.u.qiniudn.com/image/vim/vim-mind-mapping.png"></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/03/26/vim-cheat-sheet/">vim cheat sheet</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-26T09:48:52-07:00" pubdate data-updated="true">Mar 26<span>th</span>, 2013</time>
+        
+        
+           | <a href="/blog/2013/03/26/vim-cheat-sheet/#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="http://dofa.u.qiniudn.com/image/vim/vim-cheat-sheet.png"></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/3/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/embedded/'>Embedded (5)</a></li>
+<li class='category'><a href='/blog/categories/javascript/'>Javascript (12)</a></li>
+<li class='category'><a href='/blog/categories/jekyll/'>Jekyll (2)</a></li>
+<li class='category'><a href='/blog/categories/nodejs/'>Nodejs (2)</a></li>
+<li class='category'><a href='/blog/categories/octopress/'>Octopress (6)</a></li>
+<li class='category'><a href='/blog/categories/server/'>Server (3)</a></li>
+<li class='category'><a href='/blog/categories/sublimetext/'>SublimeText (5)</a></li>
+<li class='category'><a href='/blog/categories/vim/'>Vim (3)</a></li>
+
+  </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/04/07/learning-angularjs-notes-dynamic-templates/">Angularjs学习笔记-动态模板</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/07/learning-angularjs-notes-static-templates/">Angularjs学习笔记-静态模板</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/05/build-angularjs-develop-environment/">Angularjs入门环境的搭建</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/05/build-nodejs-develop-environment-in-the-windows/">在Windows环境下搭建nodejs环境</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/05/understanding-of-javascript-event-handling/">理解JavaScript中的事件处理</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Tags</h1>
+  <ul class="tag-cloud">
+    <a style="font-size: 125%" href="/tags/angularjs/">Angularjs</a>
+<a style="font-size: 194%" href="/tags/bom/">BOM</a>
+<a style="font-size: 90%" href="/tags/task/">Task</a>
+<a style="font-size: 90%" href="/tags/uos/">Uos</a>
+<a style="font-size: 210%" href="/tags/javascript/">javascript,</a>
+<a style="font-size: 159%" href="/tags/octopress/">octopress</a>
+<a style="font-size: 125%" href="/tags/octopress/">octopress,</a>
+<a style="font-size: 171%" href="/tags/sublime-text/">sublime-text</a>
+<a style="font-size: 145%" href="/tags/tcpip/">tcpip</a>
+<a style="font-size: 145%" href="/tags/vim/">vim</a>
+
+  </ul>
+</section>
+<section>
+<h1>Recent Comments</h1>
+<ul class="ds-recent-comments" data-num-items="10" data-show-avatars="0" data-show-time="0" data-show-title="0" data-show-admin="0" data-excerpt-length="18"></ul>
+
+<!--多说js加载开始，一个页面只需要加载一次 -->
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"bitbegin"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<!--多说js加载结束，一个页面只需要加载一次 -->
+
+</section><section>
+<h1>友情链接</h1>
+<ul>
+        <li>
+        <a href="http://blog.jobbole.com/">伯乐在线</a>
+        </li>
+        <li>
+        <a href="http://www.csdn.net/">CSDN</a>
+        </li>
+        <li>
+        <a href="http://www.cnblogs.com/">博客园</a>
+        </li>
+        <li>
+        <a href="http://coolshell.cn/">酷壳CoolShell</a>
+        </li>
+</ul>
+</section>
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - dofa -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1000309119'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s5.cnzz.com/z_stat.php%3Fid%3D1000309119%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,1835 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Do Far]]></title>
+  <link href="http://blog.dofa.org/atom.xml" rel="self"/>
+  <link href="http://blog.dofa.org/"/>
+  <updated>2014-04-07T02:30:51-07:00</updated>
+  <id>http://blog.dofa.org/</id>
+  <author>
+    <name><![CDATA[dofa]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Angularjs学习笔记-动态模板]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/07/learning-angularjs-notes-dynamic-templates/"/>
+    <updated>2014-04-07T16:10:10-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/07/learning-angularjs-notes-dynamic-templates</id>
+    <content type="html"><![CDATA[<p>AngularJS应用使用模型-视图-控制器（MVC）模式解耦代码和分离关注点。</p>
+
+<h2>视图和模板</h2>
+
+<p>在<code>AngularJS</code>中，一个视图是模型通过HTML<strong>模板</strong>渲染之后的映射。这意味着，不论模型什么时候发生变化，<code>AngularJS</code>会实时更新结合点，随之更新视图。</p>
+
+<p>视图组件被AngularJS用下面这个模板构建出来:</p>
+
+<p><code>app/index.html</code>:</p>
+
+<pre><code>&lt;html ng-app="phonecatApp"&gt;
+&lt;head&gt;
+  ...
+  &lt;script src="../bower_components/angular/angular.js"&gt;&lt;/script&gt;
+  &lt;script src="js/controllers.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body ng-controller="PhoneListCtrl"&gt;
+
+  &lt;ul&gt;
+    &lt;li ng-repeat="phone in phones"&gt;
+
+      &lt;p&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>我们刚刚把静态编码的手机列表替换掉了，因为这里我们使用<code>ngRepeat</code>指令和两个用花括号包裹起来的<code>AngularJS</code>表达式——<code>和</code>——能达到同样的效果。</p>
+
+<p>在<code>&lt;li&gt;</code>标签里面的<code>ng-repeat="phone in phones"</code>语句是一个<code>AngularJS</code>迭代器。这个迭代器告诉<code>AngularJS</code>用第一个<code>&lt;li&gt;</code>标签作为模板为列表中的每一部手机创建一个<code>&lt;li&gt;</code>元素。
+正如我们在第0步时学到的，包裹在<code>phone.name</code>和<code>phone.snippet</code>周围的花括号标识着数据绑定。和常量计算不同的是，这里的表达式实际上是我们应用的一个数据模型引用，这些我们在<code>PhoneListCtrl</code>控制器里面都设置好了。</p>
+
+<h2>模型和控制器</h2>
+
+<p>在<code>PhoneListCtrl</code>控制器里面初始化了数据模型（这里只不过是一个包含了数组的函数，数组中存储的对象是手机数据列表）：</p>
+
+<p><code>app/js/controller.js:</code></p>
+
+<pre><code>var phonecatApp = angular.module('phonecatApp', []);
+
+phonecatApp.controller('PhoneListCtrl', function ($scope) {
+  $scope.phones = [
+    {'name': 'Nexus S',
+     'snippet': 'Fast just got faster with Nexus S.'},
+    {'name': 'Motorola XOOM™ with Wi-Fi',
+     'snippet': 'The Next, Next Generation tablet.'},
+    {'name': 'MOTOROLA XOOM™',
+     'snippet': 'The Next, Next Generation tablet.'}
+  ];
+});
+</code></pre>
+
+<p>尽管控制器看起来并没有起到什么控制的作用，但是它在这里起到了至关重要的作用。通过给定我们数据模型的语境，控制器允许我们建立模型和视图之间的数据绑定。我们是这样把表现层，数据和逻辑部件联系在一起的：</p>
+
+<ul>
+<li><code>PhoneListCtrl</code>——控制器方法的名字（在JS文件<code>controllers.js</code>中）和<code>&lt;body&gt;</code>标签里面的<code>ngController</code>指令的值相匹配。</li>
+<li>手机的数据此时与注入到我们控制器函数的作用域（<code>$scope</code>）相关联。当应用启动之后，会有一个根作用域被创建出来，而控制器的作用域是根作用域的一个典型后继。这个控制器的作用域对所有<code>&lt;body ng-controller="PhoneListCtrl"&gt;</code>标记内部的数据绑定有效。</li>
+</ul>
+
+
+<p><code>AngularJS</code>的作用域理论非常重要：一个作用域可以视作模板、模型和控制器协同工作的粘接器。<code>AngularJS</code>使用作用域，同时还有模板中的信息，数据模型和控制器。这些可以帮助模型和视图分离，但是他们两者确实是同步的！任何对于模型的更改都会即时反映在视图上；任何在视图上的更改都会被立刻体现在模型中。</p>
+
+<h2>测试</h2>
+
+<p>“AngularJS方式”让开发时代码测试变得十分简单。让我们来瞅一眼下面这个为控制器新添加的单元测试：</p>
+
+<p><code>test/unit/controllersSpec.js:</code></p>
+
+<pre><code>describe('PhoneCat controllers', function() {
+
+  describe('PhoneListCtrl', function(){
+
+    it('should create "phones" model with 3 phones', function() {
+      var scope = {},
+      ctrl = new PhoneListCtrl(scope);
+
+      expect(scope.phones.length).toBe(3);
+    });
+  });
+});
+</code></pre>
+
+<p>The test instantiates <code>PhoneListCtrl</code> and verifies that the phones array property on the scope contains three records. This example demonstrates how easy it is to create a unit test for code in Angular. Since testing is such a critical part of software development, we make it easy to create tests in Angular so that developers are encouraged to write them.</p>
+
+<p>Note: 进入下一步之前要安装<code>karma</code></p>
+
+<pre><code>npm install -g karma
+</code></pre>
+
+<p>出现问题试试下面的命令：</p>
+
+<pre><code>npm install -g karma-cli
+
+npm install -g zeparser
+
+npm install npm -g
+
+npm config set strict-ssl false
+</code></pre>
+
+<p>另外注意看<code>debug.log</code>查看缺失的包，然后安装上去</p>
+
+<h2>Testing non-Global Controllers</h2>
+
+<p>In practice, you will not want to have your controller functions in the global namespace. Instead, you can see that we have registered it via an anonymous constructor function on the <code>phoneCatApp</code> module.</p>
+
+<p>In this case Angular provides a service, <code>$controller</code>, which will retrieve your controller by name. Here is the same test using <code>$controller</code>:</p>
+
+<p><code>test/unit/controllersSpec.js:</code></p>
+
+<pre><code>describe('PhoneListCtrl', function(){
+
+  beforeEach(module('phonecatApp'));
+
+  it('should create "phones" model with 3 phones', inject(function($controller) {
+    var scope = {},
+        ctrl = $controller('PhoneListCtrl', {$scope:scope});
+
+    expect(scope.phones.length).toBe(3);
+  }));
+
+});
+</code></pre>
+
+<ul>
+<li>Before each test we tell Angular to load the <code>phonecatApp</code> module.</li>
+<li>We ask Angular to inject the <code>$controller</code> service into our test function</li>
+<li>We use <code>$controller</code> to create an instance of the <code>PhoneListCtrl</code></li>
+<li>With this instance, we verify that the phones array property on the scope contains three records.</li>
+</ul>
+
+
+<h2>Writing and Running Tests</h2>
+
+<p>Angular developers prefer the syntax of Jasmine&rsquo;s Behavior-driven Development (BDD) framework when writing tests. Although Angular does not require you to use Jasmine, we wrote all of the tests in this tutorial in Jasmine v1.3. You can learn about Jasmine on the Jasmine home page and at the Jasmine docs.</p>
+
+<p>The angular-seed project is pre-configured to run unit tests using Karma but you will need to ensure that Karma and its necessary plugins are installed. You can do this by running npm install.</p>
+
+<p>To run the tests, and then watch the files for changes: npm test.</p>
+
+<ul>
+<li>Karma will start a new instance of Chrome browser automatically. Just ignore it and let it run in the background. Karma will use this browser for test execution.</li>
+<li><p>You should see the following or similar output in the terminal:</p>
+
+<p>  info: Karma server started at <a href="http://localhost:9876/">http://localhost:9876/</a>
+  info (launcher): Starting  browser &ldquo;Chrome&rdquo;
+  info (Chrome 22.0): Connected on socket id tPUm9DXcLHtZTKbAEO-n
+  Chrome 22.0: Executed 1 of 1 SUCCESS (0.093 secs / 0.004 secs)</p></li>
+</ul>
+
+
+<p>Yay! The test passed! Or not&hellip;</p>
+
+<ul>
+<li>To rerun the tests, just change any of the source or test .js files. Karma will notice the change and will rerun the tests for you. Now isn&rsquo;t that sweet?</li>
+</ul>
+
+
+<h2>Angularjs动态模板演示</h2>
+
+<p><a href="http://blog.dofa.org/phonecat/step-2/app/">Angularjs动态模板</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Angularjs学习笔记-静态模板]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/07/learning-angularjs-notes-static-templates/"/>
+    <updated>2014-04-07T15:57:25-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/07/learning-angularjs-notes-static-templates</id>
+    <content type="html"><![CDATA[<p>Angularjs下静态页面的创建和普通<code>HTML</code>页面相同，可以直接看效果。</p>
+
+<h2>Angularjs静态模板演示</h2>
+
+<p><a href="http://blog.dofa.org/phonecat/step-1/app/">Angularjs静态模板</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Angularjs入门环境的搭建]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/05/build-angularjs-develop-environment/"/>
+    <updated>2014-04-05T19:20:25-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/05/build-angularjs-develop-environment</id>
+    <content type="html"><![CDATA[<h2>git clone &ldquo;PhoneCat Tutorial App&rdquo;</h2>
+
+<pre><code>git clone https://github.com/angular/angular-phonecat.git
+</code></pre>
+
+<h2>包安装</h2>
+
+<p>在angular-phonecat目录下安装包：</p>
+
+<pre><code>cd angular-phonecat
+
+npm install -d
+</code></pre>
+
+<h2>本地浏览</h2>
+
+<p>开启服务</p>
+
+<pre><code>npm start
+</code></pre>
+
+<p>在浏览器中输入：</p>
+
+<pre><code>http://localhost:8000/app/index.html
+</code></pre>
+
+<h2>phonecat最终效果演示</h2>
+
+<p><a href="http://blog.dofa.org/phonecat/step-12/app/#/phones">angularjs phonecat</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[在Windows环境下搭建nodejs环境]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/05/build-nodejs-develop-environment-in-the-windows/"/>
+    <updated>2014-04-05T18:58:25-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/05/build-nodejs-develop-environment-in-the-windows</id>
+    <content type="html"><![CDATA[<h2>Windows环境下安装nodejs环境</h2>
+
+<ul>
+<li><p>到<code>http://nodejs.org/download/</code>下载最新版本的windows安装程序，目前是<code>v0.10.26</code></p></li>
+<li><p><code>v0.10.26</code>版本默认已经安装<code>npm</code>，并添加了<code>PATH</code></p></li>
+<li><p>命令行下测试<code>node</code>和<code>npm</code>（注意系统要更新环境变量，在<code>CMD</code>下执行<code>PATH=c:\</code>退出即可）</p></li>
+</ul>
+
+
+<h2>包安装</h2>
+
+<p>在项目文件下执行：</p>
+
+<pre><code>npm install
+</code></pre>
+
+<h2>有用的命令</h2>
+
+<pre><code>npm start : start a local development web-server
+npm test : start the Karma unit test runner
+npm run protractor : run the Protractor end 2 end tests
+npm update-webdriver : install the drivers needed by Protractor
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[理解JavaScript中的事件处理]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/05/understanding-of-javascript-event-handling/"/>
+    <updated>2014-04-05T09:37:25-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/05/understanding-of-javascript-event-handling</id>
+    <content type="html"><![CDATA[<p>这篇文章对于了解Javascript的事件处理机制非常好，将它全文转载于此，以备不时之需。</p>
+
+<h2>什么是事件？</h2>
+
+<p>事件(<code>Event</code>)是<code>JavaScript</code>应用跳动的心脏 ，也是把所有东西粘在一起的胶水。当我们与浏览器中 <code>Web</code> 页面进行某些类型的交互时，事件就发生了。事件可能是用户在某些内容上的点击、鼠标经过某个特定元素或按下键盘上的某些按键。事件还可能是 <code>Web</code> 浏览器中发生的事情，比如说某个 <code>Web</code> 页面加载完成，或者是用户滚动窗口或改变窗口大小。</p>
+
+<p>通过使用 <code>JavaScript</code> ，你可以监听特定事件的发生，并规定让某些事件发生以对这些事件做出响应。</p>
+
+<h2>今天的事件</h2>
+
+<p>在漫长的演变史，我们已经告别了内嵌式的事件处理方式（直接将事件处理器放在 <code>HTML</code> 元素之内来使用）。今天的事件，它已是DOM的重要组成部分，遗憾的是， <code>IE</code>继续保留它最早在<code>IE4.0</code>中实现的事件模型，以后的<code>IE</code>版本中也没有做太大的改变，这也就是说<code>IE</code>还是使用的是一种专有的事件模型（冒泡型）,而其它的主流浏览器直到<code>DOM</code> 级别 3 规定定案后，才陆陆续续支持<code>DOM</code>标准的事件处理模型 — 捕获型与冒泡型。</p>
+
+<blockquote><p>历史原因是：<code>W3C</code> 规范 在<code>DOM</code> 级别 1中并没有定义任何的事件，直到发布于 2000 年 11 月 的<code>DOM</code> 级别 2 才定义了一小部分子集，<code>DOM</code> 级别 2中已经提供了提供了一种更详细的更细致的方式以控制 <code>Web</code> 页面中的事件，最后，完整的事件是在2004年 <code>DOM</code> 级别 3的规定中才最终定案。因为<code>IE4</code>是1995推出的并已实现了自己的事件模型（冒泡型），当时根本就没有<code>DOM</code>标准，不过在以后的<code>DOM</code>标准规范过程中已经把IE的事件模型吸收到了其中。</p></blockquote>
+
+<p>目前除<code>IE</code>浏览器外，其它主流的<code>Firefox</code>, <code>Opera</code>,
+<code>Safari</code>都支持标准的<code>DOM</code>事件处理模型。<code>IE</code>仍然使用自己专有的事件模型，即冒泡型，它事件模型的一部份被<code>DOM</code>标准采用，这点对于开发者来说也是有好处的，只有使用
+<code>DOM</code>标准，<code>IE</code>都共有的事件处理方式才能有效的跨浏览器。</p>
+
+<h2>DOM事件流</h2>
+
+<p><code>DOM</code>(文档对象模型)结构是一个树型结构，当一个<code>HTML</code>元素产生一个事件时，该事件会在元素结点与根节点之间按特定的顺序传播，路径所经过的节点都会收到该事件，这个传播过程可称为<code>DOM</code>事件流。</p>
+
+<p>事件顺序有两种类型：<strong>事件捕捉</strong>和<strong>事件冒泡</strong>。</p>
+
+<h4>冒泡型事件(Event Bubbling)</h4>
+
+<p>这是<code>IE</code>浏览器对事件模型的实现，也是最容易理解的，至少笔者觉得比较符合实际的。冒泡，顾名思义，事件像个水中的气泡一样一直往上冒，直到顶端。从<code>DOM</code>树型结构上理解，就是事件由叶子节点沿祖先结点一直向上传递直到根节点；从浏览器界面视图<code>HTML</code>元素排列层次上理解就是事件由具有从属关系的最确定的目标元素一直传递到最不确定的目标元素.冒泡技术.冒泡型事件的基本思想,事件按照从特定的事件目标开始到最不确定的事件目标.</p>
+
+<h4>捕获型事件(Event Capturing)</h4>
+
+<p><code>Netscape</code>的实现，它与冒泡型刚好相反，由<code>DOM</code>树最顶层元素一直到最精确的元素，这个事件模型对于开发者来说（至少是我..）有点费解，因为直观上的理解应该如同冒泡型，事件传递应该由最确定的元素，即事件产生元素开始。</p>
+
+<p><img src="http://dofa.u.qiniudn.com/image/web/javascript-event-module.jpg"></p>
+
+<h4>DOM标准的事件模型</h4>
+
+<p>我们已经对上面两个不同的事件模型进行了解释和对比。<code>DOM</code>标准同时支持两种事件模型，即捕获型事件与冒泡型事件，但是，捕获型事件先发生。两种事件流都会触发<code>DOM</code>中的所有对象，从<code>document</code>对象开始，也在<code>document</code>对象结束（大部分兼容标准的浏览器会继续将事件是捕捉/冒泡延续到<code>window</code>对象）。</p>
+
+<p><img src="http://dofa.u.qiniudn.com/image/web/javascript-event-dom.jpg"></p>
+
+<p>如图：首先是捕获式传递事件，接着是冒泡式传递，所以，如果一个处理函数既注册了捕获型事件的监听，又注册冒泡型事件监听，那么在<code>DOM</code>事件模型中它就会被调用两次。</p>
+
+<p><code>DOM</code>标准的事件模型最独特的性质是,文本节点也会触发事件(在IE不会)。</p>
+
+<p><img src="http://dofa.u.qiniudn.com/image/web/javascript-event-trans.png"></p>
+
+<h4>事件传送</h4>
+
+<p>为了更好的说明<code>DOM</code>标准中的事件流原理，我们把它放在“事件传送”小结里来更具体的解释。</p>
+
+<p>显然，如果为一个超链接添加了<code>click</code>事件监听器，那么当该链接被点击时该事件监听器就会被执行。但如果把该事件监听器指派给了包含该链接的<code>p</code>元素或者位于<code>DOM</code>树顶端的<code>document</code>节点，那么点击该链接也同样会触发该事件监听器。这是因为事件不仅仅对触发的目标元素产生影响，它们还会对沿着DOM结构的所有元素产生影响。这就是大家所熟悉的<em>事件转送</em>。</p>
+
+<p><code>W3C</code>事件模型中明确地指出了事件转送的原理。事件传送可以分为3个阶段。</p>
+
+<p><img src="http://dofa.u.qiniudn.com/image/web/javascript-event-trans2.png"></p>
+
+<p>如图：标准的事件转送模式</p>
+
+<ul>
+<li>在事件捕捉（<code>Capturing</code>）阶段，事件将沿着<code>DOM</code>树向下转送，目标节点的每一个祖先节点，直至目标节点。例如，若用户单击了一个超链接，则该单击事件将从<code>document</code>节点转送到<code>html</code>元素，<code>body</code>元素以及包含该链接的<code>p</code>元素。</li>
+</ul>
+
+
+<p>在此过程中，浏览器都会检测针对该事件的捕捉事件监听器，并且运行这件事件监听器。</p>
+
+<ul>
+<li><p>在目标（<code>target</code>）阶段，浏览器在查找到已经指定给目标事件的事件监听器之后，就会运行 该事件监听器。目标节点就是触发事件的<code>DOM</code>节点。例如，如果用户单击一个超链接，那么该链接就是目标节点（此时的目标节点实际上是超链接内的文本节点）。</p></li>
+<li><p>在冒泡（<code>Bubbling</code>）阶段，事件将沿着<code>DOM</code>树向上转送，再次逐个访问目标元素的祖先节点到<code>document</code>节点。该过程中的每一步。浏览器都将检测那些不是捕捉事件监听器的事件监听器，并执行它们。</p></li>
+</ul>
+
+
+<blockquote><p>并非所有的事件都会经过冒泡阶段的</p>
+
+<p>所有的事件都要经过捕捉阶段和目标阶段，但是有些事件会跳过冒泡阶段。例如，让元素获得输入焦点的<code>focus</code>事件以及失去输入焦点的<code>blur</code>事件就都不会冒泡。</p></blockquote>
+
+<h2>事件句柄和事件接听器</h2>
+
+<h4>事件句柄</h4>
+
+<p>事件句柄（又称事件处理函数，<code>DOM</code>称之为事件监听函数），用于响应某个事件而调用的函数称为事件处理函数
+。每一个事件均对应一个事件句柄，在程序执行时，将相应的函数或语句指定给事件句柄，则在该事件发生时，浏览器便执行指定的函数或语句，从而实现网页内容与用户操作的交互。当浏览器检测到某事件发生时，便查找该事件对应的事件句柄有没有被赋值，如果有，则执行该事件句柄。</p>
+
+<p>我们认为响应点击事件的函数是<code>onclick</code>事件处理函数。以前，事件处理函数有两种分配方式：在<code>JavaScript</code>中或者在<code>HTML</code>中。</p>
+
+<p>如果在<code>JavaScript</code>中分配事件处理函数，则需要首先获得要处理的对象的一引用，然后将函数赋值给对应的事件处理函数属性，请看一个简单的例子：</p>
+
+<pre><code>var link=document.getElementById("mylink");
+link.onclick=function(){
+  alert("I was clicked !");
+}; 
+</code></pre>
+
+<p>从我们看到的例子中，我们发现使用事件句柄很容易，
+不过事件处理函数名称必须是小写的，还有就是只有在
+元素载入完成之后才能将事件句柄赋给元素，不然会有异常。</p>
+
+<p>如果在<code>HTML</code>中分配事件句柄的话，则直接通过<code>HTML</code>属性来设置事件处理函数就行了，并在其中包含合适的脚本作为特性值就可以了，例如：</p>
+
+<pre><code>&lt;a href="http://blog.dofa.org/" onclick="JavaScript code here"&gt;......&lt;/a&gt;
+</code></pre>
+
+<p>这种<code>JavaScript</code>代码和通过<code>HTML</code>的<code>style</code>属性直接将<code>CSS</code>属性赋给元素类似。这样会代码看起来一团糟，也违背了将实现动态行为的代码与显示文档静态内容的代码相分离的原则。从1998年开始，这种写法就过时了。</p>
+
+<h4>这种传统的事件绑定技术，优缺点是显然的：</h4>
+
+<ul>
+<li><p>简单方便，在<code>HTML</code>中直接书写处理函数的代码块，在JS中给元素对应事件属性赋值即可。</p></li>
+<li><p><code>IE</code>与<code>DOM</code>标准都支持的一种方法，它在<code>IE</code>与<code>DOM</code>标准中都是在事件冒泡过程中被调用的。</p></li>
+<li><p>可以在处理函数块内直接用<code>this</code>引用注册事件的元素，<code>this</code>引用的是当前元素。</p></li>
+<li><p>要给元素注册多个监听器，就不能用这方法了。</p></li>
+</ul>
+
+
+<h4>事件接听器</h4>
+
+<p>除了前面已经介绍的简单事件句柄之外，现在大多数浏览器都内置了一些更高级的事件处理方式，即，事件监听器，这种处理方式就不受一个元素只能绑定一个事件句柄的限制。</p>
+
+<p>我们已经知道了事件句柄与事件监听器的最大不同之处是使用事件句柄时一次只能插接一个事件句柄，但对于事件监听器，一次可以插接多个。</p>
+
+<h4>IE下的事件监听器：</h4>
+
+<p><code>IE</code>提供的却是一种自有的，完全不同的甚至存在<code>BUG</code>的事件监听器，因此如果要让脚本在本浏览器中正常运行的话，就必须使用<code>IE</code>所支持的事件监听器。另外，<code>Safari</code>浏览器中的事件监听器有时也存在一点不同。</p>
+
+<p>在<code>IE</code>中，每个元素和<code>window</code>对象都有两个方法：<code>attachEvent</code>方法和<code>detachEvent</code>方法。</p>
+
+<pre><code>element.attachEvent("onevent",eventListener);
+</code></pre>
+
+<p>此方法的意思是在<code>IE</code>中要想给一个元素的事件附加事件处理函数，必须调用<code>attachEvent</code>方法才能创建一个事件监听器。<code>attachEvent</code>方法允许外界注册该元素多个事件监听器。</p>
+
+<p><code>attachEvent</code>接受两个参数。第一个参数是事件类型名，第二个参数<code>eventListener</code>是回调处理函数。这里得说明一下，有个经常会出错的地方，IE下
+利用<code>attachEvent</code>注册的处理函数调用时<code>this</code>指向不再是先前注册事件的元素，这时的<code>this</code>为<code>window</code>对象。还有一点是此方法的事件类型名称必须加上一个<code>on</code>的前缀（如<code>onclick</code>）。</p>
+
+<pre><code>element.attachEvent("onevent",eventListener);
+</code></pre>
+
+<p>要想移除先前元素注册的事件监听器,可以使用<code>detachEvent</code>方法进行删除，参数相同。</p>
+
+<h4>DOM标准下的事件监听器：</h4>
+
+<p>在支持<code>W3C</code>标准事件监听器的浏览器中，对每个支持事件的对象都可以使用<code>addEventListener</code>方法。该方法既支持注册冒泡型事件处理，又支持捕获型事件处理。所以与IE浏览器中注册元素事件监听器方式有所不同的。</p>
+
+<pre><code>//标准语法 
+element.addEventListener('event', eventListener, useCapture);
+//默认
+element.addEventListener('event', eventListener, false);
+</code></pre>
+
+<p><code>addEventListener</code>方法接受三个参数。第一个参数是事件类型名，值得注意的是，这里事件类型名称与<code>IE</code>的不同，事件类型名是没<code>on</code>开头的;第二个参数<code>eventListener</code>是回调处理函数（即监听器函数）;第三个参数注明该处理回调函数是在事件传递过程中的捕获阶段被调用还是冒泡阶段被调用 ，通常此参数通常会设置为<code>false</code>（为<code>false</code>时是冒泡）,那么，如果将其值设置为<code>true</code>，那就创建一个捕捉事件监听器。</p>
+
+<p>移除已注册的事件监听器调用<code>element</code>的<code>removeEventListener</code>方法即可，参数相同。</p>
+
+<pre><code>//标准语法 
+element.removeEventListener('event', eventListener, useCapture);
+//默认
+element.removeEventListener('event', eventListener, false); 
+</code></pre>
+
+<blockquote><p>通过<code>addEventListener</code>方法添加的事件处理函数，必须使用<code>removeEventListener</code>方法才能删除，而且要求参数与添加事件处理函数时<code>addEventListener</code>方法的参数完全一致（包括<code>useCapture</code>参数），否则将不能成功删除事件处理函数。</p></blockquote>
+
+<h4>跨浏览器的注册与移除元素事件监听器方案</h4>
+
+<p>我们现在已经知道，对于支持<code>addEventListener</code>方法的浏览器，只要需要事件监听器脚本就都需要调用<code>addEventListener</code>方法；而对于不支持该方法的IE浏览器，使用事件监听器时则需要调用<code>attachEvent</code>方法。要确保浏览器使用正确的方法其实并不困难，只需要通过一个<code>if-else</code>语句来检测当前浏览器中是否存在<code>addEventListener</code>方法或<code>attachEvent</code>方法即可。</p>
+
+<p>这样的方式就可以实现一个跨浏览器的注册与移除元素事件监听器方案:</p>
+
+<pre><code>var EventUtil = {
+  //注册
+  addHandler: function(element, type, handler){
+    if (element.addEventListener){
+      element.addEventListener(type, handler, false);
+    } else if (element.attachEvent){
+      element.attachEvent("on" + type, handler);
+    } else {
+      element["on" + type] = handler;
+    }
+  },
+  //移除注册
+  removeHandler: function(element, type, handler){
+    if (element.removeEventListener){
+            element.removeEventListener(type, handler, false);
+    } else if (element.detachEvent){
+            element.detachEvent("on" + type, handler);
+    } else {
+            element["on" + type] = null;
+    }
+  }             
+ }; 
+</code></pre>
+
+<h4>事件对象引用</h4>
+
+<p>为了更好的处理事件，你可以根据所发生的事件的特定属性来采取不同的操作。</p>
+
+<p>如事件模型一样，IE 和其他浏览器处理方法不同：<code>IE</code>使用一个叫做<code>event</code>的全局事件对象来处理对象（它可以在全局变量<code>window.event</code>中找到），而其它所有浏览器采用的<code>W3C</code>推荐的方式，则使用独立的包含事件对象的参数传递。</p>
+
+<p>跨浏览器实现这样的功能时，最常见的问题就是获取事件本身的引用及获取该事件的目标元素的引用。</p>
+
+<p>下面这段代码就为你解决了这个问题：</p>
+
+<pre><code>var EventUtil ={
+  getEvent: function(event){
+    return event ? event : window.event;
+  },
+  getTarget: function(event){
+    return event.target || event.srcElement;
+  }
+}; 
+</code></pre>
+
+<h2>停止事件冒泡和阻止事件的默认行为</h2>
+
+<p>“停止事件冒泡“和”阻止浏览器的默认行为“，这两个概念非常重要，它们对复杂的应用程序处理非常有用。</p>
+
+<ul>
+<li>停止事件冒泡</li>
+</ul>
+
+
+<p>停止事件冒泡是指，停止冒泡型事件的进一步传递（取消事件传递,不只是停止<code>IE</code>和<code>DOM</code>标准共有的冒泡型事件，我们还可以停止支持DOM标准浏览器的捕捉型事件，用<code>topPropagation()</code>方法）。例如上图中的冒泡型事件传递中，在<code>body</code>处理停止事件传递后，位于上层的<code>document</code>的事件监听器就不再收到通知，不再被处理。</p>
+
+<ul>
+<li>阻止事件的默认行为</li>
+</ul>
+
+
+<p>停止事件的默认行为是指，通常浏览器在事件传递并处理完后会执行与该事件关联的默认动作（如果存在这样的动作）。例如，如果表单中<code>input type</code>属性是<code>submit</code>，点击后在事件传播完浏览器就自动提交表单。又例如，<code>input</code> 元素的<code>keydown</code>事件发生并处理后，浏览器默认会将用户键入的字符自动追加到<code>input</code>元素的值中。</p>
+
+<h4>停止事件冒泡的处理方法：</h4>
+
+<p>在<code>IE</code>下,通过设置<code>event</code>对象的<code>cancelBubble</code>为<code>true</code>即可。</p>
+
+<pre><code>function someHandle() {
+  window.event.cancelBubble = true;
+}
+</code></pre>
+
+<p><code>DOM</code>标准通过调用<code>event</code>对象的<code>stopPropagation()</code>方法即可。</p>
+
+<pre><code>function someHandle(event) {
+  event.stopPropagation();
+}
+</code></pre>
+
+<p>因些，跨浏览器的停止事件传递的方法是:</p>
+
+<pre><code>function someHandle(event) {
+  event = event || window.event;
+  if(event.stopPropagation){
+    event.stopPropagation();
+  }else {
+    event.cancelBubble = true;
+  }
+}   
+</code></pre>
+
+<h4>阻止事件的默认行为的处理方法</h4>
+
+<p>就像事件模型和事件对象差异一样，在<code>IE</code>和其它所有浏览器中阻止事件的默认行为的方法也不同。</p>
+
+<p>在<code>IE</code>下,通过设置<code>event</code>对象的<code>returnValue</code>为<code>false</code>即可。</p>
+
+<pre><code>function someHandle() {
+  window.event.returnValue = false;
+}
+</code></pre>
+
+<p><code>DOM</code>标准通过调用<code>event</code>对象的<code>preventDefault()</code>方法即可。</p>
+
+<pre><code>function someHandle(event) {
+  event.preventDefault();
+}
+</code></pre>
+
+<p>因些，跨浏览器的取消事件传递后的默认处理方法是：</p>
+
+<pre><code>function someHandle(event) {
+  event = event || window.event;
+  if(event.preventDefault){
+    event.preventDefault();
+  }else{
+    event.returnValue = false;
+  }
+}
+</code></pre>
+
+<p>完整的事件处理兼容性函数</p>
+
+<pre><code>var EventUtil = {
+  addHandler: function(element, type, handler){
+    if (element.addEventListener){
+      element.addEventListener(type, handler, false);
+    } else if (element.attachEvent){
+      element.attachEvent("on" + type, handler);
+    } else {
+      element["on" + type] = handler;
+    }
+  },
+  removeHandler: function(element, type, handler){
+    if (element.removeEventListener){
+      element.removeEventListener(type, handler, false);
+    } else if (element.detachEvent){
+      element.detachEvent("on" + type, handler);
+    } else {
+      element["on" + type] = null;
+    }
+  },
+  getEvent: function(event){
+    return event ? event : window.event;
+  },
+  getTarget: function(event){
+    return event.target || event.srcElement;
+  },
+  preventDefault: function(event){
+    if (event.preventDefault){
+      event.preventDefault();
+    } else {
+      event.returnValue = false;
+    }
+  },
+  stopPropagation: function(event){
+    if (event.stopPropagation){
+      event.stopPropagation();
+    } else {
+      event.cancelBubble = true;
+    }
+};  
+</code></pre>
+
+<h2>捕获型事件模型与冒泡型事件模型的应用场合</h2>
+
+<p>标准事件模型为我们提供了两种方案，可能很多朋友分不清这两种不同模型有啥好处，为什么不只采取一种模型。
+这里抛开IE浏览器讨论（<code>IE</code>只有一种，没法选择）什么情况下适合哪种事件模型。</p>
+
+<ul>
+<li>捕获型应用场合</li>
+</ul>
+
+
+<p>捕获型事件传递由最不精确的祖先元素一直到最精确的事件源元素，传递方式与操作系统中的全局快捷键与应用程序快捷键相似。当一个系统组合键发生时，如果注
+册了系统全局快捷键监听器，该事件就先被操作系统层捕获，全局监听器就先于应用程序快捷键监听器得到通知，也就是全局的先获得控制权，它有权阻止事件的进
+一步传递。所以捕获型事件模型适用于作全局范围内的监听，这里的全局是相对的全局，相对于某个顶层结点与该结点所有子孙结点形成的集合范围。</p>
+
+<p>例如你想作全局的点击事件监听，相对于<code>document</code>结点与<code>document</code>下所有的子结点，在某个条件下要求所有的子结点点击无效，这种情况下冒泡模型就解决不了了，而捕获型却非常适合，可以在最顶层结点添加捕获型事件监听器，伪码如下:</p>
+
+<pre><code>function globalClickListener(event) {
+  if(canEventPass == false) {
+    //取消事件进一步向子结点传递和冒泡传递
+    event.stopPropagation();
+    //取消浏览器事件后的默认执行
+    event.preventDefault();
+  }
+}
+</code></pre>
+
+<p>这样一来，当<code>canEventPass</code>条件为假时，<code>document</code>下所有的子结点<code>click</code>注册事件都不会被浏览器处理。</p>
+
+<ul>
+<li>冒泡型的应用场合</li>
+</ul>
+
+
+<p>可以说我们平时用的都是冒泡事件模型，因为<code>IE</code>只支持这模型。这里还是说说，在恰当利用该模型可以提高脚本性能。在元素一些频繁触发的事件中，如<code>onmousemove</code>,
+<code>onmouseover</code>, <code>onmouseout</code>,如果明确事件处理后没必要进一步传递，那么就可以大胆的取消它。此外，对于子结点事件监听器的处理会对父
+层监听器处理造成负面影响的，也应该在子结点监听器中禁止事件进一步向上传递以消除影响。</p>
+
+<h4>综合案例分析.</h4>
+
+<p>最后结合下面HTML代码作分析:</p>
+
+<pre><code>&lt;body onclick="alert('current is body');"&gt;
+  &lt;div id="div0" onclick="alert('current is '+this.id)"&gt;
+    &lt;div id="div1" onclick="alert('current is '+this.id)"&gt;
+      &lt;div id="div2" onclick="alert('current is '+this.id)"&gt;
+        &lt;div id="event_source" onclick="alert('current is '+this.id)" style="height:200px;width:200px;background-color:red;"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+
+<p><code>HTML</code>运行后点击红色区域,这是最里层的<code>DIV</code>,根据上面说明,无论是<code>DOM</code>标准还是<code>IE</code>,直接写在<code>html</code>里的监听处理函数是事件冒泡传递时调用的,由最里层一直往上传递,所以会先后出现</p>
+
+<pre><code>current is event_source
+current is div2
+current is div1
+current is div0
+current is body
+</code></pre>
+
+<p>添加以下片段:</p>
+
+<pre><code>var div2 = document.getElementById('div2');
+EventUtil.addHandler(div2, 'click', function(event){
+  event = EventUtil.getEvent(event);
+  EventUtil.stopPropagation(event);
+}, false);
+</code></pre>
+
+<p>结果:</p>
+
+<pre><code>current is event_sourcecurrent is div2
+</code></pre>
+
+<p>当点击红色区域后,根据上面说明,在泡冒泡处理期间,事件传递到<code>div2</code>后被停止传递了,所以<code>div2</code>上层的元素收不到通知,所以会先后出现:</p>
+
+<p>在支持<code>DOM</code>标准的浏览器中,添加以下代码:</p>
+
+<pre><code>document.body.addEventListener('click', function(event){
+  event.stopPropagation();
+}, true);
+</code></pre>
+
+<p>以上代码中的监听函数由于是捕获型传递时被调用的,所以点击红色区域后,虽然事件源是<code>ID</code>为<code>event_source</code>的元素,但捕获型选传递,从最顶层开始,body结点监听函数先被调用,并且取消了事件进一步向下传递,所以只会出现 <code>current is body</code>。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript DOM基础操作实例]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/03/javascript-dom-use/"/>
+    <updated>2014-04-03T23:25:06-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/03/javascript-dom-use</id>
+    <content type="html"><![CDATA[<p>文档对象模型(Document Object Model)，通常简称为DOM，是网站内容与JavaScript互通的接口。自JavaScript成为最常用的语言时JavaScript和DOM通常被视为独立的实体。DOM接口用于存取、遍历和控制HTML和XML文档。下面我们将简单的介绍一些JavaScript DOM的基本操作实例，包括建立、增加、删除、克隆、访问节点等等。</p>
+
+<h2>getElementById(id)</h2>
+
+<p>这是通过<code>id</code>来访问某一元素，最常用的之一，例：</p>
+
+<pre><code>&lt;html&gt; 
+         &lt;body&gt; 
+         &lt;div id="myid"&gt; 
+         test  
+         &lt;/div&gt; 
+         &lt;script language="javascript"&gt; 
+         alert(document.getElementById("myid").innerHTML);  
+         &lt;/script&gt; 
+         &lt;/body&gt; 
+&lt;/html&gt; 
+</code></pre>
+
+<p>注意点：如果元素的<code>ID</code>不是唯一，则会取得第一个该<code>ID</code>名称的元素。</p>
+
+<h2>getElementsByName(name)</h2>
+
+<p>这是通过<code>name</code>来取得某一堆元素（作为数组），看 <code>Element</code>后面有个小<code>s</code>就知道了，<code>ID</code>是<code>HTML</code>文档中要求唯一的，<code>name</code>可以不是唯一，如<code>checkbox</code>、<code>radio</code>等地方会用到多个<code>input</code>用同一个<code>name</code>来识别是否为同党。对了，<code>getElementsByName(name)</code>仅用于取得<code>input</code>、<code>radio</code>、 <code>checkbox</code>等元素，如</p>
+
+<pre><code>&lt;input name="myradio" type="radio" /&gt;。
+</code></pre>
+
+<h2>getElementsByTagName(tagname)</h2>
+
+<p>看这方法就知道这也是取得某一堆元素（作为数组），是通过<code>TagName</code>也就是标签名来取得。你可以遍历这个数组获得每一个单独的元素。当一个<code>DOM</code>结构很大时，可以通过它来有效地缩小搜查范围。</p>
+
+<pre><code>&lt;html&gt;           
+     &lt;head&gt; 
+     &lt;script&gt; 
+     function test() {  
+     testall=document.getElementsByTagName("body");  
+     testbody=testall.item(0); //获得所有tagName是body的元素（当然每个页面只有一个）  
+     testall=testbody.getElementsByTagName("p");// 获得body子元素种的所有P元素  
+     testnode=testall.item(1); // 获得第二个P元素           
+     alert(testnode.firstChild.nodeValue); //显示这个元素的文本         }  
+     &lt;/script&gt; 
+     &lt;/head&gt; 
+     &lt;body&gt; 
+     &lt;p&gt;hi&lt;/p&gt; 
+     &lt;p&gt;hello&lt;/p&gt; 
+     &lt;script language="javascript"&gt; 
+     test();  
+     &lt;/script&gt; 
+     &lt;/body&gt; 
+&lt;/html&gt; 
+</code></pre>
+
+<h2>appendChild(node)</h2>
+
+<p>向当前的元素（应该叫对象比较恰当）追加节点。</p>
+
+<pre><code>&lt;html&gt; 
+     &lt;body&gt; 
+     &lt;head&gt; 
+     &lt;/head&gt; 
+     &lt;div id="test"&gt;&lt;/div&gt; 
+     &lt;script type="text/javascript"&gt; 
+     var newdiv=document.createElement("div")  
+     var newtext=document.createTextNode("A new div")           
+     newdiv.appendChild(newtext)  
+     document.getElementById("test").appendChild(newdiv)  
+     &lt;/script&gt; 
+     &lt;/body&gt; 
+&lt;/html&gt; 
+</code></pre>
+
+<p>刚才我在第一个例子中为了显示出内容，用了<code>innerHTML</code>，刚才看到文章才得知<code>innerHTMl</code>不属于<code>DOM</code>。</p>
+
+<h2>removeChild(childreference)</h2>
+
+<p>删除当前节点的子节点，返回被删除的节点。这个被删除的节点可以被插入到别的地方。</p>
+
+<pre><code>&lt;html&gt; 
+     &lt;body&gt; 
+     &lt;div id="parent"&gt;&lt;div id="child"&gt;A child&lt;/div&gt;&lt;/div&gt; 
+     &lt;script language="javascript"&gt; 
+     var childnode=document.getElementById("child")  
+     var removednode=document.getElementById("parent").removeChild(childnode)  
+     &lt;/script&gt; 
+     &lt;/body&gt; 
+&lt;/html&gt; 
+</code></pre>
+
+<h2>cloneNode(deepBoolean)</h2>
+
+<p>复制并返回当前节点的复制节点，复制节点是一个孤立节点，它复制了原节点的属性，在把这个新节点加入到<code>document</code>前，根据需要修改<code>ID</code>属性确保其<code>ID</code>的唯一。这个方法支持一个布尔参数，当<code>deepBoolean</code>设置<code>true</code>时，复制当前节点的所有子节点，包括该节点内的文本。</p>
+
+<pre><code>&lt;html&gt; 
+     &lt;body&gt; 
+     &lt;p id="mynode"&gt;test&lt;/p&gt; 
+     &lt;script language="javascript"&gt; 
+     p=document.getElementById("mynode")   
+    ppclone = p.cloneNode(true);  
+     p.parentNode.appendChild(pclone);  
+     &lt;/script&gt; 
+     &lt;/body&gt; 
+&lt;/html&gt; 
+</code></pre>
+
+<h2>replaceChild(newChild, oldChild)</h2>
+
+<p>把当前节点的一个子节点换成另一个节点。</p>
+
+<pre><code>&lt;html&gt; 
+     &lt;body&gt; 
+     &lt;div id="mynode2"&gt; 
+     &lt;span id="orispan"&gt;span&lt;/span&gt; 
+     &lt;/div&gt; 
+     &lt;script language="javascript"&gt; 
+     var orinode=document.getElementById("orispan");  
+     var newnode=document.createElement("p");  
+     var text=document.createTextNode("test ppp ");  
+     newnode.appendChild(text);  
+     document.getElementById("mynode2").replaceChild(newnode, orinode);  
+     &lt;/script&gt; 
+     &lt;/body&gt; 
+&lt;/html&gt; 
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript DOM cheat sheet]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/03/javascript-dom-cheat-sheet/"/>
+    <updated>2014-04-03T23:02:06-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/03/javascript-dom-cheat-sheet</id>
+    <content type="html"><![CDATA[<p><img src="http://dofa.u.qiniudn.com/image/web/JavaScript-DOM-Cheatsheet.png"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript学习--BOM基础之screen对象(转)]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/03/learn-javascript-bom-base-screen-object/"/>
+    <updated>2014-04-03T21:57:06-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/03/learn-javascript-bom-base-screen-object</id>
+    <content type="html"><![CDATA[<p>screen对象用于获取用户的屏幕信息</p>
+
+<h2>Screen对象</h2>
+
+<ul>
+<li><code>Screen</code>对象是<code>window</code>对象的属性</li>
+</ul>
+
+
+<h2>Screen对象属性</h2>
+
+<ul>
+<li><code>JavaScript</code> <code>availHeight</code> 属性 &mdash;  窗口可以使用的屏幕高度，单位像素</li>
+<li><code>JavaScript</code> <code>availWidth</code> 属性  &mdash;  窗口可以使用的屏幕宽度，单位像素</li>
+<li><code>JavaScript</code> <code>colorDepth</code> 属性  &mdash;  用户浏览器表示的颜色位数，通常为32位(每像素的位数)</li>
+<li><code>JavaScript</code> <code>pixelDepth</code> 属性  &mdash;  用户浏览器表示的颜色位数，通常为32位(每像素的位数)（<code>IE</code>不支持此属性）</li>
+<li><code>JavaScript</code> <code>height</code> 属性  &mdash;  屏幕的高度，单位像素</li>
+<li><code>JavaScript</code> <code>width</code> 属性   &mdash;  屏幕的宽度，单位像素</li>
+</ul>
+
+
+<p><code>availWidth</code>与<code>availHeight</code>属性非常有用，例如：可以使用下面的代码填充用户的屏幕：</p>
+
+<pre><code>window.moveTo(0,0);
+window.resizeTo(screen.availWidth, screen.availHeight);
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript学习--BOM基础之navigator对象(转)]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/03/learn-javascript-bom-base-navigator-object/"/>
+    <updated>2014-04-03T21:52:06-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/03/learn-javascript-bom-base-navigator-object</id>
+    <content type="html"><![CDATA[<p>navigator对象通常用于检测浏览器与操作系统的版本</p>
+
+<h2>Navigator对象</h2>
+
+<ul>
+<li><code>navigator</code>对象是<code>window</code>对象的属性</li>
+<li>由于<code>navigator</code>没有统一的标准，因此各个浏览器都有自己不同的<code>navigator</code>版本，这里只介绍最普遍支持且最常用的</li>
+</ul>
+
+
+<h2>常用的navigator属性</h2>
+
+<ul>
+<li><code>appCodeName</code> &mdash;  浏览器代码名的字符串表示</li>
+<li><code>appName</code> &mdash;  官方浏览器名的字符串表示</li>
+<li><code>appVersion</code>  &mdash;  浏览器版本信息的字符串表示</li>
+<li><code>cookieEnabled</code>   &mdash;  如果启用<code>cookie</code>返回<code>true</code>，否则返回<code>false</code></li>
+<li><code>javaEnabled</code> &mdash;  如果启用<code>java</code>返回<code>true</code>，否则返回<code>false</code></li>
+<li><code>platform</code>    &mdash;  浏览器所在计算机平台的字符串表示</li>
+<li><code>plugins</code> &mdash;  安装在浏览器中的插件数组</li>
+<li><code>taintEnabled</code>    &mdash;  如果启用了数据污点返回<code>true</code>，否则返回<code>false</code></li>
+<li><code>userAgent</code>   &mdash;  用户代理头的字符串表示</li>
+</ul>
+
+
+<p><code>navigator</code>中最重要的是<code>userAgent</code>属性，返回包含浏览器版本等信息的字符串，其次<code>cookieEnabled</code>也很重要，使用它可以判断用户浏览器是否开启<code>cookie</code>。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript学习--BOM基础之location对象(转)]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/02/learn-javascript-bom-base-location-object/"/>
+    <updated>2014-04-02T23:10:06-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/02/learn-javascript-bom-base-location-object</id>
+    <content type="html"><![CDATA[<p>Location用于获取或设置窗体的URL，并且可以用于解析URL，是BOM中最重要的对象之一</p>
+
+<h2>Location对象</h2>
+
+<ul>
+<li><code>Location</code>既是<code>window</code>对象的属性又是<code>document</code>对象的属性</li>
+<li><code>location</code>包含8个属性，其中7个都是当前窗体的<code>URL</code>的一部分，剩下的也是最重要的一个是<code>href</code>属性，代表当前窗体的<code>URL</code></li>
+<li><code>location</code>的8个属性都是可读写的，但是只有<code>href</code>与<code>hash</code>的写才有意义。例如改变<code>location.href</code>会重新定位到一个<code>URL</code>，而修改<code>location.hash</code>会跳到当前页面中的<code>anchor(&lt;a id="name"&gt;</code>或者<code>&lt;div id="id"&gt;</code>等)名字的标记(如果有)，而且页面不会被重新加载</li>
+</ul>
+
+
+<h2>示例</h2>
+
+<pre><code>document.write(window.location==document.location);
+</code></pre>
+
+<h2>Location对象属性图示</h2>
+
+<p><img src="http://dofa.u.qiniudn.com/image/web/window_location.png"></p>
+
+<p>location属性</p>
+
+<ul>
+<li><code>JavaScript</code> <code>hash</code> 属性    &mdash;  返回<code>URL</code>中<code>#</code>符号后面的内容</li>
+<li><code>JavaScript</code> <code>host</code> 属性    &mdash;  返回域名</li>
+<li><code>JavaScript</code> <code>hostname</code> 属性    &mdash;  返回主域名</li>
+<li><code>JavaScript</code> <code>href</code> 属性    &mdash;  返回当前文档的完整<code>URL</code>或设置当前文档的<code>URL</code></li>
+<li><code>JavaScript</code> <code>pathname</code> 属性    &mdash;  返回<code>URL</code>中域名后的部分</li>
+<li><code>JavaScript</code> <code>port</code> 属性    &mdash;  返回<code>URL</code>中的端口</li>
+<li><code>JavaScript</code> <code>protocol</code> 属性    &mdash;  返回<code>URL</code>中的协议</li>
+<li><code>JavaScript</code> <code>search</code> 属性  &mdash;  返回<code>URL</code>中的查询字符串</li>
+<li><code>JavaScript</code> <code>assign()</code>   函数 &mdash;   设置当前文档的<code>URL</code></li>
+<li><code>JavaScript</code> <code>replace()</code> 函数 &mdash;    设置当前文档的<code>URL</code>，并在<code>history</code>对象的地址列表中删除这个<code>URL</code></li>
+<li><code>JavaScript</code> <code>reload()</code>   函数 &mdash;   重新载入当前文档(从<code>server</code>服务器端)</li>
+<li><code>JavaScript</code> <code>toString()</code> 函数 &mdash;   返回<code>location</code>对象<code>href</code>属性当前的值</li>
+</ul>
+
+
+<p>Note: 主域名是不带www的域名，例如dreamdu.com，主域名前面带前缀的通常都为二级域名或多级域名，例如www.dreamdu.com其实是二级域名。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript学习--BOM基础之history对象(转)]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/02/learn-javascript-bom-base-history-object/"/>
+    <updated>2014-04-02T23:00:06-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/02/learn-javascript-bom-base-history-object</id>
+    <content type="html"><![CDATA[<p>History用于窗体中的导航</p>
+
+<h2>History对象</h2>
+
+<ul>
+<li><code>history</code>对象是<code>window</code>对象的属性</li>
+<li>浏览者通常可以使用浏览器的前进与后退按钮访问曾经浏览过的页面。<code>JavaScript</code>的<code>history</code>对象记录了用户曾经浏览过的页面，并可以实现浏览器前进与后退相似的导航功能</li>
+<li>可以通过<code>back</code>函数后退一个页面，<code>forward</code>函数前进一个页面，或者使用<code>go</code>函数任意后退或前进页面，还可以通过<code>length</code>属性查看<code>history</code>对象中存储的页面数</li>
+</ul>
+
+
+<h2>History对象函数</h2>
+
+<ul>
+<li><code>JavaScript</code> <code>history.go()</code> 函数 &mdash; 前进或后退指定的页面数</li>
+<li><code>JavaScript</code> <code>history.back()</code> 函数 &mdash; 后退一页</li>
+<li><code>JavaScript</code> <code>history.forward()</code> 函数 &mdash; 前进一页</li>
+</ul>
+
+
+<h2>History对象属性</h2>
+
+<ul>
+<li><code>JavaScript</code> <code>length</code> 属性 &mdash; <code>history</code>对象中缓存了多少个<code>URL</code></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript学习--BOM基础之frames对象(转)]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/02/learn-javascript-bom-base-frames-object/"/>
+    <updated>2014-04-02T22:35:06-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/02/learn-javascript-bom-base-frames-object</id>
+    <content type="html"><![CDATA[<p>Frames用于表现HTML页面当前窗体的中的框架集合</p>
+
+<h2>Frames对象</h2>
+
+<ul>
+<li><code>frames</code>对象是<code>window</code>对象的属性</li>
+<li>如果页面使用框架，将产生一个框架集合<code>frames</code>，在集合中可用数字(从0开始，从左到右，逐行索引)或名字索引框架</li>
+</ul>
+
+
+<h2>框架集引用中使用的对象</h2>
+
+<table>
+<thead>
+<tr>
+<th align="left">对象 </th>
+<th align="left"> 位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">window </td>
+<td align="left"> 当前框架</td>
+</tr>
+<tr>
+<td align="left">top </td>
+<td align="left"> 最顶层的框架，就是浏览器窗体</td>
+</tr>
+<tr>
+<td align="left">parent </td>
+<td align="left"> 包含当前框架的父框架</td>
+</tr>
+<tr>
+<td align="left">self </td>
+<td align="left"> 当前框架，总是等于window对象</td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>示例</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;frameset</span> <span class="na">rows=</span><span class="s">&quot;20%, *, 20%&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;frame</span> <span class="na">src=</span><span class="s">&quot;http://www.dreamdu.com/javascript/exe_window.frames.top/&quot;</span> <span class="na">name=</span><span class="s">&quot;top&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;frameset</span> <span class="na">cols=</span><span class="s">&quot;20%, *&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;frame</span> <span class="na">src=</span><span class="s">&quot;http://www.dreamdu.com/javascript/exe_window.frames.top/&quot;</span> <span class="na">name=</span><span class="s">&quot;left&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;frame</span> <span class="na">src=</span><span class="s">&quot;http://www.dreamdu.com/javascript/exe_window.frames.right/&quot;</span> <span class="na">name=</span><span class="s">&quot;right&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/frameset&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;frame</span> <span class="na">src=</span><span class="s">&quot;http://www.dreamdu.com/javascript/exe_window.frames.top/&quot;</span> <span class="na">name=</span><span class="s">&quot;bottom&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/frameset&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>上面的框架页示例产生了一个框架集</p>
+
+<p><code>window</code>与<code>self</code>代表相同的对象，但是<code>self</code>是为了确定正在使用的框架不是<code>parent</code>，而是自身,<code>top</code>对象代表最顶层框架，浏览器窗体本身，因此在这个例子中就等于<code>window</code>对象,如果页面上没有框架，<code>window</code>，<code>self</code>都等于<code>top</code>，并且框架集合的长度为0</p>
+
+<p>如果框架名称为<code>right</code>的页面包括下面框架：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;frameset</span> <span class="na">cols=</span><span class="s">&quot;50%, *&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;frame</span> <span class="na">src=</span><span class="s">&quot;http://www.dreamdu.com/javascript/exe_window.frames.top/&quot;</span> <span class="na">name=</span><span class="s">&quot;righttop&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;frame</span> <span class="na">src=</span><span class="s">&quot;http://www.dreamdu.com/javascript/exe_window.frames.top/&quot;</span> <span class="na">name=</span><span class="s">&quot;rightbottom&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/frameset&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>那么righttop与rightbottom的parent父框架为right</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript学习--BOM基础之document对象(转)]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/01/learn-javascript-bom-base-document-object/"/>
+    <updated>2014-04-01T08:35:06-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/01/learn-javascript-bom-base-document-object</id>
+    <content type="html"><![CDATA[<p>Document用于表现HTML页面当前窗体的内容</p>
+
+<h2>Document对象</h2>
+
+<ul>
+<li><code>document</code>是<code>BOM</code>中最重要对象之一</li>
+<li><code>document</code>对象是<code>window</code>对象的属性</li>
+<li><code>document</code>对象包含一个节点对象，此对象包含每个单独页面的所有<code>HTML</code>元素，这就是W3C的<code>DOM</code>对象</li>
+</ul>
+
+
+<h2>Document属性</h2>
+
+<ul>
+<li><code>cookie</code> &mdash;   用户<code>cookie</code></li>
+<li><code>title</code>   &mdash;  当前页面<code>title</code>标签中定义的文字</li>
+<li><code>URL</code> &mdash;  当前页面的<code>URL</code></li>
+</ul>
+
+
+<p>下面内容的不建议使用</p>
+
+<ul>
+<li><code>alinkColor</code>  &mdash;  代表<code>HTML body</code>标签的<code>alink</code>属性</li>
+<li><code>bgColor</code> &mdash;  代表<code>HTML body</code>标签的<code>bgcolor</code>属性</li>
+<li><code>fgColor</code> &mdash;  代表<code>HTML body</code>标签的<code>text</code>属性</li>
+<li><code>linkColor</code> &mdash;    代表<code>HTML body</code>标签的<code>link</code>属性</li>
+<li><code>vlinkColor</code>  &mdash;  代表<code>HTML body</code>标签的<code>vlink</code>属性</li>
+<li><code>lastModified</code>    &mdash; 页面最后修改的日期字符串，可以使用<code>Date</code>的构造函数转换为日期，例如：<code>new Date(document.lastModified);</code></li>
+<li><code>referrer</code>    &mdash;  浏览器<code>history</code>中后退一个位置的<code>URL</code></li>
+</ul>
+
+
+<p>由于document代表HTML文档的内容，因此可以通过它表示文档中加载的一些元素，这些元素全部通过集合访问。</p>
+
+<ul>
+<li><code>anchors</code> &mdash;  文档中所有锚(a name=&ldquo;aname&rdquo;)的集合</li>
+<li><code>applets</code> &mdash;  文档中所有<code>applet</code>标签表示的内容的集合</li>
+<li><code>embeds</code>  &mdash;  文档中所有<code>embed</code>标签表示的内容的集合</li>
+<li><code>forms</code>   &mdash;  文档中所有<code>form</code>标签表示的内容的集合</li>
+<li><code>images</code>  &mdash;  文档中所有<code>image</code>标签表示的内容的集合</li>
+<li><code>links</code>   &mdash; 文档中所有<code>a</code>(链接)标签表示的内容的集合</li>
+</ul>
+
+
+<h2>Document函数</h2>
+
+<ul>
+<li><code>JavaScript</code> <code>write()</code> 函数</li>
+<li><code>JavaScript</code> <code>writeln()</code> 函数</li>
+<li><code>JavaScript</code> <code>document.open()</code> 函数</li>
+<li><code>JavaScript</code> <code>document.close()</code> 函数</li>
+</ul>
+
+
+<h2>使用document索引页面内的元素</h2>
+
+<p>可以使用数字或名称索引页面中的元素集合，每个元素的属性都变成了集合中相应对象的属性。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;form</span> <span class="na">name=</span><span class="s">&quot;form1&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://www.dreamdu.com/xhtml/&quot;</span> <span class="na">name=</span><span class="s">&quot;a1&quot;</span><span class="nt">&gt;</span>xhtml<span class="nt">&lt;/a&gt;&lt;/form&gt;</span>
+</span><span class='line'><span class="nt">&lt;form</span> <span class="na">name=</span><span class="s">&quot;form2&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://www.dreamdu.com/css/&quot;</span> <span class="na">name=</span><span class="s">&quot;a2&quot;</span><span class="nt">&gt;</span>css<span class="nt">&lt;/a&gt;&lt;/form&gt;</span>
+</span><span class='line'><span class="nt">&lt;form</span> <span class="na">name=</span><span class="s">&quot;form3&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://www.dreamdu.com/javascript/&quot;</span> <span class="na">name=</span><span class="s">&quot;a3&quot;</span><span class="nt">&gt;</span>javascript<span class="nt">&lt;/a&gt;&lt;/form&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">value=</span><span class="s">&quot;显示第二个表单的名称&quot;</span> <span class="na">onclick=</span><span class="s">&quot;alert(document.forms[1].name)&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">value=</span><span class="s">&quot;显示第二个表单的名称第二种方法&quot;</span> <span class="na">onclick=</span><span class="s">&quot;alert(document.forms[&#39;form2&#39;].name)&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">value=</span><span class="s">&quot;显示第三个链接的名称&quot;</span> <span class="na">onclick=</span><span class="s">&quot;alert(document.links[2].name)&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">value=</span><span class="s">&quot;显示第三个链接的名称第二种方法&quot;</span> <span class="na">onclick=</span><span class="s">&quot;alert(document.links[&#39;a3&#39;].name)&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">value=</span><span class="s">&quot;显示第三个链接href属性的值&quot;</span> <span class="na">onclick=</span><span class="s">&quot;alert(document.links[2].href)&quot;</span> <span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>表示第二个表单的方法：<code>document.forms[1]或document.forms["form2"]</code></p>
+
+<p>表示第三个链接的方法：<code>document.links[2]或document.links["a3"]</code></p>
+
+<p>表示第三个链接<code>href</code>属性的方法：<code>document.links[2].href</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript学习--BOM基础之window对象(转)]]></title>
+    <link href="http://blog.dofa.org/blog/2014/03/31/learn-javascript-bom-base-window-object/"/>
+    <updated>2014-03-31T08:26:06-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/03/31/learn-javascript-bom-base-window-object</id>
+    <content type="html"><![CDATA[<h2>什么是 <code>BOM</code></h2>
+
+<ul>
+<li><code>BOM</code>是<code>browser object model</code>的缩写，简称浏览器对象模型</li>
+<li><code>BOM</code>提供了独立于内容而与浏览器窗口进行交互的对象</li>
+<li>由于<code>BOM</code>主要用于管理窗口与窗口之间的通讯，因此其核心对象是<code>window</code></li>
+<li><code>BOM</code>由一系列相关的对象构成，并且每个对象都提供了很多方法与属性</li>
+<li><code>BOM</code>缺乏标准，<code>JavaScript</code>语法的标准化组织是<code>ECMA</code>，<code>DOM</code>的标准化组织是<code>W3C</code></li>
+<li><code>BOM</code>最初是<code>Netscape</code>浏览器标准的一部分</li>
+</ul>
+
+
+<h2>BOM结构图</h2>
+
+<p><img src="http://dofa.u.qiniudn.com/image/web/browser_objects.png"></p>
+
+<p>window对象是BOM的顶层(核心)对象，所有对象都是通过它延伸出来的，也可以称为window的子对象。</p>
+
+<p>由于window是顶层对象，因此调用它的子对象时可以不显示的指明window对象，例如下面两行代码是一样的：</p>
+
+<pre><code>document.write("blog.dofa.org");
+window.document.write("blog.dofa.org");
+</code></pre>
+
+<h2>全局的window对象</h2>
+
+<p>window对象是BOM中所有对象的核心</p>
+
+<h4>JavaScript中的任何一个全局函数或变量都是window的属性</h4>
+
+<pre><code>var sTest="dofa";
+document.write(sTest==window.sTest);
+</code></pre>
+
+<p>结果：</p>
+
+<pre><code>true    
+</code></pre>
+
+<p>由于sTest是全局变量，因此可以通过window.sTest访问这个变量</p>
+
+<h4>window与self对象</h4>
+
+<p>self对象与window对象完全相同，self通常用于确认就是在当前的窗体内</p>
+
+<h4>window的子对象</h4>
+
+<ul>
+<li>JavaScript document 对象</li>
+<li>JavaScript frames 对象</li>
+<li>JavaScript history 对象</li>
+<li>JavaScript location 对象</li>
+<li>JavaScript navigator 对象</li>
+<li>JavaScript screen 对象</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[为Octopress增加友情链接]]></title>
+    <link href="http://blog.dofa.org/blog/2014/03/30/add-links-for-octopress/"/>
+    <updated>2014-03-30T10:16:12-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/03/30/add-links-for-octopress</id>
+    <content type="html"><![CDATA[<h2>友情链接</h2>
+
+<p>你有一些经常去的网站、博客，想推荐给大家，则可以在侧边栏加上一个“友情链接” 。</p>
+
+<p>在 <code>source/_includes/custom/asides</code> 创建 <code>blog_link.html</code> ，代码如下：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;section&gt;</span>
+</span><span class='line'><span class="nt">&lt;h1&gt;</span>友情链接<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'><span class="nt">&lt;ul&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;li&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://blog.jobbole.com/&quot;</span><span class="nt">&gt;</span>伯乐在线<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;li&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://www.csdn.net/&quot;</span><span class="nt">&gt;</span>CSDN<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;li&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://www.cnblogs.com/&quot;</span><span class="nt">&gt;</span>博客园<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;li&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://coolshell.cn/&quot;</span><span class="nt">&gt;</span>酷壳CoolShell<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'><span class="nt">&lt;/ul&gt;</span>
+</span><span class='line'><span class="nt">&lt;/section&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>可以自行添加喜爱网站，然后在default_asides中加入<code>custom/asides/blog_link.html</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[把Octopress从github搬到gitcafe]]></title>
+    <link href="http://blog.dofa.org/blog/2014/03/29/move-octopress-from-gihub-to-gitcafe/"/>
+    <updated>2014-03-29T01:49:00-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/03/29/move-octopress-from-gihub-to-gitcafe</id>
+    <content type="html"><![CDATA[<p>其实找就想把<code>octopress</code>博客从<code>github</code>搬到<code>gitcafe</code>了，因为国内访问<code>github</code>的速度实在慢，而且还不时被墙。比如，今天不翻墙就无法访问了。</p>
+
+<p>我采用了比较笨的方法：原本的东西都不需要改动，在一个新的文件夹下 <em>clone github master</em> 分支，增加 <em>gitcafe remote</em>，然后<code>push</code>到<code>gitcafe</code>的<code>gitcafe-pages</code>分支上。</p>
+
+<h2>clone github master</h2>
+
+<p>这个是<code>rake deploy</code>到<code>github</code>上去的文件。</p>
+
+<h2>增加remote</h2>
+
+<pre><code>git remote addd gitcafe git@gitcafe.com:xx/xx
+</code></pre>
+
+<h2>push到gitcafe</h2>
+
+<pre><code>git push gitcafe gitcafe-pages
+</code></pre>
+
+<h2>注意事项</h2>
+
+<h4>在gitcafe上增加ssh密钥</h4>
+
+<p>否则git无法连接</p>
+
+<h4>把指向github的域名改到gitcafe上去</h4>
+
+<p>这样方便再次迁移</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress表格设置]]></title>
+    <link href="http://blog.dofa.org/blog/2014/03/27/add-table-for-octopress/"/>
+    <updated>2014-03-27T07:50:05-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/03/27/add-table-for-octopress</id>
+    <content type="html"><![CDATA[<p>Octopress默认的表格没有边框，比较难看。需要增加一个css。</p>
+
+<h2>添加样式 <em>css</em></h2>
+
+<p>新建一个 <code>data-table.css</code> ，放到 <code>source/stylesheets</code> 下面</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>* + table th, * + table td {
+</span><span class='line'>  border-style:dashed;
+</span><span class='line'>  border-width:1px;
+</span><span class='line'>  border-color:#007eff;
+</span><span class='line'>  padding-left: 3px;
+</span><span class='line'>  padding-right: 3px;
+</span><span class='line'>}
+</span><span class='line'> 
+</span><span class='line'>* + table th {
+</span><span class='line'>  border-style:solid;
+</span><span class='line'>  font-weight:bold;
+</span><span class='line'>  background-color:#d2e8ff;
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>* + table tr:hover{
+</span><span class='line'>    background-color:#c4e4fe;
+</span><span class='line'>} 
+</span><span class='line'>
+</span><span class='line'>* + table th[align="left"], * + table td[align="left"] {
+</span><span class='line'>  text-align:left;
+</span><span class='line'>}
+</span><span class='line'> 
+</span><span class='line'>* + table th[align="right"], * + table td[align="right"] {
+</span><span class='line'>  text-align:right;
+</span><span class='line'>}
+</span><span class='line'> 
+</span><span class='line'>* + table th[align="center"], * + table td[align="center"] {
+</span><span class='line'>  text-align:center;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>包含样式</h2>
+
+<p>在 <code>source/_includes/head.html</code> 增加如下代码：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;link href="{{ root_url }}/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css"&gt;
+</span><span class='line'>&lt;link href="{{ root_url }}/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" /&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>表格写法</h2>
+
+<pre><code>左对齐表头 | 中间对齐表头 | 右对齐表头
+:----------|:------------:|----------:
+左对齐数据 |中间对齐数据  |右对齐数据
+第二行数据 |也是第二行    |还是第二行
+懒得写了...|.....         |.....
+长数据，以便看出表头的对齐|长数据，以便看出表头的对齐|长数据，以便看出表头的对齐
+</code></pre>
+
+<p>生成表格：</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">左对齐表头 </th>
+<th align="center"> 中间对齐表头 </th>
+<th align="right"> 右对齐表头</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">左对齐数据 </td>
+<td align="center">中间对齐数据  </td>
+<td align="right">右对齐数据</td>
+</tr>
+<tr>
+<td align="left">第二行数据 </td>
+<td align="center">也是第二行    </td>
+<td align="right">还是第二行</td>
+</tr>
+<tr>
+<td align="left">懒得写了&hellip;</td>
+<td align="center">&hellip;..         </td>
+<td align="right">&hellip;..</td>
+</tr>
+<tr>
+<td align="left">长数据，以便看出表头的对齐</td>
+<td align="center">长数据，以便看出表头的对齐</td>
+<td align="right">长数据，以便看出表头的对齐</td>
+</tr>
+</tbody>
+</table>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Jekyll中的变量和模板]]></title>
+    <link href="http://blog.dofa.org/blog/2014/03/23/variable-and-template-in-jekyll/"/>
+    <updated>2014-03-23T14:10:39-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/03/23/variable-and-template-in-jekyll</id>
+    <content type="html"><![CDATA[<h2>Jekyll目录及一些说明</h2>
+
+<p>Jekyll的基本结构：</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">文件或目录  </th>
+<th align="left">     功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">_config.yml </td>
+<td align="left"> Jekyll的配置文件</td>
+</tr>
+<tr>
+<td align="center">_includes   </td>
+<td align="left"> 代码片段文件夹</td>
+</tr>
+<tr>
+<td align="center">_layouts    </td>
+<td align="left"> 模板文件夹</td>
+</tr>
+<tr>
+<td align="center">_posts      </td>
+<td align="left"> 文章文件夹</td>
+</tr>
+<tr>
+<td align="center">_sites      </td>
+<td align="left"> 生成的博客</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>具体描述如下：</p>
+
+<ul>
+<li>_includes文件夹中所放的文件是最终要放到模版中的一些代码片段。</li>
+<li>_layouts中放的一些模版，模版是用包含page或post内容的。Jekyll的模版使用HTML语法来写，并包含YAML Front Matter。所有的模版都可用Liquid来与网站进行交互。所的的模版都可以使用全局变量site和page，site变量包含该网站所有可以接触得到的内容和元数据(meta-data)，page变量包含的是当前渲染的page或post的所有可以接触得到的数据。</li>
+<li>_post文件夹中放的是自己要发布的post文章。post文件的命名规则为YEAR-MONTH-DATE-title.MARKUP，使用rake post会自动将post文件命名合适。而对于page，所有放在根目录下或不以下划线开头的文件夹中有格式的文件都会被Jekyll处理成page。这里说的有格式是指文件含有YAML Front Matter。所有的post和page都要用markdown或者texile或者HTML语法来写，并可以包含Liquid模版的语法。还要有 YAML Front Matter (Jekyll只处理具有YAML Front Matter的文件)。YAML Front Matter必须放在文件的开头，一对&mdash;-之间，用户可在这一对&mdash;-间设置预先定义的变量或用户自己的数据。</li>
+</ul>
+
+
+<h2>Jekyll模板全局变量</h2>
+
+<table>
+<thead>
+<tr>
+<th align="center">变量   </th>
+<th align="left">                      描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">site      </td>
+<td align="left"> 全站的信息+_config.yml文件中的配置选项</td>
+</tr>
+<tr>
+<td align="center">page      </td>
+<td align="left"> 这个变量中包含YAML前置数据,另外加上两个额外的变量值:url和content</td>
+</tr>
+<tr>
+<td align="center">content   </td>
+<td align="left"> 在布局模板文件中，这里变量包含了页面的子视图。这个变量将会把渲染后的内容插入到模板文件中。这个变量不能在文章和页面文件中使用</td>
+</tr>
+<tr>
+<td align="center">paginator </td>
+<td align="left"> 一旦paginate配置选项被设置了， 这个变量才能被使用</td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>Jekyll模板Page变量</h2>
+
+<table>
+<thead>
+<tr>
+<th align="center">变量      </th>
+<th align="left">                  描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">page.content    </td>
+<td align="left"> 页面中未渲染的内容</td>
+</tr>
+<tr>
+<td align="center">page.title      </td>
+<td align="left"> 文章的标题</td>
+</tr>
+<tr>
+<td align="center">page.url        </td>
+<td align="left"> 除去域名以外的URL，例子:/2013/12/14/higrid-net.html</td>
+</tr>
+<tr>
+<td align="center">page.date       </td>
+<td align="left"> 指定每一篇文章的时间，这个选项能够覆盖一篇文章中前置数据设置的时间，它的格式是这样的:YYYY-MM-DD HH:MM:SS</td>
+</tr>
+<tr>
+<td align="center">page.id         </td>
+<td align="left"> 每一篇文章的唯一标示符(在RSS中非常有用)例子：/2008/12/14/higrid-net</td>
+</tr>
+<tr>
+<td align="center">page.categories </td>
+<td align="left"> 这篇文章隶属的分类的一个列表，分类是通过在<em>post目录中的目录结构推导而来的。举例来说，在路径/work/code/</em>posts/2008-12-24-closures.textile下的文件，这个变量将会是[work,code]。这个变量也能在YAML前置数据中被指定。</td>
+</tr>
+<tr>
+<td align="center">page.tags       </td>
+<td align="left"> 这篇文章的标签的列表。这些数据能够在YAML前置数据中指定</td>
+</tr>
+<tr>
+<td align="center">page.next       </td>
+<td align="left"> 按时间序的下一篇文章</td>
+</tr>
+<tr>
+<td align="center">page.content    </td>
+<td align="left"> 按时间序的上一篇文章</td>
+</tr>
+</tbody>
+</table>
+
+
+<p><strong>注意</strong> :任何你自己指定的自定义前置数据都能够通过page调用。举例来说，如果你在页面的前置数据中设置了custom_css: true，那这个值可以在模板可以这样调用:page.custom_css</p>
+
+<h2>Jekyll模板Paginator变量</h2>
+
+<table>
+<thead>
+<tr>
+<th align="center">变量          </th>
+<th align="left">          描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">paginator.per_page      </td>
+<td align="left"> 每一个页面上文章的数量</td>
+</tr>
+<tr>
+<td align="center">paginator.posts         </td>
+<td align="left"> 当前页面上可用的文章</td>
+</tr>
+<tr>
+<td align="center">paginator.total_posts   </td>
+<td align="left"> 所有文章的数量</td>
+</tr>
+<tr>
+<td align="center">paginator.total_pages   </td>
+<td align="left"> 所有页面的数量</td>
+</tr>
+<tr>
+<td align="center">paginator.page          </td>
+<td align="left"> 当前页面的数量</td>
+</tr>
+<tr>
+<td align="center">paginator.previous_page </td>
+<td align="left"> 前面的页面的数量</td>
+</tr>
+<tr>
+<td align="center">paginator.next_page     </td>
+<td align="left"> 接下来的的页面的数量</td>
+</tr>
+</tbody>
+</table>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[SublimeTableEditor的使用]]></title>
+    <link href="http://blog.dofa.org/blog/2014/03/19/use-sublimetableeditor/"/>
+    <updated>2014-03-19T07:50:39-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/03/19/use-sublimetableeditor</id>
+    <content type="html"><![CDATA[<h2>基本的使用方法</h2>
+
+<p>要使用该插件 ，需要用 <em>ctrl+shift+p</em> 打开 <em>Table Editor: Enable for current syntax</em> 来激活 插件。</p>
+
+<h4>创建表头</h4>
+
+<p>输入：</p>
+
+<pre><code>| Name | Phone |
+|
+</code></pre>
+
+<p>然后按下 <em>Tab</em>，插件帮你完成表头格式化：</p>
+
+<pre><code>| Name | Phone |
+|------|-------|
+|      |       |
+</code></pre>
+
+<p>更快的创建表头方法：</p>
+
+<pre><code>|Name|Phone
+</code></pre>
+
+<p>然后按下 <em>ctrl+k, enter</em>，你会得到：</p>
+
+<pre><code>| Name | Phone |
+|------|-------|
+|      |       |
+</code></pre>
+
+<p>如果按下 <em>ctrl+k, &ndash;</em>，你会得到：</p>
+
+<pre><code>| Name | Phone |
+|------|-------|
+</code></pre>
+
+<h4>新建行、在table中移动和输入文字后的对其</h4>
+
+<p><em>tab</em> 为向后移动，<em>shift+tab</em> 向后移动，并且可以完成对其和新建行</p>
+
+<h2>对列的操作</h2>
+
+<p><em>alt+shift+right</em>完成新建列，<em>alt+shift+left</em>删除列，<em>alt+right</em>和<em>alt+left</em>完成交换列。</p>
+
+<h4>新建列</h4>
+
+<pre><code>|    Name   |   Phone   |
+|-----------|-----------|
+| Anna      | 123456789 |
+| Alexander | 987654321 |
+|           | _         |
+</code></pre>
+
+<p>如果按下 <em>alt+shift+right</em>，你会得到：</p>
+
+<pre><code>|    Name   |   |   Phone   |
+|-----------|---|-----------|
+| Anna      |   | 123456789 |
+| Alexander |   | 987654321 |
+|           | _ |           |
+</code></pre>
+
+<h4>删除列</h4>
+
+<p>继续按下 <em>alt+shift+left</em>，你会得到：</p>
+
+<pre><code>|    Name   |   Phone   |
+|-----------|-----------|
+| Anna      | 123456789 |
+| Alexander | 987654321 |
+|           | _         |
+</code></pre>
+
+<h4>交换列</h4>
+
+<pre><code>|    Name   | Age |   Phone   |
+|-----------|-----|-----------|
+| Anna      |  32 | 123456789 |
+| Alexander |  28_| 987654321 |
+|           |     |           |
+</code></pre>
+
+<p>继续按下 <em>alt+left</em>，你会得到：</p>
+
+<pre><code>|    Name   | Age |   Phone   |
+|-----------|-----|-----------|
+| Anna      | 32  | 123456789 |
+| Alexander | 28_ | 987654321 |
+|           |     |           |
+</code></pre>
+
+<p>继续按下 <em>alt+right</em>，你会得到：</p>
+
+<pre><code>|    Name   | Age |   Phone   |
+|-----------|-----|-----------|
+| Anna      | 32  | 123456789 |
+| Alexander | 28_ | 987654321 |
+|           |     |           |
+</code></pre>
+
+<h2>对行的操作</h2>
+
+<h4>插入新行</h4>
+
+<pre><code>|    Name   |   Phone   | Age |
+|-----------|-----------|-----|
+| Anna      | 123456789 | 32_ |
+| Alexander | 987654321 | 28  |
+|           |           |     |
+</code></pre>
+
+<p>如果按下 <em>alt+shift+down</em>，你会得到：</p>
+
+<pre><code>|    Name   |   Phone   | Age |
+|-----------|-----------|-----|
+|           |           |     |
+| Anna      | 123456789 | 32_ |
+| Alexander | 987654321 | 28  |
+|           |           |     |
+</code></pre>
+
+<h4>删除行</h4>
+
+<p>移动到要删除的行，</p>
+
+<pre><code>|    Name   |   Phone   | Age |
+|-----------|-----------|-----|
+|           |           | _   |
+| Anna      | 123456789 | 32  |
+| Alexander | 987654321 | 28  |
+|           |           |     |
+</code></pre>
+
+<p>按下 <em>alt+shift+up</em>，你会得到：</p>
+
+<pre><code>|    Name   |   Phone   | Age |
+|-----------|-----------|-----|
+| Anna      | 123456789 |  32 |
+| Alexander | 987654321 |  28 |
+|           |           |     |
+</code></pre>
+
+<h4>插入分割线</h4>
+
+<pre><code>|    Name   |   Phone   | Age |             Position             |
+|-----------|-----------|-----|----------------------------------|
+| Anna      | 123456789 |  32 | Senior Software Engineer_        |
+| Alexander | 987654321 |  28 | Senior Software Testing Engineer |
+|           |           |     |                                  |
+</code></pre>
+
+<p>按下 <em>ctrl+k,&ndash;</em>，得到：</p>
+
+<pre><code>|    Name   |   Phone   | Age |             Position             |
+|-----------|-----------|-----|----------------------------------|
+| Anna      | 123456789 |  32 | Senior Software Engineer_        |
+|-----------|-----------|-----|----------------------------------|
+| Alexander | 987654321 |  28 | Senior Software Testing Engineer |
+|           |           |     |                                  |
+</code></pre>
+
+<h4>单元中内容分行</h4>
+
+<pre><code>|    Name   |   Phone   | Age |              Position             |
+|-----------|-----------|-----|-----------------------------------|
+| Anna      | 123456789 |  32 | Senior Software Engineer          |
+| Alexander | 987654321 |  28 | Senior Software _Testing Engineer |
+|           |           |     |                                   |
+</code></pre>
+
+<p>按下 <em>alt+enter</em>，得到：</p>
+
+<pre><code>|    Name   |   Phone   | Age |         Position         |
+|-----------|-----------|-----|--------------------------|
+| Anna      | 123456789 |  32 | Senior Software Engineer |
+| Alexander | 987654321 |  28 | Senior Software          |
+|           |           |     | Testing Engineer         |
+</code></pre>
+
+<h4>单元中内容合并</h4>
+
+<p>命令为：<em>ctrl+j</em></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[为Octopress添加统计]]></title>
+    <link href="http://blog.dofa.org/blog/2014/03/10/add-statistics-for-octopress/"/>
+    <updated>2014-03-10T04:24:42-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/03/10/add-statistics-for-octopress</id>
+    <content type="html"><![CDATA[<h2>使用Google Analytics统计工具</h2>
+
+<h4>注册Google Analytics账号</h4>
+
+<p>到 <a href="http://www.google.com/analytics/" title="Google Analytics"><code>Google Analytics</code></a> 注册<code>Analytics</code>，获得一个<code>google_analytics_tracking_id</code>，添加到<code>_config.yml</code>中对应位置，并对网站进行验证即可</p>
+
+<h4>验证Google Analytics</h4>
+
+<p>对自己的网站进行验证，只需将网站提供的用于验证的代码添加到<code>source/_includes/head.html</code>的<code>&lt;head&gt;</code>标签之间，网站部署到网上后，过几分钟即可验证通过，其他 需要验证的也同样操作。</p>
+
+<pre><code>注意：如果head中有include google-analitics.html，这一步就不需要了
+</code></pre>
+
+<h2>使用CNZZ统计工具</h2>
+
+<h4>注册CNZZ账号</h4>
+
+<p>到<a href="http://zhanzhang.cnzz.com/" title="CNZZ">CNZZ</a>注册一个账号。注册后，添加并验证你的网站就可以添加统计代码了</p>
+
+<h4>验证CNZZ</h4>
+
+<p>选好自己喜欢的样式，获得代码，可添加到<code>source/_includes/custom/footer.html</code>中。即可查看每天你的博客的流量，进行相应的优化了。</p>
+]]></content>
+  </entry>
+  
+</feed>

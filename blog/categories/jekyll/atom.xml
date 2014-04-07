@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Jekyll | Do Far]]></title>
+  <link href="http://blog.dofa.org/blog/categories/jekyll/atom.xml" rel="self"/>
+  <link href="http://blog.dofa.org/"/>
+  <updated>2014-04-07T02:30:51-07:00</updated>
+  <id>http://blog.dofa.org/</id>
+  <author>
+    <name><![CDATA[dofa]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Jekyll中的变量和模板]]></title>
+    <link href="http://blog.dofa.org/blog/2014/03/23/variable-and-template-in-jekyll/"/>
+    <updated>2014-03-23T14:10:39-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/03/23/variable-and-template-in-jekyll</id>
+    <content type="html"><![CDATA[<h2>Jekyll目录及一些说明</h2>
+
+<p>Jekyll的基本结构：</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">文件或目录  </th>
+<th align="left">     功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">_config.yml </td>
+<td align="left"> Jekyll的配置文件</td>
+</tr>
+<tr>
+<td align="center">_includes   </td>
+<td align="left"> 代码片段文件夹</td>
+</tr>
+<tr>
+<td align="center">_layouts    </td>
+<td align="left"> 模板文件夹</td>
+</tr>
+<tr>
+<td align="center">_posts      </td>
+<td align="left"> 文章文件夹</td>
+</tr>
+<tr>
+<td align="center">_sites      </td>
+<td align="left"> 生成的博客</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>具体描述如下：</p>
+
+<ul>
+<li>_includes文件夹中所放的文件是最终要放到模版中的一些代码片段。</li>
+<li>_layouts中放的一些模版，模版是用包含page或post内容的。Jekyll的模版使用HTML语法来写，并包含YAML Front Matter。所有的模版都可用Liquid来与网站进行交互。所的的模版都可以使用全局变量site和page，site变量包含该网站所有可以接触得到的内容和元数据(meta-data)，page变量包含的是当前渲染的page或post的所有可以接触得到的数据。</li>
+<li>_post文件夹中放的是自己要发布的post文章。post文件的命名规则为YEAR-MONTH-DATE-title.MARKUP，使用rake post会自动将post文件命名合适。而对于page，所有放在根目录下或不以下划线开头的文件夹中有格式的文件都会被Jekyll处理成page。这里说的有格式是指文件含有YAML Front Matter。所有的post和page都要用markdown或者texile或者HTML语法来写，并可以包含Liquid模版的语法。还要有 YAML Front Matter (Jekyll只处理具有YAML Front Matter的文件)。YAML Front Matter必须放在文件的开头，一对&mdash;-之间，用户可在这一对&mdash;-间设置预先定义的变量或用户自己的数据。</li>
+</ul>
+
+
+<h2>Jekyll模板全局变量</h2>
+
+<table>
+<thead>
+<tr>
+<th align="center">变量   </th>
+<th align="left">                      描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">site      </td>
+<td align="left"> 全站的信息+_config.yml文件中的配置选项</td>
+</tr>
+<tr>
+<td align="center">page      </td>
+<td align="left"> 这个变量中包含YAML前置数据,另外加上两个额外的变量值:url和content</td>
+</tr>
+<tr>
+<td align="center">content   </td>
+<td align="left"> 在布局模板文件中，这里变量包含了页面的子视图。这个变量将会把渲染后的内容插入到模板文件中。这个变量不能在文章和页面文件中使用</td>
+</tr>
+<tr>
+<td align="center">paginator </td>
+<td align="left"> 一旦paginate配置选项被设置了， 这个变量才能被使用</td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>Jekyll模板Page变量</h2>
+
+<table>
+<thead>
+<tr>
+<th align="center">变量      </th>
+<th align="left">                  描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">page.content    </td>
+<td align="left"> 页面中未渲染的内容</td>
+</tr>
+<tr>
+<td align="center">page.title      </td>
+<td align="left"> 文章的标题</td>
+</tr>
+<tr>
+<td align="center">page.url        </td>
+<td align="left"> 除去域名以外的URL，例子:/2013/12/14/higrid-net.html</td>
+</tr>
+<tr>
+<td align="center">page.date       </td>
+<td align="left"> 指定每一篇文章的时间，这个选项能够覆盖一篇文章中前置数据设置的时间，它的格式是这样的:YYYY-MM-DD HH:MM:SS</td>
+</tr>
+<tr>
+<td align="center">page.id         </td>
+<td align="left"> 每一篇文章的唯一标示符(在RSS中非常有用)例子：/2008/12/14/higrid-net</td>
+</tr>
+<tr>
+<td align="center">page.categories </td>
+<td align="left"> 这篇文章隶属的分类的一个列表，分类是通过在<em>post目录中的目录结构推导而来的。举例来说，在路径/work/code/</em>posts/2008-12-24-closures.textile下的文件，这个变量将会是[work,code]。这个变量也能在YAML前置数据中被指定。</td>
+</tr>
+<tr>
+<td align="center">page.tags       </td>
+<td align="left"> 这篇文章的标签的列表。这些数据能够在YAML前置数据中指定</td>
+</tr>
+<tr>
+<td align="center">page.next       </td>
+<td align="left"> 按时间序的下一篇文章</td>
+</tr>
+<tr>
+<td align="center">page.content    </td>
+<td align="left"> 按时间序的上一篇文章</td>
+</tr>
+</tbody>
+</table>
+
+
+<p><strong>注意</strong> :任何你自己指定的自定义前置数据都能够通过page调用。举例来说，如果你在页面的前置数据中设置了custom_css: true，那这个值可以在模板可以这样调用:page.custom_css</p>
+
+<h2>Jekyll模板Paginator变量</h2>
+
+<table>
+<thead>
+<tr>
+<th align="center">变量          </th>
+<th align="left">          描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">paginator.per_page      </td>
+<td align="left"> 每一个页面上文章的数量</td>
+</tr>
+<tr>
+<td align="center">paginator.posts         </td>
+<td align="left"> 当前页面上可用的文章</td>
+</tr>
+<tr>
+<td align="center">paginator.total_posts   </td>
+<td align="left"> 所有文章的数量</td>
+</tr>
+<tr>
+<td align="center">paginator.total_pages   </td>
+<td align="left"> 所有页面的数量</td>
+</tr>
+<tr>
+<td align="center">paginator.page          </td>
+<td align="left"> 当前页面的数量</td>
+</tr>
+<tr>
+<td align="center">paginator.previous_page </td>
+<td align="left"> 前面的页面的数量</td>
+</tr>
+<tr>
+<td align="center">paginator.next_page     </td>
+<td align="left"> 接下来的的页面的数量</td>
+</tr>
+</tbody>
+</table>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[用-Jekyll-搭建个人博客]]></title>
+    <link href="http://blog.dofa.org/blog/2013/09/10/With-Jekyll-build-Personal-Blog/"/>
+    <updated>2013-09-10T00:00:00-07:00</updated>
+    <id>http://blog.dofa.org/blog/2013/09/10/With-Jekyll-build-Personal-Blog</id>
+    <content type="html"><![CDATA[<h3>使用理由</h3>
+
+<ol>
+<li> 使用 Markdown， 专心写博客，无样式排版烦恼</li>
+<li> 使用自己喜欢的本地编辑器，本地随时写博客，可以本地预览，方便自己使用</li>
+<li> 并使用 Git 管理博客，内容永不丢失</li>
+<li> 可以部署在 github 上，不用自己购买管理 VPS，甚至域名也可以不买，对学生来说很适合</li>
+<li> 没有第三方博客系统的广告，限制，随心而写</li>
+</ol>
+
+
+<h3>如何搭建</h3>
+
+<ol>
+<li> 由于 Jekyll 是用 Ruby 写的，因此首先要搭建 Ruby 执行环境，同时安装 git 版本控制工具</li>
+<li> 在 Github 上创建一个仓库，仓库名为 <code>github 账户名.github.com</code> 或者 <code>github 账户名.github.io</code></li>
+<li><p> 克隆仓库到本地，并初始化仓库。然后发布博客，第一次发布后大约需要 <code>十分钟</code> 就可以通过 <code>yourname.github.com</code> 访问博客了</p>
+
+<pre><code>git clone https://github.com/yourname/yourname.github.com blog
+cd blog
+touch {README.md,index.html}        # 在 README.md 和 index.html 中加入内容
+git add .
+git commit -m "初始化提交"
+git push origin master
+</code></pre></li>
+<li><p> 安装 Jekyll 规则搭建个人博客框架，具体参考 <a href="http://jekyllrb.com/" title="Jekyll 官方文档">Jekyll官方文档</a></p></li>
+</ol>
+
+
+<h3>Markdown 语法简记</h3>
+
+<ul>
+<li><code>1--6 级标题</code> 在行首使用 1-6 个 # 号</li>
+<li><code>块引用</code> 在一段的第一行前面加上 > 表示一个区块引用， > 可以嵌套</li>
+<li><code>列表</code> 无序列表 使用 *、 + 或是 &ndash; 作为列表标记，有序列表 则使用 数字接着一个英文句点</li>
+<li><code>代码</code> 缩进 4 个空格 表示一个代码块， 使用 反引号（`）  标记一小段行内代码</li>
+<li><code>强调</code> 用一个 * 或 _ 包围转成 &lt;em> 标签，用两个 * 或 _ 包围转成 &lt;strong> 标签，</li>
+<li><code>分割线</code> 用三个以上的 *、 -、 _ 来建立一个分隔线，行内不能有其他东西</li>
+<li><p><code>超链接和图片链接</code> 图片链接和超链接基本相同，图片链接多一个 ！。都有两种样式：行内式 和 参考式</p>
+
+<pre><code>行内式：
+    [潮汐猎人的博客](http://bitbegin.github.io "潮汐猎人的博客")
+
+参考式：
+    [潮汐猎人的博客][bitbegin]
+    [bitbegin]: http://bitbegin.github.io "潮汐猎人的博客"        # 此行可以放在文章的任意位置
+</code></pre></li>
+<li><p><code>反斜杠和自动链接</code> 特殊字符可用 \ 转义； 把 网址 或 电子邮件信箱 用 &lt;> 包起来，会自动链接</p></li>
+<li><p><code>表格</code> 不是 Markdown 的标准语法</p>
+
+<pre><code>|     用户名     |     年龄    |
+| -------------  | ----------- |
+|     路人甲     |     21      |
+|     路人乙     |     21      |
+</code></pre></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>为Octopress添加统计 - Do Far</title>
+  <meta name="author" content="dofa">
+
+  
+  <meta name="description" content="使用Google Analytics统计工具 注册Google Analytics账号 到 Google Analytics 注册Analytics，获得一个google_analytics_tracking_id，添加到_config.yml中对应位置，并对网站进行验证即可 验证Google &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.dofa.org/blog/2014/03/10/add-statistics-for-octopress">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/atom.xml" rel="alternate" title="Do Far" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-48748469-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Do Far</a></h1>
+  
+    <h2>There is a will, there is a way.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:blog.dofa.org" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">归档</a></li>
+  <li><a href="/github">Github</a></li>
+  <li><a href="/about">关于我</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">为Octopress添加统计</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-10T04:24:42-07:00" pubdate data-updated="true">Mar 10<span>th</span>, 2014</time>
+        
+        
+           | <a href="#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>使用Google Analytics统计工具</h2>
+
+<h4>注册Google Analytics账号</h4>
+
+<p>到 <a href="http://www.google.com/analytics/" title="Google Analytics"><code>Google Analytics</code></a> 注册<code>Analytics</code>，获得一个<code>google_analytics_tracking_id</code>，添加到<code>_config.yml</code>中对应位置，并对网站进行验证即可</p>
+
+<h4>验证Google Analytics</h4>
+
+<p>对自己的网站进行验证，只需将网站提供的用于验证的代码添加到<code>source/_includes/head.html</code>的<code>&lt;head&gt;</code>标签之间，网站部署到网上后，过几分钟即可验证通过，其他 需要验证的也同样操作。</p>
+
+<pre><code>注意：如果head中有include google-analitics.html，这一步就不需要了
+</code></pre>
+
+<h2>使用CNZZ统计工具</h2>
+
+<h4>注册CNZZ账号</h4>
+
+<p>到<a href="http://zhanzhang.cnzz.com/" title="CNZZ">CNZZ</a>注册一个账号。注册后，添加并验证你的网站就可以添加统计代码了</p>
+
+<h4>验证CNZZ</h4>
+
+<p>选好自己喜欢的样式，获得代码，可添加到<code>source/_includes/custom/footer.html</code>中。即可查看每天你的博客的流量，进行相应的优化了。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">dofa</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-10T04:24:42-07:00" pubdate data-updated="true">Mar 10<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/octopress/'>Octopress</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/03/09/update-debian-wheezy-mirrors/" title="Previous Post: Debian7 Wheezy 镜像源的配置">&laquo; Debian7 Wheezy 镜像源的配置</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/03/19/use-sublimetableeditor/" title="Next Post: SublimeTableEditor的使用">SublimeTableEditor的使用 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+  <section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread" data-title=""></div>
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"bitbegin"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<!-- Duoshuo Comment END -->
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/embedded/'>Embedded (5)</a></li>
+<li class='category'><a href='/blog/categories/javascript/'>Javascript (12)</a></li>
+<li class='category'><a href='/blog/categories/jekyll/'>Jekyll (2)</a></li>
+<li class='category'><a href='/blog/categories/nodejs/'>Nodejs (2)</a></li>
+<li class='category'><a href='/blog/categories/octopress/'>Octopress (6)</a></li>
+<li class='category'><a href='/blog/categories/server/'>Server (3)</a></li>
+<li class='category'><a href='/blog/categories/sublimetext/'>SublimeText (5)</a></li>
+<li class='category'><a href='/blog/categories/vim/'>Vim (3)</a></li>
+
+  </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/04/07/learning-angularjs-notes-dynamic-templates/">Angularjs学习笔记-动态模板</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/07/learning-angularjs-notes-static-templates/">Angularjs学习笔记-静态模板</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/05/build-angularjs-develop-environment/">Angularjs入门环境的搭建</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/05/build-nodejs-develop-environment-in-the-windows/">在Windows环境下搭建nodejs环境</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/05/understanding-of-javascript-event-handling/">理解JavaScript中的事件处理</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Tags</h1>
+  <ul class="tag-cloud">
+    <a style="font-size: 125%" href="/tags/angularjs/">Angularjs</a>
+<a style="font-size: 194%" href="/tags/bom/">BOM</a>
+<a style="font-size: 90%" href="/tags/task/">Task</a>
+<a style="font-size: 90%" href="/tags/uos/">Uos</a>
+<a style="font-size: 210%" href="/tags/javascript/">javascript,</a>
+<a style="font-size: 159%" href="/tags/octopress/">octopress</a>
+<a style="font-size: 125%" href="/tags/octopress/">octopress,</a>
+<a style="font-size: 171%" href="/tags/sublime-text/">sublime-text</a>
+<a style="font-size: 145%" href="/tags/tcpip/">tcpip</a>
+<a style="font-size: 145%" href="/tags/vim/">vim</a>
+
+  </ul>
+</section>
+<section>
+<h1>Recent Comments</h1>
+<ul class="ds-recent-comments" data-num-items="10" data-show-avatars="0" data-show-time="0" data-show-title="0" data-show-admin="0" data-excerpt-length="18"></ul>
+
+</section><section>
+<h1>友情链接</h1>
+<ul>
+        <li>
+        <a href="http://blog.jobbole.com/">伯乐在线</a>
+        </li>
+        <li>
+        <a href="http://www.csdn.net/">CSDN</a>
+        </li>
+        <li>
+        <a href="http://www.cnblogs.com/">博客园</a>
+        </li>
+        <li>
+        <a href="http://coolshell.cn/">酷壳CoolShell</a>
+        </li>
+</ul>
+</section>
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - dofa -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1000309119'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s5.cnzz.com/z_stat.php%3Fid%3D1000309119%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

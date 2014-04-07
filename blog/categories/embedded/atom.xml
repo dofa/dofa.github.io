@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Embedded | Do Far]]></title>
+  <link href="http://blog.dofa.org/blog/categories/embedded/atom.xml" rel="self"/>
+  <link href="http://blog.dofa.org/"/>
+  <updated>2014-04-07T02:30:51-07:00</updated>
+  <id>http://blog.dofa.org/</id>
+  <author>
+    <name><![CDATA[dofa]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[事件驱动的伪任务-UOS]]></title>
+    <link href="http://blog.dofa.org/blog/2013/10/17/Event-driven-pseudo-task-UOS/"/>
+    <updated>2013-10-17T00:00:00-07:00</updated>
+    <id>http://blog.dofa.org/blog/2013/10/17/Event-driven-pseudo-task-UOS</id>
+    <content type="html"><![CDATA[<h3>protothread</h3>
+
+<p>protothread是专为资源有限的系统设计的一种耗费资源特别少并且不使用堆栈的线程模型</p>
+
+<h3>相比于嵌入式操作系统， protothread其有如下优点：</h3>
+
+<ul>
+<li>以纯C语言实现，无硬件依靠性； 因此不存在移植的困难</li>
+<li>极少的资源需求，每个 Protothread 仅需要2个额外的字节</li>
+<li>支持阻塞操纵且没有栈的切换</li>
+</ul>
+
+
+<h3>protothread的缺陷在于：</h3>
+
+<ul>
+<li>函数中不具备可重入型，不能使用局部变量；</li>
+<li>按顺序判断各任务条件是否满足，因此无优先级抢占；</li>
+<li>任务中的各条件也是按顺序判断的，因此要求任务中的条件必须是依次出现的。</li>
+</ul>
+
+
+<h3>Uos的核心便是protothread</h3>
+
+<ul>
+<li>Uos使用protothread实现Task Switch</li>
+<li>Uos另外一个先进的地方：event-driven</li>
+</ul>
+
+
+<h3>Uos的Task Switch和event-driven</h3>
+
+<ul>
+<li>Task Switch负责把任务所有权切换出去</li>
+<li>切换任务之前，要设置触发事件</li>
+<li>任务调度时，会根据是否有触发事件发生，调用该任务</li>
+</ul>
+
+
+<h3>UOS项目官网</h3>
+
+<ul>
+<li>project网址：<a href="http://www.uos.co">http://www.uos.co</a></li>
+<li>github网址：<a href="https://github.com/bitbegin/uos">https://github.com/bitbegin/uos</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[big endian与little endian（大小端）]]></title>
+    <link href="http://blog.dofa.org/blog/2013/08/05/big-endian-and-little-endian/"/>
+    <updated>2013-08-05T06:25:52-07:00</updated>
+    <id>http://blog.dofa.org/blog/2013/08/05/big-endian-and-little-endian</id>
+    <content type="html"><![CDATA[<p>在C编程中，经常遇到大小端（big endian与little endian）的问题，尤其涉及到位域的情况，很容易出错。我这里总结下C51和HTCC C18两种compiler对大小端的处理。</p>
+
+<h2>Check Endian code</h2>
+
+<p>```c
+char checkEndian(void)
+{</p>
+
+<pre><code>union check{
+    unsigned int a;
+    unsigned char b;
+};
+union check ck;
+ck.a = 1;
+return (ck.b==1) ;
+</code></pre>
+
+<p>}</p>
+
+<p>void main(void)
+{</p>
+
+<pre><code>union uE{
+    unsigned long num;
+    struct{
+        unsigned char a1:1;
+        unsigned char b3:3;
+        unsigned short c16;
+        unsigned char d3:3;
+        unsigned char e1:1;
+    }sN;
+};
+
+union uE a;
+char ttt =  checkEndian();
+
+a.num = 0x12345678;
+a.num = 0;
+
+a.sN.a1 = 1;
+a.sN.b3 = 2;
+a.sN.c16 = 0x0304;
+a.sN.d3 = 5;
+a.sN.e1 = 1;
+
+a.num;
+</code></pre>
+
+<p>}
+```</p>
+
+<h2>Executed results</h2>
+
+<p>a.num = ?</p>
+
+<p>对于big endian：</p>
+
+<p>以C51来分析，结构成员按照定义顺序从小地址到大地址存放到ram中，显然按照地址从小到大排放结果就为：</p>
+
+<p><code>c
+05 03 04 0d
+</code></p>
+
+<p>转换为大端显示为：</p>
+
+<p><code>c
+0x0503040d
+</code></p>
+
+<p>对于little endian：</p>
+
+<p>结果为</p>
+
+<p><code>c
+0x0d030405
+</code></p>
+
+<h2>Results</h2>
+
+<p>所以我这里结论：</p>
+
+<ul>
+<li><p>位域没有大小端的区别，区别在于各编译器的实现。上面的例子便是没有区别的compiler，C51和HTCC C18；网络字节序位域有大小端区别，这个一定要注意</p></li>
+<li><p>两个及其以上字节有大小端区别</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[TCP/IP协议学习系列之三 — 链路层]]></title>
+    <link href="http://blog.dofa.org/blog/2013/08/01/tcp-ip-protocol-learning-series-three-of-link-layer/"/>
+    <updated>2013-08-01T07:25:52-07:00</updated>
+    <id>http://blog.dofa.org/blog/2013/08/01/tcp-ip-protocol-learning-series-three-of-link-layer</id>
+    <content type="html"><![CDATA[<h3>TCP/IP支持多种不同的链路层协议</h3>
+
+<p>这取决于网络所使用的硬件，如以太网、令牌环网、FDDI（光纤分布式数据接口）及RS-232串行线路等。</p>
+
+<h3>以太网是当今TCP/IP采用的主要的局域网技术</h3>
+
+<p>它采用一种称作CSMA/CD的媒体接入方法，其意思是带冲突检测的载波侦听多路接入（Carrier Sense, Multiple Access with Collision Detection）。它的速率为10 Mb/s，地址为48 bit。</p>
+
+<h3>以太网IP数据报的封装</h3>
+
+<p>以太网IP数据报的封装是在RFC 894[Hornig 1984]中定义的，但存在另外一个IEEE 802规格RFC 1042[Postel and Reynolds 1988]，只是大多数人采用RFC 894。RFC 894在有的地方称作Ethernet-II。</p>
+
+<h3>SLIP和PPP</h3>
+
+<p>串行线路IP–SLIP和他的升级版PPP使用RS-232串口传数据，速度太慢，基本上大家都不用这种方式了，而改用宽带上网。这年头问别人如何上网，都是“你家多少兆？”。</p>
+
+<h3>环回接口</h3>
+
+<p>下面再来看一个大家都熟悉的ip：127.0.0.1。这个IP称作环回接口，它还有个英文名localhost。基本上，对这个ip的访问就是访问自己的主机。</p>
+
+<h3>MTU</h3>
+
+<p>以太网一次可以传送的最大传输单元（MTU）为1500B。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[TCP/IP协议学习系列之二 — Ethernet控制器]]></title>
+    <link href="http://blog.dofa.org/blog/2013/07/27/tcp-ip-protocol-learning-series-two-ethernet-directors/"/>
+    <updated>2013-07-27T07:25:52-07:00</updated>
+    <id>http://blog.dofa.org/blog/2013/07/27/tcp-ip-protocol-learning-series-two-ethernet-directors</id>
+    <content type="html"><![CDATA[<h2>硬件架构</h2>
+
+<p>前面讲了，处理TCP/IP封包的硬件主要使用Ethernet模块。
+大多数Ethernet模块分为这几个部分：PHY，MAC，MII/RMII管理，DMA和控制器。</p>
+
+<ul>
+<li>PHY实现bit流到cat5的transfer</li>
+<li>MAC实现数据链路层的介质访问控制子层，并执行CSMA/CD功能</li>
+<li>MII/RMII提供访问PHY的接口给MAC使用</li>
+<li>DMA大家都懂得</li>
+<li>控制器这里指的是协调MAC、MII/RMII管理、DMA的工具，不过一般也理解为Ethernet模块。比如PIC32中Ethernet控制器包括MAC、MII/RMII管理、DMA和SFR。</li>
+</ul>
+
+
+<h2>以太网原理—CSMA/CD</h2>
+
+<p>CS：载波侦听
+在发送数据之前进行监听，以确保线路空闲，减少冲突的机会。
+MA：多址访问
+每个站点发送的数据，可以同时被多个站点接收。
+CD：冲突检测
+边发送边检测，发现冲突就停止发送，然后延迟一个随机时间之后继续发送。</p>
+
+<h2>以太网发展简史</h2>
+
+<p>IEEE802.3 以太网标准
+IEEE802.3u 100BASE-T快速以太网标准
+IEEE802.3z/ab 1000Mb/s千兆以太网标准
+IEEE802.3ae 10GE以太网标准</p>
+
+<h2>相关技术</h2>
+
+<h4>自协商技术</h4>
+
+<p><img src="http://dofa.u.qiniudn.com/imgage/embeded/negotiation.bmp"></p>
+
+<h4>自适应技术： 智能MDI/MDIX</h4>
+
+<p>直连网线、交叉网线自动识别</p>
+
+<h4>流量控制</h4>
+
+<ul>
+<li>当通过交换机一个端口的流量过大，超过了它的处理能力时，就会发生端口阻塞。流量控制的作用是防止在出现阻塞的情况下丢帧。</li>
+<li>在半双工方式下，流量控制是通过反压（backpressure）技术实现的，模拟产生碰撞，使得信息源降低发送速度。</li>
+<li>在全双工方式下流量控制一般遵循IEEE 802.3x标准。</li>
+</ul>
+
+
+<h4>全双工流量控制</h4>
+
+<ul>
+<li>IEEE802.3x标准定义了一种新方法，在全双工环境中去实现流量控制。交换机产生一个PAUSE帧，PAUSE帧使用一个保留的组播地址：01-80-C2-00-00-01，将它发送给正在发送的站，发送站接收到该帧后，就会暂停或停止发送。</li>
+<li>PAUSE帧利用了一个保留的组播地址，它不会被网桥和交换机所转发，这样，PAUSE帧不会产生附加信息量。</li>
+</ul>
+
+
+<h2>MII接口介绍</h2>
+
+<p>MII接口提供了MAC和PHY之间、PHY与STA（Station Management）之间的互联技术，该接口支持10Mb/s与100Mb/s的数据传输速率，数据传输的位宽为4位。
+MII通过增加数据位宽实现参考时钟的降低。
+MII接口主要包括4个部分：</p>
+
+<ul>
+<li>从MAC层到物理层的发送数据的接口</li>
+<li>从物理层到MAC层的接受数据的接口</li>
+<li>从物理层到MAC层的状态指示信号</li>
+<li>MAC层和物理层之间传送控制和状态信息的MDIO接口</li>
+</ul>
+
+
+<p>MII接口可分为MAC模式和PHY模式，实际中主要用MAC模式，MAC模式的接口定义为：</p>
+
+<p><img src="http://dofa.u.qiniudn.com/imgage/embeded/MII.bmp"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[TCP/IP 协议学习系列之一 — 帧结构（frame）]]></title>
+    <link href="http://blog.dofa.org/blog/2013/07/26/tcp-ip-protocol-learning-series-one-of-frame-structure/"/>
+    <updated>2013-07-26T07:25:52-07:00</updated>
+    <id>http://blog.dofa.org/blog/2013/07/26/tcp-ip-protocol-learning-series-one-of-frame-structure</id>
+    <content type="html"><![CDATA[<h2>TCP/IP协议封包</h2>
+
+<p>我觉得学习TCP/IP协议可以从它的封包开始，了解它在硬件上是怎么实现的是个不错的开端。</p>
+
+<p><img src="http://dofa.u.qiniudn.com/imgage/embeded/tcpip-package.bmp"></p>
+
+<p>上图是应用程序通过TCP/IP协议传输时的数据封包过程，该图基本反应了TCP/IP协议簇的数据打包过程。
+封装好的IP协议一般通过硬件发送出去，比如Ethernet、令牌网、电话线。目前广泛应用的是Ethernet，我们的产品也不例外。</p>
+
+<h2>Ethernet Frame结构</h2>
+
+<p>我们看下Ethernet的帧结构：</p>
+
+<p><img src="http://dofa.u.qiniudn.com/imgage/embeded/ethernet-frame.bmp"></p>
+
+<p>基本上就是在TCP/IP封包基础上增加了一个Ethernet Frame Header和Frame Tail(CRC)。</p>
+
+<p>这里的DA和SA指的是MAC，固定为6字节。类型/长度在不同的协议规格下有不同意义，Ethernet-II要求不小于0×8000的类型码，IEEE 802规格定义该字段为报文数据的长度。</p>
+]]></content>
+  </entry>
+  
+</feed>

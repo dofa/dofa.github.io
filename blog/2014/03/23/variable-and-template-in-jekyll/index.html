@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Jekyll中的变量和模板 - Do Far</title>
+  <meta name="author" content="dofa">
+
+  
+  <meta name="description" content="Jekyll目录及一些说明 Jekyll的基本结构： 文件或目录 功能描述 _config.yml Jekyll的配置文件 _includes 代码片段文件夹 _layouts 模板文件夹 _posts 文章文件夹 _sites 生成的博客 具体描述如下： &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.dofa.org/blog/2014/03/23/variable-and-template-in-jekyll">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/atom.xml" rel="alternate" title="Do Far" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-48748469-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Do Far</a></h1>
+  
+    <h2>There is a will, there is a way.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:blog.dofa.org" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">归档</a></li>
+  <li><a href="/github">Github</a></li>
+  <li><a href="/about">关于我</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Jekyll中的变量和模板</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-23T14:10:39-07:00" pubdate data-updated="true">Mar 23<span>rd</span>, 2014</time>
+        
+        
+           | <a href="#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>Jekyll目录及一些说明</h2>
+
+<p>Jekyll的基本结构：</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">文件或目录  </th>
+<th align="left">     功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">_config.yml </td>
+<td align="left"> Jekyll的配置文件</td>
+</tr>
+<tr>
+<td align="center">_includes   </td>
+<td align="left"> 代码片段文件夹</td>
+</tr>
+<tr>
+<td align="center">_layouts    </td>
+<td align="left"> 模板文件夹</td>
+</tr>
+<tr>
+<td align="center">_posts      </td>
+<td align="left"> 文章文件夹</td>
+</tr>
+<tr>
+<td align="center">_sites      </td>
+<td align="left"> 生成的博客</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>具体描述如下：</p>
+
+<ul>
+<li>_includes文件夹中所放的文件是最终要放到模版中的一些代码片段。</li>
+<li>_layouts中放的一些模版，模版是用包含page或post内容的。Jekyll的模版使用HTML语法来写，并包含YAML Front Matter。所有的模版都可用Liquid来与网站进行交互。所的的模版都可以使用全局变量site和page，site变量包含该网站所有可以接触得到的内容和元数据(meta-data)，page变量包含的是当前渲染的page或post的所有可以接触得到的数据。</li>
+<li>_post文件夹中放的是自己要发布的post文章。post文件的命名规则为YEAR-MONTH-DATE-title.MARKUP，使用rake post会自动将post文件命名合适。而对于page，所有放在根目录下或不以下划线开头的文件夹中有格式的文件都会被Jekyll处理成page。这里说的有格式是指文件含有YAML Front Matter。所有的post和page都要用markdown或者texile或者HTML语法来写，并可以包含Liquid模版的语法。还要有 YAML Front Matter (Jekyll只处理具有YAML Front Matter的文件)。YAML Front Matter必须放在文件的开头，一对&mdash;-之间，用户可在这一对&mdash;-间设置预先定义的变量或用户自己的数据。</li>
+</ul>
+
+
+<h2>Jekyll模板全局变量</h2>
+
+<table>
+<thead>
+<tr>
+<th align="center">变量   </th>
+<th align="left">                      描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">site      </td>
+<td align="left"> 全站的信息+_config.yml文件中的配置选项</td>
+</tr>
+<tr>
+<td align="center">page      </td>
+<td align="left"> 这个变量中包含YAML前置数据,另外加上两个额外的变量值:url和content</td>
+</tr>
+<tr>
+<td align="center">content   </td>
+<td align="left"> 在布局模板文件中，这里变量包含了页面的子视图。这个变量将会把渲染后的内容插入到模板文件中。这个变量不能在文章和页面文件中使用</td>
+</tr>
+<tr>
+<td align="center">paginator </td>
+<td align="left"> 一旦paginate配置选项被设置了， 这个变量才能被使用</td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>Jekyll模板Page变量</h2>
+
+<table>
+<thead>
+<tr>
+<th align="center">变量      </th>
+<th align="left">                  描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">page.content    </td>
+<td align="left"> 页面中未渲染的内容</td>
+</tr>
+<tr>
+<td align="center">page.title      </td>
+<td align="left"> 文章的标题</td>
+</tr>
+<tr>
+<td align="center">page.url        </td>
+<td align="left"> 除去域名以外的URL，例子:/2013/12/14/higrid-net.html</td>
+</tr>
+<tr>
+<td align="center">page.date       </td>
+<td align="left"> 指定每一篇文章的时间，这个选项能够覆盖一篇文章中前置数据设置的时间，它的格式是这样的:YYYY-MM-DD HH:MM:SS</td>
+</tr>
+<tr>
+<td align="center">page.id         </td>
+<td align="left"> 每一篇文章的唯一标示符(在RSS中非常有用)例子：/2008/12/14/higrid-net</td>
+</tr>
+<tr>
+<td align="center">page.categories </td>
+<td align="left"> 这篇文章隶属的分类的一个列表，分类是通过在<em>post目录中的目录结构推导而来的。举例来说，在路径/work/code/</em>posts/2008-12-24-closures.textile下的文件，这个变量将会是[work,code]。这个变量也能在YAML前置数据中被指定。</td>
+</tr>
+<tr>
+<td align="center">page.tags       </td>
+<td align="left"> 这篇文章的标签的列表。这些数据能够在YAML前置数据中指定</td>
+</tr>
+<tr>
+<td align="center">page.next       </td>
+<td align="left"> 按时间序的下一篇文章</td>
+</tr>
+<tr>
+<td align="center">page.content    </td>
+<td align="left"> 按时间序的上一篇文章</td>
+</tr>
+</tbody>
+</table>
+
+
+<p><strong>注意</strong> :任何你自己指定的自定义前置数据都能够通过page调用。举例来说，如果你在页面的前置数据中设置了custom_css: true，那这个值可以在模板可以这样调用:page.custom_css</p>
+
+<h2>Jekyll模板Paginator变量</h2>
+
+<table>
+<thead>
+<tr>
+<th align="center">变量          </th>
+<th align="left">          描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">paginator.per_page      </td>
+<td align="left"> 每一个页面上文章的数量</td>
+</tr>
+<tr>
+<td align="center">paginator.posts         </td>
+<td align="left"> 当前页面上可用的文章</td>
+</tr>
+<tr>
+<td align="center">paginator.total_posts   </td>
+<td align="left"> 所有文章的数量</td>
+</tr>
+<tr>
+<td align="center">paginator.total_pages   </td>
+<td align="left"> 所有页面的数量</td>
+</tr>
+<tr>
+<td align="center">paginator.page          </td>
+<td align="left"> 当前页面的数量</td>
+</tr>
+<tr>
+<td align="center">paginator.previous_page </td>
+<td align="left"> 前面的页面的数量</td>
+</tr>
+<tr>
+<td align="center">paginator.next_page     </td>
+<td align="left"> 接下来的的页面的数量</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">dofa</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-23T14:10:39-07:00" pubdate data-updated="true">Mar 23<span>rd</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/jekyll/'>Jekyll</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/03/19/use-sublimetableeditor/" title="Previous Post: SublimeTableEditor的使用">&laquo; SublimeTableEditor的使用</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/03/27/add-table-for-octopress/" title="Next Post: Octopress表格设置">Octopress表格设置 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+  <section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread" data-title=""></div>
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"bitbegin"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<!-- Duoshuo Comment END -->
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/embedded/'>Embedded (5)</a></li>
+<li class='category'><a href='/blog/categories/javascript/'>Javascript (12)</a></li>
+<li class='category'><a href='/blog/categories/jekyll/'>Jekyll (2)</a></li>
+<li class='category'><a href='/blog/categories/nodejs/'>Nodejs (2)</a></li>
+<li class='category'><a href='/blog/categories/octopress/'>Octopress (6)</a></li>
+<li class='category'><a href='/blog/categories/server/'>Server (3)</a></li>
+<li class='category'><a href='/blog/categories/sublimetext/'>SublimeText (5)</a></li>
+<li class='category'><a href='/blog/categories/vim/'>Vim (3)</a></li>
+
+  </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/04/07/learning-angularjs-notes-dynamic-templates/">Angularjs学习笔记-动态模板</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/07/learning-angularjs-notes-static-templates/">Angularjs学习笔记-静态模板</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/05/build-angularjs-develop-environment/">Angularjs入门环境的搭建</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/05/build-nodejs-develop-environment-in-the-windows/">在Windows环境下搭建nodejs环境</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/05/understanding-of-javascript-event-handling/">理解JavaScript中的事件处理</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Tags</h1>
+  <ul class="tag-cloud">
+    <a style="font-size: 125%" href="/tags/angularjs/">Angularjs</a>
+<a style="font-size: 194%" href="/tags/bom/">BOM</a>
+<a style="font-size: 90%" href="/tags/task/">Task</a>
+<a style="font-size: 90%" href="/tags/uos/">Uos</a>
+<a style="font-size: 210%" href="/tags/javascript/">javascript,</a>
+<a style="font-size: 159%" href="/tags/octopress/">octopress</a>
+<a style="font-size: 125%" href="/tags/octopress/">octopress,</a>
+<a style="font-size: 171%" href="/tags/sublime-text/">sublime-text</a>
+<a style="font-size: 145%" href="/tags/tcpip/">tcpip</a>
+<a style="font-size: 145%" href="/tags/vim/">vim</a>
+
+  </ul>
+</section>
+<section>
+<h1>Recent Comments</h1>
+<ul class="ds-recent-comments" data-num-items="10" data-show-avatars="0" data-show-time="0" data-show-title="0" data-show-admin="0" data-excerpt-length="18"></ul>
+
+</section><section>
+<h1>友情链接</h1>
+<ul>
+        <li>
+        <a href="http://blog.jobbole.com/">伯乐在线</a>
+        </li>
+        <li>
+        <a href="http://www.csdn.net/">CSDN</a>
+        </li>
+        <li>
+        <a href="http://www.cnblogs.com/">博客园</a>
+        </li>
+        <li>
+        <a href="http://coolshell.cn/">酷壳CoolShell</a>
+        </li>
+</ul>
+</section>
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - dofa -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1000309119'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s5.cnzz.com/z_stat.php%3Fid%3D1000309119%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

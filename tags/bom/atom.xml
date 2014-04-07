@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: BOM | Do Far]]></title>
+  <link href="http://blog.dofa.org/tags/bom/atom.xml" rel="self"/>
+  <link href="http://blog.dofa.org/"/>
+  <updated>2014-04-07T02:30:51-07:00</updated>
+  <id>http://blog.dofa.org/</id>
+  <author>
+    <name><![CDATA[dofa]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript DOM基础操作实例]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/03/javascript-dom-use/"/>
+    <updated>2014-04-03T23:25:06-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/03/javascript-dom-use</id>
+    <content type="html"><![CDATA[<p>文档对象模型(Document Object Model)，通常简称为DOM，是网站内容与JavaScript互通的接口。自JavaScript成为最常用的语言时JavaScript和DOM通常被视为独立的实体。DOM接口用于存取、遍历和控制HTML和XML文档。下面我们将简单的介绍一些JavaScript DOM的基本操作实例，包括建立、增加、删除、克隆、访问节点等等。</p>
+
+<h2>getElementById(id)</h2>
+
+<p>这是通过<code>id</code>来访问某一元素，最常用的之一，例：</p>
+
+<pre><code>&lt;html&gt; 
+         &lt;body&gt; 
+         &lt;div id="myid"&gt; 
+         test  
+         &lt;/div&gt; 
+         &lt;script language="javascript"&gt; 
+         alert(document.getElementById("myid").innerHTML);  
+         &lt;/script&gt; 
+         &lt;/body&gt; 
+&lt;/html&gt; 
+</code></pre>
+
+<p>注意点：如果元素的<code>ID</code>不是唯一，则会取得第一个该<code>ID</code>名称的元素。</p>
+
+<h2>getElementsByName(name)</h2>
+
+<p>这是通过<code>name</code>来取得某一堆元素（作为数组），看 <code>Element</code>后面有个小<code>s</code>就知道了，<code>ID</code>是<code>HTML</code>文档中要求唯一的，<code>name</code>可以不是唯一，如<code>checkbox</code>、<code>radio</code>等地方会用到多个<code>input</code>用同一个<code>name</code>来识别是否为同党。对了，<code>getElementsByName(name)</code>仅用于取得<code>input</code>、<code>radio</code>、 <code>checkbox</code>等元素，如</p>
+
+<pre><code>&lt;input name="myradio" type="radio" /&gt;。
+</code></pre>
+
+<h2>getElementsByTagName(tagname)</h2>
+
+<p>看这方法就知道这也是取得某一堆元素（作为数组），是通过<code>TagName</code>也就是标签名来取得。你可以遍历这个数组获得每一个单独的元素。当一个<code>DOM</code>结构很大时，可以通过它来有效地缩小搜查范围。</p>
+
+<pre><code>&lt;html&gt;           
+     &lt;head&gt; 
+     &lt;script&gt; 
+     function test() {  
+     testall=document.getElementsByTagName("body");  
+     testbody=testall.item(0); //获得所有tagName是body的元素（当然每个页面只有一个）  
+     testall=testbody.getElementsByTagName("p");// 获得body子元素种的所有P元素  
+     testnode=testall.item(1); // 获得第二个P元素           
+     alert(testnode.firstChild.nodeValue); //显示这个元素的文本         }  
+     &lt;/script&gt; 
+     &lt;/head&gt; 
+     &lt;body&gt; 
+     &lt;p&gt;hi&lt;/p&gt; 
+     &lt;p&gt;hello&lt;/p&gt; 
+     &lt;script language="javascript"&gt; 
+     test();  
+     &lt;/script&gt; 
+     &lt;/body&gt; 
+&lt;/html&gt; 
+</code></pre>
+
+<h2>appendChild(node)</h2>
+
+<p>向当前的元素（应该叫对象比较恰当）追加节点。</p>
+
+<pre><code>&lt;html&gt; 
+     &lt;body&gt; 
+     &lt;head&gt; 
+     &lt;/head&gt; 
+     &lt;div id="test"&gt;&lt;/div&gt; 
+     &lt;script type="text/javascript"&gt; 
+     var newdiv=document.createElement("div")  
+     var newtext=document.createTextNode("A new div")           
+     newdiv.appendChild(newtext)  
+     document.getElementById("test").appendChild(newdiv)  
+     &lt;/script&gt; 
+     &lt;/body&gt; 
+&lt;/html&gt; 
+</code></pre>
+
+<p>刚才我在第一个例子中为了显示出内容，用了<code>innerHTML</code>，刚才看到文章才得知<code>innerHTMl</code>不属于<code>DOM</code>。</p>
+
+<h2>removeChild(childreference)</h2>
+
+<p>删除当前节点的子节点，返回被删除的节点。这个被删除的节点可以被插入到别的地方。</p>
+
+<pre><code>&lt;html&gt; 
+     &lt;body&gt; 
+     &lt;div id="parent"&gt;&lt;div id="child"&gt;A child&lt;/div&gt;&lt;/div&gt; 
+     &lt;script language="javascript"&gt; 
+     var childnode=document.getElementById("child")  
+     var removednode=document.getElementById("parent").removeChild(childnode)  
+     &lt;/script&gt; 
+     &lt;/body&gt; 
+&lt;/html&gt; 
+</code></pre>
+
+<h2>cloneNode(deepBoolean)</h2>
+
+<p>复制并返回当前节点的复制节点，复制节点是一个孤立节点，它复制了原节点的属性，在把这个新节点加入到<code>document</code>前，根据需要修改<code>ID</code>属性确保其<code>ID</code>的唯一。这个方法支持一个布尔参数，当<code>deepBoolean</code>设置<code>true</code>时，复制当前节点的所有子节点，包括该节点内的文本。</p>
+
+<pre><code>&lt;html&gt; 
+     &lt;body&gt; 
+     &lt;p id="mynode"&gt;test&lt;/p&gt; 
+     &lt;script language="javascript"&gt; 
+     p=document.getElementById("mynode")   
+    ppclone = p.cloneNode(true);  
+     p.parentNode.appendChild(pclone);  
+     &lt;/script&gt; 
+     &lt;/body&gt; 
+&lt;/html&gt; 
+</code></pre>
+
+<h2>replaceChild(newChild, oldChild)</h2>
+
+<p>把当前节点的一个子节点换成另一个节点。</p>
+
+<pre><code>&lt;html&gt; 
+     &lt;body&gt; 
+     &lt;div id="mynode2"&gt; 
+     &lt;span id="orispan"&gt;span&lt;/span&gt; 
+     &lt;/div&gt; 
+     &lt;script language="javascript"&gt; 
+     var orinode=document.getElementById("orispan");  
+     var newnode=document.createElement("p");  
+     var text=document.createTextNode("test ppp ");  
+     newnode.appendChild(text);  
+     document.getElementById("mynode2").replaceChild(newnode, orinode);  
+     &lt;/script&gt; 
+     &lt;/body&gt; 
+&lt;/html&gt; 
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript学习--BOM基础之screen对象(转)]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/03/learn-javascript-bom-base-screen-object/"/>
+    <updated>2014-04-03T21:57:06-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/03/learn-javascript-bom-base-screen-object</id>
+    <content type="html"><![CDATA[<p>screen对象用于获取用户的屏幕信息</p>
+
+<h2>Screen对象</h2>
+
+<ul>
+<li><code>Screen</code>对象是<code>window</code>对象的属性</li>
+</ul>
+
+
+<h2>Screen对象属性</h2>
+
+<ul>
+<li><code>JavaScript</code> <code>availHeight</code> 属性 &mdash;  窗口可以使用的屏幕高度，单位像素</li>
+<li><code>JavaScript</code> <code>availWidth</code> 属性  &mdash;  窗口可以使用的屏幕宽度，单位像素</li>
+<li><code>JavaScript</code> <code>colorDepth</code> 属性  &mdash;  用户浏览器表示的颜色位数，通常为32位(每像素的位数)</li>
+<li><code>JavaScript</code> <code>pixelDepth</code> 属性  &mdash;  用户浏览器表示的颜色位数，通常为32位(每像素的位数)（<code>IE</code>不支持此属性）</li>
+<li><code>JavaScript</code> <code>height</code> 属性  &mdash;  屏幕的高度，单位像素</li>
+<li><code>JavaScript</code> <code>width</code> 属性   &mdash;  屏幕的宽度，单位像素</li>
+</ul>
+
+
+<p><code>availWidth</code>与<code>availHeight</code>属性非常有用，例如：可以使用下面的代码填充用户的屏幕：</p>
+
+<pre><code>window.moveTo(0,0);
+window.resizeTo(screen.availWidth, screen.availHeight);
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript学习--BOM基础之navigator对象(转)]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/03/learn-javascript-bom-base-navigator-object/"/>
+    <updated>2014-04-03T21:52:06-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/03/learn-javascript-bom-base-navigator-object</id>
+    <content type="html"><![CDATA[<p>navigator对象通常用于检测浏览器与操作系统的版本</p>
+
+<h2>Navigator对象</h2>
+
+<ul>
+<li><code>navigator</code>对象是<code>window</code>对象的属性</li>
+<li>由于<code>navigator</code>没有统一的标准，因此各个浏览器都有自己不同的<code>navigator</code>版本，这里只介绍最普遍支持且最常用的</li>
+</ul>
+
+
+<h2>常用的navigator属性</h2>
+
+<ul>
+<li><code>appCodeName</code> &mdash;  浏览器代码名的字符串表示</li>
+<li><code>appName</code> &mdash;  官方浏览器名的字符串表示</li>
+<li><code>appVersion</code>  &mdash;  浏览器版本信息的字符串表示</li>
+<li><code>cookieEnabled</code>   &mdash;  如果启用<code>cookie</code>返回<code>true</code>，否则返回<code>false</code></li>
+<li><code>javaEnabled</code> &mdash;  如果启用<code>java</code>返回<code>true</code>，否则返回<code>false</code></li>
+<li><code>platform</code>    &mdash;  浏览器所在计算机平台的字符串表示</li>
+<li><code>plugins</code> &mdash;  安装在浏览器中的插件数组</li>
+<li><code>taintEnabled</code>    &mdash;  如果启用了数据污点返回<code>true</code>，否则返回<code>false</code></li>
+<li><code>userAgent</code>   &mdash;  用户代理头的字符串表示</li>
+</ul>
+
+
+<p><code>navigator</code>中最重要的是<code>userAgent</code>属性，返回包含浏览器版本等信息的字符串，其次<code>cookieEnabled</code>也很重要，使用它可以判断用户浏览器是否开启<code>cookie</code>。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript学习--BOM基础之location对象(转)]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/02/learn-javascript-bom-base-location-object/"/>
+    <updated>2014-04-02T23:10:06-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/02/learn-javascript-bom-base-location-object</id>
+    <content type="html"><![CDATA[<p>Location用于获取或设置窗体的URL，并且可以用于解析URL，是BOM中最重要的对象之一</p>
+
+<h2>Location对象</h2>
+
+<ul>
+<li><code>Location</code>既是<code>window</code>对象的属性又是<code>document</code>对象的属性</li>
+<li><code>location</code>包含8个属性，其中7个都是当前窗体的<code>URL</code>的一部分，剩下的也是最重要的一个是<code>href</code>属性，代表当前窗体的<code>URL</code></li>
+<li><code>location</code>的8个属性都是可读写的，但是只有<code>href</code>与<code>hash</code>的写才有意义。例如改变<code>location.href</code>会重新定位到一个<code>URL</code>，而修改<code>location.hash</code>会跳到当前页面中的<code>anchor(&lt;a id="name"&gt;</code>或者<code>&lt;div id="id"&gt;</code>等)名字的标记(如果有)，而且页面不会被重新加载</li>
+</ul>
+
+
+<h2>示例</h2>
+
+<pre><code>document.write(window.location==document.location);
+</code></pre>
+
+<h2>Location对象属性图示</h2>
+
+<p><img src="http://dofa.u.qiniudn.com/image/web/window_location.png"></p>
+
+<p>location属性</p>
+
+<ul>
+<li><code>JavaScript</code> <code>hash</code> 属性    &mdash;  返回<code>URL</code>中<code>#</code>符号后面的内容</li>
+<li><code>JavaScript</code> <code>host</code> 属性    &mdash;  返回域名</li>
+<li><code>JavaScript</code> <code>hostname</code> 属性    &mdash;  返回主域名</li>
+<li><code>JavaScript</code> <code>href</code> 属性    &mdash;  返回当前文档的完整<code>URL</code>或设置当前文档的<code>URL</code></li>
+<li><code>JavaScript</code> <code>pathname</code> 属性    &mdash;  返回<code>URL</code>中域名后的部分</li>
+<li><code>JavaScript</code> <code>port</code> 属性    &mdash;  返回<code>URL</code>中的端口</li>
+<li><code>JavaScript</code> <code>protocol</code> 属性    &mdash;  返回<code>URL</code>中的协议</li>
+<li><code>JavaScript</code> <code>search</code> 属性  &mdash;  返回<code>URL</code>中的查询字符串</li>
+<li><code>JavaScript</code> <code>assign()</code>   函数 &mdash;   设置当前文档的<code>URL</code></li>
+<li><code>JavaScript</code> <code>replace()</code> 函数 &mdash;    设置当前文档的<code>URL</code>，并在<code>history</code>对象的地址列表中删除这个<code>URL</code></li>
+<li><code>JavaScript</code> <code>reload()</code>   函数 &mdash;   重新载入当前文档(从<code>server</code>服务器端)</li>
+<li><code>JavaScript</code> <code>toString()</code> 函数 &mdash;   返回<code>location</code>对象<code>href</code>属性当前的值</li>
+</ul>
+
+
+<p>Note: 主域名是不带www的域名，例如dreamdu.com，主域名前面带前缀的通常都为二级域名或多级域名，例如www.dreamdu.com其实是二级域名。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript学习--BOM基础之history对象(转)]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/02/learn-javascript-bom-base-history-object/"/>
+    <updated>2014-04-02T23:00:06-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/02/learn-javascript-bom-base-history-object</id>
+    <content type="html"><![CDATA[<p>History用于窗体中的导航</p>
+
+<h2>History对象</h2>
+
+<ul>
+<li><code>history</code>对象是<code>window</code>对象的属性</li>
+<li>浏览者通常可以使用浏览器的前进与后退按钮访问曾经浏览过的页面。<code>JavaScript</code>的<code>history</code>对象记录了用户曾经浏览过的页面，并可以实现浏览器前进与后退相似的导航功能</li>
+<li>可以通过<code>back</code>函数后退一个页面，<code>forward</code>函数前进一个页面，或者使用<code>go</code>函数任意后退或前进页面，还可以通过<code>length</code>属性查看<code>history</code>对象中存储的页面数</li>
+</ul>
+
+
+<h2>History对象函数</h2>
+
+<ul>
+<li><code>JavaScript</code> <code>history.go()</code> 函数 &mdash; 前进或后退指定的页面数</li>
+<li><code>JavaScript</code> <code>history.back()</code> 函数 &mdash; 后退一页</li>
+<li><code>JavaScript</code> <code>history.forward()</code> 函数 &mdash; 前进一页</li>
+</ul>
+
+
+<h2>History对象属性</h2>
+
+<ul>
+<li><code>JavaScript</code> <code>length</code> 属性 &mdash; <code>history</code>对象中缓存了多少个<code>URL</code></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

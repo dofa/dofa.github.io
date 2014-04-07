@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: virtualbox | Do Far]]></title>
+  <link href="http://blog.dofa.org/tags/virtualbox/atom.xml" rel="self"/>
+  <link href="http://blog.dofa.org/"/>
+  <updated>2014-04-07T02:30:51-07:00</updated>
+  <id>http://blog.dofa.org/</id>
+  <author>
+    <name><![CDATA[dofa]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Vagrant使用简介]]></title>
+    <link href="http://blog.dofa.org/blog/2014/03/08/vagrant-introduction/"/>
+    <updated>2014-03-08T22:21:16-08:00</updated>
+    <id>http://blog.dofa.org/blog/2014/03/08/vagrant-introduction</id>
+    <content type="html"><![CDATA[<h2>Vagrant简介</h2>
+
+<blockquote><p>Vagrant is a tool for building complete development environments. With an easy-to-use workflow and focus on automation, Vagrant lowers development environment setup time, increases development/production parity, and makes the &ldquo;works on my machine&rdquo; excuse a relic of the past.</p></blockquote>
+
+<h2>Vagrant安装</h2>
+
+<h4>virtualbox</h4>
+
+<p><a href="https://www.virtualbox.org">https://www.virtualbox.org</a></p>
+
+<h4>vagrant</h4>
+
+<p><a href="http://www.vagrantup.com">http://www.vagrantup.com</a></p>
+
+<h4>box</h4>
+
+<p><a href="http://www.vagrantbox.es">http://www.vagrantbox.es</a></p>
+
+<h2>Vagrant使用</h2>
+
+<h4>使用下载的box初始化</h4>
+
+<pre><code>vagrant box add precise32 http://files.vagrantup.com/precise32.box
+</code></pre>
+
+<h4>初始化开发环境</h4>
+
+<pre><code>cd ~/dev    #开发目录
+vagrant init precise32
+</code></pre>
+
+<h4>运行Vagrant box</h4>
+
+<pre><code>vagrant up
+</code></pre>
+
+<h4>远程连接到box</h4>
+
+<pre><code>vagrant ssh
+</code></pre>
+
+<h4>其他常用Vagrant命令</h4>
+
+<pre><code>vagrant box add NAME URL            #添加一个box
+vagrant box list                    #查看本地已添加的box
+vagrant box remove NAME virtualbox  #删除本地已添加的box，如若是版本1.0.x，执行$ vagrant box remove  NAME
+vagrant init NAME                   #初始化，实质应是创建Vagrantfile文件         
+vagrant up                          #启动虚拟机
+vagrant halt                        #关闭虚拟机
+vagrant destroy                     #销毁虚拟机
+vagrant reload                      #重启虚拟机
+vagrant package                     #当前正在运行的VirtualBox虚拟环境打包成一个可重复使用的box            
+vagrant ssh                         #进入虚拟环境
+</code></pre>
+
+<h2>Vagrant高级</h2>
+
+<h4>Vagrant配置文件Vagrantfile</h4>
+
+<p>官方解释是这样的：The primary function of the Vagrantfile is to describe the type of machine required for a project, and how to configure and provision these machines。翻译出来太生涩，简单来说就是配置这个虚拟主机网络连接方式，端口转发，同步文件夹，以及怎么和puppet，chef结合的一个配置文件。执行完<code>vagrant init</code>后,在工作目录中,你会发现此文件。</p>
+
+<p>使用V2版本配置：</p>
+
+<p>
+```ruby
+Vagrant.configure(&ldquo;2&rdquo;) do |config|</p>
+
+<pre><code># ...
+</code></pre>
+
+<p>end
+```
+</p>
+
+<h4>配置网络</h4>
+
+<ul>
+<li>端口转发：（假设虚拟机的80端口提供web服务，此处将通过访问物理机的8080端口转发到虚拟机的80端口，来实现web的访问）</li>
+</ul>
+
+
+<p>
+```ruby
+Vagrant.configure(&ldquo;2&rdquo;) do |config|</p>
+
+<pre><code>config.vm.network :forwarded_port, guest: 80, host: 8080
+</code></pre>
+
+<p>end
+```
+</p>
+
+<ul>
+<li>桥接网络（公共网络，局域网DHCP服务器自动分配IP）</li>
+</ul>
+
+
+<p>
+```ruby
+Vagrant.configure(&ldquo;2&rdquo;) do |config|</p>
+
+<pre><code>config.vm.network :public_network
+</code></pre>
+
+<p>end
+```
+</p>
+
+<pre><code>VBoxManage list bridgedifs | grep ^Name    #可通过此命令查看本机的网卡
+</code></pre>
+
+<ul>
+<li>私有网络：允许多个虚拟机通过主机通过网络互相通信，vagrant允许用户分配一个静态IP，然后使用私有网络设置。</li>
+</ul>
+
+
+<p>
+```ruby
+Vagrant.configure(&ldquo;2&rdquo;) do |config|</p>
+
+<pre><code>config.vm.network :private_network, ip: "192.168.50.4"
+</code></pre>
+
+<p>end
+```
+</p>
+
+<h4>同步文件夹</h4>
+
+<p>默认的，vagrant将共享你的工作目录（即Vagrantfile所在的目录）到虚拟机中的/vagrant,所以一般不需配置即可，如你需要可配置：</p>
+
+<p>
+```ruby
+Vagrant.configure(&ldquo;2&rdquo;) do |config|</p>
+
+<pre><code># other config here
+config.vm.synced_folder "src/", "/srv/website"
+</code></pre>
+
+<p>end
+```
+</p>
+
+<p>&ldquo;src/"：物理机目录;&rdquo;/srv/website"虚拟机目录</p>
+]]></content>
+  </entry>
+  
+</feed>

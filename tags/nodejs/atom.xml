@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: nodejs | Do Far]]></title>
+  <link href="http://blog.dofa.org/tags/nodejs/atom.xml" rel="self"/>
+  <link href="http://blog.dofa.org/"/>
+  <updated>2014-04-07T02:30:51-07:00</updated>
+  <id>http://blog.dofa.org/</id>
+  <author>
+    <name><![CDATA[dofa]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[在Windows环境下搭建nodejs环境]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/05/build-nodejs-develop-environment-in-the-windows/"/>
+    <updated>2014-04-05T18:58:25-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/05/build-nodejs-develop-environment-in-the-windows</id>
+    <content type="html"><![CDATA[<h2>Windows环境下安装nodejs环境</h2>
+
+<ul>
+<li><p>到<code>http://nodejs.org/download/</code>下载最新版本的windows安装程序，目前是<code>v0.10.26</code></p></li>
+<li><p><code>v0.10.26</code>版本默认已经安装<code>npm</code>，并添加了<code>PATH</code></p></li>
+<li><p>命令行下测试<code>node</code>和<code>npm</code>（注意系统要更新环境变量，在<code>CMD</code>下执行<code>PATH=c:\</code>退出即可）</p></li>
+</ul>
+
+
+<h2>包安装</h2>
+
+<p>在项目文件下执行：</p>
+
+<pre><code>npm install
+</code></pre>
+
+<h2>有用的命令</h2>
+
+<pre><code>npm start : start a local development web-server
+npm test : start the Karma unit test runner
+npm run protractor : run the Protractor end 2 end tests
+npm update-webdriver : install the drivers needed by Protractor
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

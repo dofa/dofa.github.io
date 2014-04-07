@@ -1,0 +1,474 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>SublimeTableEditor的使用 - Do Far</title>
+  <meta name="author" content="dofa">
+
+  
+  <meta name="description" content="基本的使用方法 要使用该插件 ，需要用 ctrl+shift+p 打开 Table Editor: Enable for current syntax 来激活 插件。 创建表头 输入： | Name | Phone |
+| 然后按下 Tab，插件帮你完成表头格式化： | Name | Phone &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.dofa.org/blog/2014/03/19/use-sublimetableeditor">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/atom.xml" rel="alternate" title="Do Far" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-48748469-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Do Far</a></h1>
+  
+    <h2>There is a will, there is a way.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:blog.dofa.org" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">归档</a></li>
+  <li><a href="/github">Github</a></li>
+  <li><a href="/about">关于我</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">SublimeTableEditor的使用</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-19T07:50:39-07:00" pubdate data-updated="true">Mar 19<span>th</span>, 2014</time>
+        
+        
+           | <a href="#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>基本的使用方法</h2>
+
+<p>要使用该插件 ，需要用 <em>ctrl+shift+p</em> 打开 <em>Table Editor: Enable for current syntax</em> 来激活 插件。</p>
+
+<h4>创建表头</h4>
+
+<p>输入：</p>
+
+<pre><code>| Name | Phone |
+|
+</code></pre>
+
+<p>然后按下 <em>Tab</em>，插件帮你完成表头格式化：</p>
+
+<pre><code>| Name | Phone |
+|------|-------|
+|      |       |
+</code></pre>
+
+<p>更快的创建表头方法：</p>
+
+<pre><code>|Name|Phone
+</code></pre>
+
+<p>然后按下 <em>ctrl+k, enter</em>，你会得到：</p>
+
+<pre><code>| Name | Phone |
+|------|-------|
+|      |       |
+</code></pre>
+
+<p>如果按下 <em>ctrl+k, &ndash;</em>，你会得到：</p>
+
+<pre><code>| Name | Phone |
+|------|-------|
+</code></pre>
+
+<h4>新建行、在table中移动和输入文字后的对其</h4>
+
+<p><em>tab</em> 为向后移动，<em>shift+tab</em> 向后移动，并且可以完成对其和新建行</p>
+
+<h2>对列的操作</h2>
+
+<p><em>alt+shift+right</em>完成新建列，<em>alt+shift+left</em>删除列，<em>alt+right</em>和<em>alt+left</em>完成交换列。</p>
+
+<h4>新建列</h4>
+
+<pre><code>|    Name   |   Phone   |
+|-----------|-----------|
+| Anna      | 123456789 |
+| Alexander | 987654321 |
+|           | _         |
+</code></pre>
+
+<p>如果按下 <em>alt+shift+right</em>，你会得到：</p>
+
+<pre><code>|    Name   |   |   Phone   |
+|-----------|---|-----------|
+| Anna      |   | 123456789 |
+| Alexander |   | 987654321 |
+|           | _ |           |
+</code></pre>
+
+<h4>删除列</h4>
+
+<p>继续按下 <em>alt+shift+left</em>，你会得到：</p>
+
+<pre><code>|    Name   |   Phone   |
+|-----------|-----------|
+| Anna      | 123456789 |
+| Alexander | 987654321 |
+|           | _         |
+</code></pre>
+
+<h4>交换列</h4>
+
+<pre><code>|    Name   | Age |   Phone   |
+|-----------|-----|-----------|
+| Anna      |  32 | 123456789 |
+| Alexander |  28_| 987654321 |
+|           |     |           |
+</code></pre>
+
+<p>继续按下 <em>alt+left</em>，你会得到：</p>
+
+<pre><code>|    Name   | Age |   Phone   |
+|-----------|-----|-----------|
+| Anna      | 32  | 123456789 |
+| Alexander | 28_ | 987654321 |
+|           |     |           |
+</code></pre>
+
+<p>继续按下 <em>alt+right</em>，你会得到：</p>
+
+<pre><code>|    Name   | Age |   Phone   |
+|-----------|-----|-----------|
+| Anna      | 32  | 123456789 |
+| Alexander | 28_ | 987654321 |
+|           |     |           |
+</code></pre>
+
+<h2>对行的操作</h2>
+
+<h4>插入新行</h4>
+
+<pre><code>|    Name   |   Phone   | Age |
+|-----------|-----------|-----|
+| Anna      | 123456789 | 32_ |
+| Alexander | 987654321 | 28  |
+|           |           |     |
+</code></pre>
+
+<p>如果按下 <em>alt+shift+down</em>，你会得到：</p>
+
+<pre><code>|    Name   |   Phone   | Age |
+|-----------|-----------|-----|
+|           |           |     |
+| Anna      | 123456789 | 32_ |
+| Alexander | 987654321 | 28  |
+|           |           |     |
+</code></pre>
+
+<h4>删除行</h4>
+
+<p>移动到要删除的行，</p>
+
+<pre><code>|    Name   |   Phone   | Age |
+|-----------|-----------|-----|
+|           |           | _   |
+| Anna      | 123456789 | 32  |
+| Alexander | 987654321 | 28  |
+|           |           |     |
+</code></pre>
+
+<p>按下 <em>alt+shift+up</em>，你会得到：</p>
+
+<pre><code>|    Name   |   Phone   | Age |
+|-----------|-----------|-----|
+| Anna      | 123456789 |  32 |
+| Alexander | 987654321 |  28 |
+|           |           |     |
+</code></pre>
+
+<h4>插入分割线</h4>
+
+<pre><code>|    Name   |   Phone   | Age |             Position             |
+|-----------|-----------|-----|----------------------------------|
+| Anna      | 123456789 |  32 | Senior Software Engineer_        |
+| Alexander | 987654321 |  28 | Senior Software Testing Engineer |
+|           |           |     |                                  |
+</code></pre>
+
+<p>按下 <em>ctrl+k,&ndash;</em>，得到：</p>
+
+<pre><code>|    Name   |   Phone   | Age |             Position             |
+|-----------|-----------|-----|----------------------------------|
+| Anna      | 123456789 |  32 | Senior Software Engineer_        |
+|-----------|-----------|-----|----------------------------------|
+| Alexander | 987654321 |  28 | Senior Software Testing Engineer |
+|           |           |     |                                  |
+</code></pre>
+
+<h4>单元中内容分行</h4>
+
+<pre><code>|    Name   |   Phone   | Age |              Position             |
+|-----------|-----------|-----|-----------------------------------|
+| Anna      | 123456789 |  32 | Senior Software Engineer          |
+| Alexander | 987654321 |  28 | Senior Software _Testing Engineer |
+|           |           |     |                                   |
+</code></pre>
+
+<p>按下 <em>alt+enter</em>，得到：</p>
+
+<pre><code>|    Name   |   Phone   | Age |         Position         |
+|-----------|-----------|-----|--------------------------|
+| Anna      | 123456789 |  32 | Senior Software Engineer |
+| Alexander | 987654321 |  28 | Senior Software          |
+|           |           |     | Testing Engineer         |
+</code></pre>
+
+<h4>单元中内容合并</h4>
+
+<p>命令为：<em>ctrl+j</em></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">dofa</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-19T07:50:39-07:00" pubdate data-updated="true">Mar 19<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/sublimetext/'>SublimeText</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/03/10/add-statistics-for-octopress/" title="Previous Post: 为Octopress添加统计">&laquo; 为Octopress添加统计</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/03/23/variable-and-template-in-jekyll/" title="Next Post: Jekyll中的变量和模板">Jekyll中的变量和模板 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+  <section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread" data-title=""></div>
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"bitbegin"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<!-- Duoshuo Comment END -->
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/embedded/'>Embedded (5)</a></li>
+<li class='category'><a href='/blog/categories/javascript/'>Javascript (12)</a></li>
+<li class='category'><a href='/blog/categories/jekyll/'>Jekyll (2)</a></li>
+<li class='category'><a href='/blog/categories/nodejs/'>Nodejs (2)</a></li>
+<li class='category'><a href='/blog/categories/octopress/'>Octopress (6)</a></li>
+<li class='category'><a href='/blog/categories/server/'>Server (3)</a></li>
+<li class='category'><a href='/blog/categories/sublimetext/'>SublimeText (5)</a></li>
+<li class='category'><a href='/blog/categories/vim/'>Vim (3)</a></li>
+
+  </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/04/07/learning-angularjs-notes-dynamic-templates/">Angularjs学习笔记-动态模板</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/07/learning-angularjs-notes-static-templates/">Angularjs学习笔记-静态模板</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/05/build-angularjs-develop-environment/">Angularjs入门环境的搭建</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/05/build-nodejs-develop-environment-in-the-windows/">在Windows环境下搭建nodejs环境</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/05/understanding-of-javascript-event-handling/">理解JavaScript中的事件处理</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Tags</h1>
+  <ul class="tag-cloud">
+    <a style="font-size: 125%" href="/tags/angularjs/">Angularjs</a>
+<a style="font-size: 194%" href="/tags/bom/">BOM</a>
+<a style="font-size: 90%" href="/tags/task/">Task</a>
+<a style="font-size: 90%" href="/tags/uos/">Uos</a>
+<a style="font-size: 210%" href="/tags/javascript/">javascript,</a>
+<a style="font-size: 159%" href="/tags/octopress/">octopress</a>
+<a style="font-size: 125%" href="/tags/octopress/">octopress,</a>
+<a style="font-size: 171%" href="/tags/sublime-text/">sublime-text</a>
+<a style="font-size: 145%" href="/tags/tcpip/">tcpip</a>
+<a style="font-size: 145%" href="/tags/vim/">vim</a>
+
+  </ul>
+</section>
+<section>
+<h1>Recent Comments</h1>
+<ul class="ds-recent-comments" data-num-items="10" data-show-avatars="0" data-show-time="0" data-show-title="0" data-show-admin="0" data-excerpt-length="18"></ul>
+
+</section><section>
+<h1>友情链接</h1>
+<ul>
+        <li>
+        <a href="http://blog.jobbole.com/">伯乐在线</a>
+        </li>
+        <li>
+        <a href="http://www.csdn.net/">CSDN</a>
+        </li>
+        <li>
+        <a href="http://www.cnblogs.com/">博客园</a>
+        </li>
+        <li>
+        <a href="http://coolshell.cn/">酷壳CoolShell</a>
+        </li>
+</ul>
+</section>
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - dofa -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1000309119'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s5.cnzz.com/z_stat.php%3Fid%3D1000309119%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

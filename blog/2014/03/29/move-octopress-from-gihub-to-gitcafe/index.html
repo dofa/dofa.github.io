@@ -1,0 +1,317 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>把Octopress从github搬到gitcafe - Do Far</title>
+  <meta name="author" content="dofa">
+
+  
+  <meta name="description" content="其实找就想把octopress博客从github搬到gitcafe了，因为国内访问github的速度实在慢，而且还不时被墙。比如，今天不翻墙就无法访问了。 我采用了比较笨的方法：原本的东西都不需要改动，在一个新的文件夹下 clone github master 分支，增加 gitcafe &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.dofa.org/blog/2014/03/29/move-octopress-from-gihub-to-gitcafe">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/atom.xml" rel="alternate" title="Do Far" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-48748469-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Do Far</a></h1>
+  
+    <h2>There is a will, there is a way.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:blog.dofa.org" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">归档</a></li>
+  <li><a href="/github">Github</a></li>
+  <li><a href="/about">关于我</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">把Octopress从github搬到gitcafe</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-29T01:49:00-07:00" pubdate data-updated="true">Mar 29<span>th</span>, 2014</time>
+        
+        
+           | <a href="#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>其实找就想把<code>octopress</code>博客从<code>github</code>搬到<code>gitcafe</code>了，因为国内访问<code>github</code>的速度实在慢，而且还不时被墙。比如，今天不翻墙就无法访问了。</p>
+
+<p>我采用了比较笨的方法：原本的东西都不需要改动，在一个新的文件夹下 <em>clone github master</em> 分支，增加 <em>gitcafe remote</em>，然后<code>push</code>到<code>gitcafe</code>的<code>gitcafe-pages</code>分支上。</p>
+
+<h2>clone github master</h2>
+
+<p>这个是<code>rake deploy</code>到<code>github</code>上去的文件。</p>
+
+<h2>增加remote</h2>
+
+<pre><code>git remote addd gitcafe git@gitcafe.com:xx/xx
+</code></pre>
+
+<h2>push到gitcafe</h2>
+
+<pre><code>git push gitcafe gitcafe-pages
+</code></pre>
+
+<h2>注意事项</h2>
+
+<h4>在gitcafe上增加ssh密钥</h4>
+
+<p>否则git无法连接</p>
+
+<h4>把指向github的域名改到gitcafe上去</h4>
+
+<p>这样方便再次迁移</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">dofa</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-29T01:49:00-07:00" pubdate data-updated="true">Mar 29<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/octopress/'>Octopress</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/03/27/add-table-for-octopress/" title="Previous Post: Octopress表格设置">&laquo; Octopress表格设置</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/03/30/add-links-for-octopress/" title="Next Post: 为Octopress增加友情链接">为Octopress增加友情链接 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+  <section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread" data-title=""></div>
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"bitbegin"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<!-- Duoshuo Comment END -->
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/embedded/'>Embedded (5)</a></li>
+<li class='category'><a href='/blog/categories/javascript/'>Javascript (12)</a></li>
+<li class='category'><a href='/blog/categories/jekyll/'>Jekyll (2)</a></li>
+<li class='category'><a href='/blog/categories/nodejs/'>Nodejs (2)</a></li>
+<li class='category'><a href='/blog/categories/octopress/'>Octopress (6)</a></li>
+<li class='category'><a href='/blog/categories/server/'>Server (3)</a></li>
+<li class='category'><a href='/blog/categories/sublimetext/'>SublimeText (5)</a></li>
+<li class='category'><a href='/blog/categories/vim/'>Vim (3)</a></li>
+
+  </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/04/07/learning-angularjs-notes-dynamic-templates/">Angularjs学习笔记-动态模板</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/07/learning-angularjs-notes-static-templates/">Angularjs学习笔记-静态模板</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/05/build-angularjs-develop-environment/">Angularjs入门环境的搭建</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/05/build-nodejs-develop-environment-in-the-windows/">在Windows环境下搭建nodejs环境</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/05/understanding-of-javascript-event-handling/">理解JavaScript中的事件处理</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Tags</h1>
+  <ul class="tag-cloud">
+    <a style="font-size: 125%" href="/tags/angularjs/">Angularjs</a>
+<a style="font-size: 194%" href="/tags/bom/">BOM</a>
+<a style="font-size: 90%" href="/tags/task/">Task</a>
+<a style="font-size: 90%" href="/tags/uos/">Uos</a>
+<a style="font-size: 210%" href="/tags/javascript/">javascript,</a>
+<a style="font-size: 159%" href="/tags/octopress/">octopress</a>
+<a style="font-size: 125%" href="/tags/octopress/">octopress,</a>
+<a style="font-size: 171%" href="/tags/sublime-text/">sublime-text</a>
+<a style="font-size: 145%" href="/tags/tcpip/">tcpip</a>
+<a style="font-size: 145%" href="/tags/vim/">vim</a>
+
+  </ul>
+</section>
+<section>
+<h1>Recent Comments</h1>
+<ul class="ds-recent-comments" data-num-items="10" data-show-avatars="0" data-show-time="0" data-show-title="0" data-show-admin="0" data-excerpt-length="18"></ul>
+
+</section><section>
+<h1>友情链接</h1>
+<ul>
+        <li>
+        <a href="http://blog.jobbole.com/">伯乐在线</a>
+        </li>
+        <li>
+        <a href="http://www.csdn.net/">CSDN</a>
+        </li>
+        <li>
+        <a href="http://www.cnblogs.com/">博客园</a>
+        </li>
+        <li>
+        <a href="http://coolshell.cn/">酷壳CoolShell</a>
+        </li>
+</ul>
+</section>
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - dofa -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1000309119'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s5.cnzz.com/z_stat.php%3Fid%3D1000309119%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

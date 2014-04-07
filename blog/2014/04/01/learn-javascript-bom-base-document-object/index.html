@@ -1,0 +1,377 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>JavaScript学习--BOM基础之document对象(转) - Do Far</title>
+  <meta name="author" content="dofa">
+
+  
+  <meta name="description" content="Document用于表现HTML页面当前窗体的内容 Document对象 document是BOM中最重要对象之一
+document对象是window对象的属性
+document对象包含一个节点对象，此对象包含每个单独页面的所有HTML元素，这就是W3C的DOM对象 Document属性 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.dofa.org/blog/2014/04/01/learn-javascript-bom-base-document-object">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/atom.xml" rel="alternate" title="Do Far" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-48748469-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Do Far</a></h1>
+  
+    <h2>There is a will, there is a way.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:blog.dofa.org" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">归档</a></li>
+  <li><a href="/github">Github</a></li>
+  <li><a href="/about">关于我</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">JavaScript学习--BOM基础之document对象(转)</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-01T08:35:06-07:00" pubdate data-updated="true">Apr 1<span>st</span>, 2014</time>
+        
+        
+           | <a href="#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Document用于表现HTML页面当前窗体的内容</p>
+
+<h2>Document对象</h2>
+
+<ul>
+<li><code>document</code>是<code>BOM</code>中最重要对象之一</li>
+<li><code>document</code>对象是<code>window</code>对象的属性</li>
+<li><code>document</code>对象包含一个节点对象，此对象包含每个单独页面的所有<code>HTML</code>元素，这就是W3C的<code>DOM</code>对象</li>
+</ul>
+
+
+<h2>Document属性</h2>
+
+<ul>
+<li><code>cookie</code> &mdash;   用户<code>cookie</code></li>
+<li><code>title</code>   &mdash;  当前页面<code>title</code>标签中定义的文字</li>
+<li><code>URL</code> &mdash;  当前页面的<code>URL</code></li>
+</ul>
+
+
+<p>下面内容的不建议使用</p>
+
+<ul>
+<li><code>alinkColor</code>  &mdash;  代表<code>HTML body</code>标签的<code>alink</code>属性</li>
+<li><code>bgColor</code> &mdash;  代表<code>HTML body</code>标签的<code>bgcolor</code>属性</li>
+<li><code>fgColor</code> &mdash;  代表<code>HTML body</code>标签的<code>text</code>属性</li>
+<li><code>linkColor</code> &mdash;    代表<code>HTML body</code>标签的<code>link</code>属性</li>
+<li><code>vlinkColor</code>  &mdash;  代表<code>HTML body</code>标签的<code>vlink</code>属性</li>
+<li><code>lastModified</code>    &mdash; 页面最后修改的日期字符串，可以使用<code>Date</code>的构造函数转换为日期，例如：<code>new Date(document.lastModified);</code></li>
+<li><code>referrer</code>    &mdash;  浏览器<code>history</code>中后退一个位置的<code>URL</code></li>
+</ul>
+
+
+<p>由于document代表HTML文档的内容，因此可以通过它表示文档中加载的一些元素，这些元素全部通过集合访问。</p>
+
+<ul>
+<li><code>anchors</code> &mdash;  文档中所有锚(a name=&ldquo;aname&rdquo;)的集合</li>
+<li><code>applets</code> &mdash;  文档中所有<code>applet</code>标签表示的内容的集合</li>
+<li><code>embeds</code>  &mdash;  文档中所有<code>embed</code>标签表示的内容的集合</li>
+<li><code>forms</code>   &mdash;  文档中所有<code>form</code>标签表示的内容的集合</li>
+<li><code>images</code>  &mdash;  文档中所有<code>image</code>标签表示的内容的集合</li>
+<li><code>links</code>   &mdash; 文档中所有<code>a</code>(链接)标签表示的内容的集合</li>
+</ul>
+
+
+<h2>Document函数</h2>
+
+<ul>
+<li><code>JavaScript</code> <code>write()</code> 函数</li>
+<li><code>JavaScript</code> <code>writeln()</code> 函数</li>
+<li><code>JavaScript</code> <code>document.open()</code> 函数</li>
+<li><code>JavaScript</code> <code>document.close()</code> 函数</li>
+</ul>
+
+
+<h2>使用document索引页面内的元素</h2>
+
+<p>可以使用数字或名称索引页面中的元素集合，每个元素的属性都变成了集合中相应对象的属性。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;form</span> <span class="na">name=</span><span class="s">&quot;form1&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://www.dreamdu.com/xhtml/&quot;</span> <span class="na">name=</span><span class="s">&quot;a1&quot;</span><span class="nt">&gt;</span>xhtml<span class="nt">&lt;/a&gt;&lt;/form&gt;</span>
+</span><span class='line'><span class="nt">&lt;form</span> <span class="na">name=</span><span class="s">&quot;form2&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://www.dreamdu.com/css/&quot;</span> <span class="na">name=</span><span class="s">&quot;a2&quot;</span><span class="nt">&gt;</span>css<span class="nt">&lt;/a&gt;&lt;/form&gt;</span>
+</span><span class='line'><span class="nt">&lt;form</span> <span class="na">name=</span><span class="s">&quot;form3&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://www.dreamdu.com/javascript/&quot;</span> <span class="na">name=</span><span class="s">&quot;a3&quot;</span><span class="nt">&gt;</span>javascript<span class="nt">&lt;/a&gt;&lt;/form&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">value=</span><span class="s">&quot;显示第二个表单的名称&quot;</span> <span class="na">onclick=</span><span class="s">&quot;alert(document.forms[1].name)&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">value=</span><span class="s">&quot;显示第二个表单的名称第二种方法&quot;</span> <span class="na">onclick=</span><span class="s">&quot;alert(document.forms[&#39;form2&#39;].name)&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">value=</span><span class="s">&quot;显示第三个链接的名称&quot;</span> <span class="na">onclick=</span><span class="s">&quot;alert(document.links[2].name)&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">value=</span><span class="s">&quot;显示第三个链接的名称第二种方法&quot;</span> <span class="na">onclick=</span><span class="s">&quot;alert(document.links[&#39;a3&#39;].name)&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">value=</span><span class="s">&quot;显示第三个链接href属性的值&quot;</span> <span class="na">onclick=</span><span class="s">&quot;alert(document.links[2].href)&quot;</span> <span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>表示第二个表单的方法：<code>document.forms[1]或document.forms["form2"]</code></p>
+
+<p>表示第三个链接的方法：<code>document.links[2]或document.links["a3"]</code></p>
+
+<p>表示第三个链接<code>href</code>属性的方法：<code>document.links[2].href</code></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">dofa</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-01T08:35:06-07:00" pubdate data-updated="true">Apr 1<span>st</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/javascript/'>Javascript</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/03/31/learn-javascript-bom-base-window-object/" title="Previous Post: JavaScript学习--BOM基础之window对象(转)">&laquo; JavaScript学习--BOM基础之window对象(转)</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/04/02/learn-javascript-bom-base-frames-object/" title="Next Post: JavaScript学习--BOM基础之frames对象(转)">JavaScript学习--BOM基础之frames对象(转) &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+  <section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread" data-title=""></div>
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"bitbegin"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<!-- Duoshuo Comment END -->
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/embedded/'>Embedded (5)</a></li>
+<li class='category'><a href='/blog/categories/javascript/'>Javascript (12)</a></li>
+<li class='category'><a href='/blog/categories/jekyll/'>Jekyll (2)</a></li>
+<li class='category'><a href='/blog/categories/nodejs/'>Nodejs (2)</a></li>
+<li class='category'><a href='/blog/categories/octopress/'>Octopress (6)</a></li>
+<li class='category'><a href='/blog/categories/server/'>Server (3)</a></li>
+<li class='category'><a href='/blog/categories/sublimetext/'>SublimeText (5)</a></li>
+<li class='category'><a href='/blog/categories/vim/'>Vim (3)</a></li>
+
+  </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/04/07/learning-angularjs-notes-dynamic-templates/">Angularjs学习笔记-动态模板</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/07/learning-angularjs-notes-static-templates/">Angularjs学习笔记-静态模板</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/05/build-angularjs-develop-environment/">Angularjs入门环境的搭建</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/05/build-nodejs-develop-environment-in-the-windows/">在Windows环境下搭建nodejs环境</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/05/understanding-of-javascript-event-handling/">理解JavaScript中的事件处理</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Tags</h1>
+  <ul class="tag-cloud">
+    <a style="font-size: 125%" href="/tags/angularjs/">Angularjs</a>
+<a style="font-size: 194%" href="/tags/bom/">BOM</a>
+<a style="font-size: 90%" href="/tags/task/">Task</a>
+<a style="font-size: 90%" href="/tags/uos/">Uos</a>
+<a style="font-size: 210%" href="/tags/javascript/">javascript,</a>
+<a style="font-size: 159%" href="/tags/octopress/">octopress</a>
+<a style="font-size: 125%" href="/tags/octopress/">octopress,</a>
+<a style="font-size: 171%" href="/tags/sublime-text/">sublime-text</a>
+<a style="font-size: 145%" href="/tags/tcpip/">tcpip</a>
+<a style="font-size: 145%" href="/tags/vim/">vim</a>
+
+  </ul>
+</section>
+<section>
+<h1>Recent Comments</h1>
+<ul class="ds-recent-comments" data-num-items="10" data-show-avatars="0" data-show-time="0" data-show-title="0" data-show-admin="0" data-excerpt-length="18"></ul>
+
+</section><section>
+<h1>友情链接</h1>
+<ul>
+        <li>
+        <a href="http://blog.jobbole.com/">伯乐在线</a>
+        </li>
+        <li>
+        <a href="http://www.csdn.net/">CSDN</a>
+        </li>
+        <li>
+        <a href="http://www.cnblogs.com/">博客园</a>
+        </li>
+        <li>
+        <a href="http://coolshell.cn/">酷壳CoolShell</a>
+        </li>
+</ul>
+</section>
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - dofa -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1000309119'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s5.cnzz.com/z_stat.php%3Fid%3D1000309119%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

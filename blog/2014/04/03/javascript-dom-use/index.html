@@ -1,0 +1,413 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>JavaScript DOM基础操作实例 - Do Far</title>
+  <meta name="author" content="dofa">
+
+  
+  <meta name="description" content="文档对象模型(Document Object Model)，通常简称为DOM，是网站内容与JavaScript互通的接口。自JavaScript成为最常用的语言时JavaScript和DOM通常被视为独立的实体。DOM接口用于存取、遍历和控制HTML和XML文档。 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.dofa.org/blog/2014/04/03/javascript-dom-use">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/atom.xml" rel="alternate" title="Do Far" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-48748469-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Do Far</a></h1>
+  
+    <h2>There is a will, there is a way.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:blog.dofa.org" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">归档</a></li>
+  <li><a href="/github">Github</a></li>
+  <li><a href="/about">关于我</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">JavaScript DOM基础操作实例</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-03T23:25:06-07:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2014</time>
+        
+        
+           | <a href="#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>文档对象模型(Document Object Model)，通常简称为DOM，是网站内容与JavaScript互通的接口。自JavaScript成为最常用的语言时JavaScript和DOM通常被视为独立的实体。DOM接口用于存取、遍历和控制HTML和XML文档。下面我们将简单的介绍一些JavaScript DOM的基本操作实例，包括建立、增加、删除、克隆、访问节点等等。</p>
+
+<h2>getElementById(id)</h2>
+
+<p>这是通过<code>id</code>来访问某一元素，最常用的之一，例：</p>
+
+<pre><code>&lt;html&gt; 
+         &lt;body&gt; 
+         &lt;div id="myid"&gt; 
+         test  
+         &lt;/div&gt; 
+         &lt;script language="javascript"&gt; 
+         alert(document.getElementById("myid").innerHTML);  
+         &lt;/script&gt; 
+         &lt;/body&gt; 
+&lt;/html&gt; 
+</code></pre>
+
+<p>注意点：如果元素的<code>ID</code>不是唯一，则会取得第一个该<code>ID</code>名称的元素。</p>
+
+<h2>getElementsByName(name)</h2>
+
+<p>这是通过<code>name</code>来取得某一堆元素（作为数组），看 <code>Element</code>后面有个小<code>s</code>就知道了，<code>ID</code>是<code>HTML</code>文档中要求唯一的，<code>name</code>可以不是唯一，如<code>checkbox</code>、<code>radio</code>等地方会用到多个<code>input</code>用同一个<code>name</code>来识别是否为同党。对了，<code>getElementsByName(name)</code>仅用于取得<code>input</code>、<code>radio</code>、 <code>checkbox</code>等元素，如</p>
+
+<pre><code>&lt;input name="myradio" type="radio" /&gt;。
+</code></pre>
+
+<h2>getElementsByTagName(tagname)</h2>
+
+<p>看这方法就知道这也是取得某一堆元素（作为数组），是通过<code>TagName</code>也就是标签名来取得。你可以遍历这个数组获得每一个单独的元素。当一个<code>DOM</code>结构很大时，可以通过它来有效地缩小搜查范围。</p>
+
+<pre><code>&lt;html&gt;           
+     &lt;head&gt; 
+     &lt;script&gt; 
+     function test() {  
+     testall=document.getElementsByTagName("body");  
+     testbody=testall.item(0); //获得所有tagName是body的元素（当然每个页面只有一个）  
+     testall=testbody.getElementsByTagName("p");// 获得body子元素种的所有P元素  
+     testnode=testall.item(1); // 获得第二个P元素           
+     alert(testnode.firstChild.nodeValue); //显示这个元素的文本         }  
+     &lt;/script&gt; 
+     &lt;/head&gt; 
+     &lt;body&gt; 
+     &lt;p&gt;hi&lt;/p&gt; 
+     &lt;p&gt;hello&lt;/p&gt; 
+     &lt;script language="javascript"&gt; 
+     test();  
+     &lt;/script&gt; 
+     &lt;/body&gt; 
+&lt;/html&gt; 
+</code></pre>
+
+<h2>appendChild(node)</h2>
+
+<p>向当前的元素（应该叫对象比较恰当）追加节点。</p>
+
+<pre><code>&lt;html&gt; 
+     &lt;body&gt; 
+     &lt;head&gt; 
+     &lt;/head&gt; 
+     &lt;div id="test"&gt;&lt;/div&gt; 
+     &lt;script type="text/javascript"&gt; 
+     var newdiv=document.createElement("div")  
+     var newtext=document.createTextNode("A new div")           
+     newdiv.appendChild(newtext)  
+     document.getElementById("test").appendChild(newdiv)  
+     &lt;/script&gt; 
+     &lt;/body&gt; 
+&lt;/html&gt; 
+</code></pre>
+
+<p>刚才我在第一个例子中为了显示出内容，用了<code>innerHTML</code>，刚才看到文章才得知<code>innerHTMl</code>不属于<code>DOM</code>。</p>
+
+<h2>removeChild(childreference)</h2>
+
+<p>删除当前节点的子节点，返回被删除的节点。这个被删除的节点可以被插入到别的地方。</p>
+
+<pre><code>&lt;html&gt; 
+     &lt;body&gt; 
+     &lt;div id="parent"&gt;&lt;div id="child"&gt;A child&lt;/div&gt;&lt;/div&gt; 
+     &lt;script language="javascript"&gt; 
+     var childnode=document.getElementById("child")  
+     var removednode=document.getElementById("parent").removeChild(childnode)  
+     &lt;/script&gt; 
+     &lt;/body&gt; 
+&lt;/html&gt; 
+</code></pre>
+
+<h2>cloneNode(deepBoolean)</h2>
+
+<p>复制并返回当前节点的复制节点，复制节点是一个孤立节点，它复制了原节点的属性，在把这个新节点加入到<code>document</code>前，根据需要修改<code>ID</code>属性确保其<code>ID</code>的唯一。这个方法支持一个布尔参数，当<code>deepBoolean</code>设置<code>true</code>时，复制当前节点的所有子节点，包括该节点内的文本。</p>
+
+<pre><code>&lt;html&gt; 
+     &lt;body&gt; 
+     &lt;p id="mynode"&gt;test&lt;/p&gt; 
+     &lt;script language="javascript"&gt; 
+     p=document.getElementById("mynode")   
+    ppclone = p.cloneNode(true);  
+     p.parentNode.appendChild(pclone);  
+     &lt;/script&gt; 
+     &lt;/body&gt; 
+&lt;/html&gt; 
+</code></pre>
+
+<h2>replaceChild(newChild, oldChild)</h2>
+
+<p>把当前节点的一个子节点换成另一个节点。</p>
+
+<pre><code>&lt;html&gt; 
+     &lt;body&gt; 
+     &lt;div id="mynode2"&gt; 
+     &lt;span id="orispan"&gt;span&lt;/span&gt; 
+     &lt;/div&gt; 
+     &lt;script language="javascript"&gt; 
+     var orinode=document.getElementById("orispan");  
+     var newnode=document.createElement("p");  
+     var text=document.createTextNode("test ppp ");  
+     newnode.appendChild(text);  
+     document.getElementById("mynode2").replaceChild(newnode, orinode);  
+     &lt;/script&gt; 
+     &lt;/body&gt; 
+&lt;/html&gt; 
+</code></pre>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">dofa</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-03T23:25:06-07:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/javascript/'>Javascript</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/04/03/javascript-dom-cheat-sheet/" title="Previous Post: JavaScript DOM cheat sheet">&laquo; JavaScript DOM cheat sheet</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/04/05/understanding-of-javascript-event-handling/" title="Next Post: 理解JavaScript中的事件处理">理解JavaScript中的事件处理 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+  <section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread" data-title=""></div>
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"bitbegin"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<!-- Duoshuo Comment END -->
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/embedded/'>Embedded (5)</a></li>
+<li class='category'><a href='/blog/categories/javascript/'>Javascript (12)</a></li>
+<li class='category'><a href='/blog/categories/jekyll/'>Jekyll (2)</a></li>
+<li class='category'><a href='/blog/categories/nodejs/'>Nodejs (2)</a></li>
+<li class='category'><a href='/blog/categories/octopress/'>Octopress (6)</a></li>
+<li class='category'><a href='/blog/categories/server/'>Server (3)</a></li>
+<li class='category'><a href='/blog/categories/sublimetext/'>SublimeText (5)</a></li>
+<li class='category'><a href='/blog/categories/vim/'>Vim (3)</a></li>
+
+  </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/04/07/learning-angularjs-notes-dynamic-templates/">Angularjs学习笔记-动态模板</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/07/learning-angularjs-notes-static-templates/">Angularjs学习笔记-静态模板</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/05/build-angularjs-develop-environment/">Angularjs入门环境的搭建</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/05/build-nodejs-develop-environment-in-the-windows/">在Windows环境下搭建nodejs环境</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/05/understanding-of-javascript-event-handling/">理解JavaScript中的事件处理</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Tags</h1>
+  <ul class="tag-cloud">
+    <a style="font-size: 125%" href="/tags/angularjs/">Angularjs</a>
+<a style="font-size: 194%" href="/tags/bom/">BOM</a>
+<a style="font-size: 90%" href="/tags/task/">Task</a>
+<a style="font-size: 90%" href="/tags/uos/">Uos</a>
+<a style="font-size: 210%" href="/tags/javascript/">javascript,</a>
+<a style="font-size: 159%" href="/tags/octopress/">octopress</a>
+<a style="font-size: 125%" href="/tags/octopress/">octopress,</a>
+<a style="font-size: 171%" href="/tags/sublime-text/">sublime-text</a>
+<a style="font-size: 145%" href="/tags/tcpip/">tcpip</a>
+<a style="font-size: 145%" href="/tags/vim/">vim</a>
+
+  </ul>
+</section>
+<section>
+<h1>Recent Comments</h1>
+<ul class="ds-recent-comments" data-num-items="10" data-show-avatars="0" data-show-time="0" data-show-title="0" data-show-admin="0" data-excerpt-length="18"></ul>
+
+</section><section>
+<h1>友情链接</h1>
+<ul>
+        <li>
+        <a href="http://blog.jobbole.com/">伯乐在线</a>
+        </li>
+        <li>
+        <a href="http://www.csdn.net/">CSDN</a>
+        </li>
+        <li>
+        <a href="http://www.cnblogs.com/">博客园</a>
+        </li>
+        <li>
+        <a href="http://coolshell.cn/">酷壳CoolShell</a>
+        </li>
+</ul>
+</section>
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - dofa -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1000309119'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s5.cnzz.com/z_stat.php%3Fid%3D1000309119%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

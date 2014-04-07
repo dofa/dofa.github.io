@@ -1,116 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>Do Far</title>
-  <meta name="author" content="dofa">
-
-  
-  <meta name="description" content="AngularJS应用使用模型-视图-控制器（MVC）模式解耦代码和分离关注点。 视图和模板 在AngularJS中，一个视图是模型通过HTML模板渲染之后的映射。这意味着，不论模型什么时候发生变化，AngularJS会实时更新结合点，随之更新视图。 &hellip;">
-  
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-  <link rel="canonical" href="http://blog.dofa.org">
-  <link href="/favicon.ico" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
-  <link href="/atom.xml" rel="alternate" title="Do Far" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-48748469-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-
-
-</head>
-
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">Do Far</a></h1>
-  
-    <h2>There is a will, there is a way.</h2>
-  
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:blog.dofa.org" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">首页</a></li>
-  <li><a href="/blog/archives">归档</a></li>
-  <li><a href="/github">Github</a></li>
-  <li><a href="/about">关于我</a></li>
-</ul>
-
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
-  
-  
-  
-    <article>
-      
-  <header>
+  <title><![CDATA[Category: Javascript | Do Far]]></title>
+  <link href="http://blog.dofa.org/blog/categories/javascript/atom.xml" rel="self"/>
+  <link href="http://blog.dofa.org/"/>
+  <updated>2014-04-07T02:30:51-07:00</updated>
+  <id>http://blog.dofa.org/</id>
+  <author>
+    <name><![CDATA[dofa]]></name>
     
-      <h1 class="entry-title"><a href="/blog/2014/04/07/learning-angularjs-notes-dynamic-templates/">Angularjs学习笔记-动态模板</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
 
   
-
-
-<time datetime="2014-04-07T16:10:10-07:00" pubdate data-updated="true">Apr 7<span>th</span>, 2014</time>
-        
-        
-           | <a href="/blog/2014/04/07/learning-angularjs-notes-dynamic-templates/#comments">Comments</a>
-                
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>AngularJS应用使用模型-视图-控制器（MVC）模式解耦代码和分离关注点。</p>
+  <entry>
+    <title type="html"><![CDATA[Angularjs学习笔记-动态模板]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/07/learning-angularjs-notes-dynamic-templates/"/>
+    <updated>2014-04-07T16:10:10-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/07/learning-angularjs-notes-dynamic-templates</id>
+    <content type="html"><![CDATA[<p>AngularJS应用使用模型-视图-控制器（MVC）模式解耦代码和分离关注点。</p>
 
 <h2>视图和模板</h2>
 
@@ -130,7 +38,7 @@
 
   &lt;ul&gt;
     &lt;li ng-repeat="phone in phones"&gt;
-
+      
       &lt;p&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ul&gt;
@@ -139,7 +47,7 @@
 &lt;/html&gt;
 </code></pre>
 
-<p>我们刚刚把静态编码的手机列表替换掉了，因为这里我们使用<code>ngRepeat</code>指令和两个用花括号包裹起来的<code>AngularJS</code>表达式——<code>和</code>——能达到同样的效果。</p>
+<p>我们刚刚把静态编码的手机列表替换掉了，因为这里我们使用<code>ngRepeat</code>指令和两个用花括号包裹起来的<code>AngularJS</code>表达式——<code></code>和<code></code>——能达到同样的效果。</p>
 
 <p>在<code>&lt;li&gt;</code>标签里面的<code>ng-repeat="phone in phones"</code>语句是一个<code>AngularJS</code>迭代器。这个迭代器告诉<code>AngularJS</code>用第一个<code>&lt;li&gt;</code>标签作为模板为列表中的每一部手机创建一个<code>&lt;li&gt;</code>元素。
 正如我们在第0步时学到的，包裹在<code>phone.name</code>和<code>phone.snippet</code>周围的花括号标识着数据绑定。和常量计算不同的是，这里的表达式实际上是我们应用的一个数据模型引用，这些我们在<code>PhoneListCtrl</code>控制器里面都设置好了。</p>
@@ -273,216 +181,28 @@ npm config set strict-ssl false
 <h2>Angularjs动态模板演示</h2>
 
 <p><a href="/phonecat/step-2/app/">Angularjs动态模板</a></p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/04/07/learning-angularjs-notes-static-templates/">Angularjs学习笔记-静态模板</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-07T15:57:25-07:00" pubdate data-updated="true">Apr 7<span>th</span>, 2014</time>
-        
-        
-           | <a href="/blog/2014/04/07/learning-angularjs-notes-static-templates/#comments">Comments</a>
-                
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Angularjs下静态页面的创建和普通<code>HTML</code>页面相同，可以直接看效果。</p>
+  <entry>
+    <title type="html"><![CDATA[Angularjs学习笔记-静态模板]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/07/learning-angularjs-notes-static-templates/"/>
+    <updated>2014-04-07T15:57:25-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/07/learning-angularjs-notes-static-templates</id>
+    <content type="html"><![CDATA[<p>Angularjs下静态页面的创建和普通<code>HTML</code>页面相同，可以直接看效果。</p>
 
 <h2>Angularjs静态模板演示</h2>
 
 <p><a href="/phonecat/step-1/app/">Angularjs静态模板</a></p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/04/05/build-angularjs-develop-environment/">Angularjs入门环境的搭建</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-05T19:20:25-07:00" pubdate data-updated="true">Apr 5<span>th</span>, 2014</time>
-        
-        
-           | <a href="/blog/2014/04/05/build-angularjs-develop-environment/#comments">Comments</a>
-                
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>git clone &ldquo;PhoneCat Tutorial App&rdquo;</h2>
-
-<pre><code>git clone https://github.com/angular/angular-phonecat.git
-</code></pre>
-
-<h2>包安装</h2>
-
-<p>在angular-phonecat目录下安装包：</p>
-
-<pre><code>cd angular-phonecat
-
-npm install -d
-</code></pre>
-
-<h2>本地浏览</h2>
-
-<p>开启服务</p>
-
-<pre><code>npm start
-</code></pre>
-
-<p>在浏览器中输入：</p>
-
-<pre><code>http://localhost:8000/app/index.html
-</code></pre>
-
-<h2>phonecat最终效果演示</h2>
-
-<p><a href="/phonecat/step-12/app/#/phones">angularjs phonecat</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/04/05/build-nodejs-develop-environment-in-the-windows/">在Windows环境下搭建nodejs环境</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-05T18:58:25-07:00" pubdate data-updated="true">Apr 5<span>th</span>, 2014</time>
-        
-        
-           | <a href="/blog/2014/04/05/build-nodejs-develop-environment-in-the-windows/#comments">Comments</a>
-                
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Windows环境下安装nodejs环境</h2>
-
-<ul>
-<li><p>到<code>http://nodejs.org/download/</code>下载最新版本的windows安装程序，目前是<code>v0.10.26</code></p></li>
-<li><p><code>v0.10.26</code>版本默认已经安装<code>npm</code>，并添加了<code>PATH</code></p></li>
-<li><p>命令行下测试<code>node</code>和<code>npm</code>（注意系统要更新环境变量，在<code>CMD</code>下执行<code>PATH=c:\</code>退出即可）</p></li>
-</ul>
-
-
-<h2>包安装</h2>
-
-<p>在项目文件下执行：</p>
-
-<pre><code>npm install
-</code></pre>
-
-<h2>有用的命令</h2>
-
-<pre><code>npm start : start a local development web-server
-npm test : start the Karma unit test runner
-npm run protractor : run the Protractor end 2 end tests
-npm update-webdriver : install the drivers needed by Protractor
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/04/05/understanding-of-javascript-event-handling/">理解JavaScript中的事件处理</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-05T09:37:25-07:00" pubdate data-updated="true">Apr 5<span>th</span>, 2014</time>
-        
-        
-           | <a href="/blog/2014/04/05/understanding-of-javascript-event-handling/#comments">Comments</a>
-                
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>这篇文章对于了解Javascript的事件处理机制非常好，将它全文转载于此，以备不时之需。</p>
+  <entry>
+    <title type="html"><![CDATA[理解JavaScript中的事件处理]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/05/understanding-of-javascript-event-handling/"/>
+    <updated>2014-04-05T09:37:25-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/05/understanding-of-javascript-event-handling</id>
+    <content type="html"><![CDATA[<p>这篇文章对于了解Javascript的事件处理机制非常好，将它全文转载于此，以备不时之需。</p>
 
 <h2>什么是事件？</h2>
 
@@ -580,7 +300,7 @@ link.onclick=function(){
 
 <p>如果在<code>HTML</code>中分配事件句柄的话，则直接通过<code>HTML</code>属性来设置事件处理函数就行了，并在其中包含合适的脚本作为特性值就可以了，例如：</p>
 
-<pre><code>&lt;a href="/" onclick="JavaScript code here"&gt;......&lt;/a&gt;
+<pre><code>&lt;a href="http://blog.dofa.org/" onclick="JavaScript code here"&gt;......&lt;/a&gt;
 </code></pre>
 
 <p>这种<code>JavaScript</code>代码和通过<code>HTML</code>的<code>style</code>属性直接将<code>CSS</code>属性赋给元素类似。这样会代码看起来一团糟，也违背了将实现动态行为的代码与显示文档静态内容的代码相分离的原则。从1998年开始，这种写法就过时了。</p>
@@ -896,45 +616,15 @@ EventUtil.addHandler(div2, 'click', function(event){
 </code></pre>
 
 <p>以上代码中的监听函数由于是捕获型传递时被调用的,所以点击红色区域后,虽然事件源是<code>ID</code>为<code>event_source</code>的元素,但捕获型选传递,从最顶层开始,body结点监听函数先被调用,并且取消了事件进一步向下传递,所以只会出现 <code>current is body</code>。</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/04/03/javascript-dom-use/">JavaScript DOM基础操作实例</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-03T23:25:06-07:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2014</time>
-        
-        
-           | <a href="/blog/2014/04/03/javascript-dom-use/#comments">Comments</a>
-                
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>文档对象模型(Document Object Model)，通常简称为DOM，是网站内容与JavaScript互通的接口。自JavaScript成为最常用的语言时JavaScript和DOM通常被视为独立的实体。DOM接口用于存取、遍历和控制HTML和XML文档。下面我们将简单的介绍一些JavaScript DOM的基本操作实例，包括建立、增加、删除、克隆、访问节点等等。</p>
+  <entry>
+    <title type="html"><![CDATA[JavaScript DOM基础操作实例]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/03/javascript-dom-use/"/>
+    <updated>2014-04-03T23:25:06-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/03/javascript-dom-use</id>
+    <content type="html"><![CDATA[<p>文档对象模型(Document Object Model)，通常简称为DOM，是网站内容与JavaScript互通的接口。自JavaScript成为最常用的语言时JavaScript和DOM通常被视为独立的实体。DOM接口用于存取、遍历和控制HTML和XML文档。下面我们将简单的介绍一些JavaScript DOM的基本操作实例，包括建立、增加、删除、克隆、访问节点等等。</p>
 
 <h2>getElementById(id)</h2>
 
@@ -1057,381 +747,16 @@ EventUtil.addHandler(div2, 'click', function(event){
      &lt;/body&gt; 
 &lt;/html&gt; 
 </code></pre>
-</div>
+]]></content>
+  </entry>
   
+  <entry>
+    <title type="html"><![CDATA[JavaScript DOM cheat sheet]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/03/javascript-dom-cheat-sheet/"/>
+    <updated>2014-04-03T23:02:06-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/03/javascript-dom-cheat-sheet</id>
+    <content type="html"><![CDATA[<p><img src="http://dofa.u.qiniudn.com/image/web/JavaScript-DOM-Cheatsheet.png"></p>
+]]></content>
+  </entry>
   
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/04/03/javascript-dom-cheat-sheet/">JavaScript DOM cheat sheet</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-03T23:02:06-07:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2014</time>
-        
-        
-           | <a href="/blog/2014/04/03/javascript-dom-cheat-sheet/#comments">Comments</a>
-                
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="http://dofa.u.qiniudn.com/image/web/JavaScript-DOM-Cheatsheet.png"></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/04/03/learn-javascript-bom-base-screen-object/">JavaScript学习&#8211;BOM基础之screen对象(转)</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-03T21:57:06-07:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2014</time>
-        
-        
-           | <a href="/blog/2014/04/03/learn-javascript-bom-base-screen-object/#comments">Comments</a>
-                
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>screen对象用于获取用户的屏幕信息</p>
-
-<h2>Screen对象</h2>
-
-<ul>
-<li><code>Screen</code>对象是<code>window</code>对象的属性</li>
-</ul>
-
-
-<h2>Screen对象属性</h2>
-
-<ul>
-<li><code>JavaScript</code> <code>availHeight</code> 属性 &mdash;  窗口可以使用的屏幕高度，单位像素</li>
-<li><code>JavaScript</code> <code>availWidth</code> 属性  &mdash;  窗口可以使用的屏幕宽度，单位像素</li>
-<li><code>JavaScript</code> <code>colorDepth</code> 属性  &mdash;  用户浏览器表示的颜色位数，通常为32位(每像素的位数)</li>
-<li><code>JavaScript</code> <code>pixelDepth</code> 属性  &mdash;  用户浏览器表示的颜色位数，通常为32位(每像素的位数)（<code>IE</code>不支持此属性）</li>
-<li><code>JavaScript</code> <code>height</code> 属性  &mdash;  屏幕的高度，单位像素</li>
-<li><code>JavaScript</code> <code>width</code> 属性   &mdash;  屏幕的宽度，单位像素</li>
-</ul>
-
-
-<p><code>availWidth</code>与<code>availHeight</code>属性非常有用，例如：可以使用下面的代码填充用户的屏幕：</p>
-
-<pre><code>window.moveTo(0,0);
-window.resizeTo(screen.availWidth, screen.availHeight);
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/04/03/learn-javascript-bom-base-navigator-object/">JavaScript学习&#8211;BOM基础之navigator对象(转)</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-03T21:52:06-07:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2014</time>
-        
-        
-           | <a href="/blog/2014/04/03/learn-javascript-bom-base-navigator-object/#comments">Comments</a>
-                
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>navigator对象通常用于检测浏览器与操作系统的版本</p>
-
-<h2>Navigator对象</h2>
-
-<ul>
-<li><code>navigator</code>对象是<code>window</code>对象的属性</li>
-<li>由于<code>navigator</code>没有统一的标准，因此各个浏览器都有自己不同的<code>navigator</code>版本，这里只介绍最普遍支持且最常用的</li>
-</ul>
-
-
-<h2>常用的navigator属性</h2>
-
-<ul>
-<li><code>appCodeName</code> &mdash;  浏览器代码名的字符串表示</li>
-<li><code>appName</code> &mdash;  官方浏览器名的字符串表示</li>
-<li><code>appVersion</code>  &mdash;  浏览器版本信息的字符串表示</li>
-<li><code>cookieEnabled</code>   &mdash;  如果启用<code>cookie</code>返回<code>true</code>，否则返回<code>false</code></li>
-<li><code>javaEnabled</code> &mdash;  如果启用<code>java</code>返回<code>true</code>，否则返回<code>false</code></li>
-<li><code>platform</code>    &mdash;  浏览器所在计算机平台的字符串表示</li>
-<li><code>plugins</code> &mdash;  安装在浏览器中的插件数组</li>
-<li><code>taintEnabled</code>    &mdash;  如果启用了数据污点返回<code>true</code>，否则返回<code>false</code></li>
-<li><code>userAgent</code>   &mdash;  用户代理头的字符串表示</li>
-</ul>
-
-
-<p><code>navigator</code>中最重要的是<code>userAgent</code>属性，返回包含浏览器版本等信息的字符串，其次<code>cookieEnabled</code>也很重要，使用它可以判断用户浏览器是否开启<code>cookie</code>。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/04/02/learn-javascript-bom-base-location-object/">JavaScript学习&#8211;BOM基础之location对象(转)</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-02T23:10:06-07:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2014</time>
-        
-        
-           | <a href="/blog/2014/04/02/learn-javascript-bom-base-location-object/#comments">Comments</a>
-                
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Location用于获取或设置窗体的URL，并且可以用于解析URL，是BOM中最重要的对象之一</p>
-
-<h2>Location对象</h2>
-
-<ul>
-<li><code>Location</code>既是<code>window</code>对象的属性又是<code>document</code>对象的属性</li>
-<li><code>location</code>包含8个属性，其中7个都是当前窗体的<code>URL</code>的一部分，剩下的也是最重要的一个是<code>href</code>属性，代表当前窗体的<code>URL</code></li>
-<li><code>location</code>的8个属性都是可读写的，但是只有<code>href</code>与<code>hash</code>的写才有意义。例如改变<code>location.href</code>会重新定位到一个<code>URL</code>，而修改<code>location.hash</code>会跳到当前页面中的<code>anchor(&lt;a id="name"&gt;</code>或者<code>&lt;div id="id"&gt;</code>等)名字的标记(如果有)，而且页面不会被重新加载</li>
-</ul>
-
-
-<h2>示例</h2>
-
-<pre><code>document.write(window.location==document.location);
-</code></pre>
-
-<h2>Location对象属性图示</h2>
-
-<p><img src="http://dofa.u.qiniudn.com/image/web/window_location.png"></p>
-
-<p>location属性</p>
-
-<ul>
-<li><code>JavaScript</code> <code>hash</code> 属性    &mdash;  返回<code>URL</code>中<code>#</code>符号后面的内容</li>
-<li><code>JavaScript</code> <code>host</code> 属性    &mdash;  返回域名</li>
-<li><code>JavaScript</code> <code>hostname</code> 属性    &mdash;  返回主域名</li>
-<li><code>JavaScript</code> <code>href</code> 属性    &mdash;  返回当前文档的完整<code>URL</code>或设置当前文档的<code>URL</code></li>
-<li><code>JavaScript</code> <code>pathname</code> 属性    &mdash;  返回<code>URL</code>中域名后的部分</li>
-<li><code>JavaScript</code> <code>port</code> 属性    &mdash;  返回<code>URL</code>中的端口</li>
-<li><code>JavaScript</code> <code>protocol</code> 属性    &mdash;  返回<code>URL</code>中的协议</li>
-<li><code>JavaScript</code> <code>search</code> 属性  &mdash;  返回<code>URL</code>中的查询字符串</li>
-<li><code>JavaScript</code> <code>assign()</code>   函数 &mdash;   设置当前文档的<code>URL</code></li>
-<li><code>JavaScript</code> <code>replace()</code> 函数 &mdash;    设置当前文档的<code>URL</code>，并在<code>history</code>对象的地址列表中删除这个<code>URL</code></li>
-<li><code>JavaScript</code> <code>reload()</code>   函数 &mdash;   重新载入当前文档(从<code>server</code>服务器端)</li>
-<li><code>JavaScript</code> <code>toString()</code> 函数 &mdash;   返回<code>location</code>对象<code>href</code>属性当前的值</li>
-</ul>
-
-
-<p>Note: 主域名是不带www的域名，例如dreamdu.com，主域名前面带前缀的通常都为二级域名或多级域名，例如www.dreamdu.com其实是二级域名。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-      <a class="prev" href="/blog/page/2/">&larr; Older</a>
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
-<aside class="sidebar">
-  
-    <section>
-  <h1>Categories</h1>
-  <ul id="categories">
-    <li class='category'><a href='/blog/categories/embedded/'>Embedded (5)</a></li>
-<li class='category'><a href='/blog/categories/javascript/'>Javascript (12)</a></li>
-<li class='category'><a href='/blog/categories/jekyll/'>Jekyll (2)</a></li>
-<li class='category'><a href='/blog/categories/nodejs/'>Nodejs (2)</a></li>
-<li class='category'><a href='/blog/categories/octopress/'>Octopress (6)</a></li>
-<li class='category'><a href='/blog/categories/server/'>Server (3)</a></li>
-<li class='category'><a href='/blog/categories/sublimetext/'>SublimeText (5)</a></li>
-<li class='category'><a href='/blog/categories/vim/'>Vim (3)</a></li>
-
-  </ul>
-</section>
-<section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2014/04/07/learning-angularjs-notes-dynamic-templates/">Angularjs学习笔记-动态模板</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/04/07/learning-angularjs-notes-static-templates/">Angularjs学习笔记-静态模板</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/04/05/build-angularjs-develop-environment/">Angularjs入门环境的搭建</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/04/05/build-nodejs-develop-environment-in-the-windows/">在Windows环境下搭建nodejs环境</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/04/05/understanding-of-javascript-event-handling/">理解JavaScript中的事件处理</a>
-      </li>
-    
-  </ul>
-</section>
-<section>
-  <h1>Tags</h1>
-  <ul class="tag-cloud">
-    <a style="font-size: 125%" href="/tags/angularjs/">Angularjs</a>
-<a style="font-size: 194%" href="/tags/bom/">BOM</a>
-<a style="font-size: 90%" href="/tags/task/">Task</a>
-<a style="font-size: 90%" href="/tags/uos/">Uos</a>
-<a style="font-size: 210%" href="/tags/javascript/">javascript,</a>
-<a style="font-size: 159%" href="/tags/octopress/">octopress</a>
-<a style="font-size: 125%" href="/tags/octopress/">octopress,</a>
-<a style="font-size: 171%" href="/tags/sublime-text/">sublime-text</a>
-<a style="font-size: 145%" href="/tags/tcpip/">tcpip</a>
-<a style="font-size: 145%" href="/tags/vim/">vim</a>
-
-  </ul>
-</section>
-<section>
-<h1>Recent Comments</h1>
-<ul class="ds-recent-comments" data-num-items="10" data-show-avatars="0" data-show-time="0" data-show-title="0" data-show-admin="0" data-excerpt-length="18"></ul>
-
-<!--多说js加载开始，一个页面只需要加载一次 -->
-<script type="text/javascript">
-  var duoshuoQuery = {short_name:"bitbegin"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = 'http://static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-</script>
-<!--多说js加载结束，一个页面只需要加载一次 -->
-
-</section><section>
-<h1>友情链接</h1>
-<ul>
-        <li>
-        <a href="http://blog.jobbole.com/">伯乐在线</a>
-        </li>
-        <li>
-        <a href="http://www.csdn.net/">CSDN</a>
-        </li>
-        <li>
-        <a href="http://www.cnblogs.com/">博客园</a>
-        </li>
-        <li>
-        <a href="http://coolshell.cn/">酷壳CoolShell</a>
-        </li>
-</ul>
-</section>
-  
-</aside>
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - dofa -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1000309119'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s5.cnzz.com/z_stat.php%3Fid%3D1000309119%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
-
-</footer>
-  
-
-
-
-
-
-
-
-
-
-
-
-</body>
-</html>
+</feed>

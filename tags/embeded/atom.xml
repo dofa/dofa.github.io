@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: Embeded | Do Far]]></title>
+  <link href="http://blog.dofa.org/tags/embeded/atom.xml" rel="self"/>
+  <link href="http://blog.dofa.org/"/>
+  <updated>2014-04-07T02:30:51-07:00</updated>
+  <id>http://blog.dofa.org/</id>
+  <author>
+    <name><![CDATA[dofa]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[big endian与little endian（大小端）]]></title>
+    <link href="http://blog.dofa.org/blog/2013/08/05/big-endian-and-little-endian/"/>
+    <updated>2013-08-05T06:25:52-07:00</updated>
+    <id>http://blog.dofa.org/blog/2013/08/05/big-endian-and-little-endian</id>
+    <content type="html"><![CDATA[<p>在C编程中，经常遇到大小端（big endian与little endian）的问题，尤其涉及到位域的情况，很容易出错。我这里总结下C51和HTCC C18两种compiler对大小端的处理。</p>
+
+<h2>Check Endian code</h2>
+
+<p>```c
+char checkEndian(void)
+{</p>
+
+<pre><code>union check{
+    unsigned int a;
+    unsigned char b;
+};
+union check ck;
+ck.a = 1;
+return (ck.b==1) ;
+</code></pre>
+
+<p>}</p>
+
+<p>void main(void)
+{</p>
+
+<pre><code>union uE{
+    unsigned long num;
+    struct{
+        unsigned char a1:1;
+        unsigned char b3:3;
+        unsigned short c16;
+        unsigned char d3:3;
+        unsigned char e1:1;
+    }sN;
+};
+
+union uE a;
+char ttt =  checkEndian();
+
+a.num = 0x12345678;
+a.num = 0;
+
+a.sN.a1 = 1;
+a.sN.b3 = 2;
+a.sN.c16 = 0x0304;
+a.sN.d3 = 5;
+a.sN.e1 = 1;
+
+a.num;
+</code></pre>
+
+<p>}
+```</p>
+
+<h2>Executed results</h2>
+
+<p>a.num = ?</p>
+
+<p>对于big endian：</p>
+
+<p>以C51来分析，结构成员按照定义顺序从小地址到大地址存放到ram中，显然按照地址从小到大排放结果就为：</p>
+
+<p><code>c
+05 03 04 0d
+</code></p>
+
+<p>转换为大端显示为：</p>
+
+<p><code>c
+0x0503040d
+</code></p>
+
+<p>对于little endian：</p>
+
+<p>结果为</p>
+
+<p><code>c
+0x0d030405
+</code></p>
+
+<h2>Results</h2>
+
+<p>所以我这里结论：</p>
+
+<ul>
+<li><p>位域没有大小端的区别，区别在于各编译器的实现。上面的例子便是没有区别的compiler，C51和HTCC C18；网络字节序位域有大小端区别，这个一定要注意</p></li>
+<li><p>两个及其以上字节有大小端区别</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
