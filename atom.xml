@@ -4,7 +4,7 @@
   <title><![CDATA[Do Far]]></title>
   <link href="http://blog.dofa.org/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-04-07T03:00:21-07:00</updated>
+  <updated>2014-04-07T03:07:17-07:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -47,7 +47,11 @@
 &lt;/html&gt;
 </code></pre>
 
-<p>我们刚刚把静态编码的手机列表替换掉了，因为这里我们使用<code>ngRepeat</code>指令和两个用花括号包裹起来的<code>AngularJS</code>表达式——<code>\</code>和<code>\</code>——能达到同样的效果。</p>
+<p>我们刚刚把静态编码的手机列表替换掉了，因为这里我们使用<code>ngRepeat</code>指令和两个用花括号包裹起来的<code>AngularJS</code>表达式——</p>
+
+<p>和</p>
+
+<p>——能达到同样的效果。</p>
 
 <p>在<code>&lt;li&gt;</code>标签里面的<code>ng-repeat="phone in phones"</code>语句是一个<code>AngularJS</code>迭代器。这个迭代器告诉<code>AngularJS</code>用第一个<code>&lt;li&gt;</code>标签作为模板为列表中的每一部手机创建一个<code>&lt;li&gt;</code>元素。
 正如我们在第0步时学到的，包裹在<code>phone.name</code>和<code>phone.snippet</code>周围的花括号标识着数据绑定。和常量计算不同的是，这里的表达式实际上是我们应用的一个数据模型引用，这些我们在<code>PhoneListCtrl</code>控制器里面都设置好了。</p>
