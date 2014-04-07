@@ -150,3 +150,6 @@ Yay! The test passed! Or not...
 
 * To rerun the tests, just change any of the source or test .js files. Karma will notice the change and will rerun the tests for you. Now isn't that sweet?
 
+## Angularjs动态模板演示
+
+[Angularjs动态模板](/phonecat/step-2/app/)
