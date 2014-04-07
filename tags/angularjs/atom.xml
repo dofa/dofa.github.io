@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Angularjs | Do Far]]></title>
   <link href="http://blog.dofa.org/tags/angularjs/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-04-07T06:16:34-07:00</updated>
+  <updated>2014-04-07T06:22:50-07:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -24,25 +24,21 @@
 
 <p><code>app/index.html:</code></p>
 
-<p>  Search: <input ng-model="query">
-  Sort by:
-  <select ng-model="orderProp"></p>
+<pre><code>Search: &lt;input ng-model="query"&gt;
+Sort by:
+&lt;select ng-model="orderProp"&gt;
+    &lt;option value="name"&gt;Alphabetical&lt;/option&gt;
+    &lt;option value="age"&gt;Newest&lt;/option&gt;
+&lt;/select&gt;
 
-<pre><code>&lt;option value="name"&gt;Alphabetical&lt;/option&gt;
-&lt;option value="age"&gt;Newest&lt;/option&gt;
+
+&lt;ul class="phones"&gt;
+    &lt;li ng-repeat="phone in phones | filter:query | orderBy:orderProp"&gt;
+        
+        &lt;p&gt;&lt;/p&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
 </code></pre>
-
-<p>  </select></p>
-
-<p>  <ul class="phones"></p>
-
-<pre><code>&lt;li ng-repeat="phone in phones | filter:query | orderBy:orderProp"&gt;
-  
-  &lt;p&gt;&lt;/p&gt;
-&lt;/li&gt;
-</code></pre>
-
-<p>  </ul></p>
 
 <p>我们在<code>index.html</code>中做了如下更改：</p>
 
