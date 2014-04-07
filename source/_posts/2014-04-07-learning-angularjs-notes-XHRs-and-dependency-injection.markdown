@@ -73,20 +73,20 @@ We can overcome this problem by annotating the function with the names of the de
 
 * Create a `$inject` property on the controller function which holds an array of strings. Each string in the array is the name of the service to inject for the corresponding parameter. In our example we would write:
 
-    function PhoneListCtrl($scope, $http) {...}
-    PhoneListCtrl.$inject = ['$scope', '$http'];
-    phonecatApp.controller('PhoneListCtrl', PhoneListCtrl);
+	function PhoneListCtrl($scope, $http) {...}
+	PhoneListCtrl.$inject = ['$scope', '$http'];
+	phonecatApp.controller('PhoneListCtrl', PhoneListCtrl);
 
 * Use an inline annotation where, instead of just providing the function, you provide an array. This array contains a list of the service names, followed by the function itself.
 
-    function PhoneListCtrl($scope, $http) {...}
-    phonecatApp.controller('PhoneListCtrl', ['$scope', '$http', PhoneListCtrl]);
+	function PhoneListCtrl($scope, $http) {...}
+	phonecatApp.controller('PhoneListCtrl', ['$scope', '$http', PhoneListCtrl]);
 
 Both of these methods work with any function that can be injected by Angular, so it's up to your project's style guide to decide which one you use.
 
 When using the second method, it is common to provide the constructor function inline as an anonymous function when registering the controller:
 
-    phonecatApp.controller('PhoneListCtrl', ['$scope', '$http', function($scope, $http) {...}]);
+	phonecatApp.controller('PhoneListCtrl', ['$scope', '$http', function($scope, $http) {...}]);
 
 From this point onward, we're going to use the inline method in the tutorial. With that in mind, let's add the annotations to our PhoneListCtrl:
 
@@ -147,13 +147,13 @@ Because our code now uses the $http service to fetch the phone list data in our 
 
 Now we will make assertions to verify that the phones model doesn't exist on scope before the response is received:
 
-    it('should create "phones" model with 2 phones fetched from xhr', function() {
-      expect(scope.phones).toBeUndefined();
-      $httpBackend.flush();
- 
-      expect(scope.phones).toEqual([{name: 'Nexus S'},
-                                   {name: 'Motorola DROID'}]);
-    });
+	it('should create "phones" model with 2 phones fetched from xhr', function() {
+	  expect(scope.phones).toBeUndefined();
+	  $httpBackend.flush();
+
+	  expect(scope.phones).toEqual([{name: 'Nexus S'},
+	                               {name: 'Motorola DROID'}]);
+	});
 
 * We flush the request queue in the browser by calling `$httpBackend.flush()`. This causes the promise returned by the $http service to be resolved with the trained response.
 
@@ -161,9 +161,9 @@ Now we will make assertions to verify that the phones model doesn't exist on sco
 
 Finally, we verify that the default value of orderProp is set correctly:
 
-    it('should set the default value of orderProp model', function() {
-      expect(scope.orderProp).toBe('age');
-    });
+	it('should set the default value of orderProp model', function() {
+	  expect(scope.orderProp).toBe('age');
+	});
 
 You should now see the following output in the Karma tab:
 
