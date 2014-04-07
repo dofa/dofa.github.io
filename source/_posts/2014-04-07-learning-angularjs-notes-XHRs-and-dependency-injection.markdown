@@ -73,20 +73,32 @@ We can overcome this problem by annotating the function with the names of the de
 
 * Create a `$inject` property on the controller function which holds an array of strings. Each string in the array is the name of the service to inject for the corresponding parameter. In our example we would write:
 
-	function PhoneListCtrl($scope, $http) {...}
-	PhoneListCtrl.$inject = ['$scope', '$http'];
-	phonecatApp.controller('PhoneListCtrl', PhoneListCtrl);
+{% raw %}
+```
+function PhoneListCtrl($scope, $http) {...}
+PhoneListCtrl.$inject = ['$scope', '$http'];
+phonecatApp.controller('PhoneListCtrl', PhoneListCtrl);
+```
+{% endraw %}
 
 * Use an inline annotation where, instead of just providing the function, you provide an array. This array contains a list of the service names, followed by the function itself.
 
-	function PhoneListCtrl($scope, $http) {...}
-	phonecatApp.controller('PhoneListCtrl', ['$scope', '$http', PhoneListCtrl]);
+{% raw %}
+```
+function PhoneListCtrl($scope, $http) {...}
+phonecatApp.controller('PhoneListCtrl', ['$scope', '$http', PhoneListCtrl]);
+```
+{% endraw %}
 
 Both of these methods work with any function that can be injected by Angular, so it's up to your project's style guide to decide which one you use.
 
 When using the second method, it is common to provide the constructor function inline as an anonymous function when registering the controller:
 
-	phonecatApp.controller('PhoneListCtrl', ['$scope', '$http', function($scope, $http) {...}]);
+{% raw %}
+```
+phonecatApp.controller('PhoneListCtrl', ['$scope', '$http', function($scope, $http) {...}]);
+```
+{% endraw %}	
 
 From this point onward, we're going to use the inline method in the tutorial. With that in mind, let's add the annotations to our PhoneListCtrl:
 
