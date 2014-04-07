@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Sublime Text 入门及技巧 - Do Far</title>
+  <title>Angularjs学习笔记-双向绑定 - Do Far</title>
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="快捷的命令面板 和 TextMate 类似，Sublime Text 2 也提供了很方便的命令调用方式：Command Palette（命令面板）。调用方法：直接在 Tool 菜单中选择 Command Palette，或是用快捷键：Shift+Command+P，输入命令名称（中的字母） &hellip;">
+  <meta name="description" content="动态排序可以这样实现，添加一个新的模型属性，把它和迭代器集成起来，然后让数据绑定完成剩下的事情。 模板 app/index.html: Search: Sort by: &lt;option value="name"&gt;Alphabetical&lt;/option&gt;
+&lt; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.dofa.org/blog/2013/06/01/sublime-text-guide-and-tips">
+  <link rel="canonical" href="http://blog.dofa.org/blog/2014/04/07/learning-angularjs-notes-two-way-data-bingding">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -81,7 +82,7 @@
   
   <header>
     
-      <h1 class="entry-title">Sublime Text 入门及技巧</h1>
+      <h1 class="entry-title">Angularjs学习笔记-双向绑定</h1>
     
     
       <p class="meta">
@@ -97,7 +98,7 @@
   
 
 
-<time datetime="2013-06-01T07:25:52-07:00" pubdate data-updated="true">Jun 1<span>st</span>, 2013</time>
+<time datetime="2014-04-07T21:11:50-07:00" pubdate data-updated="true">Apr 7<span>th</span>, 2014</time>
         
         
            | <a href="#comments">Comments</a>
@@ -107,40 +108,153 @@
   </header>
 
 
-<div class="entry-content"><h2>快捷的命令面板</h2>
+<div class="entry-content"><p>动态排序可以这样实现，添加一个新的模型属性，把它和迭代器集成起来，然后让数据绑定完成剩下的事情。</p>
 
-<p>和 TextMate 类似，Sublime Text 2 也提供了很方便的命令调用方式：Command Palette（命令面板）。调用方法：直接在 <code>Tool</code> 菜单中选择 <code>Command Palette</code>，或是用快捷键：<code>Shift+Command+P</code>，输入命令名称（中的字母）就可以实时搜索到相应的命令、选项、snippet 和 syntex， 按下回车就可以直接执行，减少了查找的麻烦。</p>
+<h2>模板</h2>
 
-<h2>即时的文件切换</h2>
+<p><code>app/index.html:</code></p>
 
-<p>按下 <code>Command+P</code>(Mac) 或是 <code>Ctrl+P</code>(Windows)，输入想要切换到的文件的文件名，都不用按下回车键，目标文件就已经展现在眼前了，虽然 Vim 配合 PeepOpen 也可以实现同样的功能，但速度却远没有这么迅速。</p>
+<p>  Search: <input ng-model="query">
+  Sort by:
+  <select ng-model="orderProp"></p>
 
-<h2>随心所欲的跳转</h2>
+<pre><code>&lt;option value="name"&gt;Alphabetical&lt;/option&gt;
+&lt;option value="age"&gt;Newest&lt;/option&gt;
+</code></pre>
 
-<p><code>Cmd+P</code> 之所以被叫做 Goto Anything 并不是虚名：</p>
+<p>  </select></p>
+
+<p>  <ul class="phones"></p>
+
+<pre><code>&lt;li ng-repeat="phone in phones | filter:query | orderBy:orderProp"&gt;
+
+  &lt;p&gt;&lt;/p&gt;
+&lt;/li&gt;
+</code></pre>
+
+<p>  </ul></p>
+
+<p>我们在<code>index.html</code>中做了如下更改：</p>
 
 <ul>
-<li>用 <code>Command+P</code> 可以快速跳转到当前项目中的任意文件，可进行关键词匹配。</li>
-<li>用 <code>Command+P</code> 后 <code>@</code> (或是<code>Command+R</code>)可以快速列出/跳转到某个函数（很爽的是在 markdown 当中是匹配到标题，而且还是带缩进的！）。</li>
-<li>用 <code>Command+P</code> 后 <code>#</code> 可以在当前文件中进行搜索。</li>
-<li>用 <code>Command+P</code> 后 <code>:</code> (或是<code>Ctrl+G</code>)加上数字可以跳转到相应的行。</li>
+<li><p>首先，我们增加了一个叫做<code>orderProp</code>的<code>&lt;select&gt;</code>标签，这样我们的用户就可以选择我们提供的两种排序方法。</p></li>
+<li><p>然后，在<code>filter</code>过滤器后面添加一个<code>orderBy</code>过滤器用其来处理进入迭代器的数据。<code>orderBy</code>过滤器以一个数组作为输入，复制一份副本，然后把副本重排序再输出到迭代器。</p></li>
 </ul>
 
 
-<p>而更酷的是你可以用 <code>Command+P</code> 加上一些关键词跳转到某个文件同时加上 <code>@</code> 来列出/跳转到目标文件中的某个函数，或是同时加上 <code>#</code> 来在目标文件中进行搜索，或是同时加上 <code>:</code> 和数字来跳转到目标文件中相应的行。</p>
+<p><code>AngularJS</code>在<code>select</code>元素和<code>orderProp</code>模型之间创建了一个双向绑定。而后，<code>orderProp</code>会被用作<code>orderBy</code>过滤器的输入。</p>
 
-<h2>多重选择(Multi-Selection)</h2>
+<p>正如我们在步骤3中讨论数据绑定和迭代器的时候所说的一样，无论什么时候数据模型发生了改变（比如用户在下拉菜单中选了不同的顺序），AngularJS的数据绑定会让视图自动更新。没有任何笨拙的DOM操作！</p>
 
-<p>多重选择功能允许在页面中同时存在多个光标，让很多本来需要正则表达式、高级搜索和替换才能完成的任务也变得游刃有余了。
-激活多重选择的方法有两几种：</p>
+<h2>控制器</h2>
+
+<p><code>app/js/controllers.js:</code></p>
+
+<pre><code>var phonecatApp = angular.module('phonecatApp', []);
+
+phonecatApp.controller('PhoneListCtrl', function ($scope) {
+  $scope.phones = [
+    {'name': 'Nexus S',
+     'snippet': 'Fast just got faster with Nexus S.',
+     'age': 1},
+    {'name': 'Motorola XOOM™ with Wi-Fi',
+     'snippet': 'The Next, Next Generation tablet.',
+     'age': 2},
+    {'name': 'MOTOROLA XOOM™',
+     'snippet': 'The Next, Next Generation tablet.',
+     'age': 3}
+  ];
+
+  $scope.orderProp = 'age';
+});
+</code></pre>
 
 <ul>
-<li>按住 <code>Command</code> 或 <code>Alt</code>，然后在页面中希望中现光标的位置点击。</li>
-<li>选择数行文本，然后按下 <code>Shift+Command+L</code>。</li>
-<li>通过反复按下 <code>Control/Command+D</code> 即可将全文中与光标当前所在位置的词相同的词逐一加入选择，而直接按下 <code>Alt+F3</code>(Windows) 或是 <code>Ctrl+Command+G</code>(Mac) 即可一次性选择所有相同的词。</li>
-<li>按下鼠标中键来进行垂直方向的纵列选择，也可以进入多重编辑状态。</li>
+<li>我们修改了<code>phones</code>模型—— 手机的数组 ——为每一个手机记录其增加了一个<code>age</code>属性。我们会根据<code>age</code>属性来对手机进行排序。</li>
+<li>我们在控制器代码里加了一行让<code>orderProp</code>的默认值为<code>age</code>。如果我们不设置默认值，这个模型会在我们的用户在下拉菜单选择一个顺序之前一直处于未初始化状态。</li>
 </ul>
 
+
+<p>现在我们该好好谈谈双向数据绑定了。注意到当应用在浏览器中加载时，“Newest”在下拉菜单中被选中。这是因为我们在控制器中把<code>orderProp</code>设置成了‘age’。所以绑定在从我们模型到用户界面的方向上起作用——即数据从模型到视图的绑定。现在当你在下拉菜单中选择“Alphabetically”，数据模型会被同时更新，并且手机列表数组会被重新排序。这个时候数据绑定从另一个方向产生了作用——即数据从视图到模型的绑定。</p>
+
+<h2>Test</h2>
+
+<p>The changes we made should be verified with both a unit test and an end-to-end test. Let&rsquo;s look at the unit test first.</p>
+
+<p><code>test/unit/controllersSpec.js:</code></p>
+
+<pre><code>describe('PhoneCat controllers', function() {
+
+  describe('PhoneListCtrl', function(){
+    var scope, ctrl;
+
+    beforeEach(module('phonecatApp'));
+
+    beforeEach(inject(function($controller) {
+      scope = {};
+      ctrl = $controller('PhoneListCtrl', {$scope:scope});
+    }));
+
+    it('should create "phones" model with 3 phones', function() {
+      expect(scope.phones.length).toBe(3);
+    });
+
+
+    it('should set the default value of orderProp model', function() {
+      expect(scope.orderProp).toBe('age');
+    });
+  });
+});
+</code></pre>
+
+<p>The unit test now verifies that the default ordering property is set.</p>
+
+<p>We used Jasmine&rsquo;s API to extract the controller construction into a beforeEach block, which is shared by all tests in the parent describe block.</p>
+
+<p>You should now see the following output in the Karma tab:</p>
+
+<pre><code>Chrome 22.0: Executed 2 of 2 SUCCESS (0.021 secs / 0.001 secs)
+</code></pre>
+
+<p>Let&rsquo;s turn our attention to the end-to-end test.</p>
+
+<p><code>test/e2e/scenarios.js:</code></p>
+
+<pre><code>...
+it('should be possible to control phone order via the drop down select box', function() {
+
+  var phoneNameColumn = element.all(by.repeater('phone in phones').column(''));
+  var query = element(by.model('query'));
+
+  function getNames() {
+    return phoneNameColumn.map(function(elm) {
+      return elm.getText();
+    });
+  }
+
+  query.sendKeys('tablet'); //let's narrow the dataset to make the test assertions shorter
+
+  expect(getNames()).toEqual([
+    "Motorola XOOM\u2122 with Wi-Fi",
+    "MOTOROLA XOOM\u2122"
+  ]);
+
+  element(by.model('orderProp')).findElement(by.css('option[value="name"]')).click();
+
+  expect(getNames()).toEqual([
+    "MOTOROLA XOOM\u2122",
+    "Motorola XOOM\u2122 with Wi-Fi"
+  ]);
+});...
+</code></pre>
+
+<p>The end-to-end test verifies that the ordering mechanism of the select box is working correctly.</p>
+
+<p>You can now rerun npm run protractor to see the tests run.</p>
+
+<h2>Angularjs双向绑定演示</h2>
+
+<p><a href="/phonecat/step-4/app/">Angularjs双向绑定</a></p>
 </div>
 
 
@@ -163,12 +277,12 @@
   
 
 
-<time datetime="2013-06-01T07:25:52-07:00" pubdate data-updated="true">Jun 1<span>st</span>, 2013</time>
+<time datetime="2014-04-07T21:11:50-07:00" pubdate data-updated="true">Apr 7<span>th</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/sublimetext/'>SublimeText</a>
+    <a class='category' href='/blog/categories/javascript/'>Javascript</a>
   
 </span>
 
@@ -184,10 +298,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/04/10/commonly-used-vim-commands/" title="Previous Post: 常用的Vim命令">&laquo; 常用的Vim命令</a>
+        <a class="basic-alignment left" href="/blog/2014/04/07/learning-angularjs-notes-filtering-repeaters/" title="Previous Post: Angularjs学习笔记-迭代器过滤">&laquo; Angularjs学习笔记-迭代器过滤</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/06/01/sublime-text-study-notes/" title="Next Post: Sublime Text 学习笔记">Sublime Text 学习笔记 &raquo;</a>
       
     </p>
   </footer>

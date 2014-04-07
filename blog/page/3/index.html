@@ -9,8 +9,8 @@
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="debian update或install package使用国内源会非常慢，一般我们使用163源。
-简单的说有两种方法修改源，我们直接使用第二种方法。 方法1：增加163源 以Squeeze为例, 编辑/etc/apt/sources.list文件, 在文件最前面添加以下条目( &hellip;">
+  <meta name="description" content="基本的使用方法 要使用该插件 ，需要用 ctrl+shift+p 打开 Table Editor: Enable for current syntax 来激活 插件。 创建表头 输入： | Name | Phone |
+| 然后按下 Tab，插件帮你完成表头格式化： | Name | Phone &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,287 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/03/19/use-sublimetableeditor/">SublimeTableEditor的使用</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-19T07:50:39-07:00" pubdate data-updated="true">Mar 19<span>th</span>, 2014</time>
+        
+        
+           | <a href="/blog/2014/03/19/use-sublimetableeditor/#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>基本的使用方法</h2>
+
+<p>要使用该插件 ，需要用 <em>ctrl+shift+p</em> 打开 <em>Table Editor: Enable for current syntax</em> 来激活 插件。</p>
+
+<h4>创建表头</h4>
+
+<p>输入：</p>
+
+<pre><code>| Name | Phone |
+|
+</code></pre>
+
+<p>然后按下 <em>Tab</em>，插件帮你完成表头格式化：</p>
+
+<pre><code>| Name | Phone |
+|------|-------|
+|      |       |
+</code></pre>
+
+<p>更快的创建表头方法：</p>
+
+<pre><code>|Name|Phone
+</code></pre>
+
+<p>然后按下 <em>ctrl+k, enter</em>，你会得到：</p>
+
+<pre><code>| Name | Phone |
+|------|-------|
+|      |       |
+</code></pre>
+
+<p>如果按下 <em>ctrl+k, &ndash;</em>，你会得到：</p>
+
+<pre><code>| Name | Phone |
+|------|-------|
+</code></pre>
+
+<h4>新建行、在table中移动和输入文字后的对其</h4>
+
+<p><em>tab</em> 为向后移动，<em>shift+tab</em> 向后移动，并且可以完成对其和新建行</p>
+
+<h2>对列的操作</h2>
+
+<p><em>alt+shift+right</em>完成新建列，<em>alt+shift+left</em>删除列，<em>alt+right</em>和<em>alt+left</em>完成交换列。</p>
+
+<h4>新建列</h4>
+
+<pre><code>|    Name   |   Phone   |
+|-----------|-----------|
+| Anna      | 123456789 |
+| Alexander | 987654321 |
+|           | _         |
+</code></pre>
+
+<p>如果按下 <em>alt+shift+right</em>，你会得到：</p>
+
+<pre><code>|    Name   |   |   Phone   |
+|-----------|---|-----------|
+| Anna      |   | 123456789 |
+| Alexander |   | 987654321 |
+|           | _ |           |
+</code></pre>
+
+<h4>删除列</h4>
+
+<p>继续按下 <em>alt+shift+left</em>，你会得到：</p>
+
+<pre><code>|    Name   |   Phone   |
+|-----------|-----------|
+| Anna      | 123456789 |
+| Alexander | 987654321 |
+|           | _         |
+</code></pre>
+
+<h4>交换列</h4>
+
+<pre><code>|    Name   | Age |   Phone   |
+|-----------|-----|-----------|
+| Anna      |  32 | 123456789 |
+| Alexander |  28_| 987654321 |
+|           |     |           |
+</code></pre>
+
+<p>继续按下 <em>alt+left</em>，你会得到：</p>
+
+<pre><code>|    Name   | Age |   Phone   |
+|-----------|-----|-----------|
+| Anna      | 32  | 123456789 |
+| Alexander | 28_ | 987654321 |
+|           |     |           |
+</code></pre>
+
+<p>继续按下 <em>alt+right</em>，你会得到：</p>
+
+<pre><code>|    Name   | Age |   Phone   |
+|-----------|-----|-----------|
+| Anna      | 32  | 123456789 |
+| Alexander | 28_ | 987654321 |
+|           |     |           |
+</code></pre>
+
+<h2>对行的操作</h2>
+
+<h4>插入新行</h4>
+
+<pre><code>|    Name   |   Phone   | Age |
+|-----------|-----------|-----|
+| Anna      | 123456789 | 32_ |
+| Alexander | 987654321 | 28  |
+|           |           |     |
+</code></pre>
+
+<p>如果按下 <em>alt+shift+down</em>，你会得到：</p>
+
+<pre><code>|    Name   |   Phone   | Age |
+|-----------|-----------|-----|
+|           |           |     |
+| Anna      | 123456789 | 32_ |
+| Alexander | 987654321 | 28  |
+|           |           |     |
+</code></pre>
+
+<h4>删除行</h4>
+
+<p>移动到要删除的行，</p>
+
+<pre><code>|    Name   |   Phone   | Age |
+|-----------|-----------|-----|
+|           |           | _   |
+| Anna      | 123456789 | 32  |
+| Alexander | 987654321 | 28  |
+|           |           |     |
+</code></pre>
+
+<p>按下 <em>alt+shift+up</em>，你会得到：</p>
+
+<pre><code>|    Name   |   Phone   | Age |
+|-----------|-----------|-----|
+| Anna      | 123456789 |  32 |
+| Alexander | 987654321 |  28 |
+|           |           |     |
+</code></pre>
+
+<h4>插入分割线</h4>
+
+<pre><code>|    Name   |   Phone   | Age |             Position             |
+|-----------|-----------|-----|----------------------------------|
+| Anna      | 123456789 |  32 | Senior Software Engineer_        |
+| Alexander | 987654321 |  28 | Senior Software Testing Engineer |
+|           |           |     |                                  |
+</code></pre>
+
+<p>按下 <em>ctrl+k,&ndash;</em>，得到：</p>
+
+<pre><code>|    Name   |   Phone   | Age |             Position             |
+|-----------|-----------|-----|----------------------------------|
+| Anna      | 123456789 |  32 | Senior Software Engineer_        |
+|-----------|-----------|-----|----------------------------------|
+| Alexander | 987654321 |  28 | Senior Software Testing Engineer |
+|           |           |     |                                  |
+</code></pre>
+
+<h4>单元中内容分行</h4>
+
+<pre><code>|    Name   |   Phone   | Age |              Position             |
+|-----------|-----------|-----|-----------------------------------|
+| Anna      | 123456789 |  32 | Senior Software Engineer          |
+| Alexander | 987654321 |  28 | Senior Software _Testing Engineer |
+|           |           |     |                                   |
+</code></pre>
+
+<p>按下 <em>alt+enter</em>，得到：</p>
+
+<pre><code>|    Name   |   Phone   | Age |         Position         |
+|-----------|-----------|-----|--------------------------|
+| Anna      | 123456789 |  32 | Senior Software Engineer |
+| Alexander | 987654321 |  28 | Senior Software          |
+|           |           |     | Testing Engineer         |
+</code></pre>
+
+<h4>单元中内容合并</h4>
+
+<p>命令为：<em>ctrl+j</em></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/03/10/add-statistics-for-octopress/">为Octopress添加统计</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-10T04:24:42-07:00" pubdate data-updated="true">Mar 10<span>th</span>, 2014</time>
+        
+        
+           | <a href="/blog/2014/03/10/add-statistics-for-octopress/#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>使用Google Analytics统计工具</h2>
+
+<h4>注册Google Analytics账号</h4>
+
+<p>到 <a href="http://www.google.com/analytics/" title="Google Analytics"><code>Google Analytics</code></a> 注册<code>Analytics</code>，获得一个<code>google_analytics_tracking_id</code>，添加到<code>_config.yml</code>中对应位置，并对网站进行验证即可</p>
+
+<h4>验证Google Analytics</h4>
+
+<p>对自己的网站进行验证，只需将网站提供的用于验证的代码添加到<code>source/_includes/head.html</code>的<code>&lt;head&gt;</code>标签之间，网站部署到网上后，过几分钟即可验证通过，其他 需要验证的也同样操作。</p>
+
+<pre><code>注意：如果head中有include google-analitics.html，这一步就不需要了
+</code></pre>
+
+<h2>使用CNZZ统计工具</h2>
+
+<h4>注册CNZZ账号</h4>
+
+<p>到<a href="http://zhanzhang.cnzz.com/" title="CNZZ">CNZZ</a>注册一个账号。注册后，添加并验证你的网站就可以添加统计代码了</p>
+
+<h4>验证CNZZ</h4>
+
+<p>选好自己喜欢的样式，获得代码，可添加到<code>source/_includes/custom/footer.html</code>中。即可查看每天你的博客的流量，进行相应的优化了。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1018,179 +1299,6 @@ git push origin master
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/08/01/tcp-ip-protocol-learning-series-three-of-link-layer/">TCP/IP协议学习系列之三 — 链路层</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-01T07:25:52-07:00" pubdate data-updated="true">Aug 1<span>st</span>, 2013</time>
-        
-        
-           | <a href="/blog/2013/08/01/tcp-ip-protocol-learning-series-three-of-link-layer/#comments">Comments</a>
-                
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>TCP/IP支持多种不同的链路层协议</h3>
-
-<p>这取决于网络所使用的硬件，如以太网、令牌环网、FDDI（光纤分布式数据接口）及RS-232串行线路等。</p>
-
-<h3>以太网是当今TCP/IP采用的主要的局域网技术</h3>
-
-<p>它采用一种称作CSMA/CD的媒体接入方法，其意思是带冲突检测的载波侦听多路接入（Carrier Sense, Multiple Access with Collision Detection）。它的速率为10 Mb/s，地址为48 bit。</p>
-
-<h3>以太网IP数据报的封装</h3>
-
-<p>以太网IP数据报的封装是在RFC 894[Hornig 1984]中定义的，但存在另外一个IEEE 802规格RFC 1042[Postel and Reynolds 1988]，只是大多数人采用RFC 894。RFC 894在有的地方称作Ethernet-II。</p>
-
-<h3>SLIP和PPP</h3>
-
-<p>串行线路IP–SLIP和他的升级版PPP使用RS-232串口传数据，速度太慢，基本上大家都不用这种方式了，而改用宽带上网。这年头问别人如何上网，都是“你家多少兆？”。</p>
-
-<h3>环回接口</h3>
-
-<p>下面再来看一个大家都熟悉的ip：127.0.0.1。这个IP称作环回接口，它还有个英文名localhost。基本上，对这个ip的访问就是访问自己的主机。</p>
-
-<h3>MTU</h3>
-
-<p>以太网一次可以传送的最大传输单元（MTU）为1500B。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/07/27/tcp-ip-protocol-learning-series-two-ethernet-directors/">TCP/IP协议学习系列之二 — Ethernet控制器</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-27T07:25:52-07:00" pubdate data-updated="true">Jul 27<span>th</span>, 2013</time>
-        
-        
-           | <a href="/blog/2013/07/27/tcp-ip-protocol-learning-series-two-ethernet-directors/#comments">Comments</a>
-                
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>硬件架构</h2>
-
-<p>前面讲了，处理TCP/IP封包的硬件主要使用Ethernet模块。
-大多数Ethernet模块分为这几个部分：PHY，MAC，MII/RMII管理，DMA和控制器。</p>
-
-<ul>
-<li>PHY实现bit流到cat5的transfer</li>
-<li>MAC实现数据链路层的介质访问控制子层，并执行CSMA/CD功能</li>
-<li>MII/RMII提供访问PHY的接口给MAC使用</li>
-<li>DMA大家都懂得</li>
-<li>控制器这里指的是协调MAC、MII/RMII管理、DMA的工具，不过一般也理解为Ethernet模块。比如PIC32中Ethernet控制器包括MAC、MII/RMII管理、DMA和SFR。</li>
-</ul>
-
-
-<h2>以太网原理—CSMA/CD</h2>
-
-<p>CS：载波侦听
-在发送数据之前进行监听，以确保线路空闲，减少冲突的机会。
-MA：多址访问
-每个站点发送的数据，可以同时被多个站点接收。
-CD：冲突检测
-边发送边检测，发现冲突就停止发送，然后延迟一个随机时间之后继续发送。</p>
-
-<h2>以太网发展简史</h2>
-
-<p>IEEE802.3 以太网标准
-IEEE802.3u 100BASE-T快速以太网标准
-IEEE802.3z/ab 1000Mb/s千兆以太网标准
-IEEE802.3ae 10GE以太网标准</p>
-
-<h2>相关技术</h2>
-
-<h4>自协商技术</h4>
-
-<p><img src="http://dofa.u.qiniudn.com/imgage/embeded/negotiation.bmp"></p>
-
-<h4>自适应技术： 智能MDI/MDIX</h4>
-
-<p>直连网线、交叉网线自动识别</p>
-
-<h4>流量控制</h4>
-
-<ul>
-<li>当通过交换机一个端口的流量过大，超过了它的处理能力时，就会发生端口阻塞。流量控制的作用是防止在出现阻塞的情况下丢帧。</li>
-<li>在半双工方式下，流量控制是通过反压（backpressure）技术实现的，模拟产生碰撞，使得信息源降低发送速度。</li>
-<li>在全双工方式下流量控制一般遵循IEEE 802.3x标准。</li>
-</ul>
-
-
-<h4>全双工流量控制</h4>
-
-<ul>
-<li>IEEE802.3x标准定义了一种新方法，在全双工环境中去实现流量控制。交换机产生一个PAUSE帧，PAUSE帧使用一个保留的组播地址：01-80-C2-00-00-01，将它发送给正在发送的站，发送站接收到该帧后，就会暂停或停止发送。</li>
-<li>PAUSE帧利用了一个保留的组播地址，它不会被网桥和交换机所转发，这样，PAUSE帧不会产生附加信息量。</li>
-</ul>
-
-
-<h2>MII接口介绍</h2>
-
-<p>MII接口提供了MAC和PHY之间、PHY与STA（Station Management）之间的互联技术，该接口支持10Mb/s与100Mb/s的数据传输速率，数据传输的位宽为4位。
-MII通过增加数据位宽实现参考时钟的降低。
-MII接口主要包括4个部分：</p>
-
-<ul>
-<li>从MAC层到物理层的发送数据的接口</li>
-<li>从物理层到MAC层的接受数据的接口</li>
-<li>从物理层到MAC层的状态指示信号</li>
-<li>MAC层和物理层之间传送控制和状态信息的MDIO接口</li>
-</ul>
-
-
-<p>MII接口可分为MAC模式和PHY模式，实际中主要用MAC模式，MAC模式的接口定义为：</p>
-
-<p><img src="http://dofa.u.qiniudn.com/imgage/embeded/MII.bmp"></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -1207,7 +1315,7 @@ MII接口主要包括4个部分：</p>
   <h1>Categories</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/embedded/'>Embedded (5)</a></li>
-<li class='category'><a href='/blog/categories/javascript/'>Javascript (12)</a></li>
+<li class='category'><a href='/blog/categories/javascript/'>Javascript (14)</a></li>
 <li class='category'><a href='/blog/categories/jekyll/'>Jekyll (2)</a></li>
 <li class='category'><a href='/blog/categories/nodejs/'>Nodejs (2)</a></li>
 <li class='category'><a href='/blog/categories/octopress/'>Octopress (6)</a></li>
@@ -1222,6 +1330,14 @@ MII接口主要包括4个部分：</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/04/07/learning-angularjs-notes-two-way-data-bingding/">Angularjs学习笔记-双向绑定</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/07/learning-angularjs-notes-filtering-repeaters/">Angularjs学习笔记-迭代器过滤</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/04/07/learning-angularjs-notes-dynamic-templates/">Angularjs学习笔记-动态模板</a>
       </li>
     
@@ -1233,29 +1349,21 @@ MII接口主要包括4个部分：</p>
         <a href="/blog/2014/04/05/build-angularjs-develop-environment/">Angularjs入门环境的搭建</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/04/05/build-nodejs-develop-environment-in-the-windows/">在Windows环境下搭建nodejs环境</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/04/05/understanding-of-javascript-event-handling/">理解JavaScript中的事件处理</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Tags</h1>
   <ul class="tag-cloud">
-    <a style="font-size: 125%" href="/tags/angularjs/">Angularjs</a>
-<a style="font-size: 194%" href="/tags/bom/">BOM</a>
+    <a style="font-size: 155%" href="/tags/angularjs/">Angularjs</a>
+<a style="font-size: 187%" href="/tags/bom/">BOM</a>
 <a style="font-size: 90%" href="/tags/task/">Task</a>
-<a style="font-size: 90%" href="/tags/uos/">Uos</a>
 <a style="font-size: 210%" href="/tags/javascript/">javascript,</a>
-<a style="font-size: 159%" href="/tags/octopress/">octopress</a>
-<a style="font-size: 125%" href="/tags/octopress/">octopress,</a>
-<a style="font-size: 171%" href="/tags/sublime-text/">sublime-text</a>
-<a style="font-size: 145%" href="/tags/tcpip/">tcpip</a>
-<a style="font-size: 145%" href="/tags/vim/">vim</a>
+<a style="font-size: 155%" href="/tags/octopress/">octopress</a>
+<a style="font-size: 122%" href="/tags/octopress/">octopress,</a>
+<a style="font-size: 90%" href="/tags/statistics/">statistics</a>
+<a style="font-size: 165%" href="/tags/sublime-text/">sublime-text</a>
+<a style="font-size: 141%" href="/tags/tcpip/">tcpip</a>
+<a style="font-size: 141%" href="/tags/vim/">vim</a>
 
   </ul>
 </section>

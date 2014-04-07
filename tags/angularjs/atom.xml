@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Angularjs | Do Far]]></title>
   <link href="http://blog.dofa.org/tags/angularjs/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-04-07T05:19:40-07:00</updated>
+  <updated>2014-04-07T06:16:34-07:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -12,6 +12,265 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Angularjs学习笔记-双向绑定]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/07/learning-angularjs-notes-two-way-data-bingding/"/>
+    <updated>2014-04-07T21:11:50-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/07/learning-angularjs-notes-two-way-data-bingding</id>
+    <content type="html"><![CDATA[<p>动态排序可以这样实现，添加一个新的模型属性，把它和迭代器集成起来，然后让数据绑定完成剩下的事情。</p>
+
+<h2>模板</h2>
+
+<p><code>app/index.html:</code></p>
+
+<p>  Search: <input ng-model="query">
+  Sort by:
+  <select ng-model="orderProp"></p>
+
+<pre><code>&lt;option value="name"&gt;Alphabetical&lt;/option&gt;
+&lt;option value="age"&gt;Newest&lt;/option&gt;
+</code></pre>
+
+<p>  </select></p>
+
+<p>  <ul class="phones"></p>
+
+<pre><code>&lt;li ng-repeat="phone in phones | filter:query | orderBy:orderProp"&gt;
+  
+  &lt;p&gt;&lt;/p&gt;
+&lt;/li&gt;
+</code></pre>
+
+<p>  </ul></p>
+
+<p>我们在<code>index.html</code>中做了如下更改：</p>
+
+<ul>
+<li><p>首先，我们增加了一个叫做<code>orderProp</code>的<code>&lt;select&gt;</code>标签，这样我们的用户就可以选择我们提供的两种排序方法。</p></li>
+<li><p>然后，在<code>filter</code>过滤器后面添加一个<code>orderBy</code>过滤器用其来处理进入迭代器的数据。<code>orderBy</code>过滤器以一个数组作为输入，复制一份副本，然后把副本重排序再输出到迭代器。</p></li>
+</ul>
+
+
+<p><code>AngularJS</code>在<code>select</code>元素和<code>orderProp</code>模型之间创建了一个双向绑定。而后，<code>orderProp</code>会被用作<code>orderBy</code>过滤器的输入。</p>
+
+<p>正如我们在步骤3中讨论数据绑定和迭代器的时候所说的一样，无论什么时候数据模型发生了改变（比如用户在下拉菜单中选了不同的顺序），AngularJS的数据绑定会让视图自动更新。没有任何笨拙的DOM操作！</p>
+
+<h2>控制器</h2>
+
+<p><code>app/js/controllers.js:</code></p>
+
+<pre><code>var phonecatApp = angular.module('phonecatApp', []);
+
+phonecatApp.controller('PhoneListCtrl', function ($scope) {
+  $scope.phones = [
+    {'name': 'Nexus S',
+     'snippet': 'Fast just got faster with Nexus S.',
+     'age': 1},
+    {'name': 'Motorola XOOM™ with Wi-Fi',
+     'snippet': 'The Next, Next Generation tablet.',
+     'age': 2},
+    {'name': 'MOTOROLA XOOM™',
+     'snippet': 'The Next, Next Generation tablet.',
+     'age': 3}
+  ];
+
+  $scope.orderProp = 'age';
+});
+</code></pre>
+
+<ul>
+<li>我们修改了<code>phones</code>模型—— 手机的数组 ——为每一个手机记录其增加了一个<code>age</code>属性。我们会根据<code>age</code>属性来对手机进行排序。</li>
+<li>我们在控制器代码里加了一行让<code>orderProp</code>的默认值为<code>age</code>。如果我们不设置默认值，这个模型会在我们的用户在下拉菜单选择一个顺序之前一直处于未初始化状态。</li>
+</ul>
+
+
+<p>现在我们该好好谈谈双向数据绑定了。注意到当应用在浏览器中加载时，“Newest”在下拉菜单中被选中。这是因为我们在控制器中把<code>orderProp</code>设置成了‘age’。所以绑定在从我们模型到用户界面的方向上起作用——即数据从模型到视图的绑定。现在当你在下拉菜单中选择“Alphabetically”，数据模型会被同时更新，并且手机列表数组会被重新排序。这个时候数据绑定从另一个方向产生了作用——即数据从视图到模型的绑定。</p>
+
+<h2>Test</h2>
+
+<p>The changes we made should be verified with both a unit test and an end-to-end test. Let&rsquo;s look at the unit test first.</p>
+
+<p><code>test/unit/controllersSpec.js:</code></p>
+
+<pre><code>describe('PhoneCat controllers', function() {
+
+  describe('PhoneListCtrl', function(){
+    var scope, ctrl;
+
+    beforeEach(module('phonecatApp'));
+
+    beforeEach(inject(function($controller) {
+      scope = {};
+      ctrl = $controller('PhoneListCtrl', {$scope:scope});
+    }));
+
+    it('should create "phones" model with 3 phones', function() {
+      expect(scope.phones.length).toBe(3);
+    });
+
+
+    it('should set the default value of orderProp model', function() {
+      expect(scope.orderProp).toBe('age');
+    });
+  });
+});
+</code></pre>
+
+<p>The unit test now verifies that the default ordering property is set.</p>
+
+<p>We used Jasmine&rsquo;s API to extract the controller construction into a beforeEach block, which is shared by all tests in the parent describe block.</p>
+
+<p>You should now see the following output in the Karma tab:</p>
+
+<pre><code>Chrome 22.0: Executed 2 of 2 SUCCESS (0.021 secs / 0.001 secs)
+</code></pre>
+
+<p>Let&rsquo;s turn our attention to the end-to-end test.</p>
+
+<p><code>test/e2e/scenarios.js:</code></p>
+
+<pre><code>...
+it('should be possible to control phone order via the drop down select box', function() {
+
+  var phoneNameColumn = element.all(by.repeater('phone in phones').column(''));
+  var query = element(by.model('query'));
+
+  function getNames() {
+    return phoneNameColumn.map(function(elm) {
+      return elm.getText();
+    });
+  }
+
+  query.sendKeys('tablet'); //let's narrow the dataset to make the test assertions shorter
+
+  expect(getNames()).toEqual([
+    "Motorola XOOM\u2122 with Wi-Fi",
+    "MOTOROLA XOOM\u2122"
+  ]);
+
+  element(by.model('orderProp')).findElement(by.css('option[value="name"]')).click();
+
+  expect(getNames()).toEqual([
+    "MOTOROLA XOOM\u2122",
+    "Motorola XOOM\u2122 with Wi-Fi"
+  ]);
+});...
+</code></pre>
+
+<p>The end-to-end test verifies that the ordering mechanism of the select box is working correctly.</p>
+
+<p>You can now rerun npm run protractor to see the tests run.</p>
+
+<h2>Angularjs双向绑定演示</h2>
+
+<p><a href="/phonecat/step-4/app/">Angularjs双向绑定</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Angularjs学习笔记-迭代器过滤]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/07/learning-angularjs-notes-filtering-repeaters/"/>
+    <updated>2014-04-07T20:56:50-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/07/learning-angularjs-notes-filtering-repeaters</id>
+    <content type="html"><![CDATA[<p>使用AngularJS的迭代器过滤功能可以方便的对数据进行过滤。</p>
+
+<h2>控制器</h2>
+
+<p>我们对控制器不做任何修改。</p>
+
+<h2>模板</h2>
+
+<p><code>app/index.html</code>:</p>
+
+<p>  <div class="container-fluid"></p>
+
+<pre><code>&lt;div class="row-fluid"&gt;
+  &lt;div class="span2"&gt;
+    &lt;!--Sidebar content--&gt;
+
+    Search: &lt;input ng-model="query"&gt;
+
+  &lt;/div&gt;
+  &lt;div class="span10"&gt;
+    &lt;!--Body content--&gt;
+
+    &lt;ul class="phones"&gt;
+      &lt;li ng-repeat="phone in phones | filter:query"&gt;
+        
+        &lt;p&gt;&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>  </div></p>
+
+<p>我们现在添加了一个<code>&lt;input&gt;</code>标签，并且使用<code>AngularJS</code>的<code>$filter</code>函数来处理<code>ngRepeat</code>指令的输入。</p>
+
+<p>这样允许用户输入一个搜索条件，立刻就能看到对电话列表的搜索结果。我们来解释一下新的代码：</p>
+
+<ul>
+<li><p>数据绑定： 这是<code>AngularJS</code>的一个核心特性。当页面加载的时候，<code>AngularJS</code>会根据输入框的属性值名字，将其与数据模型中相同名字的变量绑定在一起，以确保两者的同步性。</p></li>
+<li><p>在这段代码中，用户在输入框中输入的数据名字称作<code>query</code>，会立刻作为列表迭代器（<code>phone in phones | filter:query</code>）其过滤器的输入。当数据模型引起迭代器输入变化的时候，迭代器可以高效得更新DOM将数据模型最新的状态反映出来。</p></li>
+<li><p>使用<code>filter</code>过滤器：<code>filter</code>函数使用<code>query</code>的值来创建一个只包含匹配<code>query</code>记录的新数组。</p></li>
+<li><p><code>ngRepeat</code>会根据<code>filter</code>过滤器生成的手机记录数据数组来自动更新视图。整个过程对于开发者来说都是透明的。</p></li>
+</ul>
+
+
+<h2>测试</h2>
+
+<p>在步骤2，我们学习了编写和运行一个测试的方法。单元测试用来测试我们用js编写的控制器和其他组件都非常方便，但是不能方便的对DOM操作和应用集成进行测试。对于这些来说，端到端测试是一个更好的选择。</p>
+
+<p>搜索特性是完全通过模板和数据绑定实现的，所以我们的第一个端到端测试就来验证这些特性是否符合我们的预期。</p>
+
+<p><code>test/e2e/scenarios.js:</code></p>
+
+<pre><code>describe('PhoneCat App', function() {
+
+  describe('Phone list view', function() {
+
+    beforeEach(function() {
+      browser.get('app/index.html');
+    });
+
+
+    it('should filter the phone list as user types into the search box', function() {
+
+      var phoneList = element.all(by.repeater('phone in phones'));
+      var query = element(by.model('query'));
+
+      expect(phoneList.count()).toBe(3);
+
+      query.sendKeys('nexus');
+      expect(phoneList.count()).toBe(1);
+
+      query.clear();
+      query.sendKeys('motorola');
+      expect(phoneList.count()).toBe(2);
+    });
+  });
+});
+</code></pre>
+
+<p>This test verifies that the search box and the repeater are correctly wired together. Notice how easy it is to write end-to-end tests in Angular. Although this example is for a simple test, it really is that easy to set up any functional, readable, end-to-end test.</p>
+
+<h2>Running End to End Tests with Protractor</h2>
+
+<p>Even though the syntax of this test looks very much like our controller unit test written with <code>Jasmine</code>, the end-to-end test uses APIs of Protractor. Read about the Protractor APIs at <code>https://github.com/angular/protractor/blob/master/docs/api.md</code>.</p>
+
+<p>Much like <code>Karma</code> is the test runner for unit tests, we use Protractor to run end-to-end tests. Try it with npm run protractor. End-to-end tests are slow, so unlike with unit tests, Protractor will exit after the test run and will not automatically rerun the test suite on every file change. To rerun the test suite, execute npm run protractor again.</p>
+
+<pre><code>Note: You must ensure you've installed the protractor and updated webdriver prior to running the npm run protractor. You can do this by issuing npm install and npm run update-webdriver into your terminal.
+</code></pre>
+
+<h2>Angularjs迭代器过滤演示</h2>
+
+<p><a href="/phonecat/step-3/app/">Angularjs迭代器过滤</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Angularjs学习笔记-动态模板]]></title>
@@ -47,8 +306,8 @@
 &lt;/html&gt;
 </code></pre>
 
-<p>我们刚刚把静态编码的手机列表替换掉了，因为这里我们使用<code>ngRepeat</code>指令和两个用花括号包裹起来的<code>AngularJS</code>表达式——{{phone.name}}
-和{{phone.snippet}}——能达到同样的效果。</p>
+<p>我们刚刚把静态编码的手机列表替换掉了，因为这里我们使用<code>ngRepeat</code>指令和两个用花括号包裹起来的<code>AngularJS</code>表达式——<code>{{phone.name}}</code>
+和<code>{{phone.snippet}}</code>——能达到同样的效果。</p>
 
 <p>在<code>&lt;li&gt;</code>标签里面的<code>ng-repeat="phone in phones"</code>语句是一个<code>AngularJS</code>迭代器。这个迭代器告诉<code>AngularJS</code>用第一个<code>&lt;li&gt;</code>标签作为模板为列表中的每一部手机创建一个<code>&lt;li&gt;</code>元素。
 正如我们在第0步时学到的，包裹在<code>phone.name</code>和<code>phone.snippet</code>周围的花括号标识着数据绑定。和常量计算不同的是，这里的表达式实际上是我们应用的一个数据模型引用，这些我们在<code>PhoneListCtrl</code>控制器里面都设置好了。</p>

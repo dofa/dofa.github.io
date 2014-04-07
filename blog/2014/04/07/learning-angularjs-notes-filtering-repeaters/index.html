@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Sublime Text 入门及技巧 - Do Far</title>
+  <title>Angularjs学习笔记-迭代器过滤 - Do Far</title>
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="快捷的命令面板 和 TextMate 类似，Sublime Text 2 也提供了很方便的命令调用方式：Command Palette（命令面板）。调用方法：直接在 Tool 菜单中选择 Command Palette，或是用快捷键：Shift+Command+P，输入命令名称（中的字母） &hellip;">
+  <meta name="description" content="使用AngularJS的迭代器过滤功能可以方便的对数据进行过滤。 控制器 我们对控制器不做任何修改。 模板 app/index.html: &lt;div class="row-fluid"&gt; &lt;div class="span2"&gt; &lt;!--Sidebar content &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.dofa.org/blog/2013/06/01/sublime-text-guide-and-tips">
+  <link rel="canonical" href="http://blog.dofa.org/blog/2014/04/07/learning-angularjs-notes-filtering-repeaters">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -81,7 +81,7 @@
   
   <header>
     
-      <h1 class="entry-title">Sublime Text 入门及技巧</h1>
+      <h1 class="entry-title">Angularjs学习笔记-迭代器过滤</h1>
     
     
       <p class="meta">
@@ -97,7 +97,7 @@
   
 
 
-<time datetime="2013-06-01T07:25:52-07:00" pubdate data-updated="true">Jun 1<span>st</span>, 2013</time>
+<time datetime="2014-04-07T20:56:50-07:00" pubdate data-updated="true">Apr 7<span>th</span>, 2014</time>
         
         
            | <a href="#comments">Comments</a>
@@ -107,40 +107,102 @@
   </header>
 
 
-<div class="entry-content"><h2>快捷的命令面板</h2>
+<div class="entry-content"><p>使用AngularJS的迭代器过滤功能可以方便的对数据进行过滤。</p>
 
-<p>和 TextMate 类似，Sublime Text 2 也提供了很方便的命令调用方式：Command Palette（命令面板）。调用方法：直接在 <code>Tool</code> 菜单中选择 <code>Command Palette</code>，或是用快捷键：<code>Shift+Command+P</code>，输入命令名称（中的字母）就可以实时搜索到相应的命令、选项、snippet 和 syntex， 按下回车就可以直接执行，减少了查找的麻烦。</p>
+<h2>控制器</h2>
 
-<h2>即时的文件切换</h2>
+<p>我们对控制器不做任何修改。</p>
 
-<p>按下 <code>Command+P</code>(Mac) 或是 <code>Ctrl+P</code>(Windows)，输入想要切换到的文件的文件名，都不用按下回车键，目标文件就已经展现在眼前了，虽然 Vim 配合 PeepOpen 也可以实现同样的功能，但速度却远没有这么迅速。</p>
+<h2>模板</h2>
 
-<h2>随心所欲的跳转</h2>
+<p><code>app/index.html</code>:</p>
 
-<p><code>Cmd+P</code> 之所以被叫做 Goto Anything 并不是虚名：</p>
+<p>  <div class="container-fluid"></p>
+
+<pre><code>&lt;div class="row-fluid"&gt;
+  &lt;div class="span2"&gt;
+    &lt;!--Sidebar content--&gt;
+
+    Search: &lt;input ng-model="query"&gt;
+
+  &lt;/div&gt;
+  &lt;div class="span10"&gt;
+    &lt;!--Body content--&gt;
+
+    &lt;ul class="phones"&gt;
+      &lt;li ng-repeat="phone in phones | filter:query"&gt;
+
+        &lt;p&gt;&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>  </div></p>
+
+<p>我们现在添加了一个<code>&lt;input&gt;</code>标签，并且使用<code>AngularJS</code>的<code>$filter</code>函数来处理<code>ngRepeat</code>指令的输入。</p>
+
+<p>这样允许用户输入一个搜索条件，立刻就能看到对电话列表的搜索结果。我们来解释一下新的代码：</p>
 
 <ul>
-<li>用 <code>Command+P</code> 可以快速跳转到当前项目中的任意文件，可进行关键词匹配。</li>
-<li>用 <code>Command+P</code> 后 <code>@</code> (或是<code>Command+R</code>)可以快速列出/跳转到某个函数（很爽的是在 markdown 当中是匹配到标题，而且还是带缩进的！）。</li>
-<li>用 <code>Command+P</code> 后 <code>#</code> 可以在当前文件中进行搜索。</li>
-<li>用 <code>Command+P</code> 后 <code>:</code> (或是<code>Ctrl+G</code>)加上数字可以跳转到相应的行。</li>
+<li><p>数据绑定： 这是<code>AngularJS</code>的一个核心特性。当页面加载的时候，<code>AngularJS</code>会根据输入框的属性值名字，将其与数据模型中相同名字的变量绑定在一起，以确保两者的同步性。</p></li>
+<li><p>在这段代码中，用户在输入框中输入的数据名字称作<code>query</code>，会立刻作为列表迭代器（<code>phone in phones | filter:query</code>）其过滤器的输入。当数据模型引起迭代器输入变化的时候，迭代器可以高效得更新DOM将数据模型最新的状态反映出来。</p></li>
+<li><p>使用<code>filter</code>过滤器：<code>filter</code>函数使用<code>query</code>的值来创建一个只包含匹配<code>query</code>记录的新数组。</p></li>
+<li><p><code>ngRepeat</code>会根据<code>filter</code>过滤器生成的手机记录数据数组来自动更新视图。整个过程对于开发者来说都是透明的。</p></li>
 </ul>
 
 
-<p>而更酷的是你可以用 <code>Command+P</code> 加上一些关键词跳转到某个文件同时加上 <code>@</code> 来列出/跳转到目标文件中的某个函数，或是同时加上 <code>#</code> 来在目标文件中进行搜索，或是同时加上 <code>:</code> 和数字来跳转到目标文件中相应的行。</p>
+<h2>测试</h2>
 
-<h2>多重选择(Multi-Selection)</h2>
+<p>在步骤2，我们学习了编写和运行一个测试的方法。单元测试用来测试我们用js编写的控制器和其他组件都非常方便，但是不能方便的对DOM操作和应用集成进行测试。对于这些来说，端到端测试是一个更好的选择。</p>
 
-<p>多重选择功能允许在页面中同时存在多个光标，让很多本来需要正则表达式、高级搜索和替换才能完成的任务也变得游刃有余了。
-激活多重选择的方法有两几种：</p>
+<p>搜索特性是完全通过模板和数据绑定实现的，所以我们的第一个端到端测试就来验证这些特性是否符合我们的预期。</p>
 
-<ul>
-<li>按住 <code>Command</code> 或 <code>Alt</code>，然后在页面中希望中现光标的位置点击。</li>
-<li>选择数行文本，然后按下 <code>Shift+Command+L</code>。</li>
-<li>通过反复按下 <code>Control/Command+D</code> 即可将全文中与光标当前所在位置的词相同的词逐一加入选择，而直接按下 <code>Alt+F3</code>(Windows) 或是 <code>Ctrl+Command+G</code>(Mac) 即可一次性选择所有相同的词。</li>
-<li>按下鼠标中键来进行垂直方向的纵列选择，也可以进入多重编辑状态。</li>
-</ul>
+<p><code>test/e2e/scenarios.js:</code></p>
 
+<pre><code>describe('PhoneCat App', function() {
+
+  describe('Phone list view', function() {
+
+    beforeEach(function() {
+      browser.get('app/index.html');
+    });
+
+
+    it('should filter the phone list as user types into the search box', function() {
+
+      var phoneList = element.all(by.repeater('phone in phones'));
+      var query = element(by.model('query'));
+
+      expect(phoneList.count()).toBe(3);
+
+      query.sendKeys('nexus');
+      expect(phoneList.count()).toBe(1);
+
+      query.clear();
+      query.sendKeys('motorola');
+      expect(phoneList.count()).toBe(2);
+    });
+  });
+});
+</code></pre>
+
+<p>This test verifies that the search box and the repeater are correctly wired together. Notice how easy it is to write end-to-end tests in Angular. Although this example is for a simple test, it really is that easy to set up any functional, readable, end-to-end test.</p>
+
+<h2>Running End to End Tests with Protractor</h2>
+
+<p>Even though the syntax of this test looks very much like our controller unit test written with <code>Jasmine</code>, the end-to-end test uses APIs of Protractor. Read about the Protractor APIs at <code>https://github.com/angular/protractor/blob/master/docs/api.md</code>.</p>
+
+<p>Much like <code>Karma</code> is the test runner for unit tests, we use Protractor to run end-to-end tests. Try it with npm run protractor. End-to-end tests are slow, so unlike with unit tests, Protractor will exit after the test run and will not automatically rerun the test suite on every file change. To rerun the test suite, execute npm run protractor again.</p>
+
+<pre><code>Note: You must ensure you've installed the protractor and updated webdriver prior to running the npm run protractor. You can do this by issuing npm install and npm run update-webdriver into your terminal.
+</code></pre>
+
+<h2>Angularjs迭代器过滤演示</h2>
+
+<p><a href="/phonecat/step-3/app/">Angularjs迭代器过滤</a></p>
 </div>
 
 
@@ -163,12 +225,12 @@
   
 
 
-<time datetime="2013-06-01T07:25:52-07:00" pubdate data-updated="true">Jun 1<span>st</span>, 2013</time>
+<time datetime="2014-04-07T20:56:50-07:00" pubdate data-updated="true">Apr 7<span>th</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/sublimetext/'>SublimeText</a>
+    <a class='category' href='/blog/categories/javascript/'>Javascript</a>
   
 </span>
 
@@ -184,10 +246,10 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/04/10/commonly-used-vim-commands/" title="Previous Post: 常用的Vim命令">&laquo; 常用的Vim命令</a>
+        <a class="basic-alignment left" href="/blog/2014/04/07/learning-angularjs-notes-dynamic-templates/" title="Previous Post: Angularjs学习笔记-动态模板">&laquo; Angularjs学习笔记-动态模板</a>
       
       
-        <a class="basic-alignment right" href="/blog/2013/06/01/sublime-text-study-notes/" title="Next Post: Sublime Text 学习笔记">Sublime Text 学习笔记 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2014/04/07/learning-angularjs-notes-two-way-data-bingding/" title="Next Post: Angularjs学习笔记-双向绑定">Angularjs学习笔记-双向绑定 &raquo;</a>
       
     </p>
   </footer>
