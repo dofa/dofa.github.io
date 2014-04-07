@@ -35,7 +35,7 @@ AngularJS应用使用模型-视图-控制器（MVC）模式解耦代码和分离
 	</body>
 	</html>
 
-我们刚刚把静态编码的手机列表替换掉了，因为这里我们使用`ngRepeat`指令和两个用花括号包裹起来的`AngularJS`表达式——`{{phone.name}}`和`{{phone.snippet}}`——能达到同样的效果。
+我们刚刚把静态编码的手机列表替换掉了，因为这里我们使用`ngRepeat`指令和两个用花括号包裹起来的`AngularJS`表达式——`\{{phone.name}}`和`\{{phone.snippet}}`——能达到同样的效果。
 
 在`<li>`标签里面的`ng-repeat="phone in phones"`语句是一个`AngularJS`迭代器。这个迭代器告诉`AngularJS`用第一个`<li>`标签作为模板为列表中的每一部手机创建一个`<li>`元素。
 正如我们在第0步时学到的，包裹在`phone.name`和`phone.snippet`周围的花括号标识着数据绑定。和常量计算不同的是，这里的表达式实际上是我们应用的一个数据模型引用，这些我们在`PhoneListCtrl`控制器里面都设置好了。
