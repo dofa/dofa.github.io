@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>使用PHP-FPM安装php5 server - Do Far</title>
+  <title>Do Far</title>
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="安装环境 nginx
-mysql 使用PHP-FPM安装php5 server apt-get install php5-fpm PHP-FPM is a daemon process (with the init script /etc/init.d/php5-fpm) that runs a &hellip;">
+  <meta name="description" content="
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@ mysql 使用PHP-FPM安装php5 server apt-get install php5-fpm PHP-FPM is a daemo
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.dofa.org/blog/2014/03/03/install-php5-server-via-php-fpm">
+  <link rel="canonical" href="http://blog.dofa.org/blog/page/5">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -77,12 +77,15 @@ mysql 使用PHP-FPM安装php5 server apt-get install php5-fpm PHP-FPM is a daemo
 </nav>
   <div id="main">
     <div id="content">
-      <div>
-<article class="hentry" role="article">
+      <div class="blog-index">
   
+  
+  
+    <article>
+      
   <header>
     
-      <h1 class="entry-title">使用PHP-FPM安装php5 server</h1>
+      <h1 class="entry-title"><a href="/blog/2013/03/26/vim-cheat-sheet/">vim cheat sheet</a></h1>
     
     
       <p class="meta">
@@ -98,158 +101,32 @@ mysql 使用PHP-FPM安装php5 server apt-get install php5-fpm PHP-FPM is a daemo
   
 
 
-<time datetime="2014-03-03T05:51:40-08:00" pubdate data-updated="true">Mar 3<span>rd</span>, 2014</time>
+<time datetime="2013-03-26T09:48:52-07:00" pubdate data-updated="true">Mar 26<span>th</span>, 2013</time>
         
         
-           | <a href="#comments">Comments</a>
+           | <a href="/blog/2013/03/26/vim-cheat-sheet/#comments">Comments</a>
                 
       </p>
     
   </header>
 
 
-<div class="entry-content"><h2>安装环境</h2>
-
-<ul>
-<li><p>nginx</p></li>
-<li><p>mysql</p></li>
-</ul>
-
-
-<h2>使用<code>PHP-FPM</code>安装php5 server</h2>
-
-<pre><code>apt-get install php5-fpm
-</code></pre>
-
-<blockquote><p>PHP-FPM is a daemon process (with the init script /etc/init.d/php5-fpm) that runs a FastCGI server on the socket /var/run/php5-fpm.sock.</p></blockquote>
-
-<h2>配置nginx</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>[...]
-</span><span class='line'>worker_processes  4;
-</span><span class='line'>[...]
-</span><span class='line'>    keepalive_timeout   2;
-</span><span class='line'>[...]</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>网站配置</h2>
-
-<pre><code>vim /etc/nginx/sites-available/yoursite
-</code></pre>
-
-<h2>PHP配置</h2>
-
-<pre><code>vim /etc/php5/fpm/php.ini
-</code></pre>
-
-<p>set cgi.fix_pathinfo=0:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>[...]
-</span><span class='line'>; cgi.fix_pathinfo provides *real* PATH_INFO/PATH_TRANSLATED support for CGI.  PHP's
-</span><span class='line'>; previous behaviour was to set PATH_TRANSLATED to SCRIPT_FILENAME, and to not grok
-</span><span class='line'>; what PATH_INFO is.  For more information on PATH_INFO, see the cgi specs.  Setting
-</span><span class='line'>; this to 1 will cause PHP CGI to fix its paths to conform to the spec.  A setting
-</span><span class='line'>; of zero causes PHP to behave as before.  Default is 1.  You should fix your scripts
-</span><span class='line'>; to use SCRIPT_FILENAME rather than PATH_TRANSLATED.
-</span><span class='line'>; http://php.net/cgi.fix-pathinfo
-</span><span class='line'>cgi.fix_pathinfo=0
-</span><span class='line'>[...]</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Server Reload</h2>
-
-<pre><code>/etc/init.d/nginx -s reload
-/etc/init.d/php5-fpm reload
-</code></pre>
+  <div class="entry-content"><p><img src="http://dofa.u.qiniudn.com/image/vim/vim-cheat-sheet.png"></p>
 </div>
-
-
-  <footer>
-    <p class="meta">
-      
   
-
-<span class="byline author vcard">Posted by <span class="fn">dofa</span></span>
-
-      
-
-
-
-
-
-
-
-
   
 
 
-<time datetime="2014-03-03T05:51:40-08:00" pubdate data-updated="true">Mar 3<span>rd</span>, 2014</time>
-      
-
-<span class="categories">
+    </article>
   
-    <a class='category' href='/blog/categories/server/'>Server</a>
-  
-</span>
-
-
-    </p>
+  <div class="pagination">
     
-      <div class="sharing">
-  
-  
-  
-</div>
-
+    <a href="/blog/archives">Blog Archives</a>
     
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2014/02/24/occurs-titlecase-error-in-octopress/" title="Previous Post: Octopress发生titlecase错误">&laquo; Octopress发生titlecase错误</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2014/03/08/vagrant-introduction/" title="Next Post: Vagrant使用简介">Vagrant使用简介 &raquo;</a>
-      
-    </p>
-  </footer>
-</article>
-
-
-  <section>
-    <h1>Comments</h1>
-    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
-<div class="ds-thread" data-title=""></div>
-<script type="text/javascript">
-  var duoshuoQuery = {short_name:"bitbegin"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = 'http://static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-    || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-</script>
-<!-- Duoshuo Comment END -->
+    <a class="next" href="/blog/page/4/">Newer &rarr;</a>
+    
+  </div>
 </div>
-  </section>
-
-</div>
-
 <aside class="sidebar">
   
     <section>
@@ -312,6 +189,19 @@ mysql 使用PHP-FPM安装php5 server apt-get install php5-fpm PHP-FPM is a daemo
 <h1>Recent Comments</h1>
 <ul class="ds-recent-comments" data-num-items="10" data-show-avatars="0" data-show-time="0" data-show-title="0" data-show-admin="0" data-excerpt-length="18"></ul>
 
+<!--多说js加载开始，一个页面只需要加载一次 -->
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"bitbegin"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<!--多说js加载结束，一个页面只需要加载一次 -->
+
 </section><section>
 <h1>友情链接</h1>
 <ul>
@@ -331,7 +221,6 @@ mysql 使用PHP-FPM安装php5 server apt-get install php5-fpm PHP-FPM is a daemo
 </section>
   
 </aside>
-
 
     </div>
   </div>
