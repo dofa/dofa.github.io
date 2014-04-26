@@ -14,14 +14,27 @@ tags: bash, zsh
 
 ## 安装OH-My-ZSH
 
+#### 手动安装
+
 	cd ~
 	git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
 	cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 
-## 设定为默认bash
+
+设定为默认bash
 
 	chsh -s /bin/zsh
+
+#### 自动安装
+
+via `curl`
+
+	curl -L http://install.ohmyz.sh | sh
+
+via `wget`
+
+	wget --no-check-certificate http://install.ohmyz.sh -O - | sh
 
 ## 修改putty不能显示的字符
 
@@ -34,6 +47,10 @@ tags: bash, zsh
 	#ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗%{$reset_color%}"
 	ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}X %{$reset_color%}"
 	ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
+
+使用更改后的配置：
+
+	source `~/.oh-my-zsh/themes/robbyrussell.zsh-theme`
 
 ## 	OH-My-ZSH的使用
 
