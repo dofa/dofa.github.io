@@ -5,11 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Tag: BOM - Do Far</title>
+  <title>使用angular-seed搭建angularjs和bootstrap开发环境 - Do Far</title>
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="Tag: BOM">
+  <meta name="description" content="Clone angular-seed git clone https://github.com/angular/angular-seed.git
+cd angular-seed Install Dependencies npm install -g bower
+npm install &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.dofa.orgtags/bom">
+  <link rel="canonical" href="http://blog.dofa.org/blog/2014/04/26/build-angularjs-and-bootstrap-environment-with-angular-seed">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -77,135 +79,186 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Tag: BOM</h1>
+    
+      <h1 class="entry-title">使用angular-seed搭建angularjs和bootstrap开发环境</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-26T10:36:50-07:00" pubdate data-updated="true">Apr 26<span>th</span>, 2014</time>
+        
+        
+           | <a href="#comments">Comments</a>
+                
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="tag">
 
 
+<div class="entry-content"><h2>Clone angular-seed</h2>
 
-  
-  <h2>2014</h2>
+<pre><code>git clone https://github.com/angular/angular-seed.git
+cd angular-seed
+</code></pre>
 
-<article>
-  
-<h1><a href="/blog/2014/04/03/javascript-dom-use/">JavaScript DOM基础操作实例</a></h1>
-<time datetime="2014-04-03T23:25:06-07:00" pubdate><span class='month'>Apr</span> <span class='day'>03</span> <span class='year'>2014</span></time>
+<h2>Install Dependencies</h2>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/javascript/'>Javascript</a></span>
-</footer>
+<pre><code>npm install -g bower
+npm install
+</code></pre>
 
+<p>如果遇到timeout问题，请设置代理：</p>
 
-</article>
+<pre><code>npm config set proxy=http://127.0.0.1:8087
+</code></pre>
 
+<h2>Run the Application</h2>
 
+<pre><code>npm start
+</code></pre>
 
-<article>
-  
-<h1><a href="/blog/2014/04/03/learn-javascript-bom-base-screen-object/">JavaScript学习--BOM基础之screen对象(转)</a></h1>
-<time datetime="2014-04-03T21:57:06-07:00" pubdate><span class='month'>Apr</span> <span class='day'>03</span> <span class='year'>2014</span></time>
+<p>访问<code>http://localhost:8000/app/index.html</code>index，看环境是否搭建ok。</p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/javascript/'>Javascript</a></span>
-</footer>
+<h2>安装bootstrap</h2>
 
+<p>在<code>bower.json</code>中增加<code>angular-bootstrap</code>：</p>
 
-</article>
+<pre><code>{
+  "name": "angular-seed",
+  "description": "A starter project for AngularJS",
+  "version": "0.0.0",
+  "homepage": "https://github.com/angular/angular-seed",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.2.x",
+    "angular-route": "1.2.x",
+    "angular-loader": "1.2.x",
+    "angular-mocks": "~1.2.15",
+    "angular-bootstrap": "",
+    "bootstrap": ""
+  }
+}
+</code></pre>
 
+<p>再执行：</p>
 
+<pre><code>npm install
+</code></pre>
 
-<article>
-  
-<h1><a href="/blog/2014/04/03/learn-javascript-bom-base-navigator-object/">JavaScript学习--BOM基础之navigator对象(转)</a></h1>
-<time datetime="2014-04-03T21:52:06-07:00" pubdate><span class='month'>Apr</span> <span class='day'>03</span> <span class='year'>2014</span></time>
+<p>修改<code>app.js</code>：</p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/javascript/'>Javascript</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2014/04/02/learn-javascript-bom-base-location-object/">JavaScript学习--BOM基础之location对象(转)</a></h1>
-<time datetime="2014-04-02T23:10:06-07:00" pubdate><span class='month'>Apr</span> <span class='day'>02</span> <span class='year'>2014</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/javascript/'>Javascript</a></span>
-</footer>
-
-
-</article>
+<pre><code>'use strict';
 
 
+// Declare app level module which depends on filters, and services
+angular.module('myApp', [
+  'ngRoute',
+  'myApp.filters',
+  'myApp.services',
+  'myApp.directives',
+  'myApp.controllers',
+  'ui.bootstrap'
+]).
+config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/view1', {templateUrl: 'partials/partial1.html', controller: 'MyCtrl1'});
+  $routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: 'MyCtrl2'});
+  $routeProvider.otherwise({redirectTo: '/view1'});
+}]);
+</code></pre>
 
-<article>
-  
-<h1><a href="/blog/2014/04/02/learn-javascript-bom-base-history-object/">JavaScript学习--BOM基础之history对象(转)</a></h1>
-<time datetime="2014-04-02T23:00:06-07:00" pubdate><span class='month'>Apr</span> <span class='day'>02</span> <span class='year'>2014</span></time>
+<p>在<code>index.html</code>中增加：</p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/javascript/'>Javascript</a></span>
-</footer>
+<pre><code>&lt;link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css"/&gt;
+</code></pre>
 
+<p>和</p>
 
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2014/04/02/learn-javascript-bom-base-frames-object/">JavaScript学习--BOM基础之frames对象(转)</a></h1>
-<time datetime="2014-04-02T22:35:06-07:00" pubdate><span class='month'>Apr</span> <span class='day'>02</span> <span class='year'>2014</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/javascript/'>Javascript</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2014/04/01/learn-javascript-bom-base-document-object/">JavaScript学习--BOM基础之document对象(转)</a></h1>
-<time datetime="2014-04-01T08:35:06-07:00" pubdate><span class='month'>Apr</span> <span class='day'>01</span> <span class='year'>2014</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/javascript/'>Javascript</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2014/03/31/learn-javascript-bom-base-window-object/">JavaScript学习--BOM基础之window对象(转)</a></h1>
-<time datetime="2014-03-31T08:26:06-07:00" pubdate><span class='month'>Mar</span> <span class='day'>31</span> <span class='year'>2014</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/javascript/'>Javascript</a></span>
-</footer>
-
-
-</article>
-
+<pre><code>&lt;script src="../bower_components/angular-bootstrap/ui-bootstrap.js"&gt;&lt;/script&gt;
+</code></pre>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">dofa</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-26T10:36:50-07:00" pubdate data-updated="true">Apr 26<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/javascript/'>Javascript</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/04/26/use-git-svn/" title="Previous Post: 使用git-svn">&laquo; 使用git-svn</a>
+      
+      
+    </p>
+  </footer>
 </article>
 
+
+  <section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread" data-title=""></div>
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"bitbegin"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<!-- Duoshuo Comment END -->
+</div>
+  </section>
 
 </div>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Do Far]]></title>
   <link href="http://blog.dofa.org/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-04-26T00:20:13-07:00</updated>
+  <updated>2014-04-26T05:24:58-07:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -12,6 +12,95 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[使用angular-seed搭建angularjs和bootstrap开发环境]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/26/build-angularjs-and-bootstrap-environment-with-angular-seed/"/>
+    <updated>2014-04-26T10:36:50-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/26/build-angularjs-and-bootstrap-environment-with-angular-seed</id>
+    <content type="html"><![CDATA[<h2>Clone angular-seed</h2>
+
+<pre><code>git clone https://github.com/angular/angular-seed.git
+cd angular-seed
+</code></pre>
+
+<h2>Install Dependencies</h2>
+
+<pre><code>npm install -g bower
+npm install
+</code></pre>
+
+<p>如果遇到timeout问题，请设置代理：</p>
+
+<pre><code>npm config set proxy=http://127.0.0.1:8087
+</code></pre>
+
+<h2>Run the Application</h2>
+
+<pre><code>npm start
+</code></pre>
+
+<p>访问<code>http://localhost:8000/app/index.html</code>index，看环境是否搭建ok。</p>
+
+<h2>安装bootstrap</h2>
+
+<p>在<code>bower.json</code>中增加<code>angular-bootstrap</code>：</p>
+
+<pre><code>{
+  "name": "angular-seed",
+  "description": "A starter project for AngularJS",
+  "version": "0.0.0",
+  "homepage": "https://github.com/angular/angular-seed",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.2.x",
+    "angular-route": "1.2.x",
+    "angular-loader": "1.2.x",
+    "angular-mocks": "~1.2.15",
+    "angular-bootstrap": "",
+    "bootstrap": ""
+  }
+}
+</code></pre>
+
+<p>再执行：</p>
+
+<pre><code>npm install
+</code></pre>
+
+<p>修改<code>app.js</code>：</p>
+
+<pre><code>'use strict';
+
+
+// Declare app level module which depends on filters, and services
+angular.module('myApp', [
+  'ngRoute',
+  'myApp.filters',
+  'myApp.services',
+  'myApp.directives',
+  'myApp.controllers',
+  'ui.bootstrap'
+]).
+config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/view1', {templateUrl: 'partials/partial1.html', controller: 'MyCtrl1'});
+  $routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: 'MyCtrl2'});
+  $routeProvider.otherwise({redirectTo: '/view1'});
+}]);
+</code></pre>
+
+<p>在<code>index.html</code>中增加：</p>
+
+<pre><code>&lt;link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css"/&gt;
+</code></pre>
+
+<p>和</p>
+
+<pre><code>&lt;script src="../bower_components/angular-bootstrap/ui-bootstrap.js"&gt;&lt;/script&gt;
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[使用git-svn]]></title>
@@ -1786,58 +1875,6 @@ document.write(sTest==window.sTest);
 <li>JavaScript screen 对象</li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[为Octopress增加友情链接]]></title>
-    <link href="http://blog.dofa.org/blog/2014/03/30/add-links-for-octopress/"/>
-    <updated>2014-03-30T10:16:12-07:00</updated>
-    <id>http://blog.dofa.org/blog/2014/03/30/add-links-for-octopress</id>
-    <content type="html"><![CDATA[<h2>友情链接</h2>
-
-<p>你有一些经常去的网站、博客，想推荐给大家，则可以在侧边栏加上一个“友情链接” 。</p>
-
-<p>在 <code>source/_includes/custom/asides</code> 创建 <code>blog_link.html</code> ，代码如下：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;section&gt;</span>
-</span><span class='line'><span class="nt">&lt;h1&gt;</span>友情链接<span class="nt">&lt;/h1&gt;</span>
-</span><span class='line'><span class="nt">&lt;ul&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;li&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://blog.jobbole.com/&quot;</span><span class="nt">&gt;</span>伯乐在线<span class="nt">&lt;/a&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;/li&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;li&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://www.csdn.net/&quot;</span><span class="nt">&gt;</span>CSDN<span class="nt">&lt;/a&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;/li&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;li&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://www.cnblogs.com/&quot;</span><span class="nt">&gt;</span>博客园<span class="nt">&lt;/a&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;/li&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;li&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://coolshell.cn/&quot;</span><span class="nt">&gt;</span>酷壳CoolShell<span class="nt">&lt;/a&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;/li&gt;</span>
-</span><span class='line'><span class="nt">&lt;/ul&gt;</span>
-</span><span class='line'><span class="nt">&lt;/section&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>可以自行添加喜爱网站，然后在default_asides中加入<code>custom/asides/blog_link.html</code></p>
 ]]></content>
   </entry>
   

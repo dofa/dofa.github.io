@@ -193,12 +193,18 @@
         <lastmod>2014-04-25T23:57:41-07:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://blog.dofa.org/blog/2014/04/26/build-angularjs-and-bootstrap-environment-with-angular-seed/
+        </loc>
+        <lastmod>2014-04-26T05:15:26-07:00</lastmod>
+    </url>
+    <url>
         <loc>http://blog.dofa.org/about/</loc>
         <lastmod>2014-03-29T01:16:58-07:00</lastmod>
     </url>
     <url>
         <loc>http://blog.dofa.org/blog/archives/</loc>
-        <lastmod>2014-04-26T00:13:24-07:00</lastmod>
+        <lastmod>2014-04-26T05:15:26-07:00</lastmod>
     </url>
     <url>
         <loc>http://blog.dofa.org/github/</loc>
@@ -206,7 +212,7 @@
     </url>
     <url>
         <loc>http://blog.dofa.org/</loc>
-        <lastmod>2014-04-26T00:13:24-07:00</lastmod>
+        <lastmod>2014-04-26T05:15:26-07:00</lastmod>
     </url>
     <url>
         <loc>http://blog.dofa.org/robots.txt</loc>

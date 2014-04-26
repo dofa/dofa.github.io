@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Javascript | Do Far]]></title>
   <link href="http://blog.dofa.org/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-04-26T00:20:13-07:00</updated>
+  <updated>2014-04-26T05:24:58-07:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -12,6 +12,95 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[使用angular-seed搭建angularjs和bootstrap开发环境]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/26/build-angularjs-and-bootstrap-environment-with-angular-seed/"/>
+    <updated>2014-04-26T10:36:50-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/26/build-angularjs-and-bootstrap-environment-with-angular-seed</id>
+    <content type="html"><![CDATA[<h2>Clone angular-seed</h2>
+
+<pre><code>git clone https://github.com/angular/angular-seed.git
+cd angular-seed
+</code></pre>
+
+<h2>Install Dependencies</h2>
+
+<pre><code>npm install -g bower
+npm install
+</code></pre>
+
+<p>如果遇到timeout问题，请设置代理：</p>
+
+<pre><code>npm config set proxy=http://127.0.0.1:8087
+</code></pre>
+
+<h2>Run the Application</h2>
+
+<pre><code>npm start
+</code></pre>
+
+<p>访问<code>http://localhost:8000/app/index.html</code>index，看环境是否搭建ok。</p>
+
+<h2>安装bootstrap</h2>
+
+<p>在<code>bower.json</code>中增加<code>angular-bootstrap</code>：</p>
+
+<pre><code>{
+  "name": "angular-seed",
+  "description": "A starter project for AngularJS",
+  "version": "0.0.0",
+  "homepage": "https://github.com/angular/angular-seed",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.2.x",
+    "angular-route": "1.2.x",
+    "angular-loader": "1.2.x",
+    "angular-mocks": "~1.2.15",
+    "angular-bootstrap": "",
+    "bootstrap": ""
+  }
+}
+</code></pre>
+
+<p>再执行：</p>
+
+<pre><code>npm install
+</code></pre>
+
+<p>修改<code>app.js</code>：</p>
+
+<pre><code>'use strict';
+
+
+// Declare app level module which depends on filters, and services
+angular.module('myApp', [
+  'ngRoute',
+  'myApp.filters',
+  'myApp.services',
+  'myApp.directives',
+  'myApp.controllers',
+  'ui.bootstrap'
+]).
+config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/view1', {templateUrl: 'partials/partial1.html', controller: 'MyCtrl1'});
+  $routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: 'MyCtrl2'});
+  $routeProvider.otherwise({redirectTo: '/view1'});
+}]);
+</code></pre>
+
+<p>在<code>index.html</code>中增加：</p>
+
+<pre><code>&lt;link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css"/&gt;
+</code></pre>
+
+<p>和</p>
+
+<pre><code>&lt;script src="../bower_components/angular-bootstrap/ui-bootstrap.js"&gt;&lt;/script&gt;
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Angularjs学习笔记-XHR和依赖注入]]></title>
@@ -640,19 +729,6 @@ npm config set strict-ssl false
 <h2>Angularjs动态模板演示</h2>
 
 <p><a href="/phonecat/step-2/app/">Angularjs动态模板</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Angularjs学习笔记-静态模板]]></title>
-    <link href="http://blog.dofa.org/blog/2014/04/07/learning-angularjs-notes-static-templates/"/>
-    <updated>2014-04-07T15:57:25-07:00</updated>
-    <id>http://blog.dofa.org/blog/2014/04/07/learning-angularjs-notes-static-templates</id>
-    <content type="html"><![CDATA[<p>Angularjs下静态页面的创建和普通<code>HTML</code>页面相同，可以直接看效果。</p>
-
-<h2>Angularjs静态模板演示</h2>
-
-<p><a href="/phonecat/step-1/app/">Angularjs静态模板</a></p>
 ]]></content>
   </entry>
   
