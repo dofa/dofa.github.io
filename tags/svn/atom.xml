@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: svn | Do Far]]></title>
+  <link href="http://blog.dofa.org/tags/svn/atom.xml" rel="self"/>
+  <link href="http://blog.dofa.org/"/>
+  <updated>2014-04-26T00:20:13-07:00</updated>
+  <id>http://blog.dofa.org/</id>
+  <author>
+    <name><![CDATA[dofa]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[使用git-svn]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/26/use-git-svn/"/>
+    <updated>2014-04-26T07:38:50-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/26/use-git-svn</id>
+    <content type="html"><![CDATA[<p>个人比较习惯git，无奈目前单位使用svn，尽管svn相当不好用。今天查找了一下解决方法，本地使用git，服务器为svn类型。</p>
+
+<h2>从svn clone出项目</h2>
+
+<pre><code>git svn clone -s https://svn.xxx.com/svn/xxx
+git svn show-ignore &gt;&gt; .git/info/exclude 
+</code></pre>
+
+<h2>建立本地工作分支</h2>
+
+<pre><code>git checkout -b work 
+</code></pre>
+
+<p>现在可以正常使用git命令了</p>
+
+<h2>提交回svn的过程</h2>
+
+<pre><code>git checkout master  
+git merge work  
+git svn rebase  
+git svn dcommit 
+</code></pre>
+
+<h2>冲突解决</h2>
+
+<pre><code>git svn rebase 
+</code></pre>
+
+<p>提示有冲突，手动解决冲突，然后：</p>
+
+<pre><code>git add .
+git rebase --continue
+git svn dcommit
+</code></pre>
+
+<p>执行后，发现本地的commit也跟server上的有同步。</p>
+]]></content>
+  </entry>
+  
+</feed>

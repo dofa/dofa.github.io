@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: zsh | Do Far]]></title>
   <link href="http://blog.dofa.org/tags/zsh/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-04-24T07:06:36-07:00</updated>
+  <updated>2014-04-26T00:20:13-07:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -25,15 +25,29 @@
 
 <h2>安装OH-My-ZSH</h2>
 
+<h4>手动安装</h4>
+
 <pre><code>cd ~
 git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 </code></pre>
 
-<h2>设定为默认bash</h2>
+<p>设定为默认bash</p>
 
 <pre><code>chsh -s /bin/zsh
+</code></pre>
+
+<h4>自动安装</h4>
+
+<p>via <code>curl</code></p>
+
+<pre><code>curl -L http://install.ohmyz.sh | sh
+</code></pre>
+
+<p>via <code>wget</code></p>
+
+<pre><code>wget --no-check-certificate http://install.ohmyz.sh -O - | sh
 </code></pre>
 
 <h2>修改putty不能显示的字符</h2>
@@ -47,6 +61,11 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 #ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}X %{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
+</code></pre>
+
+<p>使用更改后的配置：</p>
+
+<pre><code>source `~/.oh-my-zsh/themes/robbyrussell.zsh-theme`
 </code></pre>
 
 <h2>OH-My-ZSH的使用</h2>

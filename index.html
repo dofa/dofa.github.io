@@ -9,8 +9,8 @@
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="安装zsh apt-get install zsh 安装OH-My-ZSH cd ~
-git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh cp ~/.oh-my-zsh/templates/zshrc.zsh- &hellip;">
+  <meta name="description" content="个人比较习惯git，无奈目前单位使用svn，尽管svn相当不好用。今天查找了一下解决方法，本地使用git，服务器为svn类型。 从svn clone出项目 git svn clone -s https://svn.xxx.com/svn/xxx
+git svn show-ignore &gt;& &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +85,80 @@ git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh cp ~/.oh-my
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2014/04/26/use-git-svn/">使用git-svn</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-26T07:38:50-07:00" pubdate data-updated="true">Apr 26<span>th</span>, 2014</time>
+        
+        
+           | <a href="/blog/2014/04/26/use-git-svn/#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>个人比较习惯git，无奈目前单位使用svn，尽管svn相当不好用。今天查找了一下解决方法，本地使用git，服务器为svn类型。</p>
+
+<h2>从svn clone出项目</h2>
+
+<pre><code>git svn clone -s https://svn.xxx.com/svn/xxx
+git svn show-ignore &gt;&gt; .git/info/exclude 
+</code></pre>
+
+<h2>建立本地工作分支</h2>
+
+<pre><code>git checkout -b work 
+</code></pre>
+
+<p>现在可以正常使用git命令了</p>
+
+<h2>提交回svn的过程</h2>
+
+<pre><code>git checkout master  
+git merge work  
+git svn rebase  
+git svn dcommit 
+</code></pre>
+
+<h2>冲突解决</h2>
+
+<pre><code>git svn rebase 
+</code></pre>
+
+<p>提示有冲突，手动解决冲突，然后：</p>
+
+<pre><code>git add .
+git rebase --continue
+git svn dcommit
+</code></pre>
+
+<p>执行后，发现本地的commit也跟server上的有同步。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2014/04/24/use-oh-my-zsh-instead-of-bash/">使用oh my zsh替代bash</a></h1>
     
     
@@ -118,15 +192,29 @@ git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh cp ~/.oh-my
 
 <h2>安装OH-My-ZSH</h2>
 
+<h4>手动安装</h4>
+
 <pre><code>cd ~
 git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 </code></pre>
 
-<h2>设定为默认bash</h2>
+<p>设定为默认bash</p>
 
 <pre><code>chsh -s /bin/zsh
+</code></pre>
+
+<h4>自动安装</h4>
+
+<p>via <code>curl</code></p>
+
+<pre><code>curl -L http://install.ohmyz.sh | sh
+</code></pre>
+
+<p>via <code>wget</code></p>
+
+<pre><code>wget --no-check-certificate http://install.ohmyz.sh -O - | sh
 </code></pre>
 
 <h2>修改putty不能显示的字符</h2>
@@ -140,6 +228,11 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 #ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}X %{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
+</code></pre>
+
+<p>使用更改后的配置：</p>
+
+<pre><code>source `~/.oh-my-zsh/themes/robbyrussell.zsh-theme`
 </code></pre>
 
 <h2>OH-My-ZSH的使用</h2>
@@ -1530,167 +1623,6 @@ EventUtil.addHandler(div2, 'click', function(event){
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/04/03/javascript-dom-use/">JavaScript DOM基础操作实例</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-03T23:25:06-07:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2014</time>
-        
-        
-           | <a href="/blog/2014/04/03/javascript-dom-use/#comments">Comments</a>
-                
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>文档对象模型(Document Object Model)，通常简称为DOM，是网站内容与JavaScript互通的接口。自JavaScript成为最常用的语言时JavaScript和DOM通常被视为独立的实体。DOM接口用于存取、遍历和控制HTML和XML文档。下面我们将简单的介绍一些JavaScript DOM的基本操作实例，包括建立、增加、删除、克隆、访问节点等等。</p>
-
-<h2>getElementById(id)</h2>
-
-<p>这是通过<code>id</code>来访问某一元素，最常用的之一，例：</p>
-
-<pre><code>&lt;html&gt; 
-         &lt;body&gt; 
-         &lt;div id="myid"&gt; 
-         test  
-         &lt;/div&gt; 
-         &lt;script language="javascript"&gt; 
-         alert(document.getElementById("myid").innerHTML);  
-         &lt;/script&gt; 
-         &lt;/body&gt; 
-&lt;/html&gt; 
-</code></pre>
-
-<p>注意点：如果元素的<code>ID</code>不是唯一，则会取得第一个该<code>ID</code>名称的元素。</p>
-
-<h2>getElementsByName(name)</h2>
-
-<p>这是通过<code>name</code>来取得某一堆元素（作为数组），看 <code>Element</code>后面有个小<code>s</code>就知道了，<code>ID</code>是<code>HTML</code>文档中要求唯一的，<code>name</code>可以不是唯一，如<code>checkbox</code>、<code>radio</code>等地方会用到多个<code>input</code>用同一个<code>name</code>来识别是否为同党。对了，<code>getElementsByName(name)</code>仅用于取得<code>input</code>、<code>radio</code>、 <code>checkbox</code>等元素，如</p>
-
-<pre><code>&lt;input name="myradio" type="radio" /&gt;。
-</code></pre>
-
-<h2>getElementsByTagName(tagname)</h2>
-
-<p>看这方法就知道这也是取得某一堆元素（作为数组），是通过<code>TagName</code>也就是标签名来取得。你可以遍历这个数组获得每一个单独的元素。当一个<code>DOM</code>结构很大时，可以通过它来有效地缩小搜查范围。</p>
-
-<pre><code>&lt;html&gt;           
-     &lt;head&gt; 
-     &lt;script&gt; 
-     function test() {  
-     testall=document.getElementsByTagName("body");  
-     testbody=testall.item(0); //获得所有tagName是body的元素（当然每个页面只有一个）  
-     testall=testbody.getElementsByTagName("p");// 获得body子元素种的所有P元素  
-     testnode=testall.item(1); // 获得第二个P元素           
-     alert(testnode.firstChild.nodeValue); //显示这个元素的文本         }  
-     &lt;/script&gt; 
-     &lt;/head&gt; 
-     &lt;body&gt; 
-     &lt;p&gt;hi&lt;/p&gt; 
-     &lt;p&gt;hello&lt;/p&gt; 
-     &lt;script language="javascript"&gt; 
-     test();  
-     &lt;/script&gt; 
-     &lt;/body&gt; 
-&lt;/html&gt; 
-</code></pre>
-
-<h2>appendChild(node)</h2>
-
-<p>向当前的元素（应该叫对象比较恰当）追加节点。</p>
-
-<pre><code>&lt;html&gt; 
-     &lt;body&gt; 
-     &lt;head&gt; 
-     &lt;/head&gt; 
-     &lt;div id="test"&gt;&lt;/div&gt; 
-     &lt;script type="text/javascript"&gt; 
-     var newdiv=document.createElement("div")  
-     var newtext=document.createTextNode("A new div")           
-     newdiv.appendChild(newtext)  
-     document.getElementById("test").appendChild(newdiv)  
-     &lt;/script&gt; 
-     &lt;/body&gt; 
-&lt;/html&gt; 
-</code></pre>
-
-<p>刚才我在第一个例子中为了显示出内容，用了<code>innerHTML</code>，刚才看到文章才得知<code>innerHTMl</code>不属于<code>DOM</code>。</p>
-
-<h2>removeChild(childreference)</h2>
-
-<p>删除当前节点的子节点，返回被删除的节点。这个被删除的节点可以被插入到别的地方。</p>
-
-<pre><code>&lt;html&gt; 
-     &lt;body&gt; 
-     &lt;div id="parent"&gt;&lt;div id="child"&gt;A child&lt;/div&gt;&lt;/div&gt; 
-     &lt;script language="javascript"&gt; 
-     var childnode=document.getElementById("child")  
-     var removednode=document.getElementById("parent").removeChild(childnode)  
-     &lt;/script&gt; 
-     &lt;/body&gt; 
-&lt;/html&gt; 
-</code></pre>
-
-<h2>cloneNode(deepBoolean)</h2>
-
-<p>复制并返回当前节点的复制节点，复制节点是一个孤立节点，它复制了原节点的属性，在把这个新节点加入到<code>document</code>前，根据需要修改<code>ID</code>属性确保其<code>ID</code>的唯一。这个方法支持一个布尔参数，当<code>deepBoolean</code>设置<code>true</code>时，复制当前节点的所有子节点，包括该节点内的文本。</p>
-
-<pre><code>&lt;html&gt; 
-     &lt;body&gt; 
-     &lt;p id="mynode"&gt;test&lt;/p&gt; 
-     &lt;script language="javascript"&gt; 
-     p=document.getElementById("mynode")   
-    ppclone = p.cloneNode(true);  
-     p.parentNode.appendChild(pclone);  
-     &lt;/script&gt; 
-     &lt;/body&gt; 
-&lt;/html&gt; 
-</code></pre>
-
-<h2>replaceChild(newChild, oldChild)</h2>
-
-<p>把当前节点的一个子节点换成另一个节点。</p>
-
-<pre><code>&lt;html&gt; 
-     &lt;body&gt; 
-     &lt;div id="mynode2"&gt; 
-     &lt;span id="orispan"&gt;span&lt;/span&gt; 
-     &lt;/div&gt; 
-     &lt;script language="javascript"&gt; 
-     var orinode=document.getElementById("orispan");  
-     var newnode=document.createElement("p");  
-     var text=document.createTextNode("test ppp ");  
-     newnode.appendChild(text);  
-     document.getElementById("mynode2").replaceChild(newnode, orinode);  
-     &lt;/script&gt; 
-     &lt;/body&gt; 
-&lt;/html&gt; 
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1705,6 +1637,7 @@ EventUtil.addHandler(div2, 'click', function(event){
   <h1>Categories</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/embedded/'>Embedded (5)</a></li>
+<li class='category'><a href='/blog/categories/git/'>Git (1)</a></li>
 <li class='category'><a href='/blog/categories/javascript/'>Javascript (15)</a></li>
 <li class='category'><a href='/blog/categories/jekyll/'>Jekyll (2)</a></li>
 <li class='category'><a href='/blog/categories/nodejs/'>Nodejs (2)</a></li>
@@ -1719,6 +1652,10 @@ EventUtil.addHandler(div2, 'click', function(event){
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/04/26/use-git-svn/">使用git-svn</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/04/24/use-oh-my-zsh-instead-of-bash/">使用oh my zsh替代bash</a>
@@ -1736,10 +1673,6 @@ EventUtil.addHandler(div2, 'click', function(event){
         <a href="/blog/2014/04/07/learning-angularjs-notes-filtering-repeaters/">Angularjs学习笔记-迭代器过滤</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/04/07/learning-angularjs-notes-dynamic-templates/">Angularjs学习笔记-动态模板</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -1753,8 +1686,8 @@ EventUtil.addHandler(div2, 'click', function(event){
 <a style="font-size: 122%" href="/tags/octopress/">octopress,</a>
 <a style="font-size: 163%" href="/tags/sublime-text/">sublime-text</a>
 <a style="font-size: 140%" href="/tags/tcpip/">tcpip</a>
-<a style="font-size: 90%" href="/tags/vagrant/">vagrant,</a>
 <a style="font-size: 140%" href="/tags/vim/">vim</a>
+<a style="font-size: 90%" href="/tags/virtualbox/">virtualbox</a>
 
   </ul>
 </section>

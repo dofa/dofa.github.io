@@ -4,7 +4,7 @@
   <title><![CDATA[Do Far]]></title>
   <link href="http://blog.dofa.org/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-04-24T07:06:36-07:00</updated>
+  <updated>2014-04-26T00:20:13-07:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -12,6 +12,50 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[使用git-svn]]></title>
+    <link href="http://blog.dofa.org/blog/2014/04/26/use-git-svn/"/>
+    <updated>2014-04-26T07:38:50-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/04/26/use-git-svn</id>
+    <content type="html"><![CDATA[<p>个人比较习惯git，无奈目前单位使用svn，尽管svn相当不好用。今天查找了一下解决方法，本地使用git，服务器为svn类型。</p>
+
+<h2>从svn clone出项目</h2>
+
+<pre><code>git svn clone -s https://svn.xxx.com/svn/xxx
+git svn show-ignore &gt;&gt; .git/info/exclude 
+</code></pre>
+
+<h2>建立本地工作分支</h2>
+
+<pre><code>git checkout -b work 
+</code></pre>
+
+<p>现在可以正常使用git命令了</p>
+
+<h2>提交回svn的过程</h2>
+
+<pre><code>git checkout master  
+git merge work  
+git svn rebase  
+git svn dcommit 
+</code></pre>
+
+<h2>冲突解决</h2>
+
+<pre><code>git svn rebase 
+</code></pre>
+
+<p>提示有冲突，手动解决冲突，然后：</p>
+
+<pre><code>git add .
+git rebase --continue
+git svn dcommit
+</code></pre>
+
+<p>执行后，发现本地的commit也跟server上的有同步。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[使用oh my zsh替代bash]]></title>
@@ -25,15 +69,29 @@
 
 <h2>安装OH-My-ZSH</h2>
 
+<h4>手动安装</h4>
+
 <pre><code>cd ~
 git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 </code></pre>
 
-<h2>设定为默认bash</h2>
+<p>设定为默认bash</p>
 
 <pre><code>chsh -s /bin/zsh
+</code></pre>
+
+<h4>自动安装</h4>
+
+<p>via <code>curl</code></p>
+
+<pre><code>curl -L http://install.ohmyz.sh | sh
+</code></pre>
+
+<p>via <code>wget</code></p>
+
+<pre><code>wget --no-check-certificate http://install.ohmyz.sh -O - | sh
 </code></pre>
 
 <h2>修改putty不能显示的字符</h2>
@@ -47,6 +105,11 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 #ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}X %{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
+</code></pre>
+
+<p>使用更改后的配置：</p>
+
+<pre><code>source `~/.oh-my-zsh/themes/robbyrussell.zsh-theme`
 </code></pre>
 
 <h2>OH-My-ZSH的使用</h2>
@@ -1775,41 +1838,6 @@ document.write(sTest==window.sTest);
 
 
 <p>可以自行添加喜爱网站，然后在default_asides中加入<code>custom/asides/blog_link.html</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[把Octopress从github搬到gitcafe]]></title>
-    <link href="http://blog.dofa.org/blog/2014/03/29/move-octopress-from-gihub-to-gitcafe/"/>
-    <updated>2014-03-29T01:49:00-07:00</updated>
-    <id>http://blog.dofa.org/blog/2014/03/29/move-octopress-from-gihub-to-gitcafe</id>
-    <content type="html"><![CDATA[<p>其实找就想把<code>octopress</code>博客从<code>github</code>搬到<code>gitcafe</code>了，因为国内访问<code>github</code>的速度实在慢，而且还不时被墙。比如，今天不翻墙就无法访问了。</p>
-
-<p>我采用了比较笨的方法：原本的东西都不需要改动，在一个新的文件夹下 <em>clone github master</em> 分支，增加 <em>gitcafe remote</em>，然后<code>push</code>到<code>gitcafe</code>的<code>gitcafe-pages</code>分支上。</p>
-
-<h2>clone github master</h2>
-
-<p>这个是<code>rake deploy</code>到<code>github</code>上去的文件。</p>
-
-<h2>增加remote</h2>
-
-<pre><code>git remote addd gitcafe git@gitcafe.com:xx/xx
-</code></pre>
-
-<h2>push到gitcafe</h2>
-
-<pre><code>git push gitcafe gitcafe-pages
-</code></pre>
-
-<h2>注意事项</h2>
-
-<h4>在gitcafe上增加ssh密钥</h4>
-
-<p>否则git无法连接</p>
-
-<h4>把指向github的域名改到gitcafe上去</h4>
-
-<p>这样方便再次迁移</p>
 ]]></content>
   </entry>
   
