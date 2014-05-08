@@ -131,11 +131,11 @@ npm install
 <pre><code>npm start
 </code></pre>
 
-<p>访问<code>http://localhost:8000/app/index.html</code>index，看环境是否搭建ok。</p>
+<p>访问<code>http://localhost:8000/app/index.html</code>，看环境是否搭建ok。</p>
 
 <h2>安装bootstrap</h2>
 
-<p>在<code>bower.json</code>中增加<code>angular-bootstrap</code>：</p>
+<p>在<code>bower.json</code>中增加<code>angular-bootstrap</code>和<code>bootstrap</code>：</p>
 
 <pre><code>{
   "name": "angular-seed",
@@ -188,8 +188,17 @@ config(['$routeProvider', function($routeProvider) {
 
 <p>和</p>
 
-<pre><code>&lt;script src="../bower_components/angular-bootstrap/ui-bootstrap.js"&gt;&lt;/script&gt;
+<pre><code>&lt;script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"&gt;&lt;/script&gt;
 </code></pre>
+
+<p>同样需要在<code>index-async.html</code>中增加：</p>
+
+<pre><code>&lt;script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"&gt;&lt;/script&gt;
+</code></pre>
+
+<h3>Bootstrap测试</h3>
+
+<p>使用<code>http://angular-ui.github.io/bootstrap/</code>中的测试code，进行测试，即可看到同样的UI效果。</p>
 </div>
 
 
@@ -236,6 +245,8 @@ config(['$routeProvider', function($routeProvider) {
         <a class="basic-alignment left" href="/blog/2014/04/26/use-git-svn/" title="Previous Post: 使用git-svn">&laquo; 使用git-svn</a>
       
       
+        <a class="basic-alignment right" href="/blog/2014/05/08/ssh-proxy-settings/" title="Next Post: ssh代理设置">ssh代理设置 &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -268,13 +279,13 @@ config(['$routeProvider', function($routeProvider) {
   <h1>Categories</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/embedded/'>Embedded (5)</a></li>
-<li class='category'><a href='/blog/categories/git/'>Git (1)</a></li>
+<li class='category'><a href='/blog/categories/git/'>Git (2)</a></li>
 <li class='category'><a href='/blog/categories/javascript/'>Javascript (16)</a></li>
 <li class='category'><a href='/blog/categories/jekyll/'>Jekyll (2)</a></li>
 <li class='category'><a href='/blog/categories/nodejs/'>Nodejs (2)</a></li>
 <li class='category'><a href='/blog/categories/octopress/'>Octopress (6)</a></li>
 <li class='category'><a href='/blog/categories/server/'>Server (3)</a></li>
-<li class='category'><a href='/blog/categories/shell/'>Shell (1)</a></li>
+<li class='category'><a href='/blog/categories/shell/'>Shell (2)</a></li>
 <li class='category'><a href='/blog/categories/sublimetext/'>SublimeText (5)</a></li>
 <li class='category'><a href='/blog/categories/vim/'>Vim (3)</a></li>
 
@@ -283,6 +294,14 @@ config(['$routeProvider', function($routeProvider) {
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/08/git-settings/">常用git设置</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/08/ssh-proxy-settings/">ssh代理设置</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/04/26/build-angularjs-and-bootstrap-environment-with-angular-seed/">使用angular-seed搭建angularjs和bootstrap开发环境</a>
@@ -296,14 +315,6 @@ config(['$routeProvider', function($routeProvider) {
         <a href="/blog/2014/04/24/use-oh-my-zsh-instead-of-bash/">使用oh my zsh替代bash</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/04/07/learning-angularjs-notes-XHRs-and-dependency-injection/">Angularjs学习笔记-XHR和依赖注入</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/04/07/learning-angularjs-notes-two-way-data-bingding/">Angularjs学习笔记-双向绑定</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -312,8 +323,8 @@ config(['$routeProvider', function($routeProvider) {
     <a style="font-size: 163%" href="/tags/angularjs/">Angularjs</a>
 <a style="font-size: 185%" href="/tags/bom/">BOM</a>
 <a style="font-size: 90%" href="/tags/task/">Task</a>
-<a style="font-size: 90%" href="/tags/uos/">Uos</a>
 <a style="font-size: 210%" href="/tags/javascript/">javascript,</a>
+<a style="font-size: 90%" href="/tags/jekyll/">jekyll</a>
 <a style="font-size: 153%" href="/tags/octopress/">octopress</a>
 <a style="font-size: 122%" href="/tags/octopress/">octopress,</a>
 <a style="font-size: 163%" href="/tags/sublime-text/">sublime-text</a>

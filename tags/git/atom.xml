@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Tag: git, | Do Far]]></title>
+  <title><![CDATA[Tag: git | Do Far]]></title>
   <link href="http://blog.dofa.org/tags/git/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-04-26T05:24:58-07:00</updated>
+  <updated>2014-05-08T07:51:42-07:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -14,46 +14,29 @@
 
   
   <entry>
-    <title type="html"><![CDATA[使用git-svn]]></title>
-    <link href="http://blog.dofa.org/blog/2014/04/26/use-git-svn/"/>
-    <updated>2014-04-26T07:38:50-07:00</updated>
-    <id>http://blog.dofa.org/blog/2014/04/26/use-git-svn</id>
-    <content type="html"><![CDATA[<p>个人比较习惯git，无奈目前单位使用svn，尽管svn相当不好用。今天查找了一下解决方法，本地使用git，服务器为svn类型。</p>
+    <title type="html"><![CDATA[常用git设置]]></title>
+    <link href="http://blog.dofa.org/blog/2014/05/08/git-settings/"/>
+    <updated>2014-05-08T13:52:50-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/05/08/git-settings</id>
+    <content type="html"><![CDATA[<h2>Git基本配置</h2>
 
-<h2>从svn clone出项目</h2>
-
-<pre><code>git svn clone -s https://svn.xxx.com/svn/xxx
-git svn show-ignore &gt;&gt; .git/info/exclude 
+<pre><code>git config --global user.name 'dofa'
+git config --global user.email 'xxx@xxx.com'
 </code></pre>
 
-<h2>建立本地工作分支</h2>
+<h2>Git使用代理</h2>
 
-<pre><code>git checkout -b work 
+<pre><code>git config --global http.proxy http://127.0.0.1:8087
+git config --global https.proxy http://127.0.0.1:8087
+git config --global http.sslverify false
 </code></pre>
 
-<p>现在可以正常使用git命令了</p>
+<p><code>http.sslverify</code>设置为<code>false</code>可以加快同步速度。</p>
 
-<h2>提交回svn的过程</h2>
+<h2>Git显示漂亮日志</h2>
 
-<pre><code>git checkout master  
-git merge work  
-git svn rebase  
-git svn dcommit 
+<pre><code>git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset' --abbrev-commit --"
 </code></pre>
-
-<h2>冲突解决</h2>
-
-<pre><code>git svn rebase 
-</code></pre>
-
-<p>提示有冲突，手动解决冲突，然后：</p>
-
-<pre><code>git add .
-git rebase --continue
-git svn dcommit
-</code></pre>
-
-<p>执行后，发现本地的commit也跟server上的有同步。</p>
 ]]></content>
   </entry>
   

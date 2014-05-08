@@ -9,12 +9,8 @@
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="disqus是国外的评论系统，速度实在太慢，使用duoshuo会比较好 修改配置 在_config.yml中注释掉有关disqus的配置，增加： 1
-2
-3
-# duoshuo comments
-duoshuo_comments: true
-duoshuo_short_name: yourname &hellip;">
+  <meta name="description" content="安装环境 nginx
+mysql 使用PHP-FPM安装php5 server apt-get install php5-fpm PHP-FPM is a daemon process (with the init script /etc/init.d/php5-fpm) that runs a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +79,161 @@ duoshuo_short_name: yourname &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/03/03/install-php5-server-via-php-fpm/">使用PHP-FPM安装php5 server</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-03T05:51:40-08:00" pubdate data-updated="true">Mar 3<span>rd</span>, 2014</time>
+        
+        
+           | <a href="/blog/2014/03/03/install-php5-server-via-php-fpm/#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>安装环境</h2>
+
+<ul>
+<li><p>nginx</p></li>
+<li><p>mysql</p></li>
+</ul>
+
+
+<h2>使用<code>PHP-FPM</code>安装php5 server</h2>
+
+<pre><code>apt-get install php5-fpm
+</code></pre>
+
+<blockquote><p>PHP-FPM is a daemon process (with the init script /etc/init.d/php5-fpm) that runs a FastCGI server on the socket /var/run/php5-fpm.sock.</p></blockquote>
+
+<h2>配置nginx</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[...]
+</span><span class='line'>worker_processes  4;
+</span><span class='line'>[...]
+</span><span class='line'>    keepalive_timeout   2;
+</span><span class='line'>[...]</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>网站配置</h2>
+
+<pre><code>vim /etc/nginx/sites-available/yoursite
+</code></pre>
+
+<h2>PHP配置</h2>
+
+<pre><code>vim /etc/php5/fpm/php.ini
+</code></pre>
+
+<p>set cgi.fix_pathinfo=0:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[...]
+</span><span class='line'>; cgi.fix_pathinfo provides *real* PATH_INFO/PATH_TRANSLATED support for CGI.  PHP's
+</span><span class='line'>; previous behaviour was to set PATH_TRANSLATED to SCRIPT_FILENAME, and to not grok
+</span><span class='line'>; what PATH_INFO is.  For more information on PATH_INFO, see the cgi specs.  Setting
+</span><span class='line'>; this to 1 will cause PHP CGI to fix its paths to conform to the spec.  A setting
+</span><span class='line'>; of zero causes PHP to behave as before.  Default is 1.  You should fix your scripts
+</span><span class='line'>; to use SCRIPT_FILENAME rather than PATH_TRANSLATED.
+</span><span class='line'>; http://php.net/cgi.fix-pathinfo
+</span><span class='line'>cgi.fix_pathinfo=0
+</span><span class='line'>[...]</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Server Reload</h2>
+
+<pre><code>/etc/init.d/nginx -s reload
+/etc/init.d/php5-fpm reload
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/24/occurs-titlecase-error-in-octopress/">Octopress发生titlecase错误</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-24T05:25:52-08:00" pubdate data-updated="true">Feb 24<span>th</span>, 2014</time>
+        
+        
+           | <a href="/blog/2014/02/24/occurs-titlecase-error-in-octopress/#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>把_config.yml中的</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>titlecase: true</span></code></pre></td></tr></table></div></figure>
+
+
+<p>修改为：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>titlecase: false  </span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -972,236 +1123,6 @@ MII接口主要包括4个部分：</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/06/01/some-short-keys-of-sublime-text/">Sublime Text的一些快捷键</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-06-01T12:25:52-07:00" pubdate data-updated="true">Jun 1<span>st</span>, 2013</time>
-        
-        
-           | <a href="/blog/2013/06/01/some-short-keys-of-sublime-text/#comments">Comments</a>
-                
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>打开/前往</h2>
-
-<pre><code>Ctrl+P：搜索项目中的文件
-Ctrl+G：跳转到第几行
-Ctrl+R：前往 method
-Ctrl+;：前往字段
-Ctrl+Shift+P：打开命令面板
-Ctrl+N：新建窗口
-Ctrl+o：打开文件
-Ctrl+shift+s：另存为
-Ctrl+W：关闭当前打开文件
-Ctrl+Shift+W：关闭所有打开文件
-Ctrl+`：显示python命令行
-</code></pre>
-
-<h2>界面</h2>
-
-<pre><code>F11 全屏
-shift+F11：无干绕全屏
-ctrl+kb：开关侧边栏
-Alt+Shift+数字：分屏显示
-ctrl+I：显示底部面板
-</code></pre>
-
-<h2>编辑</h2>
-
-<pre><code>F6：拼写检查
-F9：行排序
-</code></pre>
-
-<p>选择类</p>
-
-<pre><code>ctrl+l：选择整行（继续按键则选择下行）
-ctrl+shift+l：将光标放至选中单行内容末尾或多行内容每行行尾
-ctrl+d：选中光标位置所在单词 （继续按键则选择下个相同的字符串）
-ctrl+m：光标移动至括号内开始或结束的位置
-ctrl+shift+m：选择括号内的内容（继续按键则选择父括号）
-Alt+F3：选择所有相同的词
-Shift+右键拖动：光标多不，用来更改或插入列内容
-Ctrl+鼠标左键：依次点击或选取，可需要编辑的多个位置
-ctrl+shfit+space：选择本范围
-ctrl+alt+上下箭头：多竖行同时编辑
-</code></pre>
-
-<p>代码折叠</p>
-
-<pre><code>ctrl+shift+[：按照缩进指示折叠光标所在标签对或折叠所选内容
-ctrl+shift+]：展开光标所在标签对内容或所选内容
-</code></pre>
-
-<p>行操作</p>
-
-<pre><code>ctrl+kk：从光标处删除至行尾
-ctrl+k+backspace：从光标处删除至行首
-ctrl+shift+k：删除整行
-ctrl+shift+backspace：删除整行
-ctrl+shift+up：光标所在行与上行互换
-ctrl+shift+down：光标所在行与下行互换
-ctrl+shift+d：复制光标所在整行，插入在该行之前
-ctrl+enter：在当前行后插入新行
-ctrl+shift+enter：在当前行前插入新行
-ctrl+[：减少当前行缩进
-ctrl+]：增加当前行缩进
-tab：增加当前行缩进
-shift+tab：减少当前行缩进
-</code></pre>
-
-<p>常用编辑</p>
-
-<pre><code>ctrl+u：软撤销
-ctrl+z：撤销
-ctrl+y：恢复撤销
-ctrl+backspace：删除一个单词
-ctrl+ku：改为大写
-ctrl+kl：改为小写
-ctrl+x：选定内容状态下为剪切内容，未选中为剪切光标当前所在行
-ctrl+t：光标所在位置左右字符或词互换
-Ctrl+Shift+V：粘贴并格式化
-Alt + Ctrl + ]：代码自动对齐
-</code></pre>
-
-<h2>拆分窗口/标签页</h2>
-
-<pre><code>alt+.：闭合当前标签
-Alt+Shift+数字：分屏显示
-ctrl+tab：切换选项卡
-ctrl+shift+tab：逆序切换选项卡
-Alt+数字：切换打开第N个文件
-</code></pre>
-
-<h2>标记</h2>
-
-<pre><code>Ctrl+F2：设置/删除标记
-</code></pre>
-
-<h2>查找/替换</h2>
-
-<pre><code>Ctrl+F：查找内容
-Ctrl+Shift+F：查找并替换
-Ctrl+H：替换
-F3：查找下一个
-shift+F3：查找前一个
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/06/01/sublime-text-study-notes/">Sublime Text 学习笔记</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-06-01T09:25:52-07:00" pubdate data-updated="true">Jun 1<span>st</span>, 2013</time>
-        
-        
-           | <a href="/blog/2013/06/01/sublime-text-study-notes/#comments">Comments</a>
-                
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ul>
-<li>如果你的配置错误，导致Sublime Text2不能打开了，想要把配置改回来，那么配置文件在C:\Users\用户名\AppData\Roaming\Sublime Text 2\Packages\User中</li>
-<li>安装Package control，按快捷键Ctrl+`，打开命令输入界面（一般在下方），输入下面的命令后回车即可，重启Sublime Text2</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">urllib2</span><span class="o">,</span><span class="nn">os</span><span class="p">;</span><span class="n">pf</span><span class="o">=</span><span class="s">&#39;Package Control.sublime-package&#39;</span><span class="p">;</span><span class="n">ipp</span><span class="o">=</span><span class="n">sublime</span><span class="o">.</span><span class="n">installed_packages_path</span><span class="p">();</span><span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">ipp</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">ipp</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span><span class="p">;</span><span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ipp</span><span class="p">,</span><span class="n">pf</span><span class="p">),</span><span class="s">&#39;wb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&#39;http://sublime.wbond.net/&#39;</span><span class="o">+</span><span class="n">pf</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">,</span><span class="s">&#39;%20&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>修改字体
-Preferences->File Setting-User，打开配置文件，看里面有没font_face配置项，有就直接改，没有就自己加上，可能的配置文件如下：</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="s">&quot;color_scheme&quot;</span><span class="p">:</span> <span class="s">&quot;Packages/Color Scheme - Default/Black-Pearl2.tmTheme&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="s">&quot;font_face&quot;</span><span class="p">:</span> <span class="s">&quot;微软雅黑&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="s">&quot;font_size&quot;</span><span class="p">:</span> <span class="mf">10.0</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>设置代理(GoAgent)
-打开<code>settings - user</code>，输入：</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="s">&quot;http_proxy&quot;</span><span class="p">:</span> <span class="s">&quot;http://127.0.0.1:8087&quot;</span><span class="p">,</span>
-</span><span class='line'><span class="s">&quot;https_proxy&quot;</span><span class="p">:</span> <span class="s">&quot;http://127.0.0.1:8087&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li><p>同时编辑多行 (Ctrl+Shift+L (Win) 或  Command+Shift+L (Mac))
-如要在选中的多行文本的最后面同时添加一个字符“a”，先选中要编辑的多行文字，然后按快捷键，此时每行的末尾都会有个输入光标在闪，再按End键将鼠标定位到行末，（再按Home键将鼠标定位到行首）输入字母a即可。如要退出多行编辑状态，按Esc键即可。</p></li>
-<li><p>一次性选择全部的相同文本 (Alt+F3 (Win) 或 Ctrl+Command+G (Mac))</p></li>
-<li><p>竖向多行选择 (Shift+鼠标右键 (Win) 或 Option+鼠标左键 (Mac))</p></li>
-<li><p>手动选择多处不同文本 (Ctrl+鼠标左键(Win) 或 Command+鼠标左键(Mac) )</p></li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -1218,13 +1139,13 @@ Preferences->File Setting-User，打开配置文件，看里面有没font_face�
   <h1>Categories</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/embedded/'>Embedded (5)</a></li>
-<li class='category'><a href='/blog/categories/git/'>Git (1)</a></li>
+<li class='category'><a href='/blog/categories/git/'>Git (2)</a></li>
 <li class='category'><a href='/blog/categories/javascript/'>Javascript (16)</a></li>
 <li class='category'><a href='/blog/categories/jekyll/'>Jekyll (2)</a></li>
 <li class='category'><a href='/blog/categories/nodejs/'>Nodejs (2)</a></li>
 <li class='category'><a href='/blog/categories/octopress/'>Octopress (6)</a></li>
 <li class='category'><a href='/blog/categories/server/'>Server (3)</a></li>
-<li class='category'><a href='/blog/categories/shell/'>Shell (1)</a></li>
+<li class='category'><a href='/blog/categories/shell/'>Shell (2)</a></li>
 <li class='category'><a href='/blog/categories/sublimetext/'>SublimeText (5)</a></li>
 <li class='category'><a href='/blog/categories/vim/'>Vim (3)</a></li>
 
@@ -1233,6 +1154,14 @@ Preferences->File Setting-User，打开配置文件，看里面有没font_face�
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/08/git-settings/">常用git设置</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/08/ssh-proxy-settings/">ssh代理设置</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/04/26/build-angularjs-and-bootstrap-environment-with-angular-seed/">使用angular-seed搭建angularjs和bootstrap开发环境</a>
@@ -1246,14 +1175,6 @@ Preferences->File Setting-User，打开配置文件，看里面有没font_face�
         <a href="/blog/2014/04/24/use-oh-my-zsh-instead-of-bash/">使用oh my zsh替代bash</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/04/07/learning-angularjs-notes-XHRs-and-dependency-injection/">Angularjs学习笔记-XHR和依赖注入</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/04/07/learning-angularjs-notes-two-way-data-bingding/">Angularjs学习笔记-双向绑定</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -1262,8 +1183,8 @@ Preferences->File Setting-User，打开配置文件，看里面有没font_face�
     <a style="font-size: 163%" href="/tags/angularjs/">Angularjs</a>
 <a style="font-size: 185%" href="/tags/bom/">BOM</a>
 <a style="font-size: 90%" href="/tags/task/">Task</a>
-<a style="font-size: 90%" href="/tags/uos/">Uos</a>
 <a style="font-size: 210%" href="/tags/javascript/">javascript,</a>
+<a style="font-size: 90%" href="/tags/jekyll/">jekyll</a>
 <a style="font-size: 153%" href="/tags/octopress/">octopress</a>
 <a style="font-size: 122%" href="/tags/octopress/">octopress,</a>
 <a style="font-size: 163%" href="/tags/sublime-text/">sublime-text</a>

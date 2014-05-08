@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Shell | Do Far]]></title>
   <link href="http://blog.dofa.org/blog/categories/shell/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-04-26T05:24:58-07:00</updated>
+  <updated>2014-05-08T07:51:42-07:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -12,6 +12,34 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[ssh代理设置]]></title>
+    <link href="http://blog.dofa.org/blog/2014/05/08/ssh-proxy-settings/"/>
+    <updated>2014-05-08T13:28:50-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/05/08/ssh-proxy-settings</id>
+    <content type="html"><![CDATA[<p>有两种方式实现ssh代理，一种是ssh命令行，另外一种使用putty的plink工具。</p>
+
+<h2>ssh命令行</h2>
+
+<pre><code>ssh -qTfnN -D 8087 用户名@远程ssh主机名
+</code></pre>
+
+<p>上面的8087是本地未被占用的端口，可以自己选择。其它参数的意思是：</p>
+
+<pre><code>-q :- be very quite, we are acting only as a tunnel.
+-T :- Do not allocate a pseudo tty, we are only acting a tunnel.
+-f :- move the ssh process to background, as we don’t want to interact with this ssh session directly.
+-N :- Do not execute remote command.
+-n :- redirect standard input to /dev/null. 
+</code></pre>
+
+<h2>plink工具</h2>
+
+<pre><code>plink -C -D 127.0.0.1:8087 -N -pw 密码 用户名@远程ssh主机名 
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[使用oh my zsh替代bash]]></title>

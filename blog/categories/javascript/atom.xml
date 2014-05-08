@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Javascript | Do Far]]></title>
   <link href="http://blog.dofa.org/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-04-26T05:24:58-07:00</updated>
+  <updated>2014-05-08T07:51:42-07:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -40,11 +40,11 @@ npm install
 <pre><code>npm start
 </code></pre>
 
-<p>访问<code>http://localhost:8000/app/index.html</code>index，看环境是否搭建ok。</p>
+<p>访问<code>http://localhost:8000/app/index.html</code>，看环境是否搭建ok。</p>
 
 <h2>安装bootstrap</h2>
 
-<p>在<code>bower.json</code>中增加<code>angular-bootstrap</code>：</p>
+<p>在<code>bower.json</code>中增加<code>angular-bootstrap</code>和<code>bootstrap</code>：</p>
 
 <pre><code>{
   "name": "angular-seed",
@@ -97,8 +97,17 @@ config(['$routeProvider', function($routeProvider) {
 
 <p>和</p>
 
-<pre><code>&lt;script src="../bower_components/angular-bootstrap/ui-bootstrap.js"&gt;&lt;/script&gt;
+<pre><code>&lt;script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"&gt;&lt;/script&gt;
 </code></pre>
+
+<p>同样需要在<code>index-async.html</code>中增加：</p>
+
+<pre><code>&lt;script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"&gt;&lt;/script&gt;
+</code></pre>
+
+<h3>Bootstrap测试</h3>
+
+<p>使用<code>http://angular-ui.github.io/bootstrap/</code>中的测试code，进行测试，即可看到同样的UI效果。</p>
 ]]></content>
   </entry>
   

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Git | Do Far]]></title>
   <link href="http://blog.dofa.org/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-04-26T05:24:58-07:00</updated>
+  <updated>2014-05-08T07:51:42-07:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -12,6 +12,33 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[常用git设置]]></title>
+    <link href="http://blog.dofa.org/blog/2014/05/08/git-settings/"/>
+    <updated>2014-05-08T13:52:50-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/05/08/git-settings</id>
+    <content type="html"><![CDATA[<h2>Git基本配置</h2>
+
+<pre><code>git config --global user.name 'dofa'
+git config --global user.email 'xxx@xxx.com'
+</code></pre>
+
+<h2>Git使用代理</h2>
+
+<pre><code>git config --global http.proxy http://127.0.0.1:8087
+git config --global https.proxy http://127.0.0.1:8087
+git config --global http.sslverify false
+</code></pre>
+
+<p><code>http.sslverify</code>设置为<code>false</code>可以加快同步速度。</p>
+
+<h2>Git显示漂亮日志</h2>
+
+<pre><code>git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset' --abbrev-commit --"
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[使用git-svn]]></title>
