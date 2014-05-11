@@ -9,7 +9,8 @@
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="git clone &ldquo;PhoneCat Tutorial App&rdquo; git clone https://github.com/angular/angular-phonecat.git 包安装 在angular-phonecat目录下安装包： cd angular- &hellip;">
+  <meta name="description" content="Angularjs下静态页面的创建和普通HTML页面相同，可以直接看效果。 Angularjs静态模板演示 Angularjs静态模板
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +79,49 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/04/07/learning-angularjs-notes-static-templates/">Angularjs学习笔记-静态模板</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-07T15:57:25-07:00" pubdate data-updated="true">Apr 7<span>th</span>, 2014</time>
+        
+        
+           | <a href="/blog/2014/04/07/learning-angularjs-notes-static-templates/#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Angularjs下静态页面的创建和普通<code>HTML</code>页面相同，可以直接看效果。</p>
+
+<h2>Angularjs静态模板演示</h2>
+
+<p><a href="/phonecat/step-1/app/">Angularjs静态模板</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1128,123 +1172,6 @@ window.resizeTo(screen.availWidth, screen.availHeight);
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/04/02/learn-javascript-bom-base-frames-object/">JavaScript学习&#8211;BOM基础之frames对象(转)</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-02T22:35:06-07:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2014</time>
-        
-        
-           | <a href="/blog/2014/04/02/learn-javascript-bom-base-frames-object/#comments">Comments</a>
-                
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Frames用于表现HTML页面当前窗体的中的框架集合</p>
-
-<h2>Frames对象</h2>
-
-<ul>
-<li><code>frames</code>对象是<code>window</code>对象的属性</li>
-<li>如果页面使用框架，将产生一个框架集合<code>frames</code>，在集合中可用数字(从0开始，从左到右，逐行索引)或名字索引框架</li>
-</ul>
-
-
-<h2>框架集引用中使用的对象</h2>
-
-<table>
-<thead>
-<tr>
-<th align="left">对象 </th>
-<th align="left"> 位置</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">window </td>
-<td align="left"> 当前框架</td>
-</tr>
-<tr>
-<td align="left">top </td>
-<td align="left"> 最顶层的框架，就是浏览器窗体</td>
-</tr>
-<tr>
-<td align="left">parent </td>
-<td align="left"> 包含当前框架的父框架</td>
-</tr>
-<tr>
-<td align="left">self </td>
-<td align="left"> 当前框架，总是等于window对象</td>
-</tr>
-</tbody>
-</table>
-
-
-<h2>示例</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;frameset</span> <span class="na">rows=</span><span class="s">&quot;20%, *, 20%&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;frame</span> <span class="na">src=</span><span class="s">&quot;http://www.dreamdu.com/javascript/exe_window.frames.top/&quot;</span> <span class="na">name=</span><span class="s">&quot;top&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;frameset</span> <span class="na">cols=</span><span class="s">&quot;20%, *&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>                <span class="nt">&lt;frame</span> <span class="na">src=</span><span class="s">&quot;http://www.dreamdu.com/javascript/exe_window.frames.top/&quot;</span> <span class="na">name=</span><span class="s">&quot;left&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'>                <span class="nt">&lt;frame</span> <span class="na">src=</span><span class="s">&quot;http://www.dreamdu.com/javascript/exe_window.frames.right/&quot;</span> <span class="na">name=</span><span class="s">&quot;right&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;/frameset&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;frame</span> <span class="na">src=</span><span class="s">&quot;http://www.dreamdu.com/javascript/exe_window.frames.top/&quot;</span> <span class="na">name=</span><span class="s">&quot;bottom&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;/frameset&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>上面的框架页示例产生了一个框架集</p>
-
-<p><code>window</code>与<code>self</code>代表相同的对象，但是<code>self</code>是为了确定正在使用的框架不是<code>parent</code>，而是自身,<code>top</code>对象代表最顶层框架，浏览器窗体本身，因此在这个例子中就等于<code>window</code>对象,如果页面上没有框架，<code>window</code>，<code>self</code>都等于<code>top</code>，并且框架集合的长度为0</p>
-
-<p>如果框架名称为<code>right</code>的页面包括下面框架：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;frameset</span> <span class="na">cols=</span><span class="s">&quot;50%, *&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;frame</span> <span class="na">src=</span><span class="s">&quot;http://www.dreamdu.com/javascript/exe_window.frames.top/&quot;</span> <span class="na">name=</span><span class="s">&quot;righttop&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;frame</span> <span class="na">src=</span><span class="s">&quot;http://www.dreamdu.com/javascript/exe_window.frames.top/&quot;</span> <span class="na">name=</span><span class="s">&quot;rightbottom&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;/frameset&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>那么righttop与rightbottom的parent父框架为right</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -1267,7 +1194,7 @@ window.resizeTo(screen.availWidth, screen.availHeight);
 <li class='category'><a href='/blog/categories/nodejs/'>Nodejs (2)</a></li>
 <li class='category'><a href='/blog/categories/octopress/'>Octopress (6)</a></li>
 <li class='category'><a href='/blog/categories/server/'>Server (3)</a></li>
-<li class='category'><a href='/blog/categories/shell/'>Shell (2)</a></li>
+<li class='category'><a href='/blog/categories/shell/'>Shell (3)</a></li>
 <li class='category'><a href='/blog/categories/sublimetext/'>SublimeText (5)</a></li>
 <li class='category'><a href='/blog/categories/vim/'>Vim (3)</a></li>
 
@@ -1276,6 +1203,10 @@ window.resizeTo(screen.availWidth, screen.availHeight);
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/11/bash-shortcut/">bash快捷操作</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/05/08/git-settings/">常用git设置</a>
@@ -1293,10 +1224,6 @@ window.resizeTo(screen.availWidth, screen.availHeight);
         <a href="/blog/2014/04/26/use-git-svn/">使用git-svn</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/04/24/use-oh-my-zsh-instead-of-bash/">使用oh my zsh替代bash</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -1305,8 +1232,8 @@ window.resizeTo(screen.availWidth, screen.availHeight);
     <a style="font-size: 163%" href="/tags/angularjs/">Angularjs</a>
 <a style="font-size: 185%" href="/tags/bom/">BOM</a>
 <a style="font-size: 90%" href="/tags/task/">Task</a>
+<a style="font-size: 90%" href="/tags/github/">github,</a>
 <a style="font-size: 210%" href="/tags/javascript/">javascript,</a>
-<a style="font-size: 90%" href="/tags/jekyll/">jekyll</a>
 <a style="font-size: 153%" href="/tags/octopress/">octopress</a>
 <a style="font-size: 122%" href="/tags/octopress/">octopress,</a>
 <a style="font-size: 163%" href="/tags/sublime-text/">sublime-text</a>

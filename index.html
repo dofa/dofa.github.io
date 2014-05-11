@@ -9,8 +9,11 @@
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="Git基本配置 git config --global user.name 'dofa'
-git config --global user.email 'xxx@xxx.com' Git使用代理 git config --global http.proxy http://127.0.0.1: &hellip;">
+  <meta name="description" content="经常使用bash，但是bash shell使用的效率一直不高，今天终于发现了有快捷键，赶快记录下来。 编辑命令 `Ctrl + a` ：移到命令行首
+`Ctrl + e` ：移到命令行尾
+`Ctrl + f` ：按字符前移（右向）
+`Ctrl + b` ：按字符后移（左向）
+`Alt + f` ： &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +82,102 @@ git config --global user.email 'xxx@xxx.com' Git使用代理 git config --global
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/05/11/bash-shortcut/">bash快捷操作</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-11T09:51:30-07:00" pubdate data-updated="true">May 11<span>th</span>, 2014</time>
+        
+        
+           | <a href="/blog/2014/05/11/bash-shortcut/#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>经常使用bash，但是bash shell使用的效率一直不高，今天终于发现了有快捷键，赶快记录下来。</p>
+
+<h2>编辑命令</h2>
+
+<pre><code>`Ctrl + a` ：移到命令行首
+`Ctrl + e` ：移到命令行尾
+`Ctrl + f` ：按字符前移（右向）
+`Ctrl + b` ：按字符后移（左向）
+`Alt + f` ：按单词前移（右向）
+`Alt + b` ：按单词后移（左向）
+`Ctrl + xx`：在命令行首和光标之间移动
+`Ctrl + u` ：从光标处删除至命令行首
+`Ctrl + k` ：从光标处删除至命令行尾
+`Ctrl + w` ：从光标处删除至字首
+`Alt + d` ：从光标处删除至字尾
+`Ctrl + d` ：删除光标处的字符
+`Ctrl + h` ：删除光标前的字符
+`Ctrl + y` ：粘贴至光标后
+`Alt + c` ：从光标处更改为首字母大写的单词
+`Alt + u` ：从光标处更改为全部大写的单词
+`Alt + l` ：从光标处更改为全部小写的单词
+`Ctrl + t` ：交换光标处和之前的字符
+`Alt + t` ：交换光标处和之前的单词
+`Alt + Backspace` ：与 `Ctrl + w` 类似
+</code></pre>
+
+<h2>重新执行命令</h2>
+
+<pre><code>`Ctrl + r` ：逆向搜索命令历史
+`Ctrl + g` ：从历史搜索模式退出
+`Ctrl + p` ：历史中的上一条命令
+`Ctrl + n` ：历史中的下一条命令
+`Alt + .` ：使用上一条命令的最后一个参数
+</code></pre>
+
+<h2>控制命令</h2>
+
+<pre><code>`Ctrl + l` ：清屏
+`Ctrl + o` ：执行当前命令，并选择上一条命令
+`Ctrl + s` ：阻止屏幕输出
+`Ctrl + q` ：允许屏幕输出
+`Ctrl + c` ：终止命令
+`Ctrl + z` ：挂起命令
+</code></pre>
+
+<h2>Bang (!) 命令</h2>
+
+<pre><code>`!!` ：执行上一条命令
+`!blah` ：执行最近的以 `blah` 开头的命令，如 `!ls`
+`!blah:p` ：仅打印输出，而不执行
+`!$` ：上一条命令的最后一个参数，与 `Alt + .` 相同
+`!$:p` ：打印输出 `!$` 的内容
+`!*` ：上一条命令的所有参数
+`!*:p` ：打印输出 `!*` 的内容
+`^blah` ：删除上一条命令中的 `blah`
+`^blah^foo` ：将上一条命令中的 `blah` 替换为 `foo`
+`^blah^foo^` ：将上一条命令中所有的 `blah` 都替换为 `foo`
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -182,6 +281,16 @@ git config --global http.sslverify false
 -f :- move the ssh process to background, as we don’t want to interact with this ssh session directly.
 -N :- Do not execute remote command.
 -n :- redirect standard input to /dev/null. 
+</code></pre>
+
+<h4>remote端口占用</h4>
+
+<pre><code>sudo netstat -antpl  | grep ssh
+</code></pre>
+
+<p><code>kill</code>进程</p>
+
+<pre><code>sudo kill -9 xxxx
 </code></pre>
 
 <h2>plink工具</h2>
@@ -1243,49 +1352,6 @@ npm config set strict-ssl false
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/04/07/learning-angularjs-notes-static-templates/">Angularjs学习笔记-静态模板</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-07T15:57:25-07:00" pubdate data-updated="true">Apr 7<span>th</span>, 2014</time>
-        
-        
-           | <a href="/blog/2014/04/07/learning-angularjs-notes-static-templates/#comments">Comments</a>
-                
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Angularjs下静态页面的创建和普通<code>HTML</code>页面相同，可以直接看效果。</p>
-
-<h2>Angularjs静态模板演示</h2>
-
-<p><a href="/phonecat/step-1/app/">Angularjs静态模板</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1306,7 +1372,7 @@ npm config set strict-ssl false
 <li class='category'><a href='/blog/categories/nodejs/'>Nodejs (2)</a></li>
 <li class='category'><a href='/blog/categories/octopress/'>Octopress (6)</a></li>
 <li class='category'><a href='/blog/categories/server/'>Server (3)</a></li>
-<li class='category'><a href='/blog/categories/shell/'>Shell (2)</a></li>
+<li class='category'><a href='/blog/categories/shell/'>Shell (3)</a></li>
 <li class='category'><a href='/blog/categories/sublimetext/'>SublimeText (5)</a></li>
 <li class='category'><a href='/blog/categories/vim/'>Vim (3)</a></li>
 
@@ -1315,6 +1381,10 @@ npm config set strict-ssl false
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/11/bash-shortcut/">bash快捷操作</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/05/08/git-settings/">常用git设置</a>
@@ -1332,10 +1402,6 @@ npm config set strict-ssl false
         <a href="/blog/2014/04/26/use-git-svn/">使用git-svn</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/04/24/use-oh-my-zsh-instead-of-bash/">使用oh my zsh替代bash</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -1344,8 +1410,8 @@ npm config set strict-ssl false
     <a style="font-size: 163%" href="/tags/angularjs/">Angularjs</a>
 <a style="font-size: 185%" href="/tags/bom/">BOM</a>
 <a style="font-size: 90%" href="/tags/task/">Task</a>
+<a style="font-size: 90%" href="/tags/github/">github,</a>
 <a style="font-size: 210%" href="/tags/javascript/">javascript,</a>
-<a style="font-size: 90%" href="/tags/jekyll/">jekyll</a>
 <a style="font-size: 153%" href="/tags/octopress/">octopress</a>
 <a style="font-size: 122%" href="/tags/octopress/">octopress,</a>
 <a style="font-size: 163%" href="/tags/sublime-text/">sublime-text</a>

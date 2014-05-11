@@ -5,13 +5,15 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Angularjs学习笔记-双向绑定 - Do Far</title>
+  <title>bash快捷操作 - Do Far</title>
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="动态排序可以这样实现，添加一个新的模型属性，把它和迭代器集成起来，然后让数据绑定完成剩下的事情。 模板 app/index.html: Search: &lt;input ng-model="query"&gt;
-Sort by:
-&lt;select ng-model="orderProp"& &hellip;">
+  <meta name="description" content="经常使用bash，但是bash shell使用的效率一直不高，今天终于发现了有快捷键，赶快记录下来。 编辑命令 `Ctrl + a` ：移到命令行首
+`Ctrl + e` ：移到命令行尾
+`Ctrl + f` ：按字符前移（右向）
+`Ctrl + b` ：按字符后移（左向）
+`Alt + f` ： &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +22,7 @@ Sort by:
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.dofa.org/blog/2014/04/07/learning-angularjs-notes-two-way-data-bingding">
+  <link rel="canonical" href="http://blog.dofa.org/blog/2014/05/11/bash-shortcut">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -83,7 +85,7 @@ Sort by:
   
   <header>
     
-      <h1 class="entry-title">Angularjs学习笔记-双向绑定</h1>
+      <h1 class="entry-title">bash快捷操作</h1>
     
     
       <p class="meta">
@@ -99,7 +101,7 @@ Sort by:
   
 
 
-<time datetime="2014-04-07T21:11:50-07:00" pubdate data-updated="true">Apr 7<span>th</span>, 2014</time>
+<time datetime="2014-05-11T09:51:30-07:00" pubdate data-updated="true">May 11<span>th</span>, 2014</time>
         
         
            | <a href="#comments">Comments</a>
@@ -109,149 +111,64 @@ Sort by:
   </header>
 
 
-<div class="entry-content"><p>动态排序可以这样实现，添加一个新的模型属性，把它和迭代器集成起来，然后让数据绑定完成剩下的事情。</p>
+<div class="entry-content"><p>经常使用bash，但是bash shell使用的效率一直不高，今天终于发现了有快捷键，赶快记录下来。</p>
 
-<h2>模板</h2>
+<h2>编辑命令</h2>
 
-<p><code>app/index.html:</code></p>
-
-<pre><code>Search: &lt;input ng-model="query"&gt;
-Sort by:
-&lt;select ng-model="orderProp"&gt;
-    &lt;option value="name"&gt;Alphabetical&lt;/option&gt;
-    &lt;option value="age"&gt;Newest&lt;/option&gt;
-&lt;/select&gt;
-
-
-&lt;ul class="phones"&gt;
-    &lt;li ng-repeat="phone in phones | filter:query | orderBy:orderProp"&gt;
-
-        &lt;p&gt;&lt;/p&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;
+<pre><code>`Ctrl + a` ：移到命令行首
+`Ctrl + e` ：移到命令行尾
+`Ctrl + f` ：按字符前移（右向）
+`Ctrl + b` ：按字符后移（左向）
+`Alt + f` ：按单词前移（右向）
+`Alt + b` ：按单词后移（左向）
+`Ctrl + xx`：在命令行首和光标之间移动
+`Ctrl + u` ：从光标处删除至命令行首
+`Ctrl + k` ：从光标处删除至命令行尾
+`Ctrl + w` ：从光标处删除至字首
+`Alt + d` ：从光标处删除至字尾
+`Ctrl + d` ：删除光标处的字符
+`Ctrl + h` ：删除光标前的字符
+`Ctrl + y` ：粘贴至光标后
+`Alt + c` ：从光标处更改为首字母大写的单词
+`Alt + u` ：从光标处更改为全部大写的单词
+`Alt + l` ：从光标处更改为全部小写的单词
+`Ctrl + t` ：交换光标处和之前的字符
+`Alt + t` ：交换光标处和之前的单词
+`Alt + Backspace` ：与 `Ctrl + w` 类似
 </code></pre>
 
-<p>我们在<code>index.html</code>中做了如下更改：</p>
+<h2>重新执行命令</h2>
 
-<ul>
-<li><p>首先，我们增加了一个叫做<code>orderProp</code>的<code>&lt;select&gt;</code>标签，这样我们的用户就可以选择我们提供的两种排序方法。</p></li>
-<li><p>然后，在<code>filter</code>过滤器后面添加一个<code>orderBy</code>过滤器用其来处理进入迭代器的数据。<code>orderBy</code>过滤器以一个数组作为输入，复制一份副本，然后把副本重排序再输出到迭代器。</p></li>
-</ul>
-
-
-<p><code>AngularJS</code>在<code>select</code>元素和<code>orderProp</code>模型之间创建了一个双向绑定。而后，<code>orderProp</code>会被用作<code>orderBy</code>过滤器的输入。</p>
-
-<p>正如我们在步骤3中讨论数据绑定和迭代器的时候所说的一样，无论什么时候数据模型发生了改变（比如用户在下拉菜单中选了不同的顺序），AngularJS的数据绑定会让视图自动更新。没有任何笨拙的DOM操作！</p>
-
-<h2>控制器</h2>
-
-<p><code>app/js/controllers.js:</code></p>
-
-<pre><code>var phonecatApp = angular.module('phonecatApp', []);
-
-phonecatApp.controller('PhoneListCtrl', function ($scope) {
-  $scope.phones = [
-    {'name': 'Nexus S',
-     'snippet': 'Fast just got faster with Nexus S.',
-     'age': 1},
-    {'name': 'Motorola XOOM™ with Wi-Fi',
-     'snippet': 'The Next, Next Generation tablet.',
-     'age': 2},
-    {'name': 'MOTOROLA XOOM™',
-     'snippet': 'The Next, Next Generation tablet.',
-     'age': 3}
-  ];
-
-  $scope.orderProp = 'age';
-});
+<pre><code>`Ctrl + r` ：逆向搜索命令历史
+`Ctrl + g` ：从历史搜索模式退出
+`Ctrl + p` ：历史中的上一条命令
+`Ctrl + n` ：历史中的下一条命令
+`Alt + .` ：使用上一条命令的最后一个参数
 </code></pre>
 
-<ul>
-<li>我们修改了<code>phones</code>模型—— 手机的数组 ——为每一个手机记录其增加了一个<code>age</code>属性。我们会根据<code>age</code>属性来对手机进行排序。</li>
-<li>我们在控制器代码里加了一行让<code>orderProp</code>的默认值为<code>age</code>。如果我们不设置默认值，这个模型会在我们的用户在下拉菜单选择一个顺序之前一直处于未初始化状态。</li>
-</ul>
+<h2>控制命令</h2>
 
-
-<p>现在我们该好好谈谈双向数据绑定了。注意到当应用在浏览器中加载时，“Newest”在下拉菜单中被选中。这是因为我们在控制器中把<code>orderProp</code>设置成了‘age’。所以绑定在从我们模型到用户界面的方向上起作用——即数据从模型到视图的绑定。现在当你在下拉菜单中选择“Alphabetically”，数据模型会被同时更新，并且手机列表数组会被重新排序。这个时候数据绑定从另一个方向产生了作用——即数据从视图到模型的绑定。</p>
-
-<h2>Test</h2>
-
-<p>The changes we made should be verified with both a unit test and an end-to-end test. Let&rsquo;s look at the unit test first.</p>
-
-<p><code>test/unit/controllersSpec.js:</code></p>
-
-<pre><code>describe('PhoneCat controllers', function() {
-
-  describe('PhoneListCtrl', function(){
-    var scope, ctrl;
-
-    beforeEach(module('phonecatApp'));
-
-    beforeEach(inject(function($controller) {
-      scope = {};
-      ctrl = $controller('PhoneListCtrl', {$scope:scope});
-    }));
-
-    it('should create "phones" model with 3 phones', function() {
-      expect(scope.phones.length).toBe(3);
-    });
-
-
-    it('should set the default value of orderProp model', function() {
-      expect(scope.orderProp).toBe('age');
-    });
-  });
-});
+<pre><code>`Ctrl + l` ：清屏
+`Ctrl + o` ：执行当前命令，并选择上一条命令
+`Ctrl + s` ：阻止屏幕输出
+`Ctrl + q` ：允许屏幕输出
+`Ctrl + c` ：终止命令
+`Ctrl + z` ：挂起命令
 </code></pre>
 
-<p>The unit test now verifies that the default ordering property is set.</p>
+<h2>Bang (!) 命令</h2>
 
-<p>We used Jasmine&rsquo;s API to extract the controller construction into a beforeEach block, which is shared by all tests in the parent describe block.</p>
-
-<p>You should now see the following output in the Karma tab:</p>
-
-<pre><code>Chrome 22.0: Executed 2 of 2 SUCCESS (0.021 secs / 0.001 secs)
+<pre><code>`!!` ：执行上一条命令
+`!blah` ：执行最近的以 `blah` 开头的命令，如 `!ls`
+`!blah:p` ：仅打印输出，而不执行
+`!$` ：上一条命令的最后一个参数，与 `Alt + .` 相同
+`!$:p` ：打印输出 `!$` 的内容
+`!*` ：上一条命令的所有参数
+`!*:p` ：打印输出 `!*` 的内容
+`^blah` ：删除上一条命令中的 `blah`
+`^blah^foo` ：将上一条命令中的 `blah` 替换为 `foo`
+`^blah^foo^` ：将上一条命令中所有的 `blah` 都替换为 `foo`
 </code></pre>
-
-<p>Let&rsquo;s turn our attention to the end-to-end test.</p>
-
-<p><code>test/e2e/scenarios.js:</code></p>
-
-<pre><code>...
-it('should be possible to control phone order via the drop down select box', function() {
-
-  var phoneNameColumn = element.all(by.repeater('phone in phones').column(''));
-  var query = element(by.model('query'));
-
-  function getNames() {
-    return phoneNameColumn.map(function(elm) {
-      return elm.getText();
-    });
-  }
-
-  query.sendKeys('tablet'); //let's narrow the dataset to make the test assertions shorter
-
-  expect(getNames()).toEqual([
-    "Motorola XOOM\u2122 with Wi-Fi",
-    "MOTOROLA XOOM\u2122"
-  ]);
-
-  element(by.model('orderProp')).findElement(by.css('option[value="name"]')).click();
-
-  expect(getNames()).toEqual([
-    "MOTOROLA XOOM\u2122",
-    "Motorola XOOM\u2122 with Wi-Fi"
-  ]);
-});...
-</code></pre>
-
-<p>The end-to-end test verifies that the ordering mechanism of the select box is working correctly.</p>
-
-<p>You can now rerun npm run protractor to see the tests run.</p>
-
-<h2>Angularjs双向绑定演示</h2>
-
-<p><a href="/phonecat/step-4/app/">Angularjs双向绑定</a></p>
 </div>
 
 
@@ -274,12 +191,12 @@ it('should be possible to control phone order via the drop down select box', fun
   
 
 
-<time datetime="2014-04-07T21:11:50-07:00" pubdate data-updated="true">Apr 7<span>th</span>, 2014</time>
+<time datetime="2014-05-11T09:51:30-07:00" pubdate data-updated="true">May 11<span>th</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/javascript/'>Javascript</a>
+    <a class='category' href='/blog/categories/shell/'>Shell</a>
   
 </span>
 
@@ -295,10 +212,8 @@ it('should be possible to control phone order via the drop down select box', fun
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/04/07/learning-angularjs-notes-filtering-repeaters/" title="Previous Post: Angularjs学习笔记-迭代器过滤">&laquo; Angularjs学习笔记-迭代器过滤</a>
+        <a class="basic-alignment left" href="/blog/2014/05/08/git-settings/" title="Previous Post: 常用git设置">&laquo; 常用git设置</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/04/07/learning-angularjs-notes-XHRs-and-dependency-injection/" title="Next Post: Angularjs学习笔记-XHR和依赖注入">Angularjs学习笔记-XHR和依赖注入 &raquo;</a>
       
     </p>
   </footer>

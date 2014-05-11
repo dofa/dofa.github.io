@@ -9,9 +9,8 @@
   <meta name="author" content="dofa">
 
   
-  <meta name="description" content="Document用于表现HTML页面当前窗体的内容 Document对象 document是BOM中最重要对象之一
-document对象是window对象的属性
-document对象包含一个节点对象，此对象包含每个单独页面的所有HTML元素，这就是W3C的DOM对象 Document属性 &hellip;">
+  <meta name="description" content="Frames用于表现HTML页面当前窗体的中的框架集合 Frames对象 frames对象是window对象的属性
+如果页面使用框架，将产生一个框架集合frames，在集合中可用数字(从0开始，从左到右，逐行索引)或名字索引框架 框架集引用中使用的对象 对象 位置 window 当前框架 top &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +79,123 @@ document对象包含一个节点对象，此对象包含每个单独页面的所
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/04/02/learn-javascript-bom-base-frames-object/">JavaScript学习&#8211;BOM基础之frames对象(转)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-02T22:35:06-07:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2014</time>
+        
+        
+           | <a href="/blog/2014/04/02/learn-javascript-bom-base-frames-object/#comments">Comments</a>
+                
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Frames用于表现HTML页面当前窗体的中的框架集合</p>
+
+<h2>Frames对象</h2>
+
+<ul>
+<li><code>frames</code>对象是<code>window</code>对象的属性</li>
+<li>如果页面使用框架，将产生一个框架集合<code>frames</code>，在集合中可用数字(从0开始，从左到右，逐行索引)或名字索引框架</li>
+</ul>
+
+
+<h2>框架集引用中使用的对象</h2>
+
+<table>
+<thead>
+<tr>
+<th align="left">对象 </th>
+<th align="left"> 位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">window </td>
+<td align="left"> 当前框架</td>
+</tr>
+<tr>
+<td align="left">top </td>
+<td align="left"> 最顶层的框架，就是浏览器窗体</td>
+</tr>
+<tr>
+<td align="left">parent </td>
+<td align="left"> 包含当前框架的父框架</td>
+</tr>
+<tr>
+<td align="left">self </td>
+<td align="left"> 当前框架，总是等于window对象</td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>示例</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;frameset</span> <span class="na">rows=</span><span class="s">&quot;20%, *, 20%&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;frame</span> <span class="na">src=</span><span class="s">&quot;http://www.dreamdu.com/javascript/exe_window.frames.top/&quot;</span> <span class="na">name=</span><span class="s">&quot;top&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;frameset</span> <span class="na">cols=</span><span class="s">&quot;20%, *&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;frame</span> <span class="na">src=</span><span class="s">&quot;http://www.dreamdu.com/javascript/exe_window.frames.top/&quot;</span> <span class="na">name=</span><span class="s">&quot;left&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;frame</span> <span class="na">src=</span><span class="s">&quot;http://www.dreamdu.com/javascript/exe_window.frames.right/&quot;</span> <span class="na">name=</span><span class="s">&quot;right&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/frameset&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;frame</span> <span class="na">src=</span><span class="s">&quot;http://www.dreamdu.com/javascript/exe_window.frames.top/&quot;</span> <span class="na">name=</span><span class="s">&quot;bottom&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/frameset&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>上面的框架页示例产生了一个框架集</p>
+
+<p><code>window</code>与<code>self</code>代表相同的对象，但是<code>self</code>是为了确定正在使用的框架不是<code>parent</code>，而是自身,<code>top</code>对象代表最顶层框架，浏览器窗体本身，因此在这个例子中就等于<code>window</code>对象,如果页面上没有框架，<code>window</code>，<code>self</code>都等于<code>top</code>，并且框架集合的长度为0</p>
+
+<p>如果框架名称为<code>right</code>的页面包括下面框架：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;frameset</span> <span class="na">cols=</span><span class="s">&quot;50%, *&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;frame</span> <span class="na">src=</span><span class="s">&quot;http://www.dreamdu.com/javascript/exe_window.frames.top/&quot;</span> <span class="na">name=</span><span class="s">&quot;righttop&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;frame</span> <span class="na">src=</span><span class="s">&quot;http://www.dreamdu.com/javascript/exe_window.frames.top/&quot;</span> <span class="na">name=</span><span class="s">&quot;rightbottom&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/frameset&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>那么righttop与rightbottom的parent父框架为right</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1165,179 +1281,6 @@ sudo apt-get install sudo -y
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/03/08/vagrant-introduction/">Vagrant使用简介</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-08T22:21:16-08:00" pubdate data-updated="true">Mar 8<span>th</span>, 2014</time>
-        
-        
-           | <a href="/blog/2014/03/08/vagrant-introduction/#comments">Comments</a>
-                
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Vagrant简介</h2>
-
-<blockquote><p>Vagrant is a tool for building complete development environments. With an easy-to-use workflow and focus on automation, Vagrant lowers development environment setup time, increases development/production parity, and makes the &ldquo;works on my machine&rdquo; excuse a relic of the past.</p></blockquote>
-
-<h2>Vagrant安装</h2>
-
-<h4>virtualbox</h4>
-
-<p><a href="https://www.virtualbox.org">https://www.virtualbox.org</a></p>
-
-<h4>vagrant</h4>
-
-<p><a href="http://www.vagrantup.com">http://www.vagrantup.com</a></p>
-
-<h4>box</h4>
-
-<p><a href="http://www.vagrantbox.es">http://www.vagrantbox.es</a></p>
-
-<h2>Vagrant使用</h2>
-
-<h4>使用下载的box初始化</h4>
-
-<pre><code>vagrant box add precise32 http://files.vagrantup.com/precise32.box
-</code></pre>
-
-<h4>初始化开发环境</h4>
-
-<pre><code>cd ~/dev    #开发目录
-vagrant init precise32
-</code></pre>
-
-<h4>运行Vagrant box</h4>
-
-<pre><code>vagrant up
-</code></pre>
-
-<h4>远程连接到box</h4>
-
-<pre><code>vagrant ssh
-</code></pre>
-
-<h4>其他常用Vagrant命令</h4>
-
-<pre><code>vagrant box add NAME URL            #添加一个box
-vagrant box list                    #查看本地已添加的box
-vagrant box remove NAME virtualbox  #删除本地已添加的box，如若是版本1.0.x，执行$ vagrant box remove  NAME
-vagrant init NAME                   #初始化，实质应是创建Vagrantfile文件         
-vagrant up                          #启动虚拟机
-vagrant halt                        #关闭虚拟机
-vagrant destroy                     #销毁虚拟机
-vagrant reload                      #重启虚拟机
-vagrant package                     #当前正在运行的VirtualBox虚拟环境打包成一个可重复使用的box            
-vagrant ssh                         #进入虚拟环境
-</code></pre>
-
-<h2>Vagrant高级</h2>
-
-<h4>Vagrant配置文件Vagrantfile</h4>
-
-<p>官方解释是这样的：The primary function of the Vagrantfile is to describe the type of machine required for a project, and how to configure and provision these machines。翻译出来太生涩，简单来说就是配置这个虚拟主机网络连接方式，端口转发，同步文件夹，以及怎么和puppet，chef结合的一个配置文件。执行完<code>vagrant init</code>后,在工作目录中,你会发现此文件。</p>
-
-<p>使用V2版本配置：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
-</span><span class='line'>  <span class="c1"># ...</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>配置网络</h4>
-
-<ul>
-<li>端口转发：（假设虚拟机的80端口提供web服务，此处将通过访问物理机的8080端口转发到虚拟机的80端口，来实现web的访问）</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
-</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">network</span> <span class="ss">:forwarded_port</span><span class="p">,</span> <span class="ss">guest</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span> <span class="ss">host</span><span class="p">:</span> <span class="mi">8080</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>桥接网络（公共网络，局域网DHCP服务器自动分配IP）</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
-</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">network</span> <span class="ss">:public_network</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<pre><code>VBoxManage list bridgedifs | grep ^Name    #可通过此命令查看本机的网卡
-</code></pre>
-
-<ul>
-<li>私有网络：允许多个虚拟机通过主机通过网络互相通信，vagrant允许用户分配一个静态IP，然后使用私有网络设置。</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
-</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">network</span> <span class="ss">:private_network</span><span class="p">,</span> <span class="ss">ip</span><span class="p">:</span> <span class="s2">&quot;192.168.50.4&quot;</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>同步文件夹</h4>
-
-<p>默认的，vagrant将共享你的工作目录（即Vagrantfile所在的目录）到虚拟机中的/vagrant,所以一般不需配置即可，如你需要可配置：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
-</span><span class='line'>  <span class="c1"># other config here</span>
-</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">synced_folder</span> <span class="s2">&quot;src/&quot;</span><span class="p">,</span> <span class="s2">&quot;/srv/website&quot;</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>&ldquo;src/&#8221;：物理机目录;&rdquo;/srv/website&#8221;虚拟机目录</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -1360,7 +1303,7 @@ vagrant ssh                         #进入虚拟环境
 <li class='category'><a href='/blog/categories/nodejs/'>Nodejs (2)</a></li>
 <li class='category'><a href='/blog/categories/octopress/'>Octopress (6)</a></li>
 <li class='category'><a href='/blog/categories/server/'>Server (3)</a></li>
-<li class='category'><a href='/blog/categories/shell/'>Shell (2)</a></li>
+<li class='category'><a href='/blog/categories/shell/'>Shell (3)</a></li>
 <li class='category'><a href='/blog/categories/sublimetext/'>SublimeText (5)</a></li>
 <li class='category'><a href='/blog/categories/vim/'>Vim (3)</a></li>
 
@@ -1369,6 +1312,10 @@ vagrant ssh                         #进入虚拟环境
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/11/bash-shortcut/">bash快捷操作</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/05/08/git-settings/">常用git设置</a>
@@ -1386,10 +1333,6 @@ vagrant ssh                         #进入虚拟环境
         <a href="/blog/2014/04/26/use-git-svn/">使用git-svn</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/04/24/use-oh-my-zsh-instead-of-bash/">使用oh my zsh替代bash</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -1398,8 +1341,8 @@ vagrant ssh                         #进入虚拟环境
     <a style="font-size: 163%" href="/tags/angularjs/">Angularjs</a>
 <a style="font-size: 185%" href="/tags/bom/">BOM</a>
 <a style="font-size: 90%" href="/tags/task/">Task</a>
+<a style="font-size: 90%" href="/tags/github/">github,</a>
 <a style="font-size: 210%" href="/tags/javascript/">javascript,</a>
-<a style="font-size: 90%" href="/tags/jekyll/">jekyll</a>
 <a style="font-size: 153%" href="/tags/octopress/">octopress</a>
 <a style="font-size: 122%" href="/tags/octopress/">octopress,</a>
 <a style="font-size: 163%" href="/tags/sublime-text/">sublime-text</a>
