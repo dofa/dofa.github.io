@@ -235,7 +235,7 @@ git config --global http.sslverify false
 
 <h2>Git显示漂亮日志</h2>
 
-<pre><code>git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset' --abbrev-commit --"
+<pre><code>git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset' --abbrev-commit --date=relative --show-signature"
 </code></pre>
 
 <h2>Git其它技巧</h2>
@@ -367,60 +367,51 @@ $ git checkout -
 <table>
 <thead>
 <tr>
-<th></th>
-<th> 别名 Alias </th>
+<th>别名 Alias </th>
 <th> 命令 Command </th>
 <th> 如何设置 What to Type </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td> <code>git cm</code> </td>
+<td><code>git cm</code> </td>
 <td> <code>git commit</code> </td>
-<td> <code>git config --global alias.cm commit</code> |</td>
+<td> <code>git config --global alias.cm commit</code> </td>
 </tr>
 <tr>
-<td></td>
-<td> <code>git co</code> </td>
+<td><code>git co</code> </td>
 <td> <code>git checkout</code> </td>
-<td> <code>git config --global alias.co checkout</code> |</td>
+<td> <code>git config --global alias.co checkout</code> </td>
 </tr>
 <tr>
-<td></td>
-<td> <code>git ac</code> </td>
+<td><code>git ac</code> </td>
 <td> <code>git add . -A</code> <code>git commit</code> </td>
-<td> <code>git config --global alias.ac '!git add -A &amp;&amp; git commit'</code> |</td>
+<td> <code>git config --global alias.ac '!git add -A &amp;&amp; git commit'</code> </td>
 </tr>
 <tr>
-<td></td>
-<td> <code>git st</code> </td>
+<td><code>git st</code> </td>
 <td> <code>git status -sb</code> </td>
-<td> <code>git config --global alias.st 'status -sb'</code> |</td>
+<td> <code>git config --global alias.st 'status -sb'</code> </td>
 </tr>
 <tr>
-<td></td>
-<td> <code>git tags</code> </td>
+<td><code>git tags</code> </td>
 <td> <code>git tag -l</code> </td>
-<td> <code>git config --global alias.tags 'tag -l'</code> |</td>
+<td> <code>git config --global alias.tags 'tag -l'</code> </td>
 </tr>
 <tr>
-<td></td>
-<td> <code>git branches</code> </td>
+<td><code>git branches</code> </td>
 <td> <code>git branch -a</code> </td>
-<td> <code>git config --global alias.branches 'branch -a'</code> |</td>
+<td> <code>git config --global alias.branches 'branch -a'</code> </td>
 </tr>
 <tr>
-<td></td>
-<td> <code>git remotes</code> </td>
+<td><code>git remotes</code> </td>
 <td> <code>git remote -v</code> </td>
-<td> <code>git config --global alias.remotes 'remote -v'</code> |</td>
+<td> <code>git config --global alias.remotes 'remote -v'</code> </td>
 </tr>
 <tr>
-<td></td>
-<td> <code>git lg</code> </td>
+<td><code>git lg</code> </td>
 <td> <code>git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset' --abbrev-commit --</code> </td>
-<td> <code>git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset' --abbrev-commit --"</code> |</td>
+<td> <code>git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset' --abbrev-commit --"</code> </td>
 </tr>
 </tbody>
 </table>
