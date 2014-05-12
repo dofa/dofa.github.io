@@ -127,6 +127,204 @@ git config --global http.sslverify false
 
 <pre><code>git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset' --abbrev-commit --"
 </code></pre>
+
+<h2>Git其它技巧</h2>
+
+<h3>前一个分支</h3>
+
+<p>快速检出上一个分支：</p>
+
+<pre><code>$ git checkout -
+# Switched to branch 'master'
+
+$ git checkout -
+# Switched to branch 'next'
+
+$ git checkout -
+# Switched to branch 'master'   
+</code></pre>
+
+<h3><code>Stripspace</code>命令</h3>
+
+<p><code>Git Stripspace</code>命令可以:</p>
+
+<ul>
+<li>去掉行尾空白符</li>
+<li>多个空行压缩成一行</li>
+<li>必要时在文件末尾增加一个空行</li>
+</ul>
+
+
+<p>使用此命令时必须传入一个文件，像这样：</p>
+
+<pre><code>$ git stripspace &lt; README.md    
+</code></pre>
+
+<h3>提交空改动</h3>
+
+<p>可以使用<code>--allow-empty</code>选项强制创建一个没有任何改动的提交：</p>
+
+<pre><code>$ git commit -m "Big-ass commit" --allow-empty
+</code></pre>
+
+<p>这样做在如下几种情况下是有意义的：</p>
+
+<ul>
+<li>标记一批工作或一个新功能的开始。</li>
+<li>记录你对项目进行了跟代码无关的改动。</li>
+<li>跟使用你仓库的其他人交流。</li>
+<li>作为仓库的第一次提交，因为第一次提交日后是不能被<code>rebase</code>的： <code>git commit -m "init repo" --allow-empty</code>.</li>
+</ul>
+
+
+<h3>更直观的Git Status</h3>
+
+<p>在命令行输入如下命令:</p>
+
+<pre><code>$ git status -sb
+</code></pre>
+
+<h3>Git查询</h3>
+
+<p><code>Git</code>查询运行你在之前的所有提交信息里进行搜索，找到其中和搜索条件相匹配的最近的一条。</p>
+
+<pre><code>$ git show :/query
+</code></pre>
+
+<p>这里 <code>query</code> （区别大小写）是你想要搜索的词语， 这条命令会找到包含这个词语的最后那个提交并显示变动详情。</p>
+
+<pre><code>$ git show :/typo
+</code></pre>
+
+<p>按 <code>q</code> 键退出命令。</p>
+
+<h3>合并分支</h3>
+
+<p>输入命令:</p>
+
+<pre><code>$ git branch --merged
+</code></pre>
+
+<p>这会显示所有已经合并到你当前分支的分支列表。</p>
+
+<p>相反地：</p>
+
+<pre><code>$ git branch --no-merged
+</code></pre>
+
+<p>会显示所有还没有合并到你当前分支的分支列表。</p>
+
+<h3>使用网页查看本地仓库</h3>
+
+<p>使用<code>Git</code>的 <code>instaweb</code> 可以立即在 <code>gitweb</code>中浏览你的工作仓库。这个命令是个简单的脚步，配置了<code>gitweb</code>和用来浏览本地仓库的<code>Web</code>服务器。（译者注：默认需要<code>lighttpd</code>支持）</p>
+
+<pre><code>$ git instaweb
+</code></pre>
+
+<h3><code>Git</code>命令自定义别名</h3>
+
+<p>别名用来帮助你定义自己的<code>git</code>命令。比如你可以定义 <code>git a</code> 来运行 <code>git add --all</code>。</p>
+
+<p>要添加一个别名， 一种方法是打开 <code>~/.gitconfig</code> 文件并添加如下内容：</p>
+
+<pre><code>[alias]
+  co = checkout
+  cm = commit
+  p = push
+  # Show verbose output about tags, branches or remotes
+  tags = tag -l
+  branches = branch -a
+  remotes = remote -v
+</code></pre>
+
+<p>&hellip;或者在命令行里键入：</p>
+
+<pre><code>$ git config --global alias.new_alias git_function
+</code></pre>
+
+<p>例如：</p>
+
+<pre><code>$ git config --global alias.cm commit
+</code></pre>
+
+<p>指向多个命令的别名可以用引号来定义：</p>
+
+<pre><code>$ git config --global alias.ac 'add -A . &amp;&amp; commit' 
+</code></pre>
+
+<h3>一些有用的别名：</h3>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th> 别名 Alias </th>
+<th> 命令 Command </th>
+<th> 如何设置 What to Type </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td> <code>git cm</code> </td>
+<td> <code>git commit</code> </td>
+<td> <code>git config --global alias.cm commit</code> |</td>
+</tr>
+<tr>
+<td></td>
+<td> <code>git co</code> </td>
+<td> <code>git checkout</code> </td>
+<td> <code>git config --global alias.co checkout</code> |</td>
+</tr>
+<tr>
+<td></td>
+<td> <code>git ac</code> </td>
+<td> <code>git add . -A</code> <code>git commit</code> </td>
+<td> <code>git config --global alias.ac '!git add -A &amp;&amp; git commit'</code> |</td>
+</tr>
+<tr>
+<td></td>
+<td> <code>git st</code> </td>
+<td> <code>git status -sb</code> </td>
+<td> <code>git config --global alias.st 'status -sb'</code> |</td>
+</tr>
+<tr>
+<td></td>
+<td> <code>git tags</code> </td>
+<td> <code>git tag -l</code> </td>
+<td> <code>git config --global alias.tags 'tag -l'</code> |</td>
+</tr>
+<tr>
+<td></td>
+<td> <code>git branches</code> </td>
+<td> <code>git branch -a</code> </td>
+<td> <code>git config --global alias.branches 'branch -a'</code> |</td>
+</tr>
+<tr>
+<td></td>
+<td> <code>git remotes</code> </td>
+<td> <code>git remote -v</code> </td>
+<td> <code>git config --global alias.remotes 'remote -v'</code> |</td>
+</tr>
+<tr>
+<td></td>
+<td> <code>git lg</code> </td>
+<td> <code>git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset' --abbrev-commit --</code> </td>
+<td> <code>git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset' --abbrev-commit --"</code> |</td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>自动更正</h3>
+
+<pre><code>$ git config --global help.autocorrect 1
+</code></pre>
+
+<h3>带颜色输出</h3>
+
+<pre><code>$ git config --global color.ui 1
+</code></pre>
 </div>
 
 
