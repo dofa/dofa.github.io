@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: nodejs | Do Far]]></title>
   <link href="http://blog.dofa.org/tags/nodejs/atom.xml" rel="self"/>
   <link href="http://blog.dofa.org/"/>
-  <updated>2014-05-12T09:00:46-07:00</updated>
+  <updated>2014-05-13T07:41:14-07:00</updated>
   <id>http://blog.dofa.org/</id>
   <author>
     <name><![CDATA[dofa]]></name>
@@ -12,6 +12,46 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[在debian上安装nodejs]]></title>
+    <link href="http://blog.dofa.org/blog/2014/05/13/install-nodejs-in-debian/"/>
+    <updated>2014-05-13T13:42:30-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/05/13/install-nodejs-in-debian</id>
+    <content type="html"><![CDATA[<h2>安装编译包</h2>
+
+<pre><code>sudo apt-get install python g++ make checkinstall
+</code></pre>
+
+<h2>获取最新的 <code>node</code> 源码</h2>
+
+<pre><code>mkdir ~/src &amp;&amp; cd ~/src
+wget -N http://nodejs.org/dist/node-latest.tar.gz
+tar xzvf node-latest.tar.gz &amp;&amp; cd node-v*
+</code></pre>
+
+<h2>配置编译源码</h2>
+
+<pre><code>./configure
+sudo checkinstall
+</code></pre>
+
+<p>注意，运行 checkinstall 需要 sudo，之后选择 3，将 node 的版本号前的 v 去掉， 例如，这里安装的版本为 v0.10.28，改为 0.10.28 即可。
+这里编译会比较久，需要耐心等待，特别是在 pi 下。</p>
+
+<h2>安装（<code>-i</code>）和卸载（<code>-r</code>）</h2>
+
+<pre><code>sudo dpkg -i node_*
+sudo dpkg -r node
+</code></pre>
+
+<h2>查看 nodejs 和 npm 的版本</h2>
+
+<pre><code>node -v
+npm -v
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[在Windows环境下搭建nodejs环境]]></title>

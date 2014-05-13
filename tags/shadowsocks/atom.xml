@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: shadowsocks | Do Far]]></title>
+  <link href="http://blog.dofa.org/tags/shadowsocks/atom.xml" rel="self"/>
+  <link href="http://blog.dofa.org/"/>
+  <updated>2014-05-13T07:41:14-07:00</updated>
+  <id>http://blog.dofa.org/</id>
+  <author>
+    <name><![CDATA[dofa]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[安装shadowsocks-nodejs]]></title>
+    <link href="http://blog.dofa.org/blog/2014/05/13/install-shadowsocks-nodejs/"/>
+    <updated>2014-05-13T14:18:30-07:00</updated>
+    <id>http://blog.dofa.org/blog/2014/05/13/install-shadowsocks-nodejs</id>
+    <content type="html"><![CDATA[<h2>安装shadowsocks包</h2>
+
+<pre><code>npm install -g shadowsocks
+</code></pre>
+
+<h2>创建 <code>config.json</code></h2>
+
+<pre><code>{
+    "server":"yourip or yourdomain",
+    "server_port":8388,
+    "local_port":1080,
+    "password":"xxxxxx",
+    "timeout":600,
+    "method":"rc4",
+    "local_address":"127.0.0.1"
+}
+</code></pre>
+
+<h2>安装<code>coffee-script</code></h2>
+
+<pre><code>npm install -g coffee-script
+</code></pre>
+
+<h2>后台运行</h2>
+
+<pre><code>sudo nohup ssserver &gt; log &amp;
+</code></pre>
+
+<h2><code>local</code>端运行</h2>
+
+<pre><code>sslocal
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>
