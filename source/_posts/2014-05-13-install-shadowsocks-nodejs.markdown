@@ -11,6 +11,10 @@ tags: nodejs, shadowsocks
 
 	npm install -g shadowsocks
 
+## 安装`coffee-script`
+
+	npm install -g coffee-script
+
 ## 创建 `config.json`
 
 	{
@@ -22,10 +26,6 @@ tags: nodejs, shadowsocks
 	    "method":"rc4",
 	    "local_address":"127.0.0.1"
 	}
-
-## 安装`coffee-script`
-
-	npm install -g coffee-script
 
 ## 后台运行
 
